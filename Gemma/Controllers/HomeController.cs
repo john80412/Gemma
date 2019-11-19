@@ -26,5 +26,9 @@ namespace Gemma.Controllers
 
             return View();
         }
+        public ActionResult BackStageIndex()
+        {
+            return View();
+        }
     }
 }
