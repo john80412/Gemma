@@ -6,35 +6,26 @@ namespace Gemma
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Product")]
-    public partial class Product
+    [Table("Color")]
+    public partial class Color
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public Color()
         {
             OrderDetails = new HashSet<OrderDetail>();
             ShoppingCarts = new HashSet<ShoppingCart>();
             Stocks = new HashSet<Stock>();
-            AspNetUsers = new HashSet<AspNetUser>();
         }
 
-        public int ProductID { get; set; }
+        public int ColorID { get; set; }
 
         [Required]
         [StringLength(30)]
-        public string ProductName { get; set; }
-
-        public int UnitPrice { get; set; }
-
-        public decimal Discount { get; set; }
-
-        public int CategoryID { get; set; }
+        public string ColorName { get; set; }
 
         [Required]
         [StringLength(30)]
-        public string Explain { get; set; }
-
-        public virtual Category Category { get; set; }
+        public string ColorImg { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
@@ -44,8 +35,5 @@ namespace Gemma
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stock> Stocks { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

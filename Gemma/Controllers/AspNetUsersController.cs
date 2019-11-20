@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gemma.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -16,7 +17,17 @@ namespace Gemma.Models
         // GET: AspNetUsers
         public ActionResult Index()
         {
-            return View(db.AspNetUsers.ToList());
+            var result = from member in db.AspNetUsers
+                         select new MemberViewModel
+                         {
+                             Id = member.Id,
+                             UserName = member.UserName,
+                             Email = member.Email,
+                             PhoneNumber = member.PhoneNumber,
+                             LockoutEndDateUtc = member.LockoutEndDateUtc,
+                             AccessFailedCount = member.AccessFailedCount
+                         };
+            return View(result.ToList());
         }
 
         // GET: AspNetUsers/Details/5
@@ -26,7 +37,7 @@ namespace Gemma.Models
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AspNetUsers aspNetUsers = db.AspNetUsers.Find(id);
+            AspNetUser aspNetUsers = db.AspNetUsers.Find(id);
             if (aspNetUsers == null)
             {
                 return HttpNotFound();
@@ -45,7 +56,7 @@ namespace Gemma.Models
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUsers aspNetUsers)
+        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUsers)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +75,7 @@ namespace Gemma.Models
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AspNetUsers aspNetUsers = db.AspNetUsers.Find(id);
+            AspNetUser aspNetUsers = db.AspNetUsers.Find(id);
             if (aspNetUsers == null)
             {
                 return HttpNotFound();
@@ -77,7 +88,7 @@ namespace Gemma.Models
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUsers aspNetUsers)
+        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUsers)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +106,7 @@ namespace Gemma.Models
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AspNetUsers aspNetUsers = db.AspNetUsers.Find(id);
+            AspNetUser aspNetUsers = db.AspNetUsers.Find(id);
             if (aspNetUsers == null)
             {
                 return HttpNotFound();
@@ -108,7 +119,7 @@ namespace Gemma.Models
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            AspNetUsers aspNetUsers = db.AspNetUsers.Find(id);
+            AspNetUser aspNetUsers = db.AspNetUsers.Find(id);
             db.AspNetUsers.Remove(aspNetUsers);
             db.SaveChanges();
             return RedirectToAction("Index");
