@@ -1,0 +1,10 @@
+﻿@model Gemma.Models.CollectionItem
+@using System.Globalization;
+
+<div class="col-lg-4 col-md-6 collection-item fadeInUp">
+    <a class="example-image-link" href="~/Assets/images/collection/@Model.FileName" data-lightbox="example-@Model.FileName" data-title="@Html.DisplayFor(x => x.Name)">
+        <img class="example-image img-fluid" src="~/Assets/images/collection/@Model.FileName" />
+    </a>
+</div>
+
+
