@@ -88,7 +88,7 @@ namespace Gemma.Repository
                 ColorID = stock.ColorID,
                 SizeID = stock.SizeID,
                 Quantity = stock.Quantity,
-                ImageName = $"{db.Products.Find(stock.ProductID).ProductName}/{db.Colors.Find(stock.ColorID).ColorName}"
+                ImageName = $"{db.Products.Find(stock.ProductID).ProductName}/{db.Colors.Find(stock.ColorID).ColorImg}"
             };
             db.Stocks.Add(data);
             db.SaveChanges();
