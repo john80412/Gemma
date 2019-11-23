@@ -16,6 +16,7 @@ namespace Gemma
             ShoppingCarts = new HashSet<ShoppingCart>();
             Stocks = new HashSet<Stock>();
             AspNetUsers = new HashSet<AspNetUser>();
+            BookMarks = new HashSet<BookMark>();
         }
 
         public int ProductID { get; set; }
@@ -37,6 +38,9 @@ namespace Gemma
         public virtual Category Category { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BookMark> BookMarks { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -47,5 +51,6 @@ namespace Gemma
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
+
     }
 }

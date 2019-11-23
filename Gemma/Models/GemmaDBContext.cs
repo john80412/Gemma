@@ -4,7 +4,6 @@ namespace Gemma
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-
     public partial class GemmaDBContext : DbContext
     {
         public GemmaDBContext()
@@ -16,6 +15,7 @@ namespace Gemma
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<BookMark> BookMarks { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Color> Colors { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
@@ -44,6 +44,12 @@ namespace Gemma
                 .HasForeignKey(e => e.UserId);
 
             modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.BookMarks)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.CustomerID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.Orders)
                 .WithRequired(e => e.AspNetUser)
                 .HasForeignKey(e => e.CustomerID)
@@ -54,6 +60,7 @@ namespace Gemma
                 .WithRequired(e => e.AspNetUser)
                 .HasForeignKey(e => e.CustomerID)
                 .WillCascadeOnDelete(false);
+
 
             modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.Products)
@@ -93,6 +100,10 @@ namespace Gemma
                 .Property(e => e.Discount)
                 .HasPrecision(2, 2);
 
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.BookMarks)
+                .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.OrderDetails)
                 .WithRequired(e => e.Product)
