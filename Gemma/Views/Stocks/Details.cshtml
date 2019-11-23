@@ -1,0 +1,55 @@
+﻿@model Gemma.ViewModel.StockViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+    @Html.Partial("_BackStagePartialTop")
+    <div class="app-main">
+        @Html.Partial("_BackStagePartialMain")
+        <div class="app-main__outer">
+            <div class="app-main__inner">
+                <h4>StockViewModel</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProductName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ColorName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ColorName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SizeID)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SizeID)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Quantity)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { productID = Model.ProductID, colorID = Model.ColorID, sizeID = Model.SizeID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Gemma.ViewModel.StockViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+    @Html.Partial("_BackStagePartialTop")
+    <div class="app-main">
+        @Html.Partial("_BackStagePartialMain")
+        <div class="app-main__outer">
+            <div class="app-main__inner">
+
+                <p>
+                    @Html.ActionLink("新增", "Create")
+                </p>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-inline">
+                        <div class="form-group">
+                            產品:@Html.TextBox("productName")
+                        </div>
+
+                        <div class="form-group">
+                            顏色:@Html.TextBox("colorName")
+                        </div>
+
+                        <div class="form-group">
+                            尺寸:@Html.TextBox("size")
+                        </div>
+
+                        <div class="form-group">
+                            <div>
+                                <input type="submit" value="查詢" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ColorName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SizeID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ColorName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SizeID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { productID = item.ProductID, colorID = item.ColorID, sizeID = item.SizeID }) |
+                                @Html.ActionLink("Details", "Details", new { productID = item.ProductID, colorID = item.ColorID, sizeID = item.SizeID }) |
+                                @Html.ActionLink("Delete", "Delete", new { productID = item.ProductID, colorID = item.ColorID, sizeID = item.SizeID })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
