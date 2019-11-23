@@ -221,8 +221,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\CollectionStyle.css" />
+    <Content Include="Assets\css\FixedMenu.css" />
     <Content Include="Assets\css\lightbox.css" />
     <Content Include="Assets\css\lightbox.min.css" />
+    <Content Include="Assets\css\MainPage.css" />
     <Content Include="Assets\css\sb-admin-2.css" />
     <Content Include="Assets\css\sb-admin-2.min.css" />
     <Content Include="Assets\images\close.png" />
@@ -244,6 +246,18 @@
     <Content Include="Assets\images\collection\7.jpg" />
     <Content Include="Assets\images\collection\8.jpg" />
     <Content Include="Assets\images\collection\9.jpg" />
+    <Content Include="Assets\images\Icons\Cart_Mark.png" />
+    <Content Include="Assets\images\Icons\Facebook_Mark.png" />
+    <Content Include="Assets\images\Icons\footer-icon-maintenance.png" />
+    <Content Include="Assets\images\Icons\footer-icon-point.png" />
+    <Content Include="Assets\images\Icons\footer-icon-return.png" />
+    <Content Include="Assets\images\Icons\footer-icon-shipping.png" />
+    <Content Include="Assets\images\Icons\Heart_Mark.png" />
+    <Content Include="Assets\images\Icons\Instagram_Mark.png" />
+    <Content Include="Assets\images\Icons\Line_Mark.png" />
+    <Content Include="Assets\images\Icons\logo.png" />
+    <Content Include="Assets\images\Icons\Twitter_Mark.png" />
+    <Content Include="Assets\images\Icons\User_Mark.png" />
     <Content Include="Assets\images\loading.gif" />
     <Content Include="Assets\images\next.png" />
     <Content Include="Assets\images\prev.png" />
@@ -358,6 +372,10 @@
     <Content Include="Views\Stocks\Create.cshtml" />
     <Content Include="Views\Stocks\Edit.cshtml" />
     <Content Include="Views\Stocks\Delete.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Social_Icons.cshtml" />
+    <Content Include="Views\Shared\IndexPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
