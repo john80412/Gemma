@@ -62,10 +62,10 @@ namespace Gemma
                 .WillCascadeOnDelete(false);
 
 
-            modelBuilder.Entity<AspNetUser>()
-                .HasMany(e => e.Products)
-                .WithMany(e => e.AspNetUsers)
-                .Map(m => m.ToTable("BookMark").MapLeftKey("CustomerID").MapRightKey("ProductID"));
+            //modelBuilder.Entity<AspNetUser>()
+            //    .HasMany(e => e.Products)
+            //    .WithMany(e => e.AspNetUsers)
+            //    .Map(m => m.ToTable("BookMark").MapLeftKey("CustomerID").MapRightKey("ProductID"));
 
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.Products)
