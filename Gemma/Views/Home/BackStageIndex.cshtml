@@ -2,9 +2,13 @@
 @{
     ViewBag.Title = "BackStageIndex";
 }
-
-@Html.Partial("_BackStagePartial")
-
-@section topCSS{
-    <link href="~/Assets/css/sb-admin-2.min.css" rel="stylesheet">
-}
+<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+    @Html.Partial("_BackStagePartialTop")
+    <div class="app-main">
+        @Html.Partial("_BackStagePartialMain")
+        <div class="app-main__outer">
+            <div class="app-main__inner">
+            </div>
+        </div>
+    </div>
+</div>
