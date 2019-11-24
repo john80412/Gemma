@@ -45,11 +45,11 @@
                     </dd>
 
                 </dl>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new RouteValueDictionary { { "productID", Model.ProductID }, { "colorID", Model.ColorID }, { "sizeID", Model.SizeID } }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
             </div>
-            <p>
-                @Html.ActionLink("Edit", "Edit", new { productID = Model.ProductID, colorID = Model.ColorID, sizeID = Model.SizeID }) |
-                @Html.ActionLink("Back to List", "Index")
-            </p>
         </div>
     </div>
 </div>

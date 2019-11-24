@@ -22,7 +22,7 @@ namespace Gemma
         public int ProductID { get; set; }
 
         [Required]
-        [StringLength(30)]
+        [StringLength(50)]
         public string ProductName { get; set; }
 
         public int UnitPrice { get; set; }
@@ -32,7 +32,6 @@ namespace Gemma
         public int CategoryID { get; set; }
 
         [Required]
-        [StringLength(30)]
         public string Explain { get; set; }
 
         public virtual Category Category { get; set; }

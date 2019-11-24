@@ -27,7 +27,7 @@ namespace Gemma
         public int Quantity { get; set; }
 
         [Required]
-        [StringLength(30)]
+        [StringLength(100)]
         public string ImageName { get; set; }
 
         public virtual Color Color { get; set; }

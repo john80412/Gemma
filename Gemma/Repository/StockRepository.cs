@@ -5,28 +5,17 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Gemma.Repository
 {
     public class StockRepository
     {
         public GemmaDBContext db = new GemmaDBContext();
-        public List<StockViewModel> GetAllStock()
+        public bool IsSuccess;
+        public IPagedList<StockViewModel> GetSearchStock(string productName, string colorName, string size , int page)
         {
-            var stocks = from s in db.Stocks.Include(s => s.Color).Include(s => s.Product)
-                         select new StockViewModel
-                         {
-                             ProductID = s.ProductID,
-                             ProductName = s.Product.ProductName,
-                             ColorID = s.ColorID,
-                             ColorName = s.Color.ColorName,
-                             SizeID = s.SizeID,
-                             Quantity = s.Quantity
-                         };
-            return stocks.ToList();
-        }
-        public List<StockViewModel> GetSearchStock(string productName, string colorName, string size)
-        {
+            var currentPage = page < 1  ? 1 : page;
             var stocks = from s in db.Stocks.Include(s => s.Color).Include(s => s.Product)
                          select new StockViewModel
                          {
@@ -51,7 +40,8 @@ namespace Gemma.Repository
                 int.TryParse(size,out result);
                 stocks = stocks.Where(x => x.SizeID == result);
             }
-            return stocks.ToList();
+            var results = stocks.OrderBy(x => x.ProductID).ThenBy(x => x.ColorID).ThenBy(x => x.SizeID).ToPagedList(currentPage,10);
+            return results;
         }
         public StockViewModel GetStockDetail(int? productID, int? colorID, int? sizeID)
         {
@@ -75,13 +65,13 @@ namespace Gemma.Repository
         }
         public void CreateStock(StockViewModel stock)
         {
-            var result = db.Stocks.Include(s => s.Color).Include(s => s.Product)
-                        .Where(x => x.ProductID == stock.ProductID && x.ColorID == stock.ColorID && x.SizeID == stock.SizeID)
-                        .ToList()[0];
+            var result = db.Stocks.Find(stock.ProductID, stock.ColorID, stock.SizeID);
             if (result != null)
             {
+                IsSuccess = false;
                 return;
             }
+            IsSuccess = true;
             var data = new Stock
             {
                 ProductID = stock.ProductID,

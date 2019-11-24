@@ -17,14 +17,13 @@ namespace Gemma.Controllers
         private StockRepository rep = new StockRepository();
 
         // GET: Stock
-        public ActionResult Index()
+        public ActionResult Index(string productName, string colorName, string size,int page = 1,string search = "false")
         {
-            return View(rep.GetAllStock());
-        }
-        [HttpPost]
-        public ActionResult Index(string productName,string colorName,string size)
-        {
-            return View(rep.GetSearchStock(productName, colorName, size));
+            ViewBag.searchProductName = productName;
+            ViewBag.searchColorName = colorName;
+            ViewBag.searchSize = size;
+            page = search == "true" ? 1 : page;
+            return View(rep.GetSearchStock(productName, colorName, size , page));
         }
         // GET: Stock/Details/5
         public ActionResult Details(int? productID, int? colorID, int? sizeID)
@@ -60,6 +59,7 @@ namespace Gemma.Controllers
             if (ModelState.IsValid)
             {
                 rep.CreateStock(stock);
+                TempData["message"] = rep.IsSuccess;
                 return RedirectToAction("Index");
             }
 
@@ -92,7 +92,7 @@ namespace Gemma.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductName,ColorName,SizeID,Quantity")] StockViewModel stock)
+        public ActionResult Edit([Bind(Include = "ProductID,ProductName,ColorID,ColorName,SizeID,Quantity")] StockViewModel stock)
         {
             if (ModelState.IsValid)
             {

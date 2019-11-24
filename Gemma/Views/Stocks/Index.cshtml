@@ -1,9 +1,22 @@
-﻿@model IEnumerable<Gemma.ViewModel.StockViewModel>
+﻿@model IPagedList<Gemma.ViewModel.StockViewModel>
+@using PagedList;
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
 }
-
+@section topCSS{
+    <link href="~/Content/PagedList.css" rel="stylesheet"/>
+}
+@if ((bool?)TempData["message"] == false)
+{
+    @section endJS{
+        <script>
+        var message = @Html.Raw(Json.Encode("此項目已存在"));
+        alert(message)
+        </script>
+    }
+}
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
     @Html.Partial("_BackStagePartialTop")
     <div class="app-main">
@@ -30,6 +43,9 @@
                         <div class="form-group">
                             尺寸:@Html.TextBox("size")
                         </div>
+                        <div class="form-group" style="display:none">
+                            @Html.TextBox("search","true")
+                        </div>
 
                         <div class="form-group">
                             <div>
@@ -41,16 +57,16 @@
                 <table class="table">
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.ProductName)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ColorName)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ColorName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.SizeID)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().SizeID)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Quantity)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().Quantity)
                         </th>
                         <th></th>
                     </tr>
@@ -71,14 +87,15 @@
                                 @Html.DisplayFor(modelItem => item.Quantity)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { productID = item.ProductID, colorID = item.ColorID, sizeID = item.SizeID }) |
-                                @Html.ActionLink("Details", "Details", new { productID = item.ProductID, colorID = item.ColorID, sizeID = item.SizeID }) |
-                                @Html.ActionLink("Delete", "Delete", new { productID = item.ProductID, colorID = item.ColorID, sizeID = item.SizeID })
+                                @Html.ActionLink("Edit", "Edit", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } }) |
+                                @Html.ActionLink("Details", "Details", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } }) |
+                                @Html.ActionLink("Delete", "Delete", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } })
                             </td>
                         </tr>
                     }
 
                 </table>
+                @Html.PagedListPager(Model,page => Url.Action("Index",new RouteValueDictionary { { "productName", (string)ViewBag.searchProductName }, { "colorName", (string)ViewBag.searchColorName }, { "size", (string)ViewBag.searchSize },{ "page",page }} ))
             </div>
         </div>
     </div>
