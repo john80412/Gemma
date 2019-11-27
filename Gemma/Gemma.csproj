@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -191,6 +193,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
+    <Compile Include="Controllers\MemberCenterController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Models\AspNetRole.cs" />
     <Compile Include="Models\AspNetUser.cs" />
@@ -211,6 +214,9 @@
     <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MetaData\AspNetUserMD.cs" />
+    <Compile Include="Models\MetaData\MemberCenter.cs" />
+    <Compile Include="Models\MetaData\OrderMD.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
@@ -222,6 +228,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Repository\MemberCenterRepository.cs" />
     <Compile Include="ViewModel\MemberViewModel.cs" />
     <Compile Include="ViewModel\StockViewModel.cs" />
   </ItemGroup>
@@ -231,6 +238,7 @@
     <Content Include="Assets\css\lightbox.css" />
     <Content Include="Assets\css\lightbox.min.css" />
     <Content Include="Assets\css\MainPage.css" />
+    <Content Include="Assets\css\MemberCenter.css" />
     <Content Include="Assets\css\sb-admin-2.css" />
     <Content Include="Assets\css\sb-admin-2.min.css" />
     <Content Include="Assets\images\close.png" />
@@ -609,6 +617,9 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Social_Icons.cshtml" />
     <Content Include="Views\Shared\IndexPartial.cshtml" />
+    <Content Include="Views\MemberCenter\Home.cshtml" />
+    <Content Include="Views\MemberCenter\MemberInformation.cshtml" />
+    <Content Include="Views\MemberCenter\OrderSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
