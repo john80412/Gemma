@@ -30,5 +30,10 @@ namespace Gemma.Controllers
         {
             return View();
         }
+
+        public ActionResult DaniellaGemma()
+        {
+            return View();
+        }
     }
 }
