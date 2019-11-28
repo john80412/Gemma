@@ -1,7 +1,12 @@
-﻿@model IEnumerable<Gemma.ViewModel.MemberViewModel>
+﻿@model IPagedList<Gemma.ViewModel.MemberViewModel>
+@using PagedList;
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
+}
+@section topCSS{
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
 }
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
     @Html.Partial("_BackStagePartialTop")
@@ -9,23 +14,35 @@
         @Html.Partial("_BackStagePartialMain")
         <div class="app-main__outer">
             <div class="app-main__inner">
-                @Html.ActionLink("新增會員資料", "Create")
+                @*<p>
+            @Html.ActionLink("新增", "Create")
+        </p>*@
+                @using (Html.BeginForm())
+                {
+                    <div class="form-inline">
+                        <div class="form-group">
+                            會員搜尋:@Html.TextBox("id")
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="查詢" class="btn btn-default" />
+                        </div>
+                    </div>
+
+                }
+
                 <table class="table">
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.UserName)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().Id)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Email)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().UserName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AccessFailedCount)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().PhoneNumber)
                         </th>
                         <th></th>
                     </tr>
@@ -33,6 +50,9 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.UserName)
                             </td>
@@ -43,12 +63,6 @@
                                 @Html.DisplayFor(modelItem => item.PhoneNumber)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AccessFailedCount)
-                            </td>
-                            <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
@@ -56,6 +70,7 @@
                         </tr>
                     }
                 </table>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new RouteValueDictionary { { "productName", (string)ViewBag.searchMemberId },  { "page", page } }))
             </div>
         </div>
     </div>

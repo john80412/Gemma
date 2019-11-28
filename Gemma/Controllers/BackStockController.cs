@@ -12,7 +12,7 @@ using Gemma.ViewModel;
 
 namespace Gemma.Controllers
 {
-    public class StocksController : Controller
+    public class BackStockController : Controller
     {
         private StockRepository rep = new StockRepository();
 
@@ -54,11 +54,11 @@ namespace Gemma.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,ColorID,SizeID,Quantity")] StockViewModel stock)
+        public ActionResult Create([Bind(Include = "ProductID,ColorID,SizeID,Quantity")] StockViewModel stock, HttpPostedFileBase[] files)
         {
             if (ModelState.IsValid)
             {
-                rep.CreateStock(stock);
+                rep.CreateStock(stock, files);
                 TempData["message"] = rep.IsSuccess;
                 return RedirectToAction("Index");
             }
@@ -81,9 +81,6 @@ namespace Gemma.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ColorID = new SelectList(rep.db.Colors, "ColorID", "ColorName", stock.ColorID);
-            ViewBag.ProductID = new SelectList(rep.db.Products, "ProductID", "ProductName", stock.ProductID);
-            ViewBag.SizeID = new SelectList(rep.db.Sizes, "SizeID", "SizeID", stock.SizeID);
             return View(stock);
         }
 
@@ -99,9 +96,6 @@ namespace Gemma.Controllers
                 rep.EditStock(stock);
                 return RedirectToAction("Index");
             }
-            ViewBag.ColorID = new SelectList(rep.db.Colors, "ColorID", "ColorName", stock.ColorID);
-            ViewBag.ProductID = new SelectList(rep.db.Products, "ProductID", "ProductName", stock.ProductID);
-            ViewBag.SizeID = new SelectList(rep.db.Sizes, "SizeID", "SizeID", stock.SizeID);
             return View(stock);
         }
 

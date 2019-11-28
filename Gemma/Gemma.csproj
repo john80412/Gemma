@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -191,7 +193,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
-    <Compile Include="Controllers\StocksController.cs" />
+    <Compile Include="Controllers\MemberCenterController.cs" />
+    <Compile Include="Controllers\BackStockController.cs" />
     <Compile Include="Models\AspNetRole.cs" />
     <Compile Include="Models\AspNetUser.cs" />
     <Compile Include="Models\AspNetUserClaim.cs" />
@@ -211,6 +214,9 @@
     <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MetaData\AspNetUserMD.cs" />
+    <Compile Include="Models\MetaData\MemberCenter.cs" />
+    <Compile Include="Models\MetaData\OrderMD.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
@@ -222,6 +228,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Repository\MemberCenterRepository.cs" />
     <Compile Include="ViewModel\MemberViewModel.cs" />
     <Compile Include="ViewModel\StockViewModel.cs" />
   </ItemGroup>
@@ -231,8 +238,8 @@
     <Content Include="Assets\css\lightbox.css" />
     <Content Include="Assets\css\lightbox.min.css" />
     <Content Include="Assets\css\HomePage.css" />
-    <Content Include="Assets\css\sb-admin-2.css" />
-    <Content Include="Assets\css\sb-admin-2.min.css" />
+    <Content Include="Assets\css\MainPage.css" />
+    <Content Include="Assets\css\MemberCenter.css" />
     <Content Include="Assets\images\close.png" />
     <Content Include="Assets\images\collection\1.jpg" />
     <Content Include="Assets\images\collection\10.jpg" />
@@ -522,11 +529,15 @@
     <Content Include="Assets\js\lightbox.js" />
     <Content Include="Assets\js\lightbox.min.js" />
     <Content Include="Assets\css\main.css" />
+    <Content Include="Assets\js\main.js" />
+    <Content Include="Assets\js\utils.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapForFour.css" />
+    <Content Include="Content\Chart.css" />
+    <Content Include="Content\Chart.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -534,6 +545,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -614,25 +627,27 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\BackStageIndex.cshtml" />
     <Content Include="Views\Shared\_BackStagePartialTop.cshtml" />
-    <Content Include="Views\AspNetUsers\Index.cshtml" />
     <Content Include="Views\AspNetUsers\Create.cshtml" />
     <Content Include="Views\AspNetUsers\Details.cshtml" />
     <Content Include="Views\AspNetUsers\Edit.cshtml" />
-    <Content Include="Views\AspNetUsers\Index.cshtml" />
     <Content Include="Views\Collection\CollectionPhotos.cshtml" />
     <Content Include="Views\Shared\_CollectionPartial.cshtml" />
     <Content Include="Views\AspNetUsers\Delete.cshtml" />
     <Content Include="Views\Shared\_BackStagePartialMain.cshtml" />
-    <Content Include="Views\Stocks\Index.cshtml" />
-    <Content Include="Views\Stocks\Details.cshtml" />
-    <Content Include="Views\Stocks\Create.cshtml" />
-    <Content Include="Views\Stocks\Edit.cshtml" />
-    <Content Include="Views\Stocks\Delete.cshtml" />
+    <Content Include="Views\BackStock\Index.cshtml" />
+    <Content Include="Views\BackStock\Details.cshtml" />
+    <Content Include="Views\BackStock\Create.cshtml" />
+    <Content Include="Views\BackStock\Edit.cshtml" />
+    <Content Include="Views\BackStock\Delete.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Social_Icons.cshtml" />
     <Content Include="Views\Shared\IndexPartial.cshtml" />
     <Content Include="Views\Home\DaniellaGemma.cshtml" />
+    <Content Include="Views\MemberCenter\Home.cshtml" />
+    <Content Include="Views\MemberCenter\MemberInformation.cshtml" />
+    <Content Include="Views\MemberCenter\OrderSearch.cshtml" />
+    <Content Include="Views\AspNetUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
