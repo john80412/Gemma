@@ -1,0 +1,93 @@
+﻿
+#Carouseldiv {
+  
+}
+
+/*for HomePage Shopping Item*/
+.OnlineStoreItems {
+    margin-top: 80px;
+}
+/*header*/
+.Item-Header {
+    width:480px;
+    text-align:right;
+    
+}
+h1 a {
+    font-size: 60px;
+    font-family: 'Roboto', sans-serif;
+}
+/*IMG*/
+.ItemsRow {
+    flex-wrap:wrap;
+}
+.ItemsForHotFirst {
+    width:500px;
+ 
+    z-index:9900;
+
+    
+}
+.ItemsForHotSecond {
+    z-index: 9901;
+    width: 500px;
+  
+}
+.ItemsForHotThird {
+    z-index: 9902;
+    width: 500px;
+
+}
+.ItemsForHotFourth {
+
+    z-index: 9903;
+    width: 500px;
+
+}
+.ItemsForHotFifth {
+    width: 500px;
+
+    z-index: 9904;
+}
+
+/*for HomePage Journal Section*/
+
+.Journal-Section {
+    margin-top: 180px;
+    width: 1400px;
+    height: 500px;
+    overflow: hidden;
+}
+/*header*/
+.Journal-Header {
+    text-align: right;
+}
+.Journal-Body {
+    background-color: white;
+    width: 1250px;
+    height: 480px;
+    border-top: 10px solid;
+    border-top-color: white;
+    border-bottom: 10px solid;
+    border-bottom-color: white;
+    
+}
+.Journal-Picture {
+    text-align: center;
+    
+}
+.Journal-Picture img {
+    width: 276.615px;
+    height: 414.72px;
+}
+
+/*for Collection Journal Section*/
+.Collection-Section {
+    margin-top: 180px;
+}
+
+.Collection-Picture img {
+    width: 1000px;
+    height: 667px;
+    padding-left: 40px;
+}

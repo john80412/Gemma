@@ -230,7 +230,7 @@
     <Content Include="Assets\css\FixedMenu.css" />
     <Content Include="Assets\css\lightbox.css" />
     <Content Include="Assets\css\lightbox.min.css" />
-    <Content Include="Assets\css\MainPage.css" />
+    <Content Include="Assets\css\HomePage.css" />
     <Content Include="Assets\css\sb-admin-2.css" />
     <Content Include="Assets\css\sb-admin-2.min.css" />
     <Content Include="Assets\images\close.png" />
@@ -252,6 +252,25 @@
     <Content Include="Assets\images\collection\7.jpg" />
     <Content Include="Assets\images\collection\8.jpg" />
     <Content Include="Assets\images\collection\9.jpg" />
+    <Content Include="Assets\images\HomePage\Collection.jpg" />
+    <Content Include="Assets\images\HomePage\IGImg01.jpg" />
+    <Content Include="Assets\images\HomePage\IGImg02.jpg" />
+    <Content Include="Assets\images\HomePage\IGImg03.jpg" />
+    <Content Include="Assets\images\HomePage\IGImg04.jpg" />
+    <Content Include="Assets\images\HomePage\IGImg05.jpg" />
+    <Content Include="Assets\images\HomePage\IGImg06.jpg" />
+    <Content Include="Assets\images\HomePage\ItemImg01.jpg" />
+    <Content Include="Assets\images\HomePage\ItemImg02.jpg" />
+    <Content Include="Assets\images\HomePage\ItemImg03.jpg" />
+    <Content Include="Assets\images\HomePage\ItemImg04.jpg" />
+    <Content Include="Assets\images\HomePage\ItemImg05.jpg" />
+    <Content Include="Assets\images\HomePage\Img01.jpg" />
+    <Content Include="Assets\images\HomePage\Img02.jpg" />
+    <Content Include="Assets\images\HomePage\Img03.jpg" />
+    <Content Include="Assets\images\HomePage\Img04.jpg" />
+    <Content Include="Assets\images\HomePage\Journal01.jpg" />
+    <Content Include="Assets\images\HomePage\Journal02.jpg" />
+    <Content Include="Assets\images\HomePage\Journal03.jpeg" />
     <Content Include="Assets\images\Icons\Cart_Mark.png" />
     <Content Include="Assets\images\Icons\Facebook_Mark.png" />
     <Content Include="Assets\images\Icons\footer-icon-maintenance.png" />
@@ -494,6 +513,10 @@
     <Content Include="Assets\images\Product\SANDAL\Square Tour Rabbit Fur Slipper Mule\white\1.jpg" />
     <Content Include="Assets\images\Product\SANDAL\Square Tour Rabbit Fur Slipper Mule\white\2.jpg" />
     <Content Include="Assets\js\CollectionJS.js" />
+    <Content Include="Assets\js\FixedMenuForIG.js" />
+    <Content Include="Assets\js\HomePageCarousel.js" />
+    <Content Include="Assets\js\HomePageForCollection.js" />
+    <Content Include="Assets\js\HomePageForItemsAndJournal.js" />
     <Content Include="Assets\js\lightbox-plus-jquery.js" />
     <Content Include="Assets\js\lightbox-plus-jquery.min.js" />
     <Content Include="Assets\js\lightbox.js" />
@@ -609,6 +632,7 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Social_Icons.cshtml" />
     <Content Include="Views\Shared\IndexPartial.cshtml" />
+    <Content Include="Views\Home\DaniellaGemma.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
