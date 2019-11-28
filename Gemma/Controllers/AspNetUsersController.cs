@@ -16,9 +16,11 @@ namespace Gemma.Models
         private MemberRepository rep = new MemberRepository();
 
         // GET: AspNetUsers
-        public ActionResult Index()
+        public ActionResult Index(string id, int page = 1, string search = "false")
         {
-            return View(rep.GetAllMembers());
+            ViewBag.searchMemberId = id;
+            page = search == "true" ? 1 : page;
+            return View(rep.GetSearchMember(id, page));
         }
 
         // GET: AspNetUsers/Details/5
@@ -37,27 +39,35 @@ namespace Gemma.Models
         }
 
         // GET: AspNetUsers/Create
-        public ActionResult Create()
-        {
-            var member = new MemberViewModel();
-            return View(member);
-        }
+        //public ActionResult Create()
+        //{
+        //    ViewBag.Id = new SelectList(rep.db.AspNetUsers, "Id", "Id");
+        //    ViewBag.UserName = new SelectList(rep.db.AspNetUsers, "UserName", "UserName");
+        //    ViewBag.Email = new SelectList(rep.db.AspNetUsers, "Email", "Email");
+        //    ViewBag.PhoneNumber = new SelectList(rep.db.AspNetUsers, "PhoneNumber", "PhoneNumber");
+        //    return View();
+        //}
 
         // POST: AspNetUsers/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUsers)
+        //public ActionResult Create([Bind(Include = "Id,UserName,Email,PhoneNumber")] MemberViewModel member)
         //{
         //    if (ModelState.IsValid)
         //    {
-        //        db.AspNetUsers.Add(aspNetUsers);
-        //        db.SaveChanges();
+        //        rep.CreatMember(member);
+        //        TempData["message"] = rep.IsSuccess;
         //        return RedirectToAction("Index");
         //    }
 
-        //    return View(aspNetUsers);
+        //    ViewBag.Id = new SelectList(rep.db.AspNetUsers, "Id", "Id");
+        //    ViewBag.UserName = new SelectList(rep.db.AspNetUsers, "UserName", "UserName", member.UserName);
+        //    ViewBag.Email = new SelectList(rep.db.AspNetUsers, "Email", "Email", member.Email);
+        //    ViewBag.PhoneNumber = new SelectList(rep.db.AspNetUsers, "PhoneNumber", "PhoneNumber", member.PhoneNumber);
+
+        //    return View(member);
         //}
 
         // GET: AspNetUsers/Edit/5
@@ -67,29 +77,38 @@ namespace Gemma.Models
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var result = rep.GetMemberDetail(id);
-            if (result == null)
+            var member = rep.GetMemberDetail(id);
+            if (member == null)
             {
                 return HttpNotFound();
             }
-            return View(result);
+
+            ViewBag.UserName = new SelectList(rep.db.AspNetUsers, "UserName", "UserName", member.UserName);
+            ViewBag.Email = new SelectList(rep.db.AspNetUsers, "Email", "Email", member.Email);
+            ViewBag.PhoneNumber = new SelectList(rep.db.AspNetUsers, "PhoneNumber", "PhoneNumber", member.PhoneNumber);
+
+            return View(member);
         }
 
         // POST: AspNetUsers/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUsers)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(aspNetUsers).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(aspNetUsers);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,UserName,Email,PhoneNumber")]  MemberViewModel member)
+        {
+            if (ModelState.IsValid)
+            {
+                rep.EditMember(member);
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.UserName = new SelectList(rep.db.AspNetUsers, "UserName", "UserName", member.UserName);
+            ViewBag.Email = new SelectList(rep.db.AspNetUsers, "Email", "Email", member.Email);
+            ViewBag.PhoneNumber = new SelectList(rep.db.AspNetUsers, "PhoneNumber", "PhoneNumber", member.PhoneNumber);
+
+            return View(member);
+        }
 
         // GET: AspNetUsers/Delete/5
         public ActionResult Delete(string id)
@@ -98,32 +117,30 @@ namespace Gemma.Models
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var result = rep.GetMemberDetail(id);
-            if (result == null)
+            var member = rep.GetMemberDetail(id);
+            if (member == null)
             {
                 return HttpNotFound();
             }
-            return View(result);
+            return View(member);
         }
 
         // POST: AspNetUsers/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(string id)
-        //{
-        //    AspNetUser aspNetUsers = db.AspNetUsers.Find(id);
-        //    db.AspNetUsers.Remove(aspNetUsers);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            rep.DeleteMember(id);
+            return RedirectToAction("Index");
+        }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                rep.db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
