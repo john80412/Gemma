@@ -7,8 +7,50 @@
     <div class="app-main">
         @Html.Partial("_BackStagePartialMain")
         <div class="app-main__outer">
-            <div class="app-main__inner">   
+            <div class="app-main__inner">
+                <canvas id="backhomepage"></canvas>
             </div>
         </div>
     </div>
 </div>
+@section endJS{
+
+    <script>
+        var ctx = document.getElementById("backhomepage");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+                datasets: [{
+                    label: "Gemma",
+                    data: [16, 15, 18, 21, 25, 27],
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,165,0)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,255,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 26,
+                    text: '上半年營業額'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        fontColor: 'black',
+                    }
+                }
+            }
+        });
+    </script>
+}
