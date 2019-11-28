@@ -26,10 +26,10 @@ namespace Gemma.Repository
                           };
             if(!string.IsNullOrEmpty(Id))
             {
-                members = members.Where((x) => x.Id==Id);
+                members = members.Where((m) => m.Id == Id);
             }
 
-            var results = members.OrderBy(x => x.Id).ToPagedList(currentPage, 10);
+            var results = members.OrderBy(m => m.Id).ToPagedList(currentPage, 10);
             return results;
         }
 
