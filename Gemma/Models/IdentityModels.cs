@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
+using System;
+
 namespace Gemma.Models
 {
     // 您可將更多屬性新增至 ApplicationUser 類別，藉此為使用者新增設定檔資料，如需深入了解，請瀏覽 https://go.microsoft.com/fwlink/?LinkID=317594。
@@ -16,6 +18,9 @@ namespace Gemma.Models
             // 在這裡新增自訂使用者宣告
             return userIdentity;
         }
+
+        // 生日日期
+        public DateTime? DateOfBirth { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

@@ -1,0 +1,153 @@
+﻿@model Gemma.Models.AspNetUser
+
+@{
+    ViewBag.Title = "会員情報の編集 - Daniella & GEMMA（ダニエラ＆ジェマ）オンラインストア";
+}
+<div class="container">
+    <div class="row">
+        <br />
+        <div class="col-md-offset-4 topButton">
+            <input type="button" value="会員情報の編集" class="btn btnDonC" id="memberInformation" />
+            <input type="button" value="注文履歴" class="btn btn-default" id="orderSearch" />
+        </div>
+    </div>
+    <br />
+    <h2 class="TopTitle">会員情報</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="smallTitle col-md-12">ログイン情報</h4>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CheckPassword, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CheckPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CheckPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <h4 class="smallTitle col-md-12">注文者住所</h4>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="保存" class="btn btn-default btnDonC" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="menber_content ">
+                <h4 class="smallTitle">会員情報の更新</h4>
+                <p>このページでは登録済み会員情報を更新できます。</p>
+                <p>セキュリティを高めるためにパスワードに以下のような内容を設定することは避けてください:</p>
+                <ul>
+                    <li>通常の英単語</li>
+                    <li>通常の英単語を逆向きに記述したもの</li>
+                    <li>連続性のある数値や文字列、または同じ文字の繰り返し 例: 12345678、222222、 abcdefg など</li>
+                    <li>類推が容易な個人情報。 例: 氏名、誕生日、運転免許証番号、パスポート番号 など</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+<link href="~/Assets/CSS/MemberCenter.css" rel="stylesheet" />
+
+@section topCSS{
+    <style>
+        .menber_content * {
+            margin-bottom: 15px;
+        }
+    </style>
+}
+
+@section endJS{
+    <script>
+        $("#memberInformation").click(function () {
+            location.href = "/MemberCenter/MemberInformation"
+        });
+        $("#orderSearch").click(function () {
+            location.href = "/MemberCenter/OrderSearch"
+        });
+    </script>
+}

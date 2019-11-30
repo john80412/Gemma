@@ -1,0 +1,34 @@
+﻿.TopTitle {
+    margin: 0 0 60px;
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    line-height: 1;
+    text-align: center;
+}
+
+.smallTitle {
+    color: #191919;
+    margin: 0;
+    padding: 7px 0 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+input {
+    margin-bottom: 25px;
+}
+
+.btn {
+    background: #191919;
+    color: #fff;
+    padding: 10px 32px;
+}
+
+.btnDonC:hover {
+    background: #191919;
+    color: #fff;
+}
+.topButton > input{
+    margin-right: 10px;
+}

@@ -26,6 +26,9 @@ namespace Gemma
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/bootstrapForFour.css"));
+            bundles.Add(new ScriptBundle("~/bundles/chartjs").Include(
+                      "~/Scripts/Chart.min.js",
+                      "~/Assets/js/utils.js"));
         }
     }
 }

@@ -7,8 +7,8 @@ li {
 a {
     color: black;
     text-decoration: none;
-    font-size:20px;
-
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
 }
 
 /*消除下拉式選單的箭頭*/
@@ -38,6 +38,10 @@ a {
 .header-tool{
     height:67px;
 }
+
+.PaddingTopCSS {
+    padding-top: 200px;
+}
 /*CSS for _Social_Icons.cshtml*/
 .social-icons {
     position: fixed;
@@ -53,17 +57,39 @@ a {
     }
 /*CSS for _Footer.cshtml*/
 /*For IG*/
+.instagram-column {
+    padding-top:100px;
+    width: 1600px;
+    height: 450px;
+    overflow: hidden;
+}
 .section-header {
-    float: left;
-    left: 75% ;
-    position:relative;
+    text-align: right;
 }
 .section-title a {
     font-size: 60px;
 }
+.instagram-list {
+    width: 1300px;
+    height: 360px;
+    overflow: hidden;
+}
+    .instagram-list ul {
+        margin: 0;
+        padding: 0px;
+    }
+.instagram-list ul li {
+    list-style:none;
+    display: inline;
+   
+}
+.instagram-list ul li a img {
+    width: 180px;
+    height: 180px;
+}
+
 
 /*For News Letter*/
-
 .footer-form__title {
     text-align: center;
     font-size: 60px;
@@ -111,15 +137,17 @@ a {
 
     text-align: center;
 }
-    .footer-nav li {
+    .footer-nav a {
         float: left;
-        left: 20%;
+        left: 35%;
         position: relative;
         padding: 40px;
         
     }
+
     .footer-nav a {
         color: white;
+        
     }
     .footer-nav a:hover {
         background-color: lightsteelblue;
