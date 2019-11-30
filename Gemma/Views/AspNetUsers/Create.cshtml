@@ -3,12 +3,6 @@
 @{
     ViewBag.Title = "Create";
 }
-<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-    @Html.Partial("_BackStagePartialTop")
-    <div class="app-main">
-        @Html.Partial("_BackStagePartialMain")
-        <div class="app-main__outer">
-            <div class="app-main__inner">
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
@@ -57,7 +51,3 @@
                 <div>
                     @Html.ActionLink("回管理介面", "Index", "", new { @class = "col-md-10" })
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
