@@ -192,6 +192,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BackStageHomeController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\JournallController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
@@ -634,7 +635,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\BackStageIndex.cshtml" />
     <Content Include="Views\Shared\_BackStagePartialTop.cshtml" />
     <Content Include="Views\AspNetUsers\Create.cshtml" />
     <Content Include="Views\AspNetUsers\Details.cshtml" />
@@ -659,6 +659,13 @@
     <Content Include="Views\MemberCenter\MemberInformation.cshtml" />
     <Content Include="Views\MemberCenter\OrderSearch.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
+    <Content Include="Views\BackStageHome\Index.cshtml" />
+    <Content Include="Views\BackStageHome\_Layout.cshtml" />
+    <Content Include="Views\BackStageHome\_ViewStart.cshtml" />
+    <Content Include="Views\BackStock\_Layout.cshtml" />
+    <Content Include="Views\BackStock\_ViewStart.cshtml" />
+    <Content Include="Views\AspNetUsers\_Layout.cshtml" />
+    <Content Include="Views\AspNetUsers\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

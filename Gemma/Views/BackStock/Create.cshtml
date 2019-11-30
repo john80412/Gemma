@@ -3,70 +3,60 @@
 @{
     ViewBag.Title = "Create";
 }
-<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-    @Html.Partial("_BackStagePartialTop")
-    <div class="app-main">
-        @Html.Partial("_BackStagePartialMain")
-        <div class="app-main__outer">
-            <div class="app-main__inner">
 
-                <form action="@Url.Action("Create")" method="post" enctype="multipart/form-data">
+<form action="@Url.Action("Create")" method="post" enctype="multipart/form-data">
 
-                    @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
-                    <div class="form-horizontal">
-                        <h4>StockViewModel</h4>
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h4>StockViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.ProductID, (SelectList)ViewBag.ProductID, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ProductID, (SelectList)ViewBag.ProductID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.ColorName, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.ColorID, (SelectList)ViewBag.ColorID, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.ColorName, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ColorName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ColorID, (SelectList)ViewBag.ColorID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ColorName, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SizeID, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.SizeID, (SelectList)ViewBag.SizeID, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.SizeID, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SizeID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SizeID, (SelectList)ViewBag.SizeID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SizeID, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input id="file" name="files" type="file" accept=".jpg" multiple="multiple"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="新增" class="btn btn-default"/>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-                <div>
-                    @Html.ActionLink("Back to List", "Index")
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="file" name="files" type="file" accept=".jpg" multiple="multiple" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="新增" class="btn btn-default" />
             </div>
         </div>
     </div>
+</form>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
 </div>
