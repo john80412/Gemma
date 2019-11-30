@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "JournalList1";
+}
+
+@section topCSS{
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="~/Assets/css/FixedMenu.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #F5F5F5;
+        }
+
+        .img1 img {
+            width: 150%;
+            height: 100%;
+        }
+
+        span {
+            font-family: 'Roboto', sans-serif;
+            font-size: medium;
+        }
+        .w{
+           height: 30%;
+        }
+    </style>
+
+
+}
+@section endJS{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+}
+@Html.Partial("IndexPartial")
+<body  >
+    <div class="container ">
+        <div class="row">
+            <div class="img1">
+
+                <img src="~/Assets/images/Journalimg/J1.jpg" />
+            </div>
+            <div class="w">
+
+            </div>
+            <div class="img1">
+                <img src="~/Assets/images/Journalimg/J1-2.jpg" />
+
+            </div>
+            <div class="w">
+
+            </div>
+            <div class="img1">
+                <img src="~/Assets/images/Journalimg/J1-3.jpg" />
+
+            </div>
+
+        </div>
+
+    </div>
+</body>

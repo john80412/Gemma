@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@section topCSS{
+    <link href="~/Assets/css/FixedMenu.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color: #F5F5F5;
+        }
+
+        .pic {
+            padding-right: 0;
+            padding-left: 0;
+        }
+
+        .img_white {
+            opacity: 0.4;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .word {
+            display: block;
+            background: linear-gradient(180deg,rgba(255,255,255,0) 65%, #F5F5F5 65%);
+            font-size: 25px;
+            font-weight: bold;
+            visibility: hidden;
+            opacity: 0;
+            position: fixed;
+            z-index: 9999;
+            white-space:nowrap;
+        }
+
+        .wordshow {
+            display: flex;
+            background: linear-gradient(180deg,rgba(255,255,255,0) 65%, #FFD0AE 65%);
+            font-size: 20px;
+            font-weight: bold
+        }
+        /*.container .img:hover .word {
+            position: relative;
+            display: block;
+        }*/
+        .blank {
+            height: 30%;
+        }
+
+        .img1:hover .word {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+}
+@section endJS{
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script>
+    $(document).ready(function () {
+        $('img').mouseover(function () {
+            $('img').not(this).addClass("img_white")
+            //$(".word").addClass("wordshow")
+        }), $('img').mouseout(function () {
+            $('img').not(this).removeClass("img_white")
+
+        });
+        //$(".word").removeClass("wordshow")
+
+    });//老娘終於把你寫出來(怒)
+
+
+
+    window.onmousemove = function (e) {
+        var x = e.clientX;//滑鼠x位置!!
+        var y = e.clientY;//滑鼠y位置!!
+        let num = ['1', '2', '3', '4', '5', '6', '7', '8']
+        num.forEach(i => {
+            document.getElementById(i).style.left = (x + 10) + 'px'; //你給我離滑鼠離遠一點
+            document.getElementById(i).style.top = (y + 10) + 'px';
+        });
+    }
+</script>
+
+
+
+
+}
+
+
+@Html.Partial("IndexPartial")
+<div class="container ">
+    <div class="row" style="height:200px"></div>
+    <div class="row">
+
+        <div class="col-md-3   pic">
+            <div class="img1">
+                <span id="1" class="word">
+                    2019.10.29
+                    MUST BUY! 秋冬のトレンドブーツ
+                </span>
+                
+                @*<a href="~/Views/Journall/JournalList1.cshtml">~/Views/Journall/JournalList1.cshtml</a>*@
+                <a href="@Url.Action("JournalList1")"><img src="https://danigemma.com/cms/wp-content/uploads/2019/10/606-3-1-683x1024.jpg" width="100%" height="100%" /></a>
+            </div>
+            <div class="blank"></div>
+            <div class="img1">
+                <span id="2" class="word">2019.09.20 大丸福岡天神 NEW OPEN</span>
+                <img src="https://danigemma.com/cms/wp-content/uploads/2019/08/%E3%82%B7%E3%82%99%E3%83%A3%E3%83%BC%E3%83%8A%E3%83%AB%E4%B8%89%E8%B6%8Anewopen-1-683x1024.jpg" width="100%" height="100%" />
+            </div>
+
+        </div>
+        <div class="col-md-3  pic">
+            <div class="blanksml" style="height:15%"></div>
+            <div class="img1">
+                <span id="3" class="word">2019.09.09 新規会員ご登録2,000円分ポイントプレゼント</span>
+                <img src="https://danigemma.com/cms/wp-content/uploads/2019/09/fukuoka-open-683x1024.jpg" width="100%" height="100%" />
+            </div>
+            <div class="blank"></div>
+            <div class="img1">
+                <span id="4" class="word">2019.10.29 限定ノベルティプレゼント</span>
+                <img src="https://danigemma.com/cms/wp-content/uploads/2019/07/IMG_2402-2-682x1024.jpeg" width="100%" height="100%" />
+            </div>
+        </div>
+        <div class="col-md-3  pic">
+            <div class="blanksml" style="height:30%"></div>
+            <div class="img1">
+                <span id="5" class="word">2019.09.09ダニジェマ公式LINEアカウントスタート</span>
+                <img src="https://danigemma.com/cms/wp-content/uploads/2019/09/IMG_2988-683x1024.jpeg" width="100%" height="100%" />
+            </div>
+            <div class="blank"></div>
+            <div class="img1">
+                <span id="6" class="word">2019.08.29 銀座三越店 NEW OPEN</span>
+                <img src="https://danigemma.com/cms/wp-content/uploads/2019/07/IMG_2692-683x1024.jpeg" width="100%" height="100%" />
+            </div>
+
+        </div>
+        <div class="col-md-3  pic">
+            <div class="blanksml" style="height:45%"></div>
+            <div class="img1">
+                <span id="7" class="word">2019.07.26 Daniellas Column Vol.1</span>
+                <img src="https://danigemma.com/cms/wp-content/uploads/2019/09/cut1_0033-683x1024.jpg" width="100%" height="100%" />
+            </div>
+            <div class="blank"></div>
+            <div class="img1">
+                <span id="8" class="word">2019.07.26 GEMMA&#821S IT ITEM!! No.1</span>
+                <img src="https://danigemma.com/cms/wp-content/uploads/2019/07/%E5%9B%B31-1.17.34-683x1024.png" width="100%" height="100%" />
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
