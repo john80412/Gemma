@@ -206,6 +206,9 @@
     <Compile Include="Models\AspNetUserClaim.cs" />
     <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\BookMark.cs" />
+    <Compile Include="Models\Cart\Cart.cs" />
+    <Compile Include="Models\Cart\CartItem.cs" />
+    <Compile Include="Models\Cart\Operation.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CollectionItem.cs" />
     <Compile Include="Models\Color.cs" />
