@@ -4,60 +4,172 @@
     ViewBag.Title = "登入";
 }
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>使用本機帳戶進行登入。</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+@Html.Partial("IndexPartial")
+
+
+@* 登入 *@
+<h2><b>LOGIN</b></h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-5">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "control-label FontSize" })
+                        <br /><br />
+                        <div>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control TextBox" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="登入" class="btn btn-default" />
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "control-label FontSize" })
+                        @* 只要您的密碼重設功能能夠進行帳戶確認，就啟用此項 *@
+                        @* 忘記密碼? *@
+                        <p id="ForgetPwd">@Html.ActionLink("パスワードを忘れました", "ForgotPassword", null,  new { @class = "FontSize"})</p>
+                        <br /><br />
+                        <div>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control TextBox" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <p>
-                    @Html.ActionLink("以新使用者身分註冊", "Register")
-                </p>
-                @* 只要您的密碼重設功能能夠進行帳戶確認，就啟用此項
-                    <p>
-                        @Html.ActionLink("忘記密碼?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
+
+
+                    <div class="form-group">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe, new { @class = "FontSize"})
+
+                        <input type="submit" value="LOGIN" id="Btn_Login" />
+                    </div>
+                }
+            </section>
+
+            @* 外部登入 *@
+            @*<section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>*@
+        </div>
+
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-5" id="Right_Description">
+            <h3><b>会員登録がお済みでないお客様</b></h3>
+            <p>会員登録すると以下の事が可能になります :</p>
+
+            <ul>
+                <li>注文状況や履歴の確認</li>
+                <li>ポイントの獲得および使用</li>
+                <li>2回目以降の住所入力などがご購入手続きがスムーズ</li>
+                <li>会員様限定のキャンペーンなど</li>
+            </ul>
+            <input type="button" value="新規会員登録" id="Btn_NewMemberRegistration" />
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
+
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+
+
+@Html.Partial("_Footer")
+
+
+@section topCSS {
+    <link href="~/Assets/CSS/FixedMenu.css" rel="stylesheet" />
+
+    <style>
+        /*標題: 新會員註冊*/
+        h2 {
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 40px;
+        }
+
+        /*字體大小*/
+        .FontSize{
+            font-size:13px;
+        }
+
+        /*輸入框 => 長度、輸入框高度、輸入字體大小、背景顏色、邊框*/
+        .TextBox {
+            max-width: 100%;
+            height:30px;
+            font-size: 13px;
+            background-color: #FFF5EA;
+            border:black 1px solid;
+        }
+
+        /*輸入時，背景的顏色*/
+        .TextBox:focus {
+            background-color: #FFF5EA;
+        }
+
+        /*忘記密碼*/
+        #ForgetPwd {
+            float: right;
+        }
+
+        /*Btn登入*/
+        #Btn_Login {
+            width: 100px;
+            height: 40px;
+            font-size: 12px;
+            background-color: black;
+            color: white;
+            float: right;
+        }
+
+        /*Btn新會員註冊*/
+        #Btn_NewMemberRegistration {
+            width: 140px;
+            height: 40px;
+            font-size: 12px;
+            background-color: black;
+            color: white;
+        }
+
+
+        /*右邊說明*/
+
+        #Right_Description{
+            font-size:15px;
+        }
+
+        #Right_Description > h3 {
+            margin-bottom: 30px;
+        }
+
+        #Right_Description > ul > li {
+            padding-bottom: 10px;
+        }
+    </style>
+}
+
+@section endJS{
+    <script src="~/Assets/js/FixedMenuForIG.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#Btn_NewMemberRegistration").click(Btn_NewMemberRegistration);
+
+        });
+
+        // Btn新會員註冊
+        function Btn_NewMemberRegistration() {
+            @*@{Response.Redirect("/RegistrationTest1/RegistrationTest");}*@  // 不知道會什麼沒按button就自己轉了
+            location.href="/Account/Register"; // 轉向: 轉至註冊頁面
+        }
+
+
+    </script>
 }
