@@ -195,6 +195,11 @@
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
     <Compile Include="Controllers\BackStockController.cs" />
+    <Compile Include="Migrations\201911300636204_AddFieldDateOfBirth.cs" />
+    <Compile Include="Migrations\201911300636204_AddFieldDateOfBirth.Designer.cs">
+      <DependentUpon>201911300636204_AddFieldDateOfBirth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AspNetRole.cs" />
     <Compile Include="Models\AspNetUser.cs" />
     <Compile Include="Models\AspNetUserClaim.cs" />
@@ -662,6 +667,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201911300636204_AddFieldDateOfBirth.resx">
+      <DependentUpon>201911300636204_AddFieldDateOfBirth.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
