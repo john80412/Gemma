@@ -659,6 +659,7 @@
     <Content Include="Views\MemberCenter\MemberInformation.cshtml" />
     <Content Include="Views\MemberCenter\OrderSearch.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
+    <Content Include="Views\Shared\_NewLoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
