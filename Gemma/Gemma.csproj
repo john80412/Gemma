@@ -291,7 +291,6 @@
     <Content Include="Assets\css\lightbox.css" />
     <Content Include="Assets\css\lightbox.min.css" />
     <Content Include="Assets\css\HomePage.css" />
-    <Content Include="Assets\css\MainPage.css" />
     <Content Include="Assets\css\MemberCenter.css" />
     <Content Include="Assets\images\close.png" />
     <Content Include="Assets\images\collection\1.jpg" />

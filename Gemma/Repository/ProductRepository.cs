@@ -25,8 +25,8 @@ namespace Gemma.Repository
                                Explain = p.Explain,
                                CategoryName = p.Category.CategoryName
                            };
-            products = !string.IsNullOrEmpty(productName) ? products.Where(x => x.ProductName.Contains(productName)) : products;
-            products = !string.IsNullOrEmpty(categoryName) ? products.Where(x => x.CategoryName.Contains(categoryName)) : products;
+            products = !string.IsNullOrEmpty(productName) ? products.Where(x => x.ProductName.ToUpper().Contains(productName.ToUpper())) : products;
+            products = !string.IsNullOrEmpty(categoryName) ? products.Where(x => x.CategoryName.ToUpper().Contains(categoryName.ToUpper())) : products;
             var results = products.OrderBy(x => x.ProductID).ToPagedList(page, 10);
             return results;
         }

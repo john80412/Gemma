@@ -13,9 +13,9 @@ namespace Gemma.Repository
         private GemmaDBContext db = new GemmaDBContext();
         public IPagedList<OrderViewModel> GetSearchStock(string customerName,string productNames, int page)
         {
-            var orders = db.Database.SqlQuery<OrderViewModel>("exec OrderViewModel").ToList();
-            orders = !string.IsNullOrEmpty(customerName) ? orders.Where(x => x.CustomerName.Contains(customerName)).ToList() : orders;
-            orders = !string.IsNullOrEmpty(productNames) ? orders.Where(x => x.ProductNames.Contains(productNames)).ToList() : orders;
+            var orders = db.Database.SqlQuery<OrderViewModel>("exec OrderViewModel").AsQueryable();
+            orders = !string.IsNullOrEmpty(customerName) ? orders.Where(x => x.CustomerName.ToUpper().Contains(customerName.ToUpper())): orders;
+            orders = !string.IsNullOrEmpty(productNames) ? orders.Where(x => x.ProductNames.ToUpper().Contains(productNames.ToUpper())): orders;
             var results = orders.OrderBy(x => x.OrderID).ToPagedList(page, 10);
             return results;
         }

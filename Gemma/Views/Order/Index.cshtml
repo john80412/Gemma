@@ -6,9 +6,30 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-inline">
+        <div class="form-group">
+            客戶:@Html.TextBox("customerName")
+        </div>
+
+        <div class="form-group">
+            產品:@Html.TextBox("productNames")
+        </div>
+
+        <div class="form-group" style="display:none">
+            @Html.TextBox("search", "true")
+        </div>
+
+        <div class="form-group">
+            <div>
+                <input type="submit" value="查詢" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
 <table class="table">
     <tr>
         <th>
@@ -48,9 +69,7 @@
                 @Html.DisplayFor(modelItem => item.OrderDate)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
     }
