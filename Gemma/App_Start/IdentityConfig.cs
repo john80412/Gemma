@@ -12,15 +12,40 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Gemma.Models;
 
+using SendGrid;
+using SendGrid.Helpers.Mail;
+
 namespace Gemma
 {
     public class EmailService : IIdentityMessageService
     {
+
         public Task SendAsync(IdentityMessage message)
         {
             // 將您的電子郵件服務外掛到這裡以傳送電子郵件。
             return Task.FromResult(0);
         }
+
+        // 以 Sendgird 寄外部信
+        //public async Task SendAsync(IdentityMessage message)
+        //{
+        //    await configSendGridasync(message);
+        //}
+        //private async Task configSendGridasync(IdentityMessage message)
+        //{
+        //    // 將您的電子郵件服務外掛到這裡以傳送電子郵件。
+        //    var apiKey = "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";
+        //    //apiKey = ConfigurationManager.AppSettings["SendGrid_BuildSchool2019"];
+        //    var client = new SendGridClient(apiKey);
+        //    var from = new EmailAddress("supergemma2019@gmail.com", "supergemma客服人員");
+        //    var to = new EmailAddress(message.Destination);
+        //    var subject = message.Subject;
+        //    var msg = MailHelper.CreateSingleEmail(from, to, subject, message.Body,
+        //    message.Body);
+        //    var response = await client.SendEmailAsync(msg);
+        //    await Task.FromResult(0);
+        //}
+
     }
 
     public class SmsService : IIdentityMessageService

@@ -53,7 +53,7 @@
                     @Html.LabelFor(m => m.DateOfBirth, new { @class = "control-label FontSize" })
                     <br /><br />
                     <div>
-                        @Html.EditorFor(m => m.DateOfBirth, new { htmlAttributes = new { @class = "form-control  TextBox"} })
+                        @Html.EditorFor(m => m.DateOfBirth, new { htmlAttributes = new { @class = "form-control  TextBox" } })
                         @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -100,30 +100,30 @@
         }
 
         /*字體大小*/
-        .FontSize{
-            font-size:13px;
+        .FontSize {
+            font-size: 13px;
         }
 
         /*輸入框 => 長度、輸入框高度、輸入字體大小、背景顏色、邊框*/
         .TextBox {
             max-width: 100%;
-            height:30px;
+            height: 30px;
             font-size: 13px;
             background-color: #FFF5EA;
-            border:black 1px solid;
+            border: black 1px solid;
         }
 
-        /*輸入時，背景的顏色*/
-        .TextBox:focus {
-            background-color: #FFF5EA;
-        }
+            /*輸入時，背景的顏色*/
+            .TextBox:focus {
+                background-color: #FFF5EA;
+            }
 
 
         /*Btn會員註冊*/
         #Btn_MemberRegistration {
             width: 100px;
             height: 40px;
-            font-size:12px;
+            font-size: 12px;
             background-color: black;
             color: white;
         }
@@ -131,7 +131,7 @@
         /*右邊說明*/
         #Right_Description {
             margin-top: 70px;
-            font-size:15px;
+            font-size: 15px;
         }
 
             #Right_Description > h3 {
@@ -146,5 +146,9 @@
 
 
 @section endJS{
+    @* 在前端時，就先驗證欄位是否符合 *@
+    @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Assets/js/FixedMenuForIG.js"></script>
+
 }
+
