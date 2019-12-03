@@ -1,0 +1,74 @@
+﻿@model IPagedList<Gemma.ViewModel.ProductViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("新增", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-inline">
+        <div class="form-group">
+            產品:@Html.TextBox("productName")
+        </div>
+
+        <div class="form-group">
+            類別:@Html.TextBox("categoryName")
+        </div>
+
+        <div class="form-group" style="display:none">
+            @Html.TextBox("search", "true")
+        </div>
+
+        <div class="form-group">
+            <div>
+                <input type="submit" value="查詢" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CategoryName)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("編輯", "Edit", new { id = item.ProductID }) |
+                @Html.ActionLink("詳細資料", "Details", new { id = item.ProductID }) |
+                @Html.ActionLink("刪除", "Delete", new { id = item.ProductID })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new RouteValueDictionary { { "productName", (string)ViewBag.searchProductName }, { "categoryName", (string)ViewBag.searchCategoryName }, { "page", page } }))

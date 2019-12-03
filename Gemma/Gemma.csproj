@@ -197,6 +197,7 @@
     <Compile Include="Controllers\JournallController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
     <Compile Include="Controllers\BackStockController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Migrations\201911300636204_AddFieldDateOfBirth.cs" />
     <Compile Include="Migrations\201911300636204_AddFieldDateOfBirth.Designer.cs">
       <DependentUpon>201911300636204_AddFieldDateOfBirth.cs</DependentUpon>
@@ -234,12 +235,14 @@
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Size.cs" />
     <Compile Include="Repository\MemberRepository.cs" />
+    <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\StockRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Repository\MemberCenterRepository.cs" />
     <Compile Include="ViewModel\MemberViewModel.cs" />
+    <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="ViewModel\StockViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -667,6 +670,13 @@
     <Content Include="Views\AspNetUsers\_Layout.cshtml" />
     <Content Include="Views\AspNetUsers\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_NewLoginPartial.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Products\_ViewStart.cshtml" />
+    <Content Include="Views\Products\_Layout.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

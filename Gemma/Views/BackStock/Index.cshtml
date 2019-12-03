@@ -59,7 +59,6 @@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Quantity)
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -78,9 +77,9 @@
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } }) |
-                @Html.ActionLink("Details", "Details", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } }) |
-                @Html.ActionLink("Delete", "Delete", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } })
+                @Html.ActionLink("編輯", "Edit", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } }) |
+                @Html.ActionLink("詳細資料", "Details", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } }) |
+                @Html.ActionLink("刪除", "Delete", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } })
             </td>
         </tr>
     }
