@@ -4,8 +4,6 @@
     ViewBag.Title = "Details";
 }
 
-<h4>StockViewModel</h4>
-<hr />
 <dl class="dl-horizontal">
     <dt>
         @Html.DisplayNameFor(model => model.ProductName)
@@ -40,6 +38,6 @@
 
 </dl>
 <p>
-    @Html.ActionLink("Edit", "Edit", new RouteValueDictionary { { "productID", Model.ProductID }, { "colorID", Model.ColorID }, { "sizeID", Model.SizeID } }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("編輯", "Edit", new RouteValueDictionary { { "productID", Model.ProductID }, { "colorID", Model.ColorID }, { "sizeID", Model.SizeID } }) |
+    @Html.ActionLink("返回庫存管理頁面", "Index")
 </p>
