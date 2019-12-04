@@ -9,8 +9,6 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>StockViewModel</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
@@ -58,5 +56,5 @@
 </form>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回庫存管理頁面", "Index")
 </div>
