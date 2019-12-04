@@ -185,7 +185,8 @@ namespace Gemma.Controllers
                     //ViewBag.Message = "Check your email and confirm your account, you must beconfirmed " + "before you can log in.";
                     //return View("Info");
 
-                    return RedirectToAction("Index", "Home");     // 啟用信箱認證時 註解掉 
+                    return RedirectToAction("Home", "MemberCenter");
+
                 }
                 AddErrors(result);
             }

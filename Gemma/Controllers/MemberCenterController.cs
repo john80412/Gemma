@@ -1,5 +1,6 @@
 ﻿using Gemma.Models;
 using Gemma.Repository;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Gemma.Controllers
 {
+    [Authorize]
     public class MemberCenterController : Controller
     {
         private MemberCenterRepository rep = new MemberCenterRepository();
@@ -37,15 +39,13 @@ namespace Gemma.Controllers
         /// 要怎麼抓到登入狀態下的ID(未綁定)
         /// </summary>
         /// <returns></returns>
-        public ActionResult MemberInformation(string? id)
+        public ActionResult MemberInfo(string Id)
         {
-            //  1. 後端先寫好保存帳密的資料，會員中心讀取直接回寫到資料庫，可以自己寫或借session
-            //  2. 頭頂加[Authorize]
-            if (id == null)
+            if (Id == null)
             {
-                return RedirectToAction("Index", "XXXcontroller"); //要併成到登入頁面
+                return RedirectToAction("Login", "Account");
             }
-            var data = rep.GetMemberData(id);
+            var data = rep.GetMemberData(Id);
             if (data == null)
             {
                 return HttpNotFound();
@@ -55,11 +55,17 @@ namespace Gemma.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MemberInformation([Bind(Include = "Id, Email, Password, CheckPassword, LastName, " +
+        public ActionResult MemberInfo([Bind(Include = "Id, Email, Password, LastName, " +
             "FirstName, Mobile,Country, PostalCode, Address, DateOfBirth")]AspNetUser data)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(data);
+            }
+
             if (ModelState.IsValid)
             {
+                data.Password = new PasswordHasher().HashPassword(data.Password);
                 rep.db.Entry(data).State = EntityState.Modified;
                 rep.db.SaveChanges();
                 //return RedirectToAction("Index");
@@ -72,9 +78,9 @@ namespace Gemma.Controllers
         /// 訂單查詢，要連資料庫
         /// </summary>
         /// <returns></returns>
-        public ActionResult OrderSearch(string? id)
+        public ActionResult OrderSearch(string Id)
         {
-            var order = rep.GetOrder(id);
+            var order = rep.GetOrder(Id);
             return View(order);
         }
     }

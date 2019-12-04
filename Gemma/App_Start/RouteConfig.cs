@@ -13,6 +13,11 @@ namespace Gemma
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "MemberCenter",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "MemberCenter", action = "MemberInfo", id = UrlParameter.Optional }
+            //);
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

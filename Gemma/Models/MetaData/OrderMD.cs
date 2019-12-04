@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Gemma.Models
+namespace Gemma
 {
     /// <summary>
     /// OrderSearch - MemberCenter
@@ -25,9 +26,10 @@ namespace Gemma.Models
             [DataType(DataType.Date)]
             public DateTime OrderDate { get; set; }
 
-            [Display(Name = "合計")]
-            [DataType(DataType.Currency)]
-            public int Total { get; set; }
+            //[Display(Name = "合計")]
+            //[DataType(DataType.Currency)]
+            //[NotMapped]
+            //public int? Total { get; set; }
         }
     }
 }
