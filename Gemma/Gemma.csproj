@@ -656,7 +656,7 @@
     <Content Include="Views\Journall\JournalList1.cshtml" />
     <Content Include="Views\Home\DaniellaGemma.cshtml" />
     <Content Include="Views\MemberCenter\Home.cshtml" />
-    <Content Include="Views\MemberCenter\MemberInformation.cshtml" />
+    <Content Include="Views\MemberCenter\MemberInfo.cshtml" />
     <Content Include="Views\MemberCenter\OrderSearch.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
     <Content Include="Views\BackStageHome\Index.cshtml" />

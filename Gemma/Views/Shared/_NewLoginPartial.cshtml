@@ -17,9 +17,9 @@
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">我的頁面</a>
-                    <a class="dropdown-item" href="#">點歷史</a>
-                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">登出</a>
+                    @Html.ActionLink("マイページ", "MemberInfo", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("ポイント履歴", "OrderSearch", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
+                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">ログアウト</a>
                 </div>
 
             </li>
