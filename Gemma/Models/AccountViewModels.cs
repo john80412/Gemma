@@ -50,13 +50,13 @@ namespace Gemma.Models
 
     public class LoginViewModel
     {
-        [Display(Name = "Eメール *")]           // 電子郵件
+        [Display(Name = "Eメール")]           // 電子郵件
         [Required(ErrorMessage = "Required field")]   // 驗證   ErrorMessage = "必填欄位"
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Email format is incorrect")]     // 正則表達式  ErrorMessage = "電子郵件格式不正確"
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Display(Name = "パスワード *")]         // 密碼
+        [Display(Name = "パスワード")]         // 密碼
         [Required(ErrorMessage = "Required field")]   // 驗證
         [StringLength(10, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters")] // 長度10, 最少輸入6個字   ErrorMessage = "密碼最少要6位"
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$", ErrorMessage = "Must include numbers, English (at least one capital letter)")]   // ErrorMessage = "需為包含數字、英文(至少有一個大寫字母)"
@@ -69,27 +69,27 @@ namespace Gemma.Models
 
     public class RegisterViewModel
     {
-        [Display(Name = "Eメール *")]             // 電子郵件
+        [Display(Name = "Eメール")]             // 電子郵件
         [Required(ErrorMessage = "Required field")]     // 驗證 ErrorMessage = "必填欄位"
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Email format is incorrect")]      // 正則表達式 ErrorMessage = "電子郵件格式不正確"
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Display(Name = "パスワード *")]         // 密碼
+        [Display(Name = "パスワード")]         // 密碼
         [Required(ErrorMessage = "Required field")]   // 驗證 
         [StringLength(10, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters")] // 長度10, 最少輸入6個字  ErrorMessage = "密碼最少要6位"
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$", ErrorMessage = "Must include numbers, English (at least one capital letter)")]   // ErrorMessage = "需為包含數字、英文(至少有一個大寫字母)"
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "パスワード（再入力） *")]        // 密碼(重新輸入)
+        [Display(Name = "パスワード（再入力）")]        // 密碼(重新輸入)
         [Required(ErrorMessage = "Required field")]           // 驗證
         [StringLength(10, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters")] // 長度10, 最少輸入6個字  ErrorMessage = "密碼最少要6位"
         [Compare("Password", ErrorMessage = "Does not match the password")]  //比對密碼   ErrorMessage = "與密碼不符合")
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "生年月日 *")]
+        [Display(Name = "生年月日")]
         [Required(ErrorMessage = "Required field")]   // 驗證
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfBirth { get; set; }
