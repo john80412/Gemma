@@ -25,7 +25,7 @@ namespace Gemma.Controllers
         //    {
         //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         //    }
-        //    var stock = rep.GetOrderDetail(productID, colorID, sizeID);
+        //    var stock = rep.GetOrderDetail(orderID);
         //    if (stock == null)
         //    {
         //        return HttpNotFound();
