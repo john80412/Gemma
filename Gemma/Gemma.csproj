@@ -236,6 +236,7 @@
     <Compile Include="Controllers\BackStockController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Helper\asterisk.cs" />
     <Compile Include="Migrations\201911300636204_AddFieldDateOfBirth.cs" />
     <Compile Include="Migrations\201911300636204_AddFieldDateOfBirth.Designer.cs">
       <DependentUpon>201911300636204_AddFieldDateOfBirth.cs</DependentUpon>

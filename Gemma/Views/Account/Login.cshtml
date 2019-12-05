@@ -1,4 +1,5 @@
 ﻿@using Gemma.Models
+@using Gemma.Helper
 @model LoginViewModel
 @{
     ViewBag.Title = "登入";
@@ -23,7 +24,7 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new { @class = "control-label FontSize" })
+                        @Html.RequiredLabelFor(m => m.Email, new { @class = "control-label FontSize" })
                         <br /><br />
                         <div>
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control TextBox" })
@@ -32,7 +33,7 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "control-label FontSize" })
+                        @Html.RequiredLabelFor(m => m.Password, new { @class = "control-label FontSize" })
                         @* 只要您的密碼重設功能能夠進行帳戶確認，就啟用此項 *@
                         @* 忘記密碼? *@
                         <p id="ForgetPwd">@Html.ActionLink("パスワードを忘れました", "ForgotPassword", null, new { @class = "FontSize" })</p>

@@ -15,15 +15,6 @@ namespace Gemma.Controllers
     public class MemberCenterController : Controller
     {
         private MemberCenterRepository rep = new MemberCenterRepository();
-        /// <summary>
-        /// For Home
-        /// </summary>
-        List<MemberCenter> HomeItem = new List<MemberCenter>
-        {
-            new MemberCenter{Item = "会員情報の編集", ItemDesciption = "Eメール、パスワード、配送・注文者情報やその他の会員情報の変更", NextUrl = "/MemberCenter/MemberInformation"},
-            new MemberCenter{Item = "注文", ItemDesciption = "注文検索", NextUrl = "/MemberCenter/OrderSearch"},
-            new MemberCenter{Item = "BOOKMARK", ItemDesciption = "BOOKMARK一覧へ", NextUrl = "#"},
-        };
         // GET: MemberCenterHome
         /// <summary>
         /// 只有註冊完當下可以看到，從右上角會員中心點不到該頁面。
@@ -31,7 +22,7 @@ namespace Gemma.Controllers
         /// <returns></returns>
         public ActionResult Home()
         {
-            return View(HomeItem);
+            return View(rep.GetInitialHomeView());
         }
 
         /// <summary>
@@ -55,9 +46,11 @@ namespace Gemma.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MemberInfo([Bind(Include = "Id, Email, Password, LastName, " +
+        public ActionResult MemberInfo([Bind(Include = "Id, UserName,Password, CheckPassword, LastName, " +
             "FirstName, Mobile,Country, PostalCode, Address, DateOfBirth")]AspNetUser data)
         {
+            data.SecurityStamp = new Random().Next(5).ToString();
+            data.Email = data.UserName;
             if (!ModelState.IsValid)
             {
                 return View(data);
@@ -65,10 +58,16 @@ namespace Gemma.Controllers
 
             if (ModelState.IsValid)
             {
-                data.Password = new PasswordHasher().HashPassword(data.Password);
+                var correct = new PasswordHasher().VerifyHashedPassword(data.PasswordHash, data.Password);
+
+                if ((int)correct == 1)
+                {
+                    ViewData["error"] = "You doesn't change your password!";
+                    return View(data);
+                }
+                data.PasswordHash = new PasswordHasher().HashPassword(data.Password);
                 rep.db.Entry(data).State = EntityState.Modified;
                 rep.db.SaveChanges();
-                //return RedirectToAction("Index");
             }
             return View(data);
         }
@@ -78,10 +77,11 @@ namespace Gemma.Controllers
         /// 訂單查詢，要連資料庫
         /// </summary>
         /// <returns></returns>
-        public ActionResult OrderSearch(string Id)
+        public ActionResult OrderSearch()
         {
-            var order = rep.GetOrder(Id);
-            return View(order);
+            //var order = rep.GetOrder(Id);
+            //return View(order);
+            return View(rep.GetSearchStock(User.Identity.Name));
         }
     }
 }
