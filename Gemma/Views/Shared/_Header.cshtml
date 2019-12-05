@@ -11,7 +11,8 @@
 
         </div>
         <div class="header-nav row">
-            <ul class=" nav">
+
+            <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link active" href="#">ONLINE STORE</a>
                 </li>
@@ -61,4 +62,35 @@
 
 </div>
 
+@section topCSS{
+    .fixed {
+    height: 70px !important;
+    animation-delay: 100ms;
+    }
+}
 
+@section endJS{
+    <script>
+        $(document).ready();
+
+        function sticky() {
+            if (window.pageYOffset > 50) {
+                document.querySelector("nav").classList.add("fixed");
+            }
+
+            if (window.pageYOffset < 50) {
+                document.querySelector("nav").classList.remove("fixed");
+            }
+        }
+
+        function sticky2() {
+            if (window.pageYOffset > 50) {
+                document.querySelector("img").classList.add("photofixed");
+            }
+
+            if (window.pageYOffset < 50) {
+                document.querySelector("img").classList.remove("photofixed");
+            }
+        }
+    </script>
+}

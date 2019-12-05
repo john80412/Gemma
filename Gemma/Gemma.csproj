@@ -234,6 +234,7 @@
     <Compile Include="Controllers\JournallController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
     <Compile Include="Controllers\BackStockController.cs" />
+    <Compile Include="Controllers\OnlineStoreController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Helper\asterisk.cs" />
@@ -295,6 +296,7 @@
     <Content Include="Assets\css\lightbox.min.css" />
     <Content Include="Assets\css\HomePage.css" />
     <Content Include="Assets\css\MemberCenter.css" />
+    <Content Include="Assets\css\OnlineStore.css" />
     <Content Include="Assets\images\close.png" />
     <Content Include="Assets\images\collection\1.jpg" />
     <Content Include="Assets\images\collection\10.jpg" />
@@ -704,6 +706,7 @@
     <Content Include="Views\MemberCenter\MemberInfo.cshtml" />
     <Content Include="Views\MemberCenter\OrderSearch.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore.cshtml" />
     <Content Include="Views\BackStageHome\Index.cshtml" />
     <Content Include="Views\BackStageHome\_Layout.cshtml" />
     <Content Include="Views\BackStageHome\_ViewStart.cshtml" />
