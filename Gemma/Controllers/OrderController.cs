@@ -19,18 +19,18 @@ namespace Gemma.Controllers
             page = search == "true" ? 1 : page;
             return View(rep.GetSearchStock(customerName, productNames,page));
         }
-        //public ActionResult Details(int? orderID)
-        //{
-        //    if (orderID == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    var stock = rep.GetOrderDetail(orderID);
-        //    if (stock == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(stock);
-        //}
+        public ActionResult Details(int? orderID)
+        {
+            if (orderID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var orderDetail = rep.GetOrderDetail(orderID);
+            if (orderDetail == null)
+            {
+                return HttpNotFound();
+            }
+            return View(orderDetail);
+        }
     }
 }

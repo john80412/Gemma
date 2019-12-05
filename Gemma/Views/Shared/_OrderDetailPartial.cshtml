@@ -1,0 +1,48 @@
+﻿@model Gemma.ViewModel.OrderDetailProduct
+    <div style="display:inline-block;">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+            @ViewData["Count"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt>
+
+            @Html.DisplayNameFor(model => model.ColorName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ColorName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SizeID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SizeID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Discount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalPrice)
+        </dd>
+        <br>
+    </div>

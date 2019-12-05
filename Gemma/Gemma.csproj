@@ -282,6 +282,8 @@
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Repository\MemberCenterRepository.cs" />
     <Compile Include="ViewModel\MemberViewModel.cs" />
+    <Compile Include="ViewModel\OrderDetailProduct.cs" />
+    <Compile Include="ViewModel\OrderDetailViewModel.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="ViewModel\StockViewModel.cs" />
@@ -721,6 +723,8 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_Layout.cshtml" />
     <Content Include="Views\Order\_ViewStart.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Shared\_OrderDetailPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,13 +19,31 @@ namespace Gemma.Repository
             var results = orders.OrderBy(x => x.OrderID).ToPagedList(page, 10);
             return results;
         }
-        //public IPagedList<OrderViewModel> GetOrderDetail(string orderID)
-        //{
-        //    var orders = db.Database.SqlQuery<OrderViewModel>("exec OrderViewModel").AsQueryable();
-        //    orders = !string.IsNullOrEmpty(customerName) ? orders.Where(x => x.CustomerName.ToUpper().Contains(customerName.ToUpper())) : orders;
-        //    orders = !string.IsNullOrEmpty(productNames) ? orders.Where(x => x.ProductNames.ToUpper().Contains(productNames.ToUpper())) : orders;
-        //    var results = orders.OrderBy(x => x.OrderID).ToPagedList(page, 10);
-        //    return results;
-        //}
+        public OrderDetailViewModel GetOrderDetail(int? orderID)
+        {
+            var orders = db.Database.SqlQuery<OrderViewModel>("exec OrderViewModel").AsQueryable().Where(o => o.OrderID == orderID).ToList()[0];
+            var orderDetails = new OrderDetailViewModel()
+            {
+                OrderID = orders.OrderID,
+                CustomerName = orders.CustomerName,
+                ProductNames = new List<OrderDetailProduct>(),
+                TotalPrice = orders.TotalPrice,
+                OrderDate = orders.OrderDate
+            };
+            foreach (var o in db.OrderDetails.Include(o => o.Product).Where(o => o.OrderID == orderID))
+            {
+                orderDetails.ProductNames.Add(new OrderDetailProduct()
+                {
+                    ProductName = o.Product.ProductName,
+                    ColorName = db.Colors.Find(o.ColorID).ColorName,
+                    SizeID = o.SizeID,
+                    UnitPrice = o.UnitPrice,
+                    Discount = o.Discount,
+                    Quantity = o.Quantity,
+                    TotalPrice = o.UnitPrice * (1 - o.Discount) * o.Quantity
+                });
+            }
+            return orderDetails;
+        }
     }
 }
