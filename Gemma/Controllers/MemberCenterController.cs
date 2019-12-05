@@ -1,5 +1,6 @@
 ﻿using Gemma.Models;
 using Gemma.Repository;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,18 +11,10 @@ using System.Web.Mvc;
 
 namespace Gemma.Controllers
 {
+    [Authorize]
     public class MemberCenterController : Controller
     {
         private MemberCenterRepository rep = new MemberCenterRepository();
-        /// <summary>
-        /// For Home
-        /// </summary>
-        List<MemberCenter> HomeItem = new List<MemberCenter>
-        {
-            new MemberCenter{Item = "会員情報の編集", ItemDesciption = "Eメール、パスワード、配送・注文者情報やその他の会員情報の変更", NextUrl = "/MemberCenter/MemberInformation"},
-            new MemberCenter{Item = "注文", ItemDesciption = "注文検索", NextUrl = "/MemberCenter/OrderSearch"},
-            new MemberCenter{Item = "BOOKMARK", ItemDesciption = "BOOKMARK一覧へ", NextUrl = "#"},
-        };
         // GET: MemberCenterHome
         /// <summary>
         /// 只有註冊完當下可以看到，從右上角會員中心點不到該頁面。
@@ -29,7 +22,7 @@ namespace Gemma.Controllers
         /// <returns></returns>
         public ActionResult Home()
         {
-            return View(HomeItem);
+            return View(rep.GetInitialHomeView());
         }
 
         /// <summary>
@@ -37,15 +30,13 @@ namespace Gemma.Controllers
         /// 要怎麼抓到登入狀態下的ID(未綁定)
         /// </summary>
         /// <returns></returns>
-        public ActionResult MemberInformation(string? id)
+        public ActionResult MemberInfo(string Id)
         {
-            //  1. 後端先寫好保存帳密的資料，會員中心讀取直接回寫到資料庫，可以自己寫或借session
-            //  2. 頭頂加[Authorize]
-            if (id == null)
+            if (Id == null)
             {
-                return RedirectToAction("Index", "XXXcontroller"); //要併成到登入頁面
+                return RedirectToAction("Login", "Account");
             }
-            var data = rep.GetMemberData(id);
+            var data = rep.GetMemberData(Id);
             if (data == null)
             {
                 return HttpNotFound();
@@ -55,14 +46,28 @@ namespace Gemma.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MemberInformation([Bind(Include = "Id, Email, Password, CheckPassword, LastName, " +
+        public ActionResult MemberInfo([Bind(Include = "Id, UserName,Password, CheckPassword, LastName, " +
             "FirstName, Mobile,Country, PostalCode, Address, DateOfBirth")]AspNetUser data)
         {
+            data.SecurityStamp = new Random().Next(5).ToString();
+            data.Email = data.UserName;
+            if (!ModelState.IsValid)
+            {
+                return View(data);
+            }
+
             if (ModelState.IsValid)
             {
+                var correct = new PasswordHasher().VerifyHashedPassword(data.PasswordHash, data.Password);
+
+                if ((int)correct == 1)
+                {
+                    ViewData["error"] = "You doesn't change your password!";
+                    return View(data);
+                }
+                data.PasswordHash = new PasswordHasher().HashPassword(data.Password);
                 rep.db.Entry(data).State = EntityState.Modified;
                 rep.db.SaveChanges();
-                //return RedirectToAction("Index");
             }
             return View(data);
         }
@@ -72,10 +77,11 @@ namespace Gemma.Controllers
         /// 訂單查詢，要連資料庫
         /// </summary>
         /// <returns></returns>
-        public ActionResult OrderSearch(string? id)
+        public ActionResult OrderSearch()
         {
-            var order = rep.GetOrder(id);
-            return View(order);
+            //var order = rep.GetOrder(Id);
+            //return View(order);
+            return View(rep.GetSearchStock(User.Identity.Name));
         }
     }
 }

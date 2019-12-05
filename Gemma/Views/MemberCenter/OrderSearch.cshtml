@@ -1,9 +1,11 @@
-﻿@model IEnumerable<Gemma.Models.OrderSearch>
+﻿@model List<Gemma.ViewModel.OrderViewModel>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "注文 - 注文履歴";
 }
 
+@Html.Partial("IndexPartial")
 
 <div class="container">
     <div class="row">
@@ -17,55 +19,52 @@
     <table class="table" style="margin-top:20px">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.OrderId)
+                ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cutomer)
+                お客様
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OrderDate)
+                日時
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Total)
+                合計
             </th>
-            <th></th>
         </tr>
 
-        @*@foreach (var item in Model) {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cutomer)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Total)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-                    </td>
-                </tr>
-            }*@
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+            </tr>
+        }
 
     </table>
 </div>
+@Html.Partial("_Footer")
 
 
+<link href="~/Assets/CSS/FixedMenu.css" rel="stylesheet" />
 <link href="~/Assets/CSS/MemberCenter.css" rel="stylesheet" />
-
 @section endJS{
     <script>
         $("#orderSearch").click(function () {
-            location.href = "/MemberCenter/OrderSearch"
+            location.href = "/MemberCenter/OrderSearch/@Html.Raw(User.Identity.GetUserId())"
         });
         $("#memberInformation").click(function () {
-            location.href = "/MemberCenter/MemberInformation"
+            location.href = "/MemberCenter/MemberInfo/@Html.Raw(User.Identity.GetUserId())"
         });
     </script>
 }
+<script src="~/Assets/js/FixedMenuForIG.js"></script>

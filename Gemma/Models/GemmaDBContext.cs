@@ -4,6 +4,8 @@ namespace Gemma
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Gemma.ViewModel;
+
     public partial class GemmaDBContext : DbContext
     {
         public GemmaDBContext()
@@ -138,6 +140,7 @@ namespace Gemma
                 .WithRequired(e => e.Size)
                 .WillCascadeOnDelete(false);
         }
+        public  DbSet<OrderViewModel> OrderView { get; set; }
 
     }
 }

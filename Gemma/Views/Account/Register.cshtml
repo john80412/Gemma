@@ -1,41 +1,155 @@
 ﻿@model Gemma.Models.RegisterViewModel
+@using Gemma.Helper
 @{
     ViewBag.Title = "註冊";
 }
 
-<h2>@ViewBag.Title.</h2>
+@Html.Partial("IndexPartial")
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>建立新帳戶。</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+<h2><b>新規会員登録</b></h2>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-5">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                // Email
+                <div class="form-group">
+                    @Html.RequiredLabelFor(m => m.Email, new { @class = "control-label FontSize" })
+                    <br /><br />
+                    <div>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control TextBox" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                // Password 密碼
+                <div class="form-group">
+                    @Html.RequiredLabelFor(m => m.Password, new { @class = "control-label FontSize" })
+                    <br /><br />
+                    <div>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control TextBox" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                // ConfirmPassword 確認密碼
+                <div class="form-group">
+                    @Html.RequiredLabelFor(m => m.ConfirmPassword, new { @class = "control-label FontSize" })
+                    <br /><br />
+                    <div>
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control TextBox" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.RequiredLabelFor(m => m.DateOfBirth, new { @class = "control-label FontSize" })
+                    <br /><br />
+                    <div>
+                        @Html.EditorFor(m => m.DateOfBirth, new { htmlAttributes = new { @class = "form-control  TextBox" } })
+                        @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                // Button 會員註冊
+                <div class="form-group">
+                    <div align="center">
+                        <input type="submit" value="会員登録" id="Btn_MemberRegistration" />
+                    </div>
+                </div>
+            }
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+
+        <div class="col-md-1"></div>
+
+
+        <div class="col-md-5" id="Right_Description">
+            <h3><b>会員登録すると以下の事が可能になります :</b></h3>
+            <ul type="disc">
+                <li>注文状況や履歴の確認</li>
+                <li>ポイントの獲得および使用</li>
+                <li>2回目以降の住所入力などがご購入手続きがスムーズ</li>
+                <li>会員様限定のキャンペーンなど</li>
+            </ul>
+
         </div>
+
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="註冊" />
-        </div>
-    </div>
+</div>
+
+@Html.Partial("_Footer")
+
+@section topCSS {
+    <link href="~/Assets/CSS/FixedMenu.css" rel="stylesheet" />
+
+    <style>
+        /*標題: 新會員註冊*/
+        h2 {
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        /*字體大小*/
+        .FontSize {
+            font-size: 13px;
+        }
+
+        /*輸入框 => 長度、輸入框高度、輸入字體大小、背景顏色、邊框*/
+        .TextBox {
+            max-width: 100%;
+            height: 30px;
+            font-size: 13px;
+            background-color: #FFF5EA;
+            border: black 1px solid;
+        }
+
+            /*輸入時，背景的顏色*/
+            .TextBox:focus {
+                background-color: #FFF5EA;
+            }
+
+
+        /*Btn會員註冊*/
+        #Btn_MemberRegistration {
+            width: 100px;
+            height: 40px;
+            font-size: 12px;
+            background-color: black;
+            color: white;
+        }
+
+        /*右邊說明*/
+        #Right_Description {
+            margin-top: 70px;
+            font-size: 15px;
+        }
+
+            #Right_Description > h3 {
+                margin-bottom: 30px;
+            }
+
+            #Right_Description > ul > li {
+                padding-bottom: 10px;
+            }
+    </style>
 }
 
-@section Scripts {
+
+@section endJS{
+    @* 在前端時，就先驗證欄位是否符合 *@
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Assets/js/FixedMenuForIG.js"></script>
+
 }
+
