@@ -195,6 +195,7 @@
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
     <Compile Include="Controllers\BackStockController.cs" />
+    <Compile Include="Controllers\OnlineStoreController.cs" />
     <Compile Include="Models\AspNetRole.cs" />
     <Compile Include="Models\AspNetUser.cs" />
     <Compile Include="Models\AspNetUserClaim.cs" />
@@ -240,6 +241,7 @@
     <Content Include="Assets\css\HomePage.css" />
     <Content Include="Assets\css\MainPage.css" />
     <Content Include="Assets\css\MemberCenter.css" />
+    <Content Include="Assets\css\OnlineStore.css" />
     <Content Include="Assets\images\close.png" />
     <Content Include="Assets\images\collection\1.jpg" />
     <Content Include="Assets\images\collection\10.jpg" />
@@ -648,6 +650,7 @@
     <Content Include="Views\MemberCenter\MemberInformation.cshtml" />
     <Content Include="Views\MemberCenter\OrderSearch.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
