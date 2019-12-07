@@ -728,6 +728,7 @@
     <Content Include="Views\Order\_ViewStart.cshtml" />
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\Shared\_OrderDetailPartial.cshtml" />
+    <Content Include="Views\Order\Revenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

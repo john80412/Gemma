@@ -32,5 +32,10 @@ namespace Gemma.Controllers
             }
             return View(orderDetail);
         }
+        public ActionResult Revenu()
+        {
+            ViewData["Revenu"] = rep.GetLastYearRevenuJson();
+            return View();
+        }
     }
 }

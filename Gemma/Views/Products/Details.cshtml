@@ -4,6 +4,8 @@
     ViewBag.Title = "Details";
 }
 
+<h2>產品明細</h2>
+<hr>
 <div>
     <dl class="dl-horizontal">
         <dt>
@@ -50,6 +52,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("編輯", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("返回產品管理頁面", "Index")
+    @Html.ActionLink("編輯", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-info" })
+    @Html.ActionLink("返回產品管理頁面", "Index", null, new { @class = "btn btn-success" })
 </p>

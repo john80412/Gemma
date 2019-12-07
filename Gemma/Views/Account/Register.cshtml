@@ -3,9 +3,6 @@
 @{
     ViewBag.Title = "註冊";
 }
-
-@Html.Partial("IndexPartial")
-
 <h2><b>新規会員登録</b></h2>
 
 
@@ -86,12 +83,7 @@
 
     </div>
 </div>
-
-@Html.Partial("_Footer")
-
 @section topCSS {
-    <link href="~/Assets/CSS/FixedMenu.css" rel="stylesheet" />
-
     <style>
         /*標題: 新會員註冊*/
         h2 {
@@ -149,7 +141,5 @@
 @section endJS{
     @* 在前端時，就先驗證欄位是否符合 *@
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="~/Assets/js/FixedMenuForIG.js"></script>
-
 }
 
