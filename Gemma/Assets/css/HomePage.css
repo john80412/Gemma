@@ -1,6 +1,6 @@
-﻿
-#Carouseldiv img{
+﻿#Carouseldiv img{
     width: 100%;
+    height:100%;
 }
 /*置中*/
 .OnlineStoreItems, .Item-Header, .ItemsRow, .Item-Header h1, .Item-Header p,.Journal-Body,.Collection-Picture{

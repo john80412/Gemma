@@ -28,13 +28,22 @@
 
 @section topCSS{
     <link href="~/Assets/css/CollectionStyle.css" rel="stylesheet" />
-    <link href="~/Assets/css/lightbox.css" rel="stylesheet" />
     <link href="~/Assets/css/lightbox.min.css" rel="stylesheet" />
+    @*<link href="~/Assets/css/lightbox.css" rel="stylesheet" />*@
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 }
-
 
 @section endJS{
     <script src="~/Assets/js/CollectionJS.js"></script>
     <script src="~/Assets/js/lightbox.js"></script>
+    <script>
+        lightbox.option({
+            'disableScrolling': true
+        })
+    </script>
 }
 
