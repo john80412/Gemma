@@ -19,6 +19,10 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     @Html.ActionLink("マイページ", "MemberInfo", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
                     @Html.ActionLink("ポイント履歴", "OrderSearch", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
+                    @if (User.Identity.Name == "Admin@gmail.com")
+                    {
+                        @Html.ActionLink("バックグラウンド管理", "Admin", "Account", null, new { @class = "dropdown-item" })
+                    }
                     <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">ログアウト</a>
                 </div>
 
