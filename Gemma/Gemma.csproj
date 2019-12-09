@@ -192,6 +192,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BookMarkController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\JournallController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
@@ -229,12 +230,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Size.cs" />
+    <Compile Include="Repository\BookMarkRespository.cs" />
     <Compile Include="Repository\MemberRepository.cs" />
     <Compile Include="Repository\StockRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Repository\MemberCenterRepository.cs" />
+    <Compile Include="ViewModel\BookMarkViewModel.cs" />
     <Compile Include="ViewModel\MemberViewModel.cs" />
     <Compile Include="ViewModel\StockViewModel.cs" />
   </ItemGroup>
@@ -265,6 +268,7 @@
     <Content Include="Assets\images\collection\7.jpg" />
     <Content Include="Assets\images\collection\8.jpg" />
     <Content Include="Assets\images\collection\9.jpg" />
+    <Content Include="Assets\images\empty.jpg" />
     <Content Include="Assets\images\HomePage\Collection.jpg" />
     <Content Include="Assets\images\HomePage\IGImg01.jpg" />
     <Content Include="Assets\images\HomePage\IGImg02.jpg" />
@@ -656,6 +660,7 @@
     <Content Include="Views\MemberCenter\MemberInformation.cshtml" />
     <Content Include="Views\MemberCenter\OrderSearch.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
+    <Content Include="Views\BookMark\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
