@@ -59,7 +59,7 @@ namespace Gemma.Controllers
         [Authorize(Users = "Admin@gmail.com")]
         public ActionResult Admin()
         {
-            return Content("管理者頁面");
+            return RedirectToAction("Index", "BackStageHome");
         }
 
 

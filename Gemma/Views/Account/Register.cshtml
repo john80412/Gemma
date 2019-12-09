@@ -15,8 +15,6 @@
             {
                 @Html.AntiForgeryToken()
 
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-
                 // Email
                 <div class="form-group">
                     @Html.RequiredLabelFor(m => m.Email, new { @class = "control-label FontSize" })

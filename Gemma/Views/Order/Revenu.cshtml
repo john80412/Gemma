@@ -9,7 +9,7 @@
 </p>
 @section endJS{
     <script>
-        var revenu = @ViewData["Revenu"]
+        var revenu = @ViewData["Revenu"];
         var ctx = document.getElementById("revenu");
         var chart = new Chart(ctx, {
             type: "line",
