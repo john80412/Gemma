@@ -7,6 +7,7 @@
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Assets/css/FixedMenu.css" rel="stylesheet" />
 
 
     @RenderSection("topCSS", required: false)
@@ -14,14 +15,18 @@
 </head>
 <body>
     <div>
+        @Html.Partial("IndexPartial")
         @RenderBody()
+        @Html.Partial("_Footer")
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/chartjs")
-    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Assets/js/FixedMenuForIG.js"></script>
 
+    @RenderSection("scripts", required: false)
     @RenderSection("endCSS", required: false)
     @RenderSection("endJS", required: false)
 </body>

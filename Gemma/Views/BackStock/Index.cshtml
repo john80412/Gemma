@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 @section topCSS{
-    <link href="~/Content/PagedList.css" rel="stylesheet"/>
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
 }
 @if ((bool?)TempData["message"] == false)
 {
@@ -15,86 +15,78 @@
         </script>
     }
 }
-<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-    @Html.Partial("_BackStagePartialTop")
-    <div class="app-main">
-        @Html.Partial("_BackStagePartialMain")
-        <div class="app-main__outer">
-            <div class="app-main__inner">
+<p>
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-primary ml-3" })
+</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-                <p>
-                    @Html.ActionLink("新增", "Create")
-                </p>
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
+    <div class="form-inline">
+        <div class="form-group">
+            <label class="btn btn-info ml-3">產品</label>
+            @Html.TextBox("productName", null, new { @class = "form-control ml-3" })
+        </div>
 
-                    <div class="form-inline">
-                        <div class="form-group">
-                            產品:@Html.TextBox("productName")
-                        </div>
+        <div class="form-group">
+            <label class="btn btn-info ml-3">顏色</label>
+            @Html.TextBox("colorName", null, new { @class = "form-control ml-3" })
+        </div>
 
-                        <div class="form-group">
-                            顏色:@Html.TextBox("colorName")
-                        </div>
+        <div class="form-group">
+            <label class="btn btn-info ml-3">尺寸</label>
+            @Html.TextBox("size", null, new { @class = "form-control ml-3" })
+        </div>
+        <div class="form-group" style="display:none">
+            @Html.TextBox("search", "true")
+        </div>
 
-                        <div class="form-group">
-                            尺寸:@Html.TextBox("size")
-                        </div>
-                        <div class="form-group" style="display:none">
-                            @Html.TextBox("search","true")
-                        </div>
-
-                        <div class="form-group">
-                            <div>
-                                <input type="submit" value="查詢" class="btn btn-default" />
-                            </div>
-                        </div>
-                    </div>
-                }
-                <table class="table">
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FirstOrDefault().ColorName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FirstOrDefault().SizeID)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FirstOrDefault().Quantity)
-                        </th>
-                        <th></th>
-                    </tr>
-
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ProductName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ColorName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SizeID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Quantity)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } }) |
-                                @Html.ActionLink("Details", "Details", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } }) |
-                                @Html.ActionLink("Delete", "Delete", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } })
-                            </td>
-                        </tr>
-                    }
-
-                </table>
-                @Html.PagedListPager(Model,page => Url.Action("Index",new RouteValueDictionary { { "productName", (string)ViewBag.searchProductName }, { "colorName", (string)ViewBag.searchColorName }, { "size", (string)ViewBag.searchSize },{ "page",page }} ))
+        <div class="form-group">
+            <div>
+                <input type="submit" value="查詢" class="btn btn-success ml-3" />
             </div>
         </div>
     </div>
-</div>
+}
+<br>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ColorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().SizeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Quantity)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ColorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SizeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.ActionLink("編輯", "Edit", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } }, new Dictionary<string, object> { { "class", "btn btn-success" } }) 
+                @Html.ActionLink("詳細資料", "Details", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } }, new Dictionary<string, object> { { "class", "btn btn-info" } }) 
+                @Html.ActionLink("刪除", "Delete", new RouteValueDictionary { { "productID", item.ProductID }, { "colorID", item.ColorID }, { "sizeID", item.SizeID } }, new Dictionary<string, object> { { "class", "btn btn-danger" } })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new RouteValueDictionary { { "productName", (string)ViewBag.searchProductName }, { "colorName", (string)ViewBag.searchColorName }, { "size", (string)ViewBag.searchSize }, { "page", page } }))

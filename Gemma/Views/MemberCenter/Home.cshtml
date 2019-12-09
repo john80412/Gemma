@@ -1,22 +1,22 @@
 ﻿@model IEnumerable<Gemma.Models.MemberCenter>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "会員登録";
 }
-
 <br />
 <div class="container-fluid  content-grid">
     <div class="row-fluid ">
         <div>
             <div>
-                <h1 class="TopTitle">会員登録が完了しました</h1>
+                <h3 class="TopTitle">会員登録が完了しました</h3>
                 <div>
                     @*<span class="ty-success-registration__text">会員登録が完了しました。</span>*@
-                    <ul>
+                    <ul class="contenturl">
                         @foreach (var x in Model)
                         {
                             <li class="col-md-6 homeblock">
-                                <a style="text-decoration: none;" class="url " href="@x.NextUrl" rel="nofollow">@x.Item</a>
+                                <a style="text-decoration: none;" class="url" href="@x.NextUrl/@Html.Raw(User.Identity.GetUserId())" rel="nofollow">@x.Item</a>
                                 <span class="url_buttom">@x.ItemDesciption</span>
                             </li>
                         }
@@ -26,9 +26,8 @@
         </div>
     </div>
 </div>
-
-<link href="~/Assets/CSS/MemberCenter.css" rel="stylesheet" />
 @section topCSS{
+<link href="~/Assets/CSS/MemberCenter.css" rel="stylesheet" />
     <style>
         .homeblock {
             border-left: solid #191919 1px;
@@ -37,7 +36,9 @@
             margin-bottom: 30px;
             padding-left: 17px;
         }
-
+        .contenturl{
+            margin-left: 100px;
+        }
         .url {
             color: #191919;
             text-decoration: none;

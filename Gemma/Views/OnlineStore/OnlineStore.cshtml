@@ -1,0 +1,465 @@
+﻿@*@section  topCSS{
+        <link rel="stylesheet" href="~/Content/OnlineStore.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
+              integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+    }*@
+
+
+@{
+    ViewBag.Title = "OnlineStore";
+}
+@section topCSS{
+    <link href="~/Assets/css/OnlineStore.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+   
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col">
+
+            <div class="left-list">
+                BRAND ——
+                <ul>
+                    <li class="all-underline">ALL</li>
+                    <li>Daniella Tam</li>
+                    <li>GEMMA LINN</li>
+                </ul>
+            </div>
+
+            <div class="left-list">
+                CATEGORY ——
+                <ul>
+                    <li class="all-underline">ALL</li>
+                    <li>PUMPS</li>
+                    <li>FLAT SHOES</li>
+                    <li>MANNISH</li>
+                    <li>SNEAKER</li>
+                    <li>SANDAL</li>
+                    <li>BOOTS</li>
+                </ul>
+            </div>
+
+            <div class="left-list">
+                COLOR ——
+                <ul>
+                    <li class="all-underline">ALL</li>
+                    <li>BLACK/GRAY</li>
+                    <li>BEIGE/BROWN</li>
+                    <li>WHITE/IVORY</li>
+                    <li>PINK/ORANGE</li>
+                    <li>BLUE/GREEN</li>
+                    <li>RED/PURPLE</li>
+                    <li>GOLD/SILVER</li>
+                    <li>ANIMAL/PATTERN / MALTI</li>
+                </ul>
+            </div>
+
+            <div class="left-list">
+                PRICE ——
+
+            </div>
+
+        </div>
+
+        <div class="col">
+            <!--右上大圖片-->
+            <div><img src="https://danigemma.com/images/shop/category/category-all.jpg" class="bigphoto"></div>
+            <br />
+            <br />
+            <div class="p-class">
+                <p>
+                    エレガントなデザインとインポートのようなフォルムが魅力のDaniella Tam
+                    （ダニエラ タム）、程よく辛口でトレンド感のあるカジュアルシューズGEMMA LINN
+                    （ジェマ リン）。異なる２人のシューズクローゼットをイメージし、ベーシックから
+                    遊び心あふれるデザインまでデイリーに履けるモードなシューズコレクション。
+                </p>
+            </div>
+            <br />
+            <!--右邊下拉式選單-->
+            <div class="select-div">
+                <form>
+                    SORT :
+                    <select name="sort" class="select">
+                        <option value="set" selected>登録日時の新しい順</option>
+                        <option value="low">価格の低い順</option>
+                        <option value="high">価格の高い順</option>
+                    </select>
+                </form>
+            </div>
+            <br />
+            <br />
+            <!--鞋子圖片-->
+            <div class="row">
+
+                <div class="col-4">
+                    <!--<img src="https://danigemma.com/images/thumbnails/500/500/detailed/4/GE20527-1.jpg" alt="">-->
+                    
+
+                    <div>
+                        <div class="position-left">
+                            <img src="https://danigemma.com/design/themes/responsive/media/images/shop/common/header-icon-bookmark.svg?1573801632"
+                                 class="heart">
+                        </div>
+
+                        <div class="position-right-1">
+
+                        </div>
+                        <div class="position-right-2">
+
+                        </div>
+                        <div class="position-right-3">
+                            <img src="https://danigemma.com/images/color_chip/GE19107-08.png"
+                                 class="small-color">
+                        </div>
+
+                        <div class="right-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-next.png?1573801632">
+                            </a>
+                        </div>
+                        <div class="left-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-prev.png?1573801632">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-4">
+                    <img src="https://danigemma.com/images/thumbnails/500/500/detailed/4/GE19101A-1.jpg">
+
+                    <div>
+                        <div class="position-left">
+                            <img src="https://danigemma.com/design/themes/responsive/media/images/shop/common/header-icon-bookmark.svg?1573801632"
+                                 class="heart">
+                        </div>
+
+                        <div class="position-right-1">
+                           
+                        </div>
+                        <div class="position-right-2">
+                            
+                        </div>
+                        <div class="position-right-3">
+                            <img src="https://danigemma.com/images/color_chip/GE19101A-1.png"
+                                 class="small-color">
+                        </div>
+
+                        <div class="right-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-next.png?1573801632">
+                            </a>
+                        </div>
+                        <div class="left-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-prev.png?1573801632">
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-4">
+                    <img src="https://danigemma.com/images/thumbnails/500/500/detailed/4/DA19608-01.jpg" alt="">
+
+                    <div>
+                        <div class="position-left">
+                            <img src="https://danigemma.com/design/themes/responsive/media/images/shop/common/header-icon-bookmark.svg?1573801632"
+                                 class="heart">
+                        </div>
+
+                        <div class="position-right-1">
+                            <img src="https://danigemma.com/images/color_chip/GE19902-06.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-2">
+                            <img src="https://danigemma.com/images/color_chip/DA19608-06.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-3">
+                            <img src="https://danigemma.com/images/color_chip/DA19608-07.png"
+                                 class="small-color">
+                        </div>
+
+                        <div class="right-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-next.png?1573801632">
+                            </a>
+                        </div>
+                        <div class="left-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-prev.png?1573801632">
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-4 photo-word">GEMMA LINN<br>ベロアバレエシューズ<br>10,000 円 + TAX</div>
+                <div class="col-4 photo-word">GEMMA LINN<br>ポインテッドバレエシューズ<br>10,000 円 + TAX</div>
+                <div class="col-4 photo-word">GEMMA LINN<br>ポインテッドラビットファーミュール<br>11,000 円 + TAX</div>
+            </div>
+            <br />
+
+            <div class="row">
+
+                <div class="col-4">
+                    <img src="https://danigemma.com/images/thumbnails/500/500/detailed/4/DA19606-01.jpg" alt="">
+
+                    <div>
+                        <div class="position-left">
+                            <img src="https://danigemma.com/design/themes/responsive/media/images/shop/common/header-icon-bookmark.svg?1573801632"
+                                 class="heart">
+                        </div>
+
+                        <div class="position-right-1">
+                            <img src="https://danigemma.com/images/color_chip/GE19107-01.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-2">
+                            <img src="https://danigemma.com/images/color_chip/GE19107-06.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-3">
+                            <img src="https://danigemma.com/images/color_chip/GE19107-08.png"
+                                 class="small-color">
+                        </div>
+
+                        <div class="right-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-next.png?1573801632">
+                            </a>
+                        </div>
+                        <div class="left-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-prev.png?1573801632">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-4">
+                    <img src="https://danigemma.com/images/thumbnails/500/500/detailed/4/DA19605-01.jpg">
+
+                    <div>
+                        <div class="position-left">
+                            <img src="https://danigemma.com/design/themes/responsive/media/images/shop/common/header-icon-bookmark.svg?1573801632"
+                                 class="heart">
+                        </div>
+
+                        <div class="position-right-1">
+                            <img src="https://danigemma.com/images/color_chip/GE19112-06.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-2">
+                            <img src="https://danigemma.com/images/color_chip/GE19112-01.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-3">
+                            <img src="https://danigemma.com/images/color_chip/GE19112-08.png"
+                                 class="small-color">
+                        </div>
+
+                        <div class="right-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-next.png?1573801632">
+                            </a>
+                        </div>
+                        <div class="left-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-prev.png?1573801632">
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-4">
+                    <img src="https://danigemma.com/images/thumbnails/500/500/detailed/4/DA19602-01.jpg" alt="">
+
+                    <div>
+                        <div class="position-left">
+                            <img src="https://danigemma.com/design/themes/responsive/media/images/shop/common/header-icon-bookmark.svg?1573801632"
+                                 class="heart">
+                        </div>
+
+                        <div class="position-right-1">
+                            <img src="https://danigemma.com/images/color_chip/GE19902-06.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-2">
+                            <img src="https://danigemma.com/images/color_chip/GE19902-01.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-3">
+                            <img src="https://danigemma.com/images/color_chip/GE19902-08.png"
+                                 class="small-color">
+                        </div>
+
+                        <div class="right-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-next.png?1573801632">
+                            </a>
+                        </div>
+                        <div class="left-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-prev.png?1573801632">
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-4 photo-word">GEMMA LINN<br>ベロアバレエシューズ<br>10,000 円 + TAX</div>
+                <div class="col-4 photo-word">GEMMA LINN<br>ポインテッドバレエシューズ<br>10,000 円 + TAX</div>
+                <div class="col-4 photo-word">GEMMA LINN<br>ポインテッドラビットファーミュール<br>11,000 円 + TAX</div>
+            </div>
+            <br />
+
+            <div class="row">
+
+                <div class="col-4">
+                    <img src="https://danigemma.com/images/thumbnails/500/500/detailed/4/DA19602H-01.jpg" alt="">
+
+                    <div>
+                        <div class="position-left">
+                            <img src="https://danigemma.com/design/themes/responsive/media/images/shop/common/header-icon-bookmark.svg?1573801632"
+                                 class="heart">
+                        </div>
+
+                        <div class="position-right-1">
+                            <img src="https://danigemma.com/images/color_chip/GE19107-01.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-2">
+                            <img src="https://danigemma.com/images/color_chip/GE19107-06.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-3">
+                            <img src="https://danigemma.com/images/color_chip/GE19107-08.png"
+                                 class="small-color">
+                        </div>
+
+                        <div class="right-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-next.png?1573801632">
+                            </a>
+                        </div>
+                        <div class="left-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-prev.png?1573801632">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-4">
+                    <img src="https://danigemma.com/images/thumbnails/500/500/detailed/4/DA19607-01.jpg">
+
+                    <div>
+                        <div class="position-left">
+                            <img src="https://danigemma.com/design/themes/responsive/media/images/shop/common/header-icon-bookmark.svg?1573801632"
+                                 class="heart">
+                        </div>
+
+                        <div class="position-right-1">
+                            <img src="https://danigemma.com/images/color_chip/GE19112-06.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-2">
+                            <img src="https://danigemma.com/images/color_chip/GE19112-01.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-3">
+                            <img src="https://danigemma.com/images/color_chip/GE19112-08.png"
+                                 class="small-color">
+                        </div>
+
+                        <div class="right-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-next.png?1573801632">
+                            </a>
+                        </div>
+                        <div class="left-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-prev.png?1573801632">
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-4">
+                    <img src="https://danigemma.com/images/thumbnails/500/500/detailed/4/GE19801-01.jpg" alt="">
+
+                    <div>
+                        <div class="position-left">
+                            <img src="https://danigemma.com/design/themes/responsive/media/images/shop/common/header-icon-bookmark.svg?1573801632"
+                                 class="heart">
+                        </div>
+
+                        <div class="position-right-1">
+                            <img src="https://danigemma.com/images/color_chip/GE19902-06.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-2">
+                            <img src="https://danigemma.com/images/color_chip/GE19902-01.png"
+                                 class="small-color">
+                        </div>
+                        <div class="position-right-3">
+                            <img src="https://danigemma.com/images/color_chip/GE19902-08.png"
+                                 class="small-color">
+                        </div>
+
+                        <div class="right-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-next.png?1573801632">
+                            </a>
+                        </div>
+                        <div class="left-side">
+                            <a href="">
+                                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/assets/slider-prev.png?1573801632">
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-4 photo-word">GEMMA LINN<br>ベロアバレエシューズ<br>10,000 円 + TAX</div>
+                <div class="col-4 photo-word">GEMMA LINN<br>ポインテッドバレエシューズ<br>10,000 円 + TAX</div>
+                <div class="col-4 photo-word">GEMMA LINN<br>ポインテッドラビットファーミュール<br>11,000 円 + TAX</div>
+            </div>
+            <br />
+            <br />
+
+
+        </div>
+    </div>
+
+</div>

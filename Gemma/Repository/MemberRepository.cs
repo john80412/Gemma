@@ -24,11 +24,7 @@ namespace Gemma.Repository
                               PhoneNumber = m.PhoneNumber,
                               Email = m.Email
                           };
-            if(!string.IsNullOrEmpty(Id))
-            {
-                members = members.Where((m) => m.Id == Id);
-            }
-
+            members = !string.IsNullOrEmpty(Id) ? members.Where((m) => m.Id == Id) : members;
             var results = members.OrderBy(m => m.Id).ToPagedList(currentPage, 10);
             return results;
         }

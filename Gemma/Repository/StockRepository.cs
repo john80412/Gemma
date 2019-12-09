@@ -27,8 +27,8 @@ namespace Gemma.Repository
                              Quantity = s.Quantity
                          };
             int.TryParse(size, out var result);
-            stocks = !string.IsNullOrEmpty(productName) ? stocks.Where(x => x.ProductName.Contains(productName)) : stocks;
-            stocks = !string.IsNullOrEmpty(colorName) ? stocks.Where(x => x.ColorName.Contains(colorName)) : stocks;
+            stocks = !string.IsNullOrEmpty(productName) ? stocks.Where(x => x.ProductName.ToUpper().Contains(productName.ToUpper())) : stocks;
+            stocks = !string.IsNullOrEmpty(colorName) ? stocks.Where(x => x.ColorName.ToUpper().Contains(colorName.ToUpper())) : stocks;
             stocks = !string.IsNullOrEmpty(size) ? stocks.Where(x => x.SizeID == result) : stocks;
             var results = stocks.OrderBy(x => x.ProductID).ThenBy(x => x.ColorID).ThenBy(x => x.SizeID).ToPagedList(page, 10);
             return results;

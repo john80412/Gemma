@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Microsoft.AspNet.Identity;
+
 
 namespace Gemma
 {
@@ -13,6 +15,11 @@ namespace Gemma
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+                name: "MemberCenter",
+                url: "MemberCenter/{action}/{id}",
+                defaults: new { controller = "MemberCenter", action = "MemberInfo", id = UrlParameter.Optional }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

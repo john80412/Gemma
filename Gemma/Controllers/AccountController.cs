@@ -52,6 +52,18 @@ namespace Gemma.Controllers
             }
         }
 
+        // ==============================================================================================================
+
+
+        // ---------------------------------------- 後台 ----------------------------------------
+        [Authorize(Users = "Admin@gmail.com")]
+        public ActionResult Admin()
+        {
+            return RedirectToAction("Index", "BackStageHome");
+        }
+
+
+        // ---------------------------------------- 登入 ----------------------------------------
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -79,7 +91,7 @@ namespace Gemma.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("DaniellaGemma", "Home");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -91,6 +103,9 @@ namespace Gemma.Controllers
             }
         }
 
+
+
+        // ---------------------------------------- 驗證碼 ----------------------------------------
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -134,6 +149,8 @@ namespace Gemma.Controllers
             }
         }
 
+
+        // ---------------------------------------- 註冊 ----------------------------------------
         //
         // GET: /Account/Register
         [AllowAnonymous]
@@ -141,6 +158,7 @@ namespace Gemma.Controllers
         {
             return View();
         }
+
 
         //
         // POST: /Account/Register
@@ -155,15 +173,20 @@ namespace Gemma.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    // ------此行註解掉，註冊帳號成功後，就不會直接登入
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771
                     // 傳送包含此連結的電子郵件
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "確認您的帳戶", "請按一下此連結確認您的帳戶 <a href=\"" + callbackUrl + "\">這裏</a>");
+                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "確認您的帳戶", "請按一下此連結確認您的帳戶 <a href=\"" + callbackUrl + "\">這裏</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    //ViewBag.Message = "Check your email and confirm your account, you must beconfirmed " + "before you can log in.";
+                    //return View("Info");
+
+                    return RedirectToAction("Home", "MemberCenter");
+
                 }
                 AddErrors(result);
             }
@@ -172,6 +195,8 @@ namespace Gemma.Controllers
             return View(model);
         }
 
+
+        // ---------------------------------------- 確認郵件 ----------------------------------------
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
@@ -185,6 +210,8 @@ namespace Gemma.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
+
+        // ---------------------------------------- 忘記密碼 ----------------------------------------
         //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
@@ -221,6 +248,8 @@ namespace Gemma.Controllers
             return View(model);
         }
 
+
+        // ---------------------------------------- 忘記密碼確認 ----------------------------------------
         //
         // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
@@ -229,6 +258,8 @@ namespace Gemma.Controllers
             return View();
         }
 
+
+        // ---------------------------------------- (信件點擊後)重設密碼 ----------------------------------------
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
@@ -263,6 +294,8 @@ namespace Gemma.Controllers
             return View();
         }
 
+
+        // ---------------------------------------- (信件點擊後)重置密碼確認 ----------------------------------------
         //
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
@@ -271,6 +304,8 @@ namespace Gemma.Controllers
             return View();
         }
 
+
+        // ---------------------------------------- 外部登錄 ----------------------------------------
         //
         // POST: /Account/ExternalLogin
         [HttpPost]
@@ -282,6 +317,9 @@ namespace Gemma.Controllers
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
+
+        // ==============================================================================================================
+        
         //
         // GET: /Account/SendCode
         [AllowAnonymous]
@@ -385,6 +423,8 @@ namespace Gemma.Controllers
             return View(model);
         }
 
+
+        // ---------------------------------------- 登出 ----------------------------------------
         //
         // POST: /Account/LogOff
         [HttpPost]

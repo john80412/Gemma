@@ -1,0 +1,90 @@
+﻿@using Microsoft.AspNet.Identity
+
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <ul class="nav header-tool">
+
+            <li class="account nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="~/Assets/images/Icons/User_Mark.png" />
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    @Html.ActionLink("マイページ", "MemberInfo", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("ポイント履歴", "OrderSearch", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
+                    @if (User.Identity.Name == "Admin@gmail.com")
+                    {
+                        @Html.ActionLink("バックグラウンド管理", "Admin", "Account", null, new { @class = "dropdown-item" })
+                    }
+                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">ログアウト</a>
+                </div>
+
+            </li>
+
+
+            <li class="bookmark">
+                <a href="#"><img src="~/Assets/images/Icons/Heart_Mark.png" /></a>
+            </li>
+
+            <li class="cart">
+                <a href="#"><img src="~/Assets/images/Icons/Cart_Mark.png" /></a>
+            </li>
+
+        </ul>
+
+
+
+
+        @*<li class="account nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="~/Assets/images/Icons/User_Mark.png" />
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                    <a class="dropdown-item" href="#">我的頁面</a>
+                    <a class="dropdown-item" href="#">點歷史</a>
+                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">登出</a>
+                </div>
+
+            </li>*@
+
+
+    }
+}
+else
+{
+    <ul class="nav header-tool">
+
+        <li class="account nav-item dropdown">
+
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="~/Assets/images/Icons/User_Mark.png" />
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="~/Account/Register">新規会員登録</a>
+                <a class="dropdown-item" href="~/Account/Login">LOGIN</a>
+            </div>
+
+        </li>
+
+
+        <li class="bookmark">
+            <a href="#"><img src="~/Assets/images/Icons/Heart_Mark.png" /></a>
+        </li>
+
+        <li class="cart">
+            <a href="#"><img src="~/Assets/images/Icons/Cart_Mark.png" /></a>
+        </li>
+
+    </ul>
+
+}
+

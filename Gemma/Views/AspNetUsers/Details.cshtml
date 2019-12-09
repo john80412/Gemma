@@ -4,56 +4,46 @@
     ViewBag.Title = "Details";
 }
 
-@section topCSS{
-    <link href="~/Assets/css/sb-admin-2.min.css" rel="stylesheet">
-}
-<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-    @Html.Partial("_BackStagePartialTop")
-    <div class="app-main">
-        @Html.Partial("_BackStagePartialMain")
-        <div class="app-main__outer">
-            <div class="app-main__inner">
-                <h2>會員明細</h2>
-                <hr>
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Id)
-                    </dt>
+@*@section topCSS{
+        <link href="~/Assets/css/sb-admin-2.min.css" rel="stylesheet">
+    }*@
+<h2>會員明細</h2>
+<hr>
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Id)
+    </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Id)
-                    </dd>
+    <dd>
+        @Html.DisplayFor(model => model.Id)
+    </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.UserName)
-                    </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.UserName)
+    </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.UserName)
-                    </dd>
+    <dd>
+        @Html.DisplayFor(model => model.UserName)
+    </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.Email)
+    </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Email)
-                    </dd>
+    <dd>
+        @Html.DisplayFor(model => model.Email)
+    </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.PhoneNumber)
-                    </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.PhoneNumber)
+    </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.PhoneNumber)
-                    </dd>
+    <dd>
+        @Html.DisplayFor(model => model.PhoneNumber)
+    </dd>
 
-                </dl>
-                <p>
-                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-                    @Html.ActionLink("Back to List", "Index")
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+</dl>
+<p>
+    @Html.ActionLink("編輯", "Edit", new { id = Model.Id },new { @class="btn btn-info"}) 
+    @Html.ActionLink("返回會員管理頁面", "Index",null,new { @class="btn btn-success"})
+</p>

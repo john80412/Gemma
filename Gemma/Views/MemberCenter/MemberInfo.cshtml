@@ -1,8 +1,11 @@
-﻿@model Gemma.Models.AspNetUser
+﻿@model Gemma.AspNetUser
+@using Microsoft.AspNet.Identity
+@using Gemma.Helper
 
 @{
     ViewBag.Title = "会員情報の編集 - Daniella & GEMMA（ダニエラ＆ジェマ）オンラインストア";
 }
+
 <div class="container">
     <div class="row">
         <br />
@@ -23,23 +26,24 @@
                 <div class="form">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.RequiredLabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-12" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.RequiredLabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-12" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            @ViewData["error"]
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.CheckPassword, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.RequiredLabelFor(model => model.CheckPassword, htmlAttributes: new { @class = "control-label col-md-12" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.CheckPassword, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.CheckPassword, "", new { @class = "text-danger" })
@@ -48,7 +52,7 @@
 
                     <h4 class="smallTitle col-md-12">注文者住所</h4>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.RequiredLabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-12" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
@@ -56,7 +60,7 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.RequiredLabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-12" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
@@ -64,7 +68,7 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.RequiredLabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-12" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
@@ -96,12 +100,19 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.RequiredLabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-12" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
                         </div>
                     </div>
+                    @*<div class="form-group" style="display:none">
+                        @Html.RequiredLabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
@@ -131,9 +142,8 @@
         @Html.ActionLink("Back to List", "Index")
     </div>*@
 
-<link href="~/Assets/CSS/MemberCenter.css" rel="stylesheet" />
-
 @section topCSS{
+<link href="~/Assets/CSS/MemberCenter.css" rel="stylesheet" />
     <style>
         .menber_content * {
             margin-bottom: 15px;
@@ -144,10 +154,10 @@
 @section endJS{
     <script>
         $("#memberInformation").click(function () {
-            location.href = "/MemberCenter/MemberInformation"
+            location.href = "/MemberCenter/MemberInfo/@Html.Raw(User.Identity.GetUserId())"
         });
         $("#orderSearch").click(function () {
-            location.href = "/MemberCenter/OrderSearch"
+            location.href = "/MemberCenter/OrderSearch/@Html.Raw(User.Identity.GetUserId())"
         });
     </script>
 }

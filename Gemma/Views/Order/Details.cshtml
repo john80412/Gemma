@@ -1,0 +1,62 @@
+﻿@model Gemma.ViewModel.OrderDetailViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>訂單明細</h2>
+<hr>
+<div>
+    <dl class="dl-horizontal">
+        <div>
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderID)
+            </dt>
+        </div>
+        <div>
+            <dd>
+                @Html.DisplayFor(model => model.OrderID)
+            </dd>
+        </div>
+        <div>
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </dt>
+        </div>
+        <div>
+            <dd>
+                @Html.DisplayFor(model => model.CustomerName)
+            </dd>
+        </div>
+        <hr>
+        @for (int i = 0; i < Model.ProductNames.Count; i++)
+        {
+            ViewData["Count"] = i + 1;
+            @Html.Partial("_OrderDetailPartial", Model.ProductNames[i])
+        }
+        <hr>
+        <div>
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </dt>
+        </div>
+        <div>
+            <dd>
+                @Html.DisplayFor(model => model.TotalPrice)
+            </dd>
+        </div>
+        <div>
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </dt>
+        </div>
+        <div>
+            <dd>
+                @Html.DisplayFor(model => model.OrderDate)
+            </dd>
+        </div>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("返回訂單管理", "Index", null, new { @class = "btn btn-success" })
+</p>

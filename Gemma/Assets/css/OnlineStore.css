@@ -1,0 +1,146 @@
+﻿
+body, div {
+    font-family: "Noto Sans JP", sans-serif;
+    /*background-color: #f4f0e7;*/
+    
+}
+
+.col-4 img {
+    width: 100%;
+}
+
+.row-fluid {
+    width: 100%;
+}
+
+.newcol-1 {
+    width: 24%;
+}
+
+.newcol-2 {
+    width: 74%;
+}
+
+/*設定左邊邊框*/
+.padding {
+    padding-left: 0px;
+    margin-right: 0px;
+    max-width: 20%;
+}
+
+/*設定有關字體*/
+.left-list {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    line-height: 2.5em;
+    color: #52514f;
+    cursor: pointer;
+}
+
+li {
+    color: #52514f;
+    list-style: none;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.all-underline{
+    text-decoration:underline;
+}
+
+.bigphoto {
+    width: 800px;
+    height: 250px;
+    margin: 0;
+}
+
+/*圖片下方文字*/
+.p-class {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+p {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    line-height: 2.5em;
+    color: #52514f;
+}
+
+.select {
+    color: #6b7986;
+    background-color: #FFF5EA;
+    border-top: 0 #f4f0e7 solid;
+    border-left: 0 #f4f0e7 solid;
+    border-right: 0 #f4f0e7 solid;
+    border-bottom: 1px #191919 solid;
+    outline: none;
+    width: 250px;
+}
+
+.select-div {
+    text-align: right;
+}
+
+.heart {
+    width: 25px;
+    height: 25px;
+}
+
+.small-color {
+    width: 20px !important;
+    height: 20px;
+}
+
+.heart, .small-color {
+    display: inline-block;
+}
+
+.position-left {
+    position: absolute;
+    left: 30px;
+    bottom: 15px;
+}
+
+.position-right-1 {
+    position: absolute;
+    right: 85px;
+    bottom: 12px;
+}
+
+.position-right-2 {
+    position: absolute;
+    right: 55px;
+    bottom: 12px;
+}
+
+.position-right-3 {
+    position: absolute;
+    right: 25px;
+    bottom: 12px;
+}
+
+.right-side img, .left-side img {
+    width: 12px;
+    height: 24px !important;
+}
+
+.right-side {
+    position: absolute;
+    right: 10%;
+    top: 45%;
+}
+
+.left-side {
+    position: absolute;
+    left: 10%;
+    top: 45%;
+}
+
+.photo-word {
+    width: 70%;
+    margin: 0 auto;
+    font-size: 13px !important;
+}
