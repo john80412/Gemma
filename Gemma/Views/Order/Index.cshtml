@@ -3,12 +3,13 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<p>
+    @Html.ActionLink("去年各月份營業額", "Revenu", null, new { @class = "btn btn-primary ml-3" })
+</p>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-inline col-md-6">
+    <div class="form-inline">
         <div class="form-group">
             <label class="btn btn-info ml-3">客戶</label>
             @Html.TextBox("customerName", null, new { @class = "form-control ml-3" })
@@ -29,12 +30,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6" style="text-align:right">
-        @Html.ActionLink("去年各月份營業額", "Revenu", null, new { @class = "btn btn-primary" })
-    </div>
+
 }
-<br>
-<br>
 <br>
 <table class="table">
     <tr>

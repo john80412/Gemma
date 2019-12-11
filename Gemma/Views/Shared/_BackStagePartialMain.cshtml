@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "_BackStagePartialMain";
 }
-
+<link href="~/Assets/css/main.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+<script type="text/javascript" src="~/Assets/js/main.js"></script>
 <div class="app-sidebar sidebar-shadow">
     <div class="app-header__logo">
         <div class="logo-src"></div>
@@ -33,13 +35,13 @@
                 </span>
             </button>
         </span>
-    </div>    
+    </div>
     <div class="scrollbar-sidebar">
         <div class="app-sidebar__inner">
             <ul class="vertical-nav-menu">
-                <li class="app-sidebar__heading">後台管理</li>
+                <li class="app-sidebar__heading" onclick="location.href='@Url.Action("Index","BackStageHome")'">後台管理</li>
                 <li>
-                    @Html.ActionLink("會員管理","Index","AspNetUsers",null,new { @class = "mm-active"})
+                    @Html.ActionLink("會員管理", "Index", "AspNetUsers", null, new { @class = "mm-active" })
                 </li>
                 <li>
                     @Html.ActionLink("庫存管理", "Index", "BackStock", null, new { @class = "mm-active" })

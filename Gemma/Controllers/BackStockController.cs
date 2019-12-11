@@ -59,7 +59,6 @@ namespace Gemma.Controllers
             if (ModelState.IsValid)
             {
                 rep.CreateStock(stock, files);
-                TempData["message"] = rep.IsSuccess;
                 return RedirectToAction("Index");
             }
 

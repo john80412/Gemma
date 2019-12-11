@@ -6,17 +6,8 @@
 @section topCSS{
     <link href="~/Content/PagedList.css" rel="stylesheet" />
 }
-@if ((bool?)TempData["message"] == false)
-{
-    @section endJS{
-        <script>
-        var message = @Html.Raw(Json.Encode("此項目已存在"));
-        alert(message)
-        </script>
-    }
-}
 <p>
-    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-primary ml-3" })
+    @Html.ActionLink("進出貨", "Create", null, new { @class = "btn btn-primary ml-3" })
 </p>
 @using (Html.BeginForm())
 {
