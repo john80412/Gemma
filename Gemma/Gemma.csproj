@@ -731,8 +731,17 @@
     <Content Include="Views\Order\_ViewStart.cshtml" />
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\Shared\_OrderDetailPartial.cshtml" />
-    <Content Include="Views\Shared\_OnlineStorePartial.cshtml" />
+    <Content Include="Views\Shared\_OnlineStorePicturePartial.cshtml" />
     <Content Include="Views\Shop\Shop.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore_Category_PUMPS.cshtml" />
+    <Content Include="Views\Shared\_BigPicture_and_SelectFormPartiel.cshtml" />
+    <Content Include="Views\Shared\_Left_CategoryPartial.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore_Category_FLATSHOES.cshtml" />
+    <Content Include="Views\Shared\OnlineStorePartial.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore_Category_MANNISH.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore_Category_SNEAKER.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore_Category_SANDAL.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore_Category_BOOTS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

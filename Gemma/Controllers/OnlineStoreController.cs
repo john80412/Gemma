@@ -9,7 +9,6 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using PagedList;
 using System.IO;
-using Gemma.ViewModel;
 
 namespace Gemma.Controllers
 {
@@ -22,10 +21,44 @@ namespace Gemma.Controllers
             return View();
         }
 
+        ///呼叫PictureCatch()方法
         public ActionResult OnlineStore()
         {
             return View(PictureCatch());
         }
+
+        ///呼叫OnlineStore_Category_pumps()方法
+        public ActionResult OnlineStore_Category_PUMPS()
+        {
+            return View(Category_pumps());
+        }
+
+        public ActionResult OnlineStore_Category_FLATSHOES()
+        {
+            return View(Category_FLATSHOES());
+        }
+
+        public ActionResult OnlineStore_Category_MANNISH()
+        {
+            return View(Category_MANNISH());
+        }
+
+        public ActionResult OnlineStore_Category_SNEAKER()
+        {
+            return View(Category_SNEAKER());
+        }
+
+        public ActionResult OnlineStore_Category_SANDAL()
+        {
+            return View(Category_SANDAL());
+        }
+
+        public ActionResult OnlineStore_Category_BOOTS()
+        {
+            return View(Category_BOOTS());
+        }
+
+
         public List<OnlineStore> PictureCatch()
         {
             #region 暫時收
@@ -150,7 +183,136 @@ namespace Gemma.Controllers
             return listStock.Distinct().ToList();
         }
 
-       
+        public List<OnlineStore> Category_pumps()
+        {
+            List<OnlineStore> result = new List<OnlineStore>();
 
+            var listStock = from s in db.Stocks.Include(s => s.Product.Category)
+                            where (s.Product.Category.CategoryID == 1)
+                            select new OnlineStore
+                            {
+                                Id = s.ProductID,
+                                Category = s.Product.Category.CategoryName,
+                                Picture = s.ImageName,
+                                Heart = "/Heart_Mark.png",
+                                Next = "next.png",
+                                Prev = "prev.png",
+                                Brand = "GEMMA LINN",
+                                ProductName = "ベロアバレエシューズ",
+                                Price = s.Product.UnitPrice,
+                                Tax = " + TAX"
+                            };
+            return listStock.Distinct().ToList();
+        }
+
+        public List<OnlineStore> Category_FLATSHOES()
+        {
+            List<OnlineStore> result = new List<OnlineStore>();
+
+            var listStock = from s in db.Stocks.Include(s => s.Product.Category)
+                            where (s.Product.Category.CategoryID == 2)
+                            select new OnlineStore
+                            {
+                                Id = s.ProductID,
+                                Category = s.Product.Category.CategoryName,
+                                Picture = s.ImageName,
+                                Heart = "/Heart_Mark.png",
+                                Next = "next.png",
+                                Prev = "prev.png",
+                                Brand = "GEMMA LINN",
+                                ProductName = "ベロアバレエシューズ",
+                                Price = s.Product.UnitPrice,
+                                Tax = " + TAX"
+                            };
+            return listStock.Distinct().ToList();
+        }
+
+        public List<OnlineStore> Category_MANNISH()
+        {
+            List<OnlineStore> result = new List<OnlineStore>();
+
+            var listStock = from s in db.Stocks.Include(s => s.Product.Category)
+                            where (s.Product.Category.CategoryID == 3)
+                            select new OnlineStore
+                            {
+                                Id = s.ProductID,
+                                Category = s.Product.Category.CategoryName,
+                                Picture = s.ImageName,
+                                Heart = "/Heart_Mark.png",
+                                Next = "next.png",
+                                Prev = "prev.png",
+                                Brand = "GEMMA LINN",
+                                ProductName = "ベロアバレエシューズ",
+                                Price = s.Product.UnitPrice,
+                                Tax = " + TAX"
+                            };
+            return listStock.Distinct().ToList();
+        }
+
+        public List<OnlineStore> Category_SNEAKER()
+        {
+            List<OnlineStore> result = new List<OnlineStore>();
+
+            var listStock = from s in db.Stocks.Include(s => s.Product.Category)
+                            where (s.Product.Category.CategoryID == 4)
+                            select new OnlineStore
+                            {
+                                Id = s.ProductID,
+                                Category = s.Product.Category.CategoryName,
+                                Picture = s.ImageName,
+                                Heart = "/Heart_Mark.png",
+                                Next = "next.png",
+                                Prev = "prev.png",
+                                Brand = "GEMMA LINN",
+                                ProductName = "ベロアバレエシューズ",
+                                Price = s.Product.UnitPrice,
+                                Tax = " + TAX"
+                            };
+            return listStock.Distinct().ToList();
+        }
+
+        public List<OnlineStore> Category_SANDAL()
+        {
+            List<OnlineStore> result = new List<OnlineStore>();
+
+            var listStock = from s in db.Stocks.Include(s => s.Product.Category)
+                            where (s.Product.Category.CategoryID == 5)
+                            select new OnlineStore
+                            {
+                                Id = s.ProductID,
+                                Category = s.Product.Category.CategoryName,
+                                Picture = s.ImageName,
+                                Heart = "/Heart_Mark.png",
+                                Next = "next.png",
+                                Prev = "prev.png",
+                                Brand = "GEMMA LINN",
+                                ProductName = "ベロアバレエシューズ",
+                                Price = s.Product.UnitPrice,
+                                Tax = " + TAX"
+                            };
+            return listStock.Distinct().ToList();
+        }
+
+        public List<OnlineStore> Category_BOOTS()
+        {
+            List<OnlineStore> result = new List<OnlineStore>();
+
+            var listStock = from s in db.Stocks.Include(s => s.Product.Category)
+                            where (s.Product.Category.CategoryID == 6)
+                            select new OnlineStore
+                            {
+                                Id = s.ProductID,
+                                Category = s.Product.Category.CategoryName,
+                                Picture = s.ImageName,
+                                Heart = "/Heart_Mark.png",
+                                Next = "next.png",
+                                Prev = "prev.png",
+                                Brand = "GEMMA LINN",
+                                ProductName = "ベロアバレエシューズ",
+                                Price = s.Product.UnitPrice,
+                                Tax = " + TAX"
+                            };
+            return listStock.Distinct().ToList();
+        }
     }
 }
