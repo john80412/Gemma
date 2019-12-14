@@ -742,6 +742,7 @@
     <Content Include="Views\OnlineStore\OnlineStore_Category_SNEAKER.cshtml" />
     <Content Include="Views\OnlineStore\OnlineStore_Category_SANDAL.cshtml" />
     <Content Include="Views\OnlineStore\OnlineStore_Category_BOOTS.cshtml" />
+    <Content Include="Views\OnlineStore\FindBrand.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
