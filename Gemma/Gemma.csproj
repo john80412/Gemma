@@ -733,7 +733,6 @@
     <Content Include="Views\Shared\_OrderDetailPartial.cshtml" />
     <Content Include="Views\Shared\_OnlineStorePartial.cshtml" />
     <Content Include="Views\Shop\Shop.cshtml" />
-    <Content Include="Views\Shared\_OnlineStore_ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

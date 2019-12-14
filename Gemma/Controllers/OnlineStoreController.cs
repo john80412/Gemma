@@ -126,7 +126,7 @@ namespace Gemma.Controllers
                                 Prev = "prev.png",
                                 Brand = "GEMMA LINN",
                                 ProductName = "ベロアバレエシューズ",
-                                Price = "10,000 円",
+                                Price = s.Product.UnitPrice,
                                 Tax = " + TAX"
                             };
 

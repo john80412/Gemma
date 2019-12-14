@@ -20,7 +20,7 @@ namespace Gemma.ViewModel
 
         public string Brand { get; set; }
         public string ProductName { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
         public string Tax { get; set; }
     }
 }
