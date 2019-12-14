@@ -11,39 +11,6 @@
     <link href="~/Assets/css/OnlineStore.css" rel="stylesheet" />
 }
 
-
-
-@Html.Partial("IndexPartial")
-
-<div class="container">
-
-    <div class="row">
-
-        @Html.Partial("_Left_CategoryPartial")
-        <div class="col">
-
-            @Html.Partial("_BigPicture_and_SelectFormPartiel")
-
-            <div class="row">
-                <!--鞋子圖片-->
-                @foreach (var photo in Model)
-                {
-                    @Html.Partial("_OnlineStorePicturePartial", photo);
-
-                }
-
-                <br />
-                <br />
-            </div>
-
-        </div>
-    </div>
-
-</div>
-
-@Html.Partial("_Footer")
-
+@Html.Partial("OnlineStorePartial")
 @section endJS{
-
-
 }
