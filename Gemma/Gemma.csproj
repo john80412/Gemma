@@ -736,6 +736,13 @@
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\Shared\_OrderDetailPartial.cshtml" />
     <Content Include="Views\Order\Revenu.cshtml" />
+    <Content Include="Views\Journall\JournalList8.cshtml" />
+    <Content Include="Views\Journall\JournalList2.cshtml" />
+    <Content Include="Views\Journall\JournalList3.cshtml" />
+    <Content Include="Views\Journall\JournalList5.cshtml" />
+    <Content Include="Views\Journall\JournalList6.cshtml" />
+    <Content Include="Views\Journall\JournalList7.cshtml" />
+    <Content Include="Views\Journall\JournalList4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

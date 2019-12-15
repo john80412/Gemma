@@ -9,7 +9,7 @@
     [Table("BookMark")]
     public partial class BookMark
     {
-        
+
         [Key]
         [Column(Order = 0)]
         public string CustomerID { get; set; }
@@ -19,7 +19,7 @@
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ProductID { get; set; }
 
-        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; } //關聯
 
         public virtual Product Product { get; set; }
     }

@@ -11,29 +11,16 @@ using System.Net;
 namespace Gemma.Controllers
 {
     public class BookMarkController : Controller
-    {
-        public BookMarkRespository repb = new BookMarkRespository();
-        // GET: BookMark
-        public ActionResult Index()
+    { 
+        public ActionResult Index(bool isDeleteAll = false)
         {
-            return View();
-        }
-        // GET: BookMark/Delete/5
-        public ActionResult Delete(string? ProductName)
-        {
-    
-            repb.DeleteBookMark(ProductName);
-            return RedirectToAction("Index");
-        }
-
-        // POST: Stock/Delete/5
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            if (isDeleteAll)
             {
-                repb.db.Dispose();
+                Session["BookMark"] = null;
             }
-            base.Dispose(disposing);
+            List<BookMark> bk =(List<BookMark>) Session["BookMark"]; //value 轉型成key
+
+            return View(bk);
         }
     }
 }

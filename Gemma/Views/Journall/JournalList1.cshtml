@@ -11,46 +11,77 @@
         }
 
         .img1 img {
-            width: 150%;
+            width: 140%;
             height: 100%;
+            transition:0.5s ease-in-out;
         }
 
         span {
-            font-family: 'Roboto', sans-serif;
-            font-size: medium;
+           font-size:25px;font-weight:bold;
+            margin-left:380px;
         }
-        .w{
-           height: 30%;
+         .img1 img:hover {
+		transform : scale(1.02);
+        transition:0.5s ease-in-out;
+	}
+	
+        .wordLeft {
+            margin-top:120px;
+            height:400px;
+            line-height: 50px;
+            font-size:25px;
+            margin-bottom:100px;
         }
+     
     </style>
 
 
 }
 @section endJS{
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  
+    
 }
-    <div class="container ">
-        <div class="row">
-            <div class="img1">
+<div class="container ">
+    <div class="row">
+        <div class="img1">
 
-                <img src="~/Assets/images/Journalimg/J1.jpg" />
-            </div>
-            <div class="w">
-
-            </div>
-            <div class="img1">
-                <img src="~/Assets/images/Journalimg/J1-2.jpg" />
-
-            </div>
-            <div class="w">
-
-            </div>
-            <div class="img1">
-                <img src="~/Assets/images/Journalimg/J1-3.jpg" />
-
-            </div>
-
+            <img src="~/Assets/images/Journalimg/J1.jpg" />
         </div>
 
+        <div class="wordLeft">
+            <span style="margin-left:530px">2019.10.29</span> <br />
+            <span >MUST BUY! Fall / Winter Trend Boots</span>
+            <br /><br /><br />
+            New boots for fall and winter arrived.<br />
+
+            The black “ Studded Short Boots ” is based on the casual presence of the side studs.<br />
+
+            The exquisite length that covers the ankle is a perfect pair for this season.<br />
+        </div>
+       
+        <div class="img1">
+
+            <img src="~/Assets/images/Journalimg/J1-2.jpg" />
+
+        </div>
+        <div class="wordLeft" >
+            The shape of the heel is a trendy flare type.<br />
+
+            There is also a sense of stability because there is a firm thickness.
+        </div>
+        <div class="img1">
+            <img src="~/Assets/images/Journalimg/J1-3.jpg" />
+
+        </div>
+        <div class="wordLeft">
+            The trend black is excellent for tightening effect and ease of wearing.<br />
+
+            With a slightly longer length and stud vertical lines, this is an excellent boot that looks long and beautiful.<br />
+
+            Please add it to your wardrobe as the first pair of boots this fall.
+
+            <h1 href="@Url.Action("OnlineStorePage","Boots")">[View short boots]</h1>
+        </div>
     </div>
+
+</div>

@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "JournalList1";
+}
+
+@section topCSS{
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F5F5F5;
+        }
+
+        .img1 img {
+            width: 140%;
+            height: 100%;
+            transition:0.5s ease-in-out;
+        }
+        .img2 img {
+            width: 100%;
+            height: 100%;
+            transition:0.5s ease-in-out;
+        }
+
+        span {
+           font-size:25px;font-weight:bold;
+            margin-left:450px;
+        }
+         .img1 img:hover {
+		transform : scale(1.02);
+        transition:0.5s ease-in-out;
+	}
+         .img2 img:hover {
+		transform : scale(1.02);
+        transition:0.5s ease-in-out;
+	}
+	
+        .wordLeft {
+            margin-top:120px;
+            height:400px;
+            line-height: 50px;
+            font-size:25px;
+            margin-bottom:100px;
+        }
+     
+    </style>
+
+
+}
+@section endJS{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+}
+<div class="container ">
+    <div class="row">
+        <div class="img1">
+            <img src="~/Assets/images/Journalimg/J7.jpg" />
+
+        </div>
+
+        <div class="wordLeft">
+            <span style="margin-left:530px">2019.07.26</span> <br />
+            <span>GEMMA'S IT ITEM !! No.1</span>
+            <br /><br /><br />
+            A pioneering fashion editor living in Brooklyn, NY GEMMA LINN.<br />
+            In “GEMMA'S IT ITEM”, she picks up the items that she is interested in this fall!<br />
+        </div>
+
+        <div class="img2">
+
+
+            <img src="~/Assets/images/Journalimg/J7-2.jpg" />
+
+        </div>
+        <div class="wordLeft">
+            Gemma's favorite is sneakers with colorful eco fur.<br />
+            It seems to be an accent of any styling to match denim and socks.<br />
+            If you want to finish in the mode, black rabbit fur sneakers, clean white sneakers to remove the beautiful styling,<br />
+            I want to enjoy according to the mood and style of the day!<br />
+        </div>
+        <div class="img1 " >
+
+            <img src="~/Assets/images/Journalimg/J7-3.jpg" />
+
+        </div>
+        <div class="wordLeft">
+            I want to challenge this fall with a python pattern.<br />
+            Gemma's style is to give a sense of trend by incorporating small items.<br />
+            Gemma's selection is a square-toe V-cut flat shoe. An excellent item that can be worn in a Babush style by stepping on a bag.<br />
+            If you match it with simple pants, it will be even better!<br />
+            <h1 href="@Url.Action("OnlineStorePage","OnlineStore")">Check out the GEMMA collection!</h1>
+
+        </div>
+        <div class="img2">
+
+
+            <img src="~/Assets/images/Journalimg/J7-4.jpg" />
+
+        </div>
+    </div>
+
+</div>
