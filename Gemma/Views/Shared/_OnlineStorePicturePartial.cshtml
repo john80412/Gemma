@@ -13,25 +13,30 @@
 
 
 <div class="col-4">
-
-    <img src="~/Assets/images/product/@Model.Category/@Model.Picture/1.jpg" alt="">
+    
+    <img src="~/Assets/images/Product/@Model.Category/@Model.ProductName/index1.jpg" alt="" value="@(Model.Category)/@(Model.ProductName)">
 
 
     <div class="position-left heart">
         <img src="~/Assets/images/Icons/@Model.Heart" alt="">
 
     </div>
+    @for (int i = 0; i < Model.Color.Count; i++)
+    {
+        <div>
+            <img src="~/Assets/images/Product/colors/@Model.Color[i]" style="position: absolute;right: @(25+30*i)px;bottom: 30%;width:5%;height:5%;" value="@(Model.Category)/@(Model.ProductName)/@(Model.Color[i])" class="hoverchange"/>
+        </div>
+    }
+    @*<div class="position-right-1">
 
-    <div class="position-right-1">
+        </div>
+        <div class="position-right-2">
 
-    </div>
-    <div class="position-right-2">
-
-    </div>
-    <div class="position-right-3">
-        <img src="https://danigemma.com/images/color_chip/GE19107-08.png"
-             class="small-color">
-    </div>
+        </div>
+        <div class="position-right-3">
+            <img src="https://danigemma.com/images/color_chip/GE19107-08.png"
+                 class="small-color">
+        </div>*@
 
     <div class="right-side">
         <a href="">
@@ -55,4 +60,3 @@
 
 <br />
 <br />
-

@@ -16,7 +16,7 @@ namespace Gemma.ViewModel
         public string Heart { get; set; }
         public string Next { get; set; }
         public string Prev { get; set; }
-        public string[] Color { get; set; }
+        public List<string> Color { get; set; }
 
         public string Brand { get; set; }
         public string ProductName { get; set; }

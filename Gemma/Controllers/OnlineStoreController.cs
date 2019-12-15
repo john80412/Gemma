@@ -60,52 +60,33 @@ namespace Gemma.Controllers
 
 
 
-        public ActionResult FindBrand(string category)
+        public ActionResult FindBrand()
         {
 
             List<OnlineStore> result = null;
-            if (string.IsNullOrEmpty(category) || category.Trim().ToUpper() == "All")
-            {
                 //List<OnlineStore> result = null;
                 //var listStock = db.Stocks.ToList();
-                result = (from s in db.Stocks.Include(s => s.Product.Category)
-                          where s.Product.Category.CategoryID == s.Product.CategoryID
+                result = (from s in db.Stocks.Include(s => s.Product.Category).Include(s => s.Product)
                           select new OnlineStore
                           {
                               Id = s.ProductID,
                               Category = s.Product.Category.CategoryName,
-                              Picture = s.ImageName,
                               Heart = "/Heart_Mark.png",
                               Next = "next.png",
                               Prev = "prev.png",
                               Brand = "GEMMA LINN",
-                              ProductName = "ベロアバレエシューズ",
+                              ProductName = s.Product.ProductName,
                               Price = s.Product.UnitPrice,
                               Tax = " + TAX"
                           }
                                 ).Distinct().ToList();
-            }
-            else
+            foreach (var item in result)
             {
-                //List<OnlineStore> result = null;
-
-                result = (from s in db.Stocks.Include(s => s.Product.Category)
-                                where s.Product.Category.CategoryName == category
-                                select new OnlineStore
-                                {
-                                    Id = s.ProductID,
-                                    Category = s.Product.Category.CategoryName,
-                                    Picture = s.ImageName,
-                                    Heart = "/Heart_Mark.png",
-                                    Next = "next.png",
-                                    Prev = "prev.png",
-                                    Brand = "GEMMA LINN",
-                                    ProductName = "ベロアバレエシューズ",
-                                    Price = s.Product.UnitPrice,
-                                    Tax = " + TAX"
-                                }
-                                ).Distinct().ToList();
-
+                item.Color = new List<string>();
+                foreach (var colors in db.Stocks.Include(x => x.Color).Where(x => x.ProductID == item.Id && x.SizeID == 38))
+                {
+                    item.Color.Add(colors.Color.ColorImg + ".jpg");
+                }
             }
 
 

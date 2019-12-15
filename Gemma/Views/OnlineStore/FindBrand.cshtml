@@ -6,10 +6,23 @@
 
 @section topCSS{
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-    <link href="~/Assets/css/FixedMenu.css" rel="stylesheet" />
     <link href="~/Assets/css/OnlineStore.css" rel="stylesheet" />
 }
 
 @Html.Partial("OnlineStorePartial")
 @section endJS{
+    <script>
+        $(() => {
+            $('.hoverchange').hover(function () {
+                var path = `../../Assets/images/Product/${$(this).attr('value').replace('.jpg','')}/1.jpg`;
+                $(this).parent().parent().children('img').attr('src', path);
+            }
+            )
+            $('.hoverchange').mouseout(function () {
+                var path = `../../Assets/images/Product/${$(this).parent().parent().children('img').attr('value')}/index1.jpg`;
+                $(this).parent().parent().children('img').attr('src', path);
+            }
+            )
+        })
+    </script>
 }

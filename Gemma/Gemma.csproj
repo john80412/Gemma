@@ -376,6 +376,14 @@
     <Content Include="Assets\images\loading.gif" />
     <Content Include="Assets\images\next.png" />
     <Content Include="Assets\images\prev.png" />
+    <Content Include="Assets\images\Product\colors\black.jpg" />
+    <Content Include="Assets\images\Product\colors\blue.jpg" />
+    <Content Include="Assets\images\Product\colors\brown.jpg" />
+    <Content Include="Assets\images\Product\colors\gray.jpg" />
+    <Content Include="Assets\images\Product\colors\leopard.jpg" />
+    <Content Include="Assets\images\Product\colors\red.jpg" />
+    <Content Include="Assets\images\Product\colors\snake.jpg" />
+    <Content Include="Assets\images\Product\colors\white.jpg" />
     <Content Include="Assets\images\Product\FLATSHOES\Pointed ballet shoes\black\1.jpg" />
     <Content Include="Assets\images\Product\FLATSHOES\Pointed ballet shoes\black\2.jpg" />
     <Content Include="Assets\images\Product\FLATSHOES\Pointed ballet shoes\index1.jpg" />

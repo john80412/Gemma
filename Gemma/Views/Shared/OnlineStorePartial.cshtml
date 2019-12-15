@@ -1,8 +1,6 @@
 ﻿
 @model IEnumerable<Gemma.ViewModel.OnlineStore>
 
-@Html.Partial("IndexPartial")
-
 <div class="container">
 
     <div class="row">
@@ -17,7 +15,6 @@
                 @foreach (var photo in Model)
                 {
                     @Html.Partial("_OnlineStorePicturePartial", photo);
-
                 }
 
                 <br />
@@ -28,6 +25,4 @@
     </div>
 
 </div>
-
-@Html.Partial("_Footer")
 

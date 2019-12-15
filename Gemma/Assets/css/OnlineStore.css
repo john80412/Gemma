@@ -93,7 +93,7 @@ p {
     bottom: 30%;
 }
 
-.position-right-1 img{
+/*.position-right-1 img{
     position: absolute;
     right: 85px;
     bottom: 30%;
@@ -109,7 +109,7 @@ p {
     position: absolute;
     right: 25px;
     bottom: 30%;
-}
+}*/
 
 .right-side img, .left-side img {
     width: 12px;
