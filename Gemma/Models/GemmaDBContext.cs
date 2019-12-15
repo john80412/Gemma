@@ -140,7 +140,5 @@ namespace Gemma
                 .WithRequired(e => e.Size)
                 .WillCascadeOnDelete(false);
         }
-        public  DbSet<OrderViewModel> OrderView { get; set; }
-
     }
 }

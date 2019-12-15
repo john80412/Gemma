@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Gemma.Controllers
 {
+    [Authorize(Users = "Admin@gmail.com")]
     public class BackStageHomeController : Controller
     {
         // GET: BackStageHome

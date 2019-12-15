@@ -21,6 +21,8 @@ namespace Gemma.ViewModel
         public string Explain { get; set; }
         [Display(Name = "類別名稱")]
         public string CategoryName { get; set; }
+        [Display(Name = "圖片")]
+        public string PictureUrl { get; set; }
 
     }
 }

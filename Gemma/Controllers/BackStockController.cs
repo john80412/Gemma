@@ -12,6 +12,7 @@ using Gemma.ViewModel;
 
 namespace Gemma.Controllers
 {
+    [Authorize (Users ="Admin@gmail.com")]
     public class BackStockController : Controller
     {
         private StockRepository rep = new StockRepository();

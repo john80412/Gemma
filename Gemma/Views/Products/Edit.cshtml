@@ -52,6 +52,12 @@
                 @Html.ValidationMessageFor(model => model.Explain, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PictureUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="width:10%;height:100px;">
+                <img src="~/Assets/images/Product/@Model.PictureUrl" style="width:100%;height:100%;" />
+            </div>
+        </div>
 
 
         <div class="form-group">
