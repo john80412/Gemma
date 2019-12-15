@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Gemma.Controllers
 {
+    [Authorize(Users = "Admin@gmail.com")]
     public class OrderController : Controller
     {
         private OrderRepository rep = new OrderRepository();
@@ -31,6 +32,11 @@ namespace Gemma.Controllers
                 return HttpNotFound();
             }
             return View(orderDetail);
+        }
+        public ActionResult Revenu()
+        {
+            ViewData["Revenu"] = rep.GetLastYearRevenuJson();
+            return View();
         }
     }
 }

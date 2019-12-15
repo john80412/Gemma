@@ -3,20 +3,21 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
+<p>
+    @Html.ActionLink("去年各月份營業額", "Revenu", null, new { @class = "btn btn-primary ml-3" })
+</p>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
     <div class="form-inline">
         <div class="form-group">
-            客戶:@Html.TextBox("customerName")
+            <label class="btn btn-info ml-3">客戶</label>
+            @Html.TextBox("customerName", null, new { @class = "form-control ml-3" })
         </div>
 
         <div class="form-group">
-            產品:@Html.TextBox("productNames")
+            <label class="btn btn-info ml-3">產品</label>
+            @Html.TextBox("productNames", null, new { @class = "form-control ml-3" })
         </div>
 
         <div class="form-group" style="display:none">
@@ -25,11 +26,13 @@
 
         <div class="form-group">
             <div>
-                <input type="submit" value="查詢" class="btn btn-default" />
+                <input type="submit" value="查詢" class="btn btn-success ml-3" />
             </div>
         </div>
     </div>
+
 }
+<br>
 <table class="table">
     <tr>
         <th>
@@ -69,10 +72,29 @@
                 @Html.DisplayFor(modelItem => item.OrderDate)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { orderID=item.OrderID })
+                @Html.ActionLink("訂單明細", "Details", new { orderID = item.OrderID }, new { @class = "btn btn-info" })
             </td>
         </tr>
     }
 
 </table>
 @Html.PagedListPager(Model, page => Url.Action("Index", new RouteValueDictionary { { "customerName", (string)ViewBag.searchCustomerName }, { "productNames", (string)ViewBag.searchProductNames }, { "size", (string)ViewBag.searchSize }, { "page", page } }))
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

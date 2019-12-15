@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.Web.Mvc;
+using System.Web.Helpers;
+using Microsoft.Ajax.Utilities;
 
 namespace Gemma.Repository
 {
@@ -44,6 +47,16 @@ namespace Gemma.Repository
                 });
             }
             return orderDetails;
+        }
+        public string GetLastYearRevenuJson()
+        {
+            var orders = db.Database.SqlQuery<OrderViewModel>("exec OrderViewModel").AsQueryable().Where(o => o.OrderDate.Year == DateTime.Now.Year - 1);
+            var revenu = new List<decimal>();
+            for (int i = 1; i < 13; i++)
+            {
+                revenu.Add(orders.Where(o => o.OrderDate.Month == i).Sum(o => o.TotalPrice));
+            }
+            return Json.Encode(revenu);
         }
     }
 }

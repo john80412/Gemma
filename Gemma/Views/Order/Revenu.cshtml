@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Revenu";
+}
+
+<canvas id="revenu"></canvas>
+<p>
+    @Html.ActionLink("返回訂單管理", "Index",null,new { @class="btn btn-success"})
+</p>
+@section endJS{
+    <script>
+        var revenu = @ViewData["Revenu"];
+        var ctx = document.getElementById("revenu");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                datasets: [{
+                    label: "營業額",
+                    data: revenu,
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,165,0)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,255,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 26,
+                    text: '去年各月份營業額'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        fontColor: 'black',
+                    }
+                }
+            }
+        });
+    </script>
+}

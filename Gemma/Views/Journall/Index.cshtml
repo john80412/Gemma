@@ -5,13 +5,7 @@
 
 
 @section topCSS{
-    <link href="~/Assets/css/FixedMenu.css" rel="stylesheet" />
-
     <style>
-        body {
-            background-color: #F5F5F5;
-        }
-
         .pic {
             padding-right: 0;
             padding-left: 0;
@@ -56,15 +50,15 @@
     </style>
 }
 @section endJS{
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
+@*<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>*@
 <script>
     $(document).ready(function () {
-        $('img').mouseover(function () {
-            $('img').not(this).addClass("img_white")
+        $('.img1 img').mouseover(function () {
+            $('.img1 img').not(this).addClass("img_white")
             //$(".word").addClass("wordshow")
-        }), $('img').mouseout(function () {
-            $('img').not(this).removeClass("img_white")
+        }), $('.img1 img').mouseout(function () {
+            $('.img1 img').not(this).removeClass("img_white")
 
         });
         //$(".word").removeClass("wordshow")
@@ -83,16 +77,9 @@
         });
     }
 </script>
-
-
-
-
 }
 
-
-@Html.Partial("IndexPartial")
 <div class="container ">
-    <div class="row" style="height:200px"></div>
     <div class="row">
 
         <div class="col-md-3   pic">
@@ -141,7 +128,7 @@
             <div class="blanksml" style="height:45%"></div>
             <div class="img1">
                 <span id="7" class="word">2019.07.26 Daniellas Column Vol.1</span>
-                <img src="https://danigemma.com/cms/wp-content/uploads/2019/09/cut1_0033-683x1024.jpg" width="100%" height="100%" />
+                <img src="https://danigemma.com/cms/wp-content/uploads/2019/09/cut1_0033-683x1024.jpg" width="100%" height="100%"/>
             </div>
             <div class="blank"></div>
             <div class="img1">
@@ -155,3 +142,4 @@
 
 
 </div>
+<div style="height:700px"></div>

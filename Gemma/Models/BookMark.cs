@@ -9,6 +9,7 @@
     [Table("BookMark")]
     public partial class BookMark
     {
+        
         [Key]
         [Column(Order = 0)]
         public string CustomerID { get; set; }

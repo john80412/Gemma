@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Details";
 }
-
+<h2>庫存明細</h2>
+<hr>
 <dl class="dl-horizontal">
     <dt>
         @Html.DisplayNameFor(model => model.ProductName)
@@ -38,6 +39,6 @@
 
 </dl>
 <p>
-    @Html.ActionLink("編輯", "Edit", new RouteValueDictionary { { "productID", Model.ProductID }, { "colorID", Model.ColorID }, { "sizeID", Model.SizeID } }) |
-    @Html.ActionLink("返回庫存管理頁面", "Index")
+    @Html.ActionLink("編輯", "Edit", new RouteValueDictionary { { "productID", Model.ProductID }, { "colorID", Model.ColorID }, { "sizeID", Model.SizeID } }, new Dictionary<string, object> { { "class", "btn btn-info" } }) 
+    @Html.ActionLink("返回庫存管理頁面", "Index", null, new { @class = "btn btn-success" })
 </p>

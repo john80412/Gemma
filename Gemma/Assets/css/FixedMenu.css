@@ -1,9 +1,11 @@
 ﻿body {
     background-color: #F5F5F5;
 }
+
 li {
     list-style-type: none;
 }
+
 a {
     color: black;
     text-decoration: none;
@@ -14,17 +16,19 @@ a {
 /*消除下拉式選單的箭頭*/
 .dropdown-toggle::after {
     display: none
-} 
-/*CSS for _Header.cshtml*/
-.logo img{
-    height:75%;
-    width:75%;
 }
+/*CSS for _Header.cshtml*/
+.logo img {
+    height: 75%;
+    width: 75%;
+}
+
 .header {
     position: fixed;
     background-color: #F5F5F5;
     z-index: 9999;
 }
+
     .header a:hover {
         background-color: #F5F5F5;
         color: black;
@@ -35,8 +39,9 @@ a {
     left: 15%;
     position: relative;
 }
-.header-tool{
-    height:67px;
+
+.header-tool {
+    height: 67px;
 }
 
 .PaddingTopCSS {
@@ -58,35 +63,40 @@ a {
 /*CSS for _Footer.cshtml*/
 /*For IG*/
 .instagram-column {
-    padding-top:100px;
+    padding-top: 100px;
     width: 1600px;
     height: 450px;
     overflow: hidden;
 }
+
 .section-header {
     text-align: right;
 }
+
 .section-title a {
     font-size: 60px;
 }
+
 .instagram-list {
     width: 1300px;
     height: 360px;
     overflow: hidden;
 }
+
     .instagram-list ul {
         margin: 0;
         padding: 0px;
     }
-.instagram-list ul li {
-    list-style:none;
-    display: inline;
-   
-}
-.instagram-list ul li a img {
-    width: 180px;
-    height: 180px;
-}
+
+        .instagram-list ul li {
+            list-style: none;
+            display: inline;
+        }
+
+            .instagram-list ul li a img {
+                width: 180px;
+                height: 180px;
+            }
 
 
 /*For News Letter*/
@@ -97,59 +107,62 @@ a {
 
 .footer-form-email {
     text-align: center;
-    padding:50px;
+    padding: 50px;
 }
 
 .form-input-text {
-    text-align:center;
-    font-size:15px;
-    color:red;
+    text-align: center;
+    font-size: 15px;
+    color: red;
     width: 676px;
     height: 40px;
 }
+
 .form-btn-go {
     background-color: black;
     color: white;
     width: 200px;
     height: 38px;
-    font-size:15px;
+    font-size: 15px;
 }
 /*For Footer-support*/
 .footer-support {
     padding: 50px;
 }
+
 .footer-support {
     background-color: #FFFFFF;
 }
-    .title {
-        text-align:center;
-        
-    } 
+
+.title {
+    text-align: center;
+}
 
 .footer-support img {
-   
     height: 30%;
     width: 30%;
 }
 
 .footer-nav {
     background-color: lightsteelblue;
-
     text-align: center;
 }
+
     .footer-nav a {
         float: left;
         left: 35%;
         position: relative;
         padding: 40px;
-        
     }
 
     .footer-nav a {
         color: white;
-        
     }
-    .footer-nav a:hover {
-        background-color: lightsteelblue;
-        color: white;
-    }
+
+        .footer-nav a:hover {
+            background-color: lightsteelblue;
+            color: white;
+        }
+::placeholder {
+    color: red;
+}

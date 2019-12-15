@@ -5,7 +5,6 @@
 @{
     ViewBag.Title = "会員情報の編集 - Daniella & GEMMA（ダニエラ＆ジェマ）オンラインストア";
 }
-@Html.Partial("IndexPartial")
 
 <div class="container">
     <div class="row">
@@ -142,11 +141,9 @@
 @*<div>
         @Html.ActionLink("Back to List", "Index")
     </div>*@
-@Html.Partial("_Footer")
-<link href="~/Assets/CSS/FixedMenu.css" rel="stylesheet" />
-<link href="~/Assets/CSS/MemberCenter.css" rel="stylesheet" />
 
 @section topCSS{
+<link href="~/Assets/CSS/MemberCenter.css" rel="stylesheet" />
     <style>
         .menber_content * {
             margin-bottom: 15px;
@@ -163,7 +160,4 @@
             location.href = "/MemberCenter/OrderSearch/@Html.Raw(User.Identity.GetUserId())"
         });
     </script>
-    @Scripts.Render("~/bundles/jqueryval")
 }
-
-<script src="~/Assets/js/FixedMenuForIG.js"></script>

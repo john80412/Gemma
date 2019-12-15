@@ -229,6 +229,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BookMarkController.cs" />
     <Compile Include="Controllers\BackStageHomeController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\JournallController.cs" />
@@ -276,6 +277,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Size.cs" />
+    <Compile Include="Repository\BookMarkRespository.cs" />
     <Compile Include="Repository\MemberRepository.cs" />
     <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
@@ -284,6 +286,7 @@
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Repository\MemberCenterRepository.cs" />
+    <Compile Include="ViewModel\BookMarkViewModel.cs" />
     <Compile Include="ViewModel\MemberViewModel.cs" />
     <Compile Include="ViewModel\OrderDetailProduct.cs" />
     <Compile Include="ViewModel\OrderDetailViewModel.cs" />
@@ -294,6 +297,7 @@
   <ItemGroup>
     <Content Include="Assets\css\CollectionStyle.css" />
     <Content Include="Assets\css\FixedMenu.css" />
+    <Content Include="Assets\css\flexslider.css" />
     <Content Include="Assets\css\lightbox.css" />
     <Content Include="Assets\css\lightbox.min.css" />
     <Content Include="Assets\css\HomePage.css" />
@@ -319,6 +323,7 @@
     <Content Include="Assets\images\collection\7.jpg" />
     <Content Include="Assets\images\collection\8.jpg" />
     <Content Include="Assets\images\collection\9.jpg" />
+    <Content Include="Assets\images\empty.jpg" />
     <Content Include="Assets\images\HomePage\Collection.jpg" />
     <Content Include="Assets\images\HomePage\IGImg01.jpg" />
     <Content Include="Assets\images\HomePage\IGImg02.jpg" />
@@ -581,9 +586,10 @@
     <Content Include="Assets\images\Product\SANDAL\Square Tour Rabbit Fur Slipper Mule\white\2.jpg" />
     <Content Include="Assets\js\CollectionJS.js" />
     <Content Include="Assets\js\FixedMenuForIG.js" />
-    <Content Include="Assets\js\HomePageCarousel.js" />
     <Content Include="Assets\js\HomePageForCollection.js" />
     <Content Include="Assets\js\HomePageForItemsAndJournal.js" />
+    <Content Include="Assets\js\jquery.flexslider-min.js" />
+    <Content Include="Assets\js\jquery.flexslider.js" />
     <Content Include="Assets\js\lightbox-plus-jquery.js" />
     <Content Include="Assets\js\lightbox-plus-jquery.min.js" />
     <Content Include="Assets\js\lightbox.js" />
@@ -709,6 +715,7 @@
     <Content Include="Views\MemberCenter\MemberInfo.cshtml" />
     <Content Include="Views\MemberCenter\OrderSearch.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
+    <Content Include="Views\BookMark\Index.cshtml" />
     <Content Include="Views\OnlineStore\OnlineStore.cshtml" />
     <Content Include="Views\BackStageHome\Index.cshtml" />
     <Content Include="Views\BackStageHome\_Layout.cshtml" />
@@ -743,6 +750,7 @@
     <Content Include="Views\OnlineStore\OnlineStore_Category_SANDAL.cshtml" />
     <Content Include="Views\OnlineStore\OnlineStore_Category_BOOTS.cshtml" />
     <Content Include="Views\OnlineStore\FindBrand.cshtml" />
+    <Content Include="Views\Order\Revenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

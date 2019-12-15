@@ -5,7 +5,7 @@
 }
 
 <p>
-    @Html.ActionLink("新增", "Create")
+    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-primary ml-3" })
 </p>
 @using (Html.BeginForm())
 {
@@ -13,11 +13,13 @@
 
     <div class="form-inline">
         <div class="form-group">
-            產品:@Html.TextBox("productName")
+            <label class = "btn btn-info ml-3">產品</label>
+            @Html.TextBox("productName",null, new { @class = "form-control ml-3" })
         </div>
 
         <div class="form-group">
-            類別:@Html.TextBox("categoryName")
+            <label class = "btn btn-info ml-3">類別</label>
+            @Html.TextBox("categoryName",null, new { @class = "form-control ml-3" })
         </div>
 
         <div class="form-group" style="display:none">
@@ -26,11 +28,12 @@
 
         <div class="form-group">
             <div>
-                <input type="submit" value="查詢" class="btn btn-default" />
+                <input type="submit" value="查詢" class="btn btn-success ml-3" />
             </div>
         </div>
     </div>
 }
+<br>
 <table class="table">
     <tr>
         <th>
@@ -45,11 +48,14 @@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().CategoryName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PictureUrl)
+        </th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr style="height:100px;">
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
@@ -62,10 +68,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
+            <td style="width:10%;height:100px;">
+                <img src="~/Assets/images/Product/@item.PictureUrl" style="width:100%;height:100%;"/>
+            </td>
             <td>
-                @Html.ActionLink("編輯", "Edit", new { id = item.ProductID }) |
-                @Html.ActionLink("詳細資料", "Details", new { id = item.ProductID }) |
-                @Html.ActionLink("刪除", "Delete", new { id = item.ProductID })
+                @Html.ActionLink("編輯", "Edit", new { id = item.ProductID }, new { @class = "btn btn-success" })
+                @Html.ActionLink("詳細資料", "Details", new { id = item.ProductID }, new { @class = "btn btn-info" })
+                @Html.ActionLink("刪除", "Delete", new { id = item.ProductID }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

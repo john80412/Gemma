@@ -44,6 +44,6 @@
 
 </dl>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("編輯", "Edit", new { id = Model.Id },new { @class="btn btn-info"}) 
+    @Html.ActionLink("返回會員管理頁面", "Index",null,new { @class="btn btn-success"})
 </p>

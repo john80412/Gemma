@@ -23,7 +23,8 @@ namespace Gemma.Repository
                                Discount = p.Discount,
                                CategoryID = p.CategoryID,
                                Explain = p.Explain,
-                               CategoryName = p.Category.CategoryName
+                               CategoryName = p.Category.CategoryName,
+                               PictureUrl = p.Category.CategoryName + "/" + p.ProductName + "/index1.jpg"
                            };
             products = !string.IsNullOrEmpty(productName) ? products.Where(x => x.ProductName.ToUpper().Contains(productName.ToUpper())) : products;
             products = !string.IsNullOrEmpty(categoryName) ? products.Where(x => x.CategoryName.ToUpper().Contains(categoryName.ToUpper())) : products;
@@ -47,7 +48,8 @@ namespace Gemma.Repository
                 Discount = products.Discount,
                 CategoryID = products.CategoryID,
                 Explain = products.Explain,
-                CategoryName = products.Category.CategoryName
+                CategoryName = products.Category.CategoryName,
+                PictureUrl = products.Category.CategoryName + "/" + products.ProductName + "/index1.jpg"
             };
             return result;
         }

@@ -58,7 +58,8 @@ namespace Gemma.Repository
             var result = db.Stocks.Find(stock.ProductID, stock.ColorID, stock.SizeID);
             if (result != null)
             {
-                IsSuccess = false;
+                stock.Quantity = result.Quantity + stock.Quantity;
+                EditStock(stock);
                 return;
             }
             if (files.Length > 0)
@@ -76,7 +77,6 @@ namespace Gemma.Repository
                     file.SaveAs($"{path}/{++quantity}.jpg");
                 }
             }
-            IsSuccess = true;
             var data = new Stock
             {
                 ProductID = stock.ProductID,

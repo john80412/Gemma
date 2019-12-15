@@ -1,4 +1,4 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "_Header";
 }
@@ -7,24 +7,30 @@
     <br />
     <div class="row">
         <div class="logo">
-            <a href="#"><img src="~/Assets/images/Icons/logo.png" /></a>
+            <a href="@Url.Action("DaniellaGemma","Home")"><img src="~/Assets/images/Icons/logo.png" /></a>
 
         </div>
         <div class="header-nav row">
 
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">ONLINE STORE</a>
+                    <a class="nav-link active" href="@Url.Action("OnlineStore","OnlineStore")">ONLINE STORE</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">COLLECTION</a>
+                    <a class="nav-link" href="@Url.Action("CollectionPhotos","Collection")">COLLECTION</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">JOURNAL</a>
+                    <a class="nav-link" href="@Url.Action("Index","Journall")">JOURNAL</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">SHOP</a>
                 </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        <a class="nav-link" href="@Url.Action("MemberInfo", "MemberCenter", new { id = User.Identity.GetUserId() })">@User.Identity.Name</a>
+                    </li>
+                }
             </ul>
 
             @Html.Partial("_NewLoginPartial")
@@ -63,10 +69,12 @@
 </div>
 
 @section topCSS{
-    .fixed {
-    height: 70px !important;
-    animation-delay: 100ms;
-    }
+    <style>
+        .fixed {
+            height: 70px !important;
+            animation-delay: 100ms;
+        }
+    </style>
 }
 
 @section endJS{

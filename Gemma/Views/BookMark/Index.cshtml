@@ -1,0 +1,113 @@
+﻿
+
+@{
+    ViewBag.Title = "心願清單";
+}
+@Html.Partial("IndexPartial")
+
+@* 心願清單 *@
+<h2><b>B O O K M A R K</b></h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <span class="bkdele mt-5">
+            </span>
+        </div>
+        <div class="col-md-3">
+            <span class="bkdele mt-5">
+            </span>
+        </div>
+        <div class="col-md-3">
+            <span class="bkdele mt-5">
+            </span>
+        </div>
+        <div class="col-md-3">
+            <span class="bkdele mt-5">
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <img class="bk" src="~/Assets/images/Product/SNEAKER/Rabbit Fur Belt Sneaker/index1.jpg" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Assets/images/empty.jpg" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Assets/images/empty.jpg" />
+        </div>
+        <div class="col-md-3">
+            <img src="~/Assets/images/empty.jpg" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bkadd mt-5">
+                <span id="bkproductname"></span>
+                <span id="bkprice"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="bkadd mt-5">
+                <span id="bkproductname"></span>
+                <span id="bkprice"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="bkadd mt-5">
+                <span id="bkproductname"></span>
+                <span id="bkprice"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="bkadd mt-5">
+                <span id="bkproductname"></span>
+                <span id="bkprice"></span>
+            </div>
+        </div>
+
+        <div class=" offset-md-4 mt-5" id="bkbtn">
+            <button id="bkclear" type="button" class="btn btn-dark mr-5">BOOKMARKのクリア</button>
+            <button id="bkcontinue" type="button" class="btn btn-dark " href="https://danigemma.com/all/">買い物を続ける</button>
+        </div>
+    </div>
+</div>
+@Html.Partial("_Footer")
+
+
+@section topCSS {
+    <link href="~/Assets/CSS/FixedMenu.css" rel="stylesheet" />
+    <style>
+        h2 {
+            text-align: center;
+            font-size: 65px;
+            margin-bottom: 40px;
+        }
+
+        .row img {
+            height: 100%;
+            width: 100%;
+        }
+
+        #bkbtn button {
+            font-size: 15px;
+            padding: 10px 30px;
+            background-color: black;
+        }
+    </style>
+}
+
+@section endJS{
+    <script src="~/Assets/js/FixedMenuForIG.js"></script>
+    <script>
+        $(() => {
+            $('.row .bk').hover(function () {
+                $(this).attr('src', '../../Assets/images/Product/SNEAKER/Rabbit Fur Belt Sneaker/index2.jpg')
+            })
+            $('.row .bk').mouseout(function () {
+                $(this).attr('src', '../../Assets/images/Product/SNEAKER/Rabbit Fur Belt Sneaker/index1.jpg')
+            })
+        })
+    </script>
+}
