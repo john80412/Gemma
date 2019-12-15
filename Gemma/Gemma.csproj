@@ -279,6 +279,7 @@
     <Compile Include="Models\Size.cs" />
     <Compile Include="Repository\BookMarkRespository.cs" />
     <Compile Include="Repository\MemberRepository.cs" />
+    <Compile Include="Repository\OnlineStoreRepository.cs" />
     <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\StockRepository.cs" />
@@ -288,6 +289,8 @@
     <Compile Include="Repository\MemberCenterRepository.cs" />
     <Compile Include="ViewModel\BookMarkViewModel.cs" />
     <Compile Include="ViewModel\MemberViewModel.cs" />
+    <Compile Include="ViewModel\OnlineStoreProductVM.cs" />
+    <Compile Include="ViewModel\OnlineStoreStoredProcedureVM.cs" />
     <Compile Include="ViewModel\OrderDetailProduct.cs" />
     <Compile Include="ViewModel\OrderDetailViewModel.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />
@@ -298,6 +301,8 @@
     <Content Include="Assets\css\CollectionStyle.css" />
     <Content Include="Assets\css\FixedMenu.css" />
     <Content Include="Assets\css\flexslider.css" />
+    <Content Include="Assets\css\ForOnlineStoreCdnFontAwesome.min.css" />
+    <Content Include="Assets\css\ForOnlineStoreCdnW3.css" />
     <Content Include="Assets\css\lightbox.css" />
     <Content Include="Assets\css\lightbox.min.css" />
     <Content Include="Assets\css\HomePage.css" />
@@ -461,6 +466,7 @@
     <Content Include="Assets\images\Product\MANNISH\Round toe platform loafers\leopard\1.jpg" />
     <Content Include="Assets\images\Product\MANNISH\Round toe platform loafers\leopard\2.jpg" />
     <Content Include="Assets\images\Product\MANNISH\Round toe platform loafers\snake\1.jpg" />
+    <Content Include="Assets\images\Product\OnlineStore.jpg" />
     <Content Include="Assets\images\Product\PUMPS\45mm chunky heel V cut pointed pumps\black\1.jpg" />
     <Content Include="Assets\images\Product\PUMPS\45mm chunky heel V cut pointed pumps\brown\1.jpg" />
     <Content Include="Assets\images\Product\PUMPS\45mm chunky heel V cut pointed pumps\brown\2.jpg" />
@@ -759,6 +765,8 @@
     <Content Include="Views\OnlineStore\OnlineStore_Category_BOOTS.cshtml" />
     <Content Include="Views\OnlineStore\FindBrand.cshtml" />
     <Content Include="Views\Order\Revenu.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStorePage.cshtml" />
+    <Content Include="Views\Shared\_OnlineStoreTestPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
