@@ -20,12 +20,34 @@ namespace Gemma
                 url: "shoes/{CategoryName}-{ColorName}/{OrderBy}",
                 defaults: new { controller = "OnlineStore", action = "OnlineStorePage", CategoryName = "ALL", ColorName = "ALL", OrderBy = UrlParameter.Optional }
             );
+                name: "HomePage",
+                url: "DaniellaGemma",
+                defaults: new
+                {
+                    Controller = "Home",
+                    action = "DaniellaGemma",
+                }
+                );
 
             routes.MapRoute(
                 name: "MemberCenter",
                 url: "MemberCenter/{action}/{id}",
                 defaults: new { controller = "MemberCenter", action = "MemberInfo", id = UrlParameter.Optional }
             );
+
+
+            routes.MapRoute(
+                name: "FindCategory",
+                url: "DaniellaGemma/OnlineStore/{category}",
+                defaults: new
+                {
+                    controller = "OnlineStore",
+                    action = "FindBrand",
+                    category = UrlParameter.Optional
+                }
+                );
+
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

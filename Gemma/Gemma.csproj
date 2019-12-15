@@ -238,6 +238,7 @@
     <Compile Include="Controllers\OnlineStoreController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Helper\asterisk.cs" />
     <Compile Include="Migrations\201911300636204_AddFieldDateOfBirth.cs" />
     <Compile Include="Migrations\201911300636204_AddFieldDateOfBirth.Designer.cs">
@@ -269,6 +270,7 @@
     <Compile Include="Models\MetaData\AspNetUserMD.cs" />
     <Compile Include="Models\MetaData\MemberCenter.cs" />
     <Compile Include="Models\MetaData\OrderMD.cs" />
+    <Compile Include="ViewModel\OnlineStore.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
@@ -306,6 +308,7 @@
     <Content Include="Assets\css\HomePage.css" />
     <Content Include="Assets\css\MemberCenter.css" />
     <Content Include="Assets\css\OnlineStore.css" />
+    <Content Include="Assets\css\Shop.css" />
     <Content Include="Assets\images\close.png" />
     <Content Include="Assets\images\collection\1.jpg" />
     <Content Include="Assets\images\collection\10.jpg" />
@@ -378,6 +381,14 @@
     <Content Include="Assets\images\loading.gif" />
     <Content Include="Assets\images\next.png" />
     <Content Include="Assets\images\prev.png" />
+    <Content Include="Assets\images\Product\colors\black.jpg" />
+    <Content Include="Assets\images\Product\colors\blue.jpg" />
+    <Content Include="Assets\images\Product\colors\brown.jpg" />
+    <Content Include="Assets\images\Product\colors\gray.jpg" />
+    <Content Include="Assets\images\Product\colors\leopard.jpg" />
+    <Content Include="Assets\images\Product\colors\red.jpg" />
+    <Content Include="Assets\images\Product\colors\snake.jpg" />
+    <Content Include="Assets\images\Product\colors\white.jpg" />
     <Content Include="Assets\images\Product\FLATSHOES\Pointed ballet shoes\black\1.jpg" />
     <Content Include="Assets\images\Product\FLATSHOES\Pointed ballet shoes\black\2.jpg" />
     <Content Include="Assets\images\Product\FLATSHOES\Pointed ballet shoes\index1.jpg" />
@@ -741,6 +752,18 @@
     <Content Include="Views\Order\_ViewStart.cshtml" />
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\Shared\_OrderDetailPartial.cshtml" />
+    <Content Include="Views\Shared\_OnlineStorePicturePartial.cshtml" />
+    <Content Include="Views\Shop\Shop.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore_Category_PUMPS.cshtml" />
+    <Content Include="Views\Shared\_BigPicture_and_SelectFormPartiel.cshtml" />
+    <Content Include="Views\Shared\_Left_CategoryPartial.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore_Category_FLATSHOES.cshtml" />
+    <Content Include="Views\Shared\OnlineStorePartial.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore_Category_MANNISH.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore_Category_SNEAKER.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore_Category_SANDAL.cshtml" />
+    <Content Include="Views\OnlineStore\OnlineStore_Category_BOOTS.cshtml" />
+    <Content Include="Views\OnlineStore\FindBrand.cshtml" />
     <Content Include="Views\Order\Revenu.cshtml" />
     <Content Include="Views\OnlineStore\OnlineStorePage.cshtml" />
     <Content Include="Views\Shared\_OnlineStoreTestPartial.cshtml" />

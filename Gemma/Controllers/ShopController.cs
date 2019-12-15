@@ -6,11 +6,14 @@ using System.Web.Mvc;
 
 namespace Gemma.Controllers
 {
-    [Authorize(Users = "Admin@gmail.com")]
-    public class BackStageHomeController : Controller
+    public class ShopController : Controller
     {
-        // GET: BackStageHome
+        // GET: Shop
         public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Shop()
         {
             return View();
         }

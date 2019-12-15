@@ -1,0 +1,97 @@
+﻿body {
+    color: rgb(25, 25, 25);
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    line-height: 2;
+    background-color: #F5F5F5;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #000000;
+}
+
+/*section {
+    border: black 1px solid;
+    margin-bottom: 100px;
+    background: black;
+}*/
+
+/*footer {
+    margin-top: -100px;
+}*/
+
+
+.fixed {
+    height: 70px !important;
+    animation-delay: 100ms;
+}
+
+.photofixed {
+    height: 150px !important;
+    width: 200px !important;
+}
+
+/*img {
+    height: 100px;
+    width: 150px;
+}*/
+
+.navtop {
+    height: 100px;
+}
+
+.allcontexter {
+    width: 1180px;
+    margin: 0 auto;
+}
+
+.shoplist-page .shoplist-info {
+    padding: 0;
+    margin: 2em 0 0 0;
+    line-height: 2.5;
+    font-size: 12px;
+}
+
+.shoplist-title {
+    margin: 0 0 60px;
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    line-height: 1;
+    text-align: center;
+}
+
+.navbar {
+    width: 100%;
+    position: fixed;
+    display: table-cell;
+}
+
+.top {
+    height: 100px;
+    background: #f4f0e7;
+    color: #000;
+}
+
+.padding{
+    padding-left:10%;
+}
+
+/*nav ul {
+    position: absolute;
+    top: 30%;
+    right: 5%;
+    transform: translater(-50%);
+}*/
+
+    /*nav ul li {
+        display: inline-block;
+        width: 130px;
+    }*/
+
+* {
+    transition: 100ms;
+}

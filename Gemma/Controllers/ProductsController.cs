@@ -12,6 +12,7 @@ using Gemma.ViewModel;
 
 namespace Gemma.Controllers
 {
+    [Authorize(Users = "Admin@gmail.com")]
     public class ProductsController : Controller
     {
         private ProductRepository rep = new ProductRepository();

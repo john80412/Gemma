@@ -48,11 +48,14 @@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().CategoryName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PictureUrl)
+        </th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr style="height:100px;">
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
@@ -64,6 +67,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td style="width:10%;height:100px;">
+                <img src="~/Assets/images/Product/@item.PictureUrl" style="width:100%;height:100%;"/>
             </td>
             <td>
                 @Html.ActionLink("編輯", "Edit", new { id = item.ProductID }, new { @class = "btn btn-success" })
