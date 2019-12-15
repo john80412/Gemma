@@ -15,11 +15,12 @@ namespace Gemma
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "OnlineStorePage",
+            //    url: "shoes/{CategoryName}-{ColorName}/{OrderBy}",
+            //    defaults: new { controller = "OnlineStore", action = "OnlineStorePage", CategoryName = "ALL", ColorName = "ALL", OrderBy = UrlParameter.Optional }
+            //);
             routes.MapRoute(
-                name: "OnlineStorePage",
-                url: "shoes/{CategoryName}-{ColorName}/{OrderBy}",
-                defaults: new { controller = "OnlineStore", action = "OnlineStorePage", CategoryName = "ALL", ColorName = "ALL", OrderBy = UrlParameter.Optional }
-            );
                 name: "HomePage",
                 url: "DaniellaGemma",
                 defaults: new

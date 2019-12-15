@@ -9,8 +9,6 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using PagedList;
 using System.IO;
-
-using Gemma.ViewModel;
 using Gemma.Repository;
 
 namespace Gemma.Controllers
@@ -18,41 +16,43 @@ namespace Gemma.Controllers
     public class OnlineStoreController : Controller
     {
         private OnlineStoreRepository repo = new OnlineStoreRepository();
-        // GET: OnlineStore
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        /////呼叫PictureCatch()方法
-        //public ActionResult OnlineStore()
-        //{
-        //    return View(PictureCatch());
-        //}
-
-        /////呼叫OnlineStore_Category_pumps()方法
-        //public ActionResult OnlineStore_Category_PUMPS()
-        //{
-        //    return View(Category_pumps());
-        //}
-
-        //public ActionResult OnlineStore_Category_FLATSHOES()
-        //{
-        //    return View(Category_FLATSHOES());
-        //}
-
-        //public ActionResult OnlineStore_Category_MANNISH()
-        //{
-        //    return View(Category_MANNISH());
-        //}
-
-        //public ActionResult OnlineStore_Category_SNEAKER()
-        //{
-        //    return View(Category_SNEAKER());
-        //}
-
-        public ActionResult OnlineStorePage(string CategoryName, string ColorName, string OrderBy)
+        public ActionResult FindBrand(string CategoryName, string ColorName, string OrderBy)
         {
+            if (CategoryName == null && ColorName == null && OrderBy == null)
+            {
+                List<OnlineStoreProductVM> result = null;
+                //List<OnlineStore> result = null;
+                //var listStock = db.Stocks.ToList();
+                result = (from s in repo.db.Stocks.Include(s => s.Product.Category).Include(s => s.Product)
+                          select new OnlineStoreProductVM
+                          {
+                              ProductId = s.ProductID,
+                              CategoryName = s.Product.Category.CategoryName,
+                              ProductName = s.Product.ProductName,
+                              UnitPrice = s.Product.UnitPrice
+                          }
+                                ).Distinct().ToList();
+                foreach (var item in result)
+                {
+                    item.ColorName = new List<string>();
+                    foreach (var colors in repo.db.Stocks.Include(x => x.Color).Where(x => x.ProductID == item.ProductId && x.SizeID == 38))
+                    {
+                        item.ColorName.Add(colors.Color.ColorImg + ".jpg");
+                    }
+                }
+
+                Session["ProductModel"] = result;
+                //if (result.Count == 0)
+                //{
+                //    return View(result);
+                //}
+                //else
+                //{
+                //    ViewBag.Header = result[0].Brand;
+                //}
+
+                return View(result);
+            }
             if (OrderBy == "LowToHigh")
             {
                 Session["PriceOrderBy"] = OrderBy;
@@ -130,310 +130,20 @@ namespace Gemma.Controllers
                 Session["ProductModel"] = ProductsVM;
             }
 
-
+            foreach (var item in ProductsVM)
+            {
+                for (int i = 0; i < item.ColorName.Count; i++)
+                {
+                    item.ColorName[i] += ".jpg";
+                }
+            }
             return View(ProductsVM);
 
         }
 
-        public ActionResult FindBrand()
-        {
-
-            List<OnlineStore> result = null;
-                //List<OnlineStore> result = null;
-                //var listStock = db.Stocks.ToList();
-                result = (from s in db.Stocks.Include(s => s.Product.Category).Include(s => s.Product)
-                          select new OnlineStore
-                          {
-                              Id = s.ProductID,
-                              Category = s.Product.Category.CategoryName,
-                              Heart = "/Heart_Mark.png",
-                              Next = "next.png",
-                              Prev = "prev.png",
-                              Brand = "GEMMA LINN",
-                              ProductName = s.Product.ProductName,
-                              Price = s.Product.UnitPrice,
-                              Tax = " + TAX"
-                          }
-                                ).Distinct().ToList();
-            foreach (var item in result)
-            {
-                item.Color = new List<string>();
-                foreach (var colors in db.Stocks.Include(x => x.Color).Where(x => x.ProductID == item.Id && x.SizeID == 38))
-                {
-                    item.Color.Add(colors.Color.ColorImg + ".jpg");
-                }
-            }
-
-
-            //if (result.Count == 0)
-            //{
-            //    return View(result);
-            //}
-            //else
-            //{
-            //    ViewBag.Header = result[0].Brand;
-            //}
-
-            return View(result);
-        }
 
 
 
 
-        //public List<OnlineStore> PictureCatch()
-        //{
-        //    #region 暫時收
-        //    //List<OnlineStore> pictures = new List<OnlineStore>
-        //    //{
-        //    //    new OnlineStore{Id = 1,Picture="/SNEAKER/Python pattern slip-ons/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    ///SNEAKER/Python pattern slip-ons/index1.jpg
-        //    //    new OnlineStore{Id = 2,Picture="/FLATSHOES/Square toe V-cut 2 way flat shoes/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    ///FLATSHOES/Square toe V-cut 2 way flat shoes/index1.jpg
-        //    //    new OnlineStore{Id = 3,Picture="/BOOTS/Chunky heel ankle boots/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///BOOTS/Chunky heel ankle boots/index1.jpg
-
-        //    //    new OnlineStore{Id = 4,Picture="/BOOTS/Studded short boots/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///BOOTS/Studded short boots/index1.jpg
-        //    //    new OnlineStore{Id = 5,Picture="/BOOTS/Side cut ankle boots/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///BOOTS/Side cut ankle boots/index1.jpg
-        //    //    new OnlineStore{Id = 6,Picture="/BOOTS/Suede stretch boots/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///BOOTS/Suede stretch boots/index1.jpg
-
-        //    //    new OnlineStore{Id = 7,Picture="/BOOTS/Python pattern stretch boots/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///BOOTS/Python pattern stretch boots/index1.jpg
-        //    //    new OnlineStore{Id = 8,Picture="/BOOTS/Square toe short boots/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///BOOTS/Square toe short boots/index1.jpg
-        //    //    new OnlineStore{Id = 9,Picture="index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    //從缺??
-
-        //    //    new OnlineStore{Id = 10,Picture="/PUMPS/Ankle strap pointed double line pumps/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///PUMPS/Ankle strap pointed double line pumps/index1.jpg
-        //    //    new OnlineStore{Id = 11,Picture="/PUMPS/45mm chunky heel V cut pointed pumps/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///PUMPS/45mm chunky heel V cut pointed pumps/index1.jpg
-        //    //    new OnlineStore{Id = 12,Picture="/PUMPS/Pointed enamel loafers pumps/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///PUMPS/Pointed enamel loafers pumps/index1.jpg
-
-        //    //    new OnlineStore{Id = 13,Picture="index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    //從缺??
-        //    //    new OnlineStore{Id = 14,Picture="/PUMPS/45mm pointed pumps/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///PUMPS/45mm pointed pumps/index1.jpg
-        //    //    new OnlineStore{Id = 15,Picture="/PUMPS/65mm pointed pumps/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///PUMPS/65mm pointed pumps/index1.jpg
-
-        //    //    new OnlineStore{Id = 16,Picture="/PUMPS/Pointed shoe tea pumps/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///PUMPS/Pointed shoe tea pumps/index1.jpg
-        //    //    new OnlineStore{Id = 17,Picture="/FLATSHOES/Suede ribbon pumps/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    ///FLATSHOES/Suede ribbon pumps/index1.jpg
-        //    //    new OnlineStore{Id = 18,Picture="index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="Daniella Tam"},
-        //    //    //從缺??
-
-        //    //    new OnlineStore{Id = 19,Picture="/FLATSHOES/Pointed ballet shoes/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    ///FLATSHOES/Pointed ballet shoes/index1.jpg
-        //    //    new OnlineStore{Id = 20,Picture="/FLATSHOES/Poodle separate flat pumps/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    ///FLATSHOES/Poodle separate flat pumps/index1.jpg
-        //    //    new OnlineStore{Id = 21,Picture="/FLATSHOES/Square ballet shoes studs heel/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    ///FLATSHOES/Square ballet shoes studs heel/index1.jpg
-
-        //    //    new OnlineStore{Id = 22,Picture="/FLATSHOES/Star motif opera shoes/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    ///FLATSHOES/Star motif opera shoes/index1.jpg
-        //    //    new OnlineStore{Id = 23,Picture="/MANNISH/2WAY bit loafer/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    ///MANNISH/2WAY bit loafer/index1.jpg
-        //    //    new OnlineStore{Id = 24,Picture="/MANNISH/2WAY suede loafers/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    ///MANNISH/2WAY suede loafers/index1.jpg
-
-        //    //    new OnlineStore{Id = 25,Picture="/MANNISH/Bit heel loafers/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    // /MANNISH/Bit heel loafers/index1.jpg
-        //    //    new OnlineStore{Id = 26,Picture="/MANNISH/Lace-up shoes/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    // /MANNISH/Lace-up shoes/index1.jpg
-        //    //    new OnlineStore{Id = 27,Picture="/MANNISH/Medallion platform lace-up shoes/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    // /MANNISH/Medallion platform lace-up shoes/index1.jpg
-
-        //    //    new OnlineStore{Id = 28,Picture="/MANNISH/Round toe platform loafers/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    // /MANNISH/Round toe platform loafers/index1.jpg
-        //    //    new OnlineStore{Id = 29,Picture="/SANDAL/2way ribbon mules/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    // /SANDAL/2way ribbon mules/index1.jpg
-        //    //    new OnlineStore{Id = 30,Picture="/SANDAL/Pointed Rabbit Farm Mule/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    // /SANDAL/Pointed Rabbit Farm Mule/index1.jpg
-
-        //    //    new OnlineStore{Id = 31,Picture="/SANDAL/Square Tour Rabbit Fur Slipper Mule/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    // /SANDAL/Square Tour Rabbit Fur Slipper Mule/index1.jpg
-        //    //    new OnlineStore{Id = 32,Picture="/SNEAKER/Eco Fur & Pony Slip-ons/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    // /SNEAKER/Eco Fur & Pony Slip-ons/index1.jpg
-        //    //    new OnlineStore{Id = 33,Picture="/SNEAKER/Knit high-top sneakers/index1.jpg",Heart="/Heart_Mark.png",Next="next.png",Prev="prev.png",Brand="GEMMA LINN"},
-        //    //    // /SNEAKER/Knit high-top sneakers/index1.jpg
-
-        //    //};
-        //    #endregion
-
-        //    List<OnlineStore> result = new List<OnlineStore>();
-
-        //    //var listStock = db.Stocks.ToList();
-        //    var listStock = from s in db.Stocks.Include(s => s.Product.Category)
-        //                    where (s.Product.Category.CategoryID == s.Product.CategoryID)
-        //                    select new OnlineStore
-        //                    {
-        //                        Id = s.ProductID,
-        //                        Category = s.Product.Category.CategoryName,
-        //                        Picture = s.ImageName,
-        //                        Heart = "/Heart_Mark.png",
-        //                        Next = "next.png",
-        //                        Prev = "prev.png",
-        //                        Brand = "GEMMA LINN",
-        //                        ProductName = "ベロアバレエシューズ",
-        //                        Price = s.Product.UnitPrice,
-        //                        Tax = " + TAX"
-        //                    };
-
-
-        //    //foreach (var item in listStock)
-        //    //{
-        //    //    var storeItem = new OnlineStore()
-        //    //    {
-        //    //        Id = item.ProductID,
-        //    //        Picture = item.ImageName,           
-        //    //        Heart = "/Heart_Mark.png",
-        //    //        Next = "next.png",
-        //    //        Prev = "prev.png",
-        //    //        Brand = "GEMMA LINN"
-        //    //    };
-
-        //    //    result.Add(storeItem);
-
-        //    //}
-
-        //    return listStock.Distinct().ToList();
-        //}
-
-        //public List<OnlineStore> Category_pumps()
-        //{
-        //    List<OnlineStore> result = new List<OnlineStore>();
-
-        //    var listStock = from s in db.Stocks.Include(s => s.Product.Category)
-        //                    where (s.Product.Category.CategoryID == 1)
-        //                    select new OnlineStore
-        //                    {
-        //                        Id = s.ProductID,
-        //                        Category = s.Product.Category.CategoryName,
-        //                        Picture = s.ImageName,
-        //                        Heart = "/Heart_Mark.png",
-        //                        Next = "next.png",
-        //                        Prev = "prev.png",
-        //                        Brand = "GEMMA LINN",
-        //                        ProductName = "ベロアバレエシューズ",
-        //                        Price = s.Product.UnitPrice,
-        //                        Tax = " + TAX"
-        //                    };
-        //    return listStock.Distinct().ToList();
-        //}
-
-        //public List<OnlineStore> Category_FLATSHOES()
-        //{
-        //    List<OnlineStore> result = new List<OnlineStore>();
-
-        //    var listStock = from s in db.Stocks.Include(s => s.Product.Category)
-        //                    where (s.Product.Category.CategoryID == 2)
-        //                    select new OnlineStore
-        //                    {
-        //                        Id = s.ProductID,
-        //                        Category = s.Product.Category.CategoryName,
-        //                        Picture = s.ImageName,
-        //                        Heart = "/Heart_Mark.png",
-        //                        Next = "next.png",
-        //                        Prev = "prev.png",
-        //                        Brand = "GEMMA LINN",
-        //                        ProductName = "ベロアバレエシューズ",
-        //                        Price = s.Product.UnitPrice,
-        //                        Tax = " + TAX"
-        //                    };
-        //    return listStock.Distinct().ToList();
-        //}
-
-        //public List<OnlineStore> Category_MANNISH()
-        //{
-        //    List<OnlineStore> result = new List<OnlineStore>();
-
-        //    var listStock = from s in db.Stocks.Include(s => s.Product.Category)
-        //                    where (s.Product.Category.CategoryID == 3)
-        //                    select new OnlineStore
-        //                    {
-        //                        Id = s.ProductID,
-        //                        Category = s.Product.Category.CategoryName,
-        //                        Picture = s.ImageName,
-        //                        Heart = "/Heart_Mark.png",
-        //                        Next = "next.png",
-        //                        Prev = "prev.png",
-        //                        Brand = "GEMMA LINN",
-        //                        ProductName = "ベロアバレエシューズ",
-        //                        Price = s.Product.UnitPrice,
-        //                        Tax = " + TAX"
-        //                    };
-        //    return listStock.Distinct().ToList();
-        //}
-
-        //public List<OnlineStore> Category_SNEAKER()
-        //{
-        //    List<OnlineStore> result = new List<OnlineStore>();
-
-        //    var listStock = from s in db.Stocks.Include(s => s.Product.Category)
-        //                    where (s.Product.Category.CategoryID == 4)
-        //                    select new OnlineStore
-        //                    {
-        //                        Id = s.ProductID,
-        //                        Category = s.Product.Category.CategoryName,
-        //                        Picture = s.ImageName,
-        //                        Heart = "/Heart_Mark.png",
-        //                        Next = "next.png",
-        //                        Prev = "prev.png",
-        //                        Brand = "GEMMA LINN",
-        //                        ProductName = "ベロアバレエシューズ",
-        //                        Price = s.Product.UnitPrice,
-        //                        Tax = " + TAX"
-        //                    };
-        //    return listStock.Distinct().ToList();
-        //}
-
-        //public List<OnlineStore> Category_SANDAL()
-        //{
-        //    List<OnlineStore> result = new List<OnlineStore>();
-
-        //    var listStock = from s in db.Stocks.Include(s => s.Product.Category)
-        //                    where (s.Product.Category.CategoryID == 5)
-        //                    select new OnlineStore
-        //                    {
-        //                        Id = s.ProductID,
-        //                        Category = s.Product.Category.CategoryName,
-        //                        Picture = s.ImageName,
-        //                        Heart = "/Heart_Mark.png",
-        //                        Next = "next.png",
-        //                        Prev = "prev.png",
-        //                        Brand = "GEMMA LINN",
-        //                        ProductName = "ベロアバレエシューズ",
-        //                        Price = s.Product.UnitPrice,
-        //                        Tax = " + TAX"
-        //                    };
-        //    return listStock.Distinct().ToList();
-        //}
-
-        //public List<OnlineStore> Category_BOOTS()
-        //{
-        //    List<OnlineStore> result = new List<OnlineStore>();
-
-        //    var listStock = from s in db.Stocks.Include(s => s.Product.Category)
-        //                    where (s.Product.Category.CategoryID == 6)
-        //                    select new OnlineStore
-        //                    {
-        //                        Id = s.ProductID,
-        //                        Category = s.Product.Category.CategoryName,
-        //                        Picture = s.ImageName,
-        //                        Heart = "/Heart_Mark.png",
-        //                        Next = "next.png",
-        //                        Prev = "prev.png",
-        //                        Brand = "GEMMA LINN",
-        //                        ProductName = "ベロアバレエシューズ",
-        //                        Price = s.Product.UnitPrice,
-        //                        Tax = " + TAX"
-        //                    };
-        //    return listStock.Distinct().ToList();
-        //}
     }
 }

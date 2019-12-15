@@ -1,18 +1,133 @@
 ﻿
+@model IEnumerable<Gemma.ViewModel.OnlineStoreProductVM>
 @{
     ViewBag.Title = "FindBrand";
+    if (Session["CategoryName"] == null && Session["ColorName"] == null)
+    {
+        Session["CategoryName"] = "ALL";
+        Session["ColorName"] = "ALL";
+    }
+
+    string None = Url.Action("FindBrand", "OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName = Session["ColorName"].ToString(), OrderBy = "None" });
+    string LowToHigh = Url.Action("FindBrand", "OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName = Session["ColorName"].ToString(), OrderBy = "LowToHigh" });
+    string HighToLow = Url.Action("FindBrand", "OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName = Session["ColorName"].ToString(), OrderBy = "HighToLow" });
+
+    if (Session["PriceOrderBy"] == null)
+    {
+        Session["PriceOrderBy"] = "None";
+    }
 }
-@model IEnumerable<Gemma.ViewModel.OnlineStore>
 
 @section topCSS{
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="~/Assets/css/OnlineStore.css" rel="stylesheet" />
+    <style>
+        #category-@Session["CategoryName"].ToString() {
+            text-decoration: underline;
+        }
+        #color-@Session["ColorName"].ToString() {
+            text-decoration: underline;
+        }
+    </style>
 }
 
-@Html.Partial("OnlineStorePartial")
+<div class="container">
+
+    <div class="row">
+
+        <div class="col">
+
+            <div class="left-list">
+                BRAND ——
+                <ul>
+                    <li class="all-underline">ALL</li>
+                    <li>Daniella Tam</li>
+                    <li>GEMMA LINN</li>
+                </ul>
+            </div>
+
+            <div class="left-list">
+                CATEGORY ——
+                <ul>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = "ALL", ColorName = Session["ColorName"].ToString()})'" id="category-ALL">ALL</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = "PUMPS", ColorName = Session["ColorName"].ToString()})'" id="category-PUMPS">PUMPS</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = "FLATSHOES", ColorName = Session["ColorName"].ToString()})'" id="category-FLATSHOES">FLAT SHOES</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = "MANNISH", ColorName = Session["ColorName"].ToString()})'" id="category-MANNISH">MANNISH</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = "SNEAKER", ColorName = Session["ColorName"].ToString()})'" id="category-SNEAKER">SNEAKER</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = "SANDAL", ColorName = Session["ColorName"].ToString()})'" id="category-SANDAL">SANDAL</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = "BOOTS", ColorName = Session["ColorName"].ToString()})'" id="category-BOOTS">BOOTS</li>
+                </ul>
+            </div>
+
+            <div class="left-list">
+                COLOR ——
+                <ul>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName ="ALL"})'" id="color-ALL">ALL</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName ="BLACK"})'" id="color-BLACK">BLACK</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName ="GRAY"})'" id="color-GRAY">GRAY</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName ="WHITE"})'" id="color-WHITE">WHITE</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName ="BROWN"})'" id="color-BROWN">BROWN</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName ="RED"})'" id="color-RED">RED</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName ="BLUE"})'" id="color-BLUE">BLUE</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName ="SNAKE"})'" id="color-SNAKE">SNAKE</li>
+                    <li onclick="location.href='@Url.Action("FindBrand","OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName ="LEOPARD"})'" id="color-LEOPARD">LEOPARD</li>
+                </ul>
+            </div>
+
+            <div class="left-list">
+                PRICE ——
+
+            </div>
+
+        </div>
+        <div class="col">
+
+            <!--右上大圖片-->
+            <div><img src="https://danigemma.com/images/shop/category/category-all.jpg" class="bigphoto"></div>
+            <br />
+            <br />
+            <div class="p-class">
+                <p>
+                    エレガントなデザインとインポートのようなフォルムが魅力のDaniella Tam
+                    （ダニエラ タム）、程よく辛口でトレンド感のあるカジュアルシューズGEMMA LINN
+                    （ジェマ リン）。異なる２人のシューズクローゼットをイメージし、ベーシックから
+                    遊び心あふれるデザインまでデイリーに履けるモードなシューズコレクション。
+                </p>
+            </div>
+            <br />
+            <!--右邊下拉式選單-->
+            <div class="select-div">
+                <form>
+                    SORT :
+                    <select name="sort" class="select" id="orderby">
+                        <option value="@None" id="None">None</option>
+                        <option value="@LowToHigh" id="LowToHigh">価格の低い順</option>
+                        <option value="@HighToLow" id="HighToLow">価格の高い順</option>
+                    </select>
+                </form>
+            </div>
+            <br />
+            <br />
+
+            <div class="row">
+                <!--鞋子圖片-->
+                @foreach (var photo in Model)
+                {
+                    @Html.Partial("_OnlineStorePicturePartial", photo);
+                }
+
+                <br />
+                <br />
+            </div>
+
+        </div>
+    </div>
+
+</div>
 @section endJS{
     <script>
         $(() => {
+            $('#orderby #@Session["PriceOrderBy"].ToString()').attr('selected', 'selected');
             $('.hoverchange').hover(function () {
                 var path = `../../Assets/images/Product/${$(this).attr('value').replace('.jpg','')}/1.jpg`;
                 $(this).parent().parent().children('img').attr('src', path);

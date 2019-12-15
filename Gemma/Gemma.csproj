@@ -270,7 +270,6 @@
     <Compile Include="Models\MetaData\AspNetUserMD.cs" />
     <Compile Include="Models\MetaData\MemberCenter.cs" />
     <Compile Include="Models\MetaData\OrderMD.cs" />
-    <Compile Include="ViewModel\OnlineStore.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
@@ -730,7 +729,6 @@
     <Content Include="Views\MemberCenter\OrderSearch.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
     <Content Include="Views\BookMark\Index.cshtml" />
-    <Content Include="Views\OnlineStore\OnlineStore.cshtml" />
     <Content Include="Views\BackStageHome\Index.cshtml" />
     <Content Include="Views\BackStageHome\_Layout.cshtml" />
     <Content Include="Views\BackStageHome\_ViewStart.cshtml" />
@@ -754,15 +752,6 @@
     <Content Include="Views\Shared\_OrderDetailPartial.cshtml" />
     <Content Include="Views\Shared\_OnlineStorePicturePartial.cshtml" />
     <Content Include="Views\Shop\Shop.cshtml" />
-    <Content Include="Views\OnlineStore\OnlineStore_Category_PUMPS.cshtml" />
-    <Content Include="Views\Shared\_BigPicture_and_SelectFormPartiel.cshtml" />
-    <Content Include="Views\Shared\_Left_CategoryPartial.cshtml" />
-    <Content Include="Views\OnlineStore\OnlineStore_Category_FLATSHOES.cshtml" />
-    <Content Include="Views\Shared\OnlineStorePartial.cshtml" />
-    <Content Include="Views\OnlineStore\OnlineStore_Category_MANNISH.cshtml" />
-    <Content Include="Views\OnlineStore\OnlineStore_Category_SNEAKER.cshtml" />
-    <Content Include="Views\OnlineStore\OnlineStore_Category_SANDAL.cshtml" />
-    <Content Include="Views\OnlineStore\OnlineStore_Category_BOOTS.cshtml" />
     <Content Include="Views\OnlineStore\FindBrand.cshtml" />
     <Content Include="Views\Order\Revenu.cshtml" />
     <Content Include="Views\OnlineStore\OnlineStorePage.cshtml" />
