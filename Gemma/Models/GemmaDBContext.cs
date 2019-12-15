@@ -140,5 +140,6 @@ namespace Gemma
                 .WithRequired(e => e.Size)
                 .WillCascadeOnDelete(false);
         }
+
     }
 }

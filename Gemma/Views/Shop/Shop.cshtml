@@ -1,0 +1,163 @@
+﻿<!doctype html>
+<html lang="en">
+
+
+<body class="allcontexter" onscroll="sticky()">
+    @Html.Partial("IndexPartial")
+    @*<div class="nav-top">
+            <nav class="navbar top">
+
+                <img src="https://danigemma.com/design/themes/responsive/media/images/shop/common/logo.png?1575015707" class="" onscroll="sticky2()">
+
+                <ul>
+                    <li> ONLINE STORE</li>
+                    <li> COLLECTION</li>
+                    <li> JOURNAL</li>
+                    <li> SHOP</li>
+                </ul>
+            </nav>
+        </div>*@
+    <div class="row-fluid ">
+        <div class="">
+
+            <header>
+                <h1 class="shoplist-title">
+                    <span>SHOP LIST</span>
+                </h1>
+            </header>
+
+            <div class="padding">
+                <div class="ty-mainbox-body">
+
+                    <div class="shoplist-page">
+                        <div class="shoplist">
+                            <h2 class="shoplist-name">Daniella & GEMMA 渋谷ShinQs店</h2>
+                            <p class="shoplist-info">
+                                〒150-8509　東京都渋谷区渋谷2-21-1 渋谷ヒカリエ ShinQs 3F ShinQs シューズカレイド<br>
+                                電話番号：03-6434-1704（代表番号）<br>
+                                営業日時： 10:00 - 21:00 / 不定休
+                            </p>
+                        </div>
+                        <br />
+                        <hr />
+                        <br />
+                        <div class="shoplist">
+                            <h2 class="shoplist-name">Daniella & GEMMA うめだ阪急店</h2>
+                            <p class="shoplist-info">
+                                〒530-8350　大阪府大阪市北区角田町8-7 阪急うめだ本店4Ｆ シューズギャラリー<br>
+                                電話番号：06-6361-1381（代表番号）<br>
+                                営業日時： 10:00 - 20:00（日～木）/ 10:00 - 21:00（金・土） / 不定休
+
+                            </p>
+                        </div>
+                        <br />
+                        <hr>
+                        <br />
+                        <div class="shoplist">
+                            <h2 class="shoplist-name">
+                                Daniella & GEMMA 銀座三越店<span class="notice">※8月21日オープン</span>
+                            </h2>
+                            <p class="shoplist-info">
+                                〒104-0061　東京都中央区銀座4-6-16 銀座三越2F 婦人靴売り場<br>
+                                電話番号：03-3562-1111（代表番号）<br>
+                                営業日時：10:00 - 20:00（月～土）/ 10:00 - 19:30（日） / 不定休
+
+                            </p>
+                        </div>
+                        <br />
+                        <hr>
+                        <br />
+                        <div class="shoplist">
+                            <h2 class="shoplist-name">
+                                Daniella & GEMMA 大丸福岡天神店<span class="notice">※9月18日オープン</span>
+                            </h2>
+                            <p class="shoplist-info">
+                                〒810-0001　福岡県福岡市中央区天神1-4-1 大丸福岡天神店本館B1F 婦人靴売り場<br>
+                                電話番号：092-712-8181（代表番号）<br>
+                                営業日時：10:00 - 20:00 / 不定休
+                            </p>
+                        </div>
+                        <br />
+                        <hr>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        @*<div class="container">
+                <div class="row">
+                    <ul class="list-inline ">
+                        <li class="list-inline-item col-md-3">
+                            <i class="fas fa-box"> SHIPPING</i>
+                            <h3></h3>
+                            <p>佐川急便にて全国一律送料400円でお届けします（一部地域・離島を除く）</p>
+                        </li>
+                        <li class="list-inline-item col-md-3">
+                            <i class="far fa-hourglass"> RETURN</i>
+                            <h3></h3>
+                            <p>商品到着から7日以内のご購入の商品につきましては返品・交換をお受けしております</p>
+                        </li>
+                        <li class="list-inline-item col-md-3">
+                            <i class="fas fa-tools"> MAINTENANCE</i>
+                            <h3></h3>
+                            <p>お買い上げいただいた商品を長くご使用いただけるよう修理（有償）を承っております</p>
+                        </li>
+                        <li class="list-inline-item col-md-3">
+                            <i class="fas fa-redo"> POINTS</i>
+                            <h3></h3>
+                            <p>ご購入金額の1％（1ポイント1円としてご利用可）をポイントとして還元しております</p>
+                        </li>
+                        <li class="list-inline-item col-md-3"></li>
+                    </ul>
+
+                </div>
+            </div>*@
+    </div>
+</body>
+@Html.Partial("_Footer")
+</html>
+
+
+@section topCSS{
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link href="~/Assets/css/FixedMenu.css" rel="stylesheet" />
+    <link href="~/Assets/css/Shop.css" rel="stylesheet" />
+    <link href="~/Assets/css/HomePage.css" rel="stylesheet" />
+}
+@section endJS{
+    <script src="https://kit.fontawesome.com/f5fcf886aa.js" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+
+
+    <script>
+        $(document).ready();
+
+        function sticky() {
+            if (window.pageYOffset > 50) {
+                document.querySelector("nav").classList.add("fixed");
+            }
+
+            if (window.pageYOffset < 50) {
+                document.querySelector("nav").classList.remove("fixed");
+            }
+        }
+
+        function sticky2() {
+            if (window.pageYOffset > 50) {
+                document.querySelector("img").classList.add("photofixed");
+            }
+
+            if (window.pageYOffset < 50) {
+                document.querySelector("img").classList.remove("photofixed");
+            }
+        }
+    </script>
+}

@@ -9,17 +9,6 @@ body, div {
     width: 100%;
 }
 
-.row-fluid {
-    width: 100%;
-}
-
-.newcol-1 {
-    width: 24%;
-}
-
-.newcol-2 {
-    width: 74%;
-}
 
 /*設定左邊邊框*/
 .padding {
@@ -84,9 +73,9 @@ p {
     text-align: right;
 }
 
-.heart {
-    width: 25px;
-    height: 25px;
+.heart img{
+    width: 25px !important;
+    height: 25px ;
 }
 
 .small-color {
@@ -94,32 +83,32 @@ p {
     height: 20px;
 }
 
-.heart, .small-color {
+.heart img, .small-color {
     display: inline-block;
 }
 
-.position-left {
+.position-left img{
     position: absolute;
-    left: 30px;
-    bottom: 15px;
+    left: 10%;
+    bottom: 30%;
 }
 
-.position-right-1 {
+.position-right-1 img{
     position: absolute;
     right: 85px;
-    bottom: 12px;
+    bottom: 30%;
 }
 
-.position-right-2 {
+.position-right-2 img{
     position: absolute;
     right: 55px;
-    bottom: 12px;
+    bottom: 30%;
 }
 
-.position-right-3 {
+.position-right-3 img{
     position: absolute;
     right: 25px;
-    bottom: 12px;
+    bottom: 30%;
 }
 
 .right-side img, .left-side img {
@@ -139,8 +128,16 @@ p {
     top: 45%;
 }
 
+/*.bottom-side{
+    display:inline-block;
+    position: absolute;
+    left:0%;
+    bottom:-10%;
+}*/
+
 .photo-word {
-    width: 70%;
+   
     margin: 0 auto;
     font-size: 13px !important;
 }
+
