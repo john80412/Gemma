@@ -99,7 +99,7 @@
             <div class="select-div">
                 <form>
                     SORT :
-                    <select name="sort" class="select" id="orderby">
+                    <select name="sort" class="select" id="orderby" onchange="location.href=this.options[this.selectedIndex].value">
                         <option value="@None" id="None">None</option>
                         <option value="@LowToHigh" id="LowToHigh">価格の低い順</option>
                         <option value="@HighToLow" id="HighToLow">価格の高い順</option>
