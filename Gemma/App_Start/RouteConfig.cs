@@ -50,6 +50,12 @@ namespace Gemma
 
 
             routes.MapRoute(
+                name: "DetailsRouting",
+                url: "Details/{ProductId}",
+                defaults: new { controller = "Details", action = "FindProductById", ProductId = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "DaniellaGemma", id = UrlParameter.Optional }
