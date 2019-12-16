@@ -1,6 +1,4 @@
-﻿<link href="~/Assets/css/main.css" rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
-<script type="text/javascript" src="~/Assets/js/main.js"></script>
+﻿@using Microsoft.AspNet.Identity
 <div class="app-header header-shadow">
     <div class="app-header__logo">
     </div>
@@ -17,6 +15,7 @@
     </div>
     <div class="app-header__content">
         <div class="app-header-right">
+            <a class="nav-link" href="@Url.Action("MemberInfo", "MemberCenter", new { id = User.Identity.GetUserId() })">@User.Identity.Name</a>
         </div>
     </div>
 </div>

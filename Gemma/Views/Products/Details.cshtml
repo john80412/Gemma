@@ -48,6 +48,13 @@
             @Html.DisplayFor(model => model.Explain)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.PictureUrl)
+        </dt>
+
+        <dd style="width:10%;height:100px;">
+            <img src="~/Assets/images/Product/@Model.PictureUrl" style="width:100%;height:100%;" />
+        </dd>
 
     </dl>
 </div>

@@ -14,6 +14,7 @@ using Gemma.Models;
 
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System.Web.Helpers;
 
 namespace Gemma
 {
@@ -23,6 +24,15 @@ namespace Gemma
         public Task SendAsync(IdentityMessage message)
         {
             // 將您的電子郵件服務外掛到這裡以傳送電子郵件。
+
+            // 外寄伺服器(SMTP)
+            WebMail.SmtpPort = 587;
+            WebMail.EnableSsl = true;
+
+            WebMail.SmtpServer = "smtp.gmail.com";
+            WebMail.UserName = "SuperGemma2019@gmail.com";
+            WebMail.Password = "super2019";
+            WebMail.Send(message.Destination, message.Subject, message.Body);
             return Task.FromResult(0);
         }
 

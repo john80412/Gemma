@@ -1,0 +1,254 @@
+﻿@model Gemma.ViewModel.SingleProductDetailViewModel
+@{
+    ViewBag.Title = "FindProductById";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12" id="pPhoto">
+
+            @*@Html.DisplayFor(model => model.Photo)*@
+
+            <img src="~/Assets/images/Product/@Model.CategoryName/@Model.ColorDetails[0].ImageName/1.jpg" id="mainImage" title="@Model.ProductId" />
+
+        </div>
+
+        <div class="col-md-6 col-sm-12" id="pInfo">
+            <div class="row ml-1">
+                <span>@Html.DisplayFor(model => model.ProductName)</span>
+            </div>
+            <div class="row ml-1">
+                <span id="price">@Html.DisplayFor(model => model.Price) 円 + TAX</span>
+            </div>
+
+            <label class="mr-2">SELECT COLOR</label><label id="color-warning"></label>
+            <div class="row form-group">
+                @foreach (var item in @Model.ColorDetails)
+                {
+
+                    <div class="col-md-3 flex-grow-1 pImages">
+                        <img src="~/Assets/images/Product/@Model.CategoryName/@item.ImageName/1.jpg" title="@item.ColorName" id="@item.ColorId" />
+                        <div class="row justify-content-center">
+                            <span>@item.ColorName</span>
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+            <label class="mr-2">SELECT SIZE</label><label id="size-warning"></label>
+            <div class="row size-filters ml-1 form-group">
+                <button class="btn btn-default" id="35" val="">35(22.5cm)</button>
+                <button class="btn btn-default" id="36" val="">36(23.0cm)</button>
+                <button class="btn btn-default" id="37" val="">37(23.5cm)</button>
+                <button class="btn btn-default" id="38" val="">38(24.0cm)</button>
+                <button class="btn btn-default" id="39" val="">39(24.5cm)</button>
+                <button class="btn btn-default" id="40" val="">40(25.0cm)</button>
+            </div>
+
+            <div class="row mt-3  ml-1 count-filters form-group">
+                <input type="number" id="userCount" value="1" min="1" max="100" step="1" />
+                <button class="btn btn-dark w-50" id="submit" type="submit" data-target="#showCart">カートに追加</button>
+            </div>
+
+            <div class="row mt-3 ">
+                <div class="col-12" id="pDescrip">
+                    <p>@Html.Raw(Model.Description)</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="showCart" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document" style="margin-top:15%;">
+        <div class="modal-content" id="userDetails">
+            <div class="modal-header">
+                <h5 class="modal-title">商品がカートに追加されました</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-2">
+                            <div v-html="items.selectedImg" id="showSelectedImage"></div>
+                        </div>
+                        <div class="col-7">
+                            <h5>@Html.DisplayFor(model => model.ProductName)</h5>
+                            <label class="font-weight-bold">オプション:</label><br />
+                            <p>Color:   {{items.selectedColor}}</p>
+                            <p>SIZE: {{items.selectedSize}}</p>
+                        </div>
+                        <div class="col-3">
+                            <p>{{items.count}} x @Html.DisplayFor(model => model.Price) 円</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="float-right">
+                    <div class="row">
+                        <p>小計 {{items.total}} 円</p>
+                    </div>
+                    <div class="row">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">カートを見る</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section endJS{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+
+    <script>
+        var app;
+        $(() => {
+            //當選取Color照片時
+            $('.pImages img').click(function () {
+
+                //清空選項資料
+                $('.pImages img').css("border", "none").removeClass("selected");
+                $('.size-filters btn').removeAttr('val').removeClass('disabled');
+
+                //選取照片加框
+                $(this).css("border", "solid 1px").css("border-color", "black").addClass("selected");
+
+                //回傳資料庫庫存
+                $.post(
+                    '/JsonDataApi/FindSizeCount',
+                    {
+                        ProductId: $('#mainImage').attr('title'),
+                        ColorId: $('.selected').attr('id'),
+                    }, function (sizeData) {
+
+
+                        var sizeContent = JSON.parse(sizeData);
+                        //取得資料庫每個size的數量
+                        for (var i = 0; i < sizeContent.length; i++) {
+                            console.log()
+                            $('#' + sizeContent[i].SizeId).attr('val', sizeContent[i].Quantity);
+                        }
+
+                        //設定btn的disabled
+                        for (var i = 35; i < 41; i++) {
+                            if ($('#' + i).attr('val') <= 0 || $('#' + i).attr('val') == "") {
+                                $('#' + i).attr('disabled', true);
+                            }
+                        }
+
+                    },
+                    'json')
+
+            })
+
+            //選取SIZE按鈕時
+            $('.size-filters button').click(function () {
+                if ($('.pImages img').hasClass("selected") != true) $('#color-warning').text("Please select color.").css("color", "red");
+
+                $('.size-filters button').css("border-color", "#c5c5c5").removeClass("selected");
+                $(this).css("border-color", "black").addClass("selected");
+            })
+
+            var jsonData1 = {
+                selectedImg: '1'
+            }
+            app = new Vue({
+                el: '#userDetails',
+                data: { items: jsonData1 }
+            })
+
+            //按下訂購按鈕時
+            $('#submit').click(function () {
+                if ($('.pImages img').hasClass("selected") != true || $('.size-filters button').hasClass("selected") != true) {
+                    $('#color-warning').text("Please select color.").css("color", "red");
+                    $('#size-warning').text("Please select size.").css("color", "red");
+                }
+
+                else {
+
+
+
+                    var orderPrice = $('#userCount').val() * $('#price').html().replace(' 円 + TAX', '');
+
+                    var jsonData = {
+                        selectedImg: $('.selected').has('img').prevObject[0].outerHTML,
+                        count: $('#userCount').val(),
+                        selectedColor: $('.selected').has('img').prevObject[0].title,
+                        selectedSize: $('.selected').has('button').prevObject[1].innerHTML,
+                        total: orderPrice
+                    }
+
+                    //app = new Vue({
+                    //    el: '#userDetails',
+                    //    data: { items: jsonData }
+                    //})
+                    app.$data.items = jsonData
+                    $('#showCart').modal('show');
+                }
+            })
+        })
+
+    </script>
+}
+@section topCSS{
+
+    <style>
+        #pPhoto > img {
+            width: 100%;
+        }
+
+        .btn {
+            cursor: pointer;
+        }
+
+        .pImages > img {
+            width: 100%;
+        }
+
+
+
+        .size-filters > button {
+            font-size: 12px;
+            border: 1px solid;
+            border-color: #c5c5c5;
+            /*width:25%;*/
+            padding: 5px;
+            margin: 2px 2px 0 0;
+            flex-grow: 2;
+        }
+
+        .count-filters > button {
+            font-size: 12px;
+            margin: 0 0 0 10px;
+            flex-grow: 2;
+        }
+
+        #pInfo {
+            font-size: 16px;
+            padding: 20px 0 15px 0;
+        }
+
+        #pDescrip {
+            font-size: 14px;
+        }
+
+        .btn-group > button {
+            font-size: 12px;
+            border-style: solid;
+        }
+
+        #showSelectedImage > img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+
+}

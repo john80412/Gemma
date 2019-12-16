@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Gemma.Models
 {
+    [Authorize(Users = "Admin@gmail.com")]
     public class AspNetUsersController : Controller
     {
         private MemberRepository rep = new MemberRepository();

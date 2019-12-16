@@ -12,6 +12,7 @@ using Gemma.ViewModel;
 
 namespace Gemma.Controllers
 {
+    [Authorize (Users ="Admin@gmail.com")]
     public class BackStockController : Controller
     {
         private StockRepository rep = new StockRepository();
@@ -59,7 +60,6 @@ namespace Gemma.Controllers
             if (ModelState.IsValid)
             {
                 rep.CreateStock(stock, files);
-                TempData["message"] = rep.IsSuccess;
                 return RedirectToAction("Index");
             }
 

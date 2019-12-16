@@ -1,0 +1,20 @@
+﻿@model OnlineStoreProductVM
+
+    <div class="card" style="width: 18rem;">
+        @*<img src="@Model.ProductImg" class="card-img-top" alt="">*@
+        <p>ImageName: @Model.ImageName</p>
+        <div class="card-body">
+            <p class="card-text">ProductName: @Model.ProductName</p>
+            <p class="card-text">UnitPrice: @Model.UnitPrice</p>
+
+            @for (int i = 0; i < Model.ColorName.Count(); i++)
+            {
+                <p class="card-text">ColorName: @Model.ColorName[i]</p>
+            }
+            <p class="card-text">CategoryName: @Model.CategoryName</p>
+            <p class="card-text">ProductId: @Model.ProductId</p>
+
+            @*<a href="/Details/@Model.ProductId" class="btn btn-primary">詳細資料</a>*@
+        </div>
+    </div>
+
