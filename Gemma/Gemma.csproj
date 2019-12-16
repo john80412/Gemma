@@ -768,7 +768,6 @@
     <Content Include="Views\Journall\JournalList6.cshtml" />
     <Content Include="Views\Journall\JournalList7.cshtml" />
     <Content Include="Views\Journall\JournalList4.cshtml" />
-    <Content Include="Views\OnlineStore\OnlineStorePage.cshtml" />
     <Content Include="Views\Shared\_OnlineStoreTestPartial.cshtml" />
     <Content Include="Views\Details\FindProductById.cshtml" />
     <Content Include="Views\Shared\_ProductDetailsPartial.cshtml" />
