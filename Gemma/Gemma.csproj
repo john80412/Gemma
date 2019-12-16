@@ -232,7 +232,9 @@
     <Compile Include="Controllers\BookMarkController.cs" />
     <Compile Include="Controllers\BackStageHomeController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
+    <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\JournallController.cs" />
+    <Compile Include="Controllers\JsonDataApiController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
     <Compile Include="Controllers\BackStockController.cs" />
     <Compile Include="Controllers\OnlineStoreController.cs" />
@@ -273,6 +275,8 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductColorDetails.cs" />
+    <Compile Include="Models\ProductSizeDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Size.cs" />
@@ -281,6 +285,7 @@
     <Compile Include="Repository\OnlineStoreRepository.cs" />
     <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\SingleProductRepository.cs" />
     <Compile Include="Repository\StockRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Stock.cs" />
@@ -294,6 +299,8 @@
     <Compile Include="ViewModel\OrderDetailViewModel.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\SingleProductDetailViewModel.cs" />
+    <Compile Include="ViewModel\SingleProductViewModel.cs" />
     <Compile Include="ViewModel\StockViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -756,6 +763,10 @@
     <Content Include="Views\Order\Revenu.cshtml" />
     <Content Include="Views\OnlineStore\OnlineStorePage.cshtml" />
     <Content Include="Views\Shared\_OnlineStoreTestPartial.cshtml" />
+    <Content Include="Views\Details\FindProductById.cshtml" />
+    <Content Include="Views\Shared\_ProductDetailsPartial.cshtml" />
+    <Content Include="Views\Details\_Layout.cshtml" />
+    <Content Include="Views\Details\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

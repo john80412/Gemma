@@ -12,7 +12,7 @@
     </div>*@
 
 
-<div class="col-4">
+<div class="col-4"  onclick="location.href='@Url.Action("FindProductById","Details",new { productId = Model.ProductId})'">
     
     <img src="~/Assets/images/Product/@Model.CategoryName/@Model.ProductName/index1.jpg" alt="" value="@(Model.CategoryName)/@(Model.ProductName)">
 
