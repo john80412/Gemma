@@ -1,46 +1,39 @@
-﻿
+﻿<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
 
 @{
     ViewBag.Title = "心願清單";
 }
-@Html.Partial("IndexPartial")
 
 @* 心願清單 *@
 <h2><b>B O O K M A R K</b></h2>
 <div class="container">
+    
     <div class="row">
         <div class="col-md-3">
-            <span class="bkdele mt-5">
-            </span>
+            <div class="delete">
+                <i class="fas fa-times "></i>
+            </div>
+            <img class="bk" src="~/Assets/images/Product/SNEAKER/Rabbit Fur Belt Sneaker/index2.jpg" />
         </div>
         <div class="col-md-3">
-            <span class="bkdele mt-5">
-            </span>
+            <div class="delete">
+                <i class="fas fa-times "></i>
+            </div>
+            <img class="bk" src="~/Assets/images/empty.jpg" />
         </div>
         <div class="col-md-3">
-            <span class="bkdele mt-5">
-            </span>
+            <div class="delete">
+                <i class="fas fa-times "></i>
+            </div>
+            <img class="bk" src="~/Assets/images/empty.jpg" />
         </div>
         <div class="col-md-3">
-            <span class="bkdele mt-5">
-            </span>
+            <div class="delete">
+                <i class="fas fa-times "></i>
+            </div>
+            <img class="bk" src="~/Assets/images/empty.jpg" />
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-
-            <img class="bk" src="~/Assets/images/Product/SNEAKER/Rabbit Fur Belt Sneaker/index1.jpg" />
         </div>
-        <div class="col-md-3">
-            <img src="~/Assets/images/empty.jpg" />
-        </div>
-        <div class="col-md-3">
-            <img src="~/Assets/images/empty.jpg" />
-        </div>
-        <div class="col-md-3">
-            <img src="~/Assets/images/empty.jpg" />
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-3">
             <div class="bkadd mt-5">
@@ -69,15 +62,12 @@
 
         <div class=" offset-md-4 mt-5" id="bkbtn">
             <button id="bkclear" type="button" class="btn btn-dark mr-5">BOOKMARKのクリア</button>
-            <button id="bkcontinue" type="button" class="btn btn-dark " href="https://danigemma.com/all/">買い物を続ける</button>
+            <button id="bkcontinue" type="button" class="btn btn-dark " href="@Url.Action("OnlineStorePage","OnlineStore")">買い物を続ける</button>
         </div>
     </div>
 </div>
-@Html.Partial("_Footer")
-
 
 @section topCSS {
-    <link href="~/Assets/CSS/FixedMenu.css" rel="stylesheet" />
     <style>
         h2 {
             text-align: center;
@@ -85,7 +75,7 @@
             margin-bottom: 40px;
         }
 
-        .row img {
+        .bk {
             height: 100%;
             width: 100%;
         }
@@ -95,18 +85,47 @@
             padding: 10px 30px;
             background-color: black;
         }
+    .delete{
+      position: absolute;
+     top:8%;
+      left:12%;
+      display: flex;
+      cursor: pointer;
+      font-size: 36px;
+      color: lightgray;
+    }
+    .delete:active{
+      transition: 0s;
+      color: grey;
+    }
+        .test {
+            display:none;
+        }
+   
+    
     </style>
 }
 
 @section endJS{
-    <script src="~/Assets/js/FixedMenuForIG.js"></script>
     <script>
         $(() => {
             $('.row .bk').hover(function () {
-                $(this).attr('src', '../../Assets/images/Product/SNEAKER/Rabbit Fur Belt Sneaker/index2.jpg')
+                //$(this).attr('src', '../../Assets/images/Product/SNEAKER/Rabbit Fur Belt Sneaker/index2.jpg')
+                //$(this).parent().children('div').removeClass('test')
             })
-            $('.row .bk').mouseout(function () {
-                $(this).attr('src', '../../Assets/images/Product/SNEAKER/Rabbit Fur Belt Sneaker/index1.jpg')
+            //$('.row .bk').mouseout(function () {
+            //    $(this).attr('src', '../../Assets/images/Product/SNEAKER/Rabbit Fur Belt Sneaker/index1.jpg')
+            //})
+             
+            $('#bkclear').click(function(){
+                location.href = '@Url.Action("Index","BookMark",new { isDeleteAll = true})' 
+            })
+
+            $('img[src$="empty.jpg"]').parent().children('div').addClass('test')
+            $('.bk').not('img[src$="empty.jpg"]').parent().children('div').removeClass('test')
+            $('.delete').click(function () {
+                $(this).parent().children('img').attr('src',"../../Assets/images/empty.jpg")
+                $(this).addClass('test')
             })
         })
     </script>

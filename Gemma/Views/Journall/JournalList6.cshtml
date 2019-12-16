@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "JournalList1";
+}
+
+@section topCSS{
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F5F5F5;
+        }
+
+        .img1 img {
+            width: 160%;
+            height: 100%;
+            transition:0.5s ease-in-out;
+        }
+         .img2 img {
+            width: 120%;
+            height: 100%;
+            transition:0.5s ease-in-out;
+        }
+        span {
+           font-size:25px;font-weight:bold;
+            margin-left:450px;
+        }
+         .img1 img:hover {
+		transform : scale(1.02);
+        transition:0.5s ease-in-out;
+	}
+	.img2 img:hover {
+		transform : scale(1.02);
+        transition:0.5s ease-in-out;
+	}
+        .wordLeft {
+            margin-top:120px;
+            height:500px;
+            line-height: 50px;
+            font-size:25px;
+            margin-bottom:100px;
+        }
+     
+    </style>
+
+
+}
+@section endJS{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+}
+<div class="container ">
+    <div class="row">
+        <div class="img1">
+            <img src="~/Assets/images/Journalimg/J6.jpg" />
+        </div>
+
+        <div class="wordLeft">
+            <span style="margin-left:530px">2019.07.26</span> <br />
+            <span>Daniella's Column Vol.1</span>
+            <br /><br /><br />
+            Fashion editor Daniella Tam living in Manhattan.<br />
+            “Daniella's Column” introduces her mood for this season.<br />
+          
+            This season I'm interested in beige-based coordination.<br />
+            I want to enjoy a variety of beige nuances such as camel and ecru colors.<br />
+            Remove the one-tone outfit and add white pumps.<br />
+            Comfortable steer material is familiar and is a favorite pair.<br />
+        </div>
+       
+        <div class="img2">
+
+
+            <img src="~/Assets/images/Journalimg/J6-2.jpg" />
+
+        </div>
+        <div class="wordLeft">
+            The classic leopard pattern is an item that can be used in advance of autumn.<br />
+            Just add one to the basic items and you will get a stylish atmosphere.<br />
+        </div>
+        <div class="img2">
+
+            <img src="~/Assets/images/Journalimg/J6-3.jpg" />
+
+        </div>
+        <div class="wordLeft">
+            Leopard is also recommended to casually take in shoes.<br />
+            The pumps that complement the femininity have a beautiful silhouette and a mode impression.<br />
+            Please try to incorporate the mood of Daniella this fall<br />
+
+            Check out the Daniella Collection
+        </div>
+    </div>
+
+</div>

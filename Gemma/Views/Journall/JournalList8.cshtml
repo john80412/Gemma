@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "JournalList1";
+}
+
+@section topCSS{
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F5F5F5;
+        }
+
+        .img1 img {
+            width: 140%;
+            height: 100%;
+            transition:0.5s ease-in-out;
+        }
+
+        span {
+           font-size:25px;font-weight:bold;
+            margin-left:320px;
+        }
+         .img1 img:hover {
+		transform : scale(1.02);
+        transition:0.5s ease-in-out;
+	}
+	
+        .wordLeft {
+            margin-top:120px;
+            height:400px;
+            line-height: 50px;
+            font-size:25px;
+            margin-bottom:100px;
+        }
+     
+    </style>
+
+
+}
+@section endJS{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+}
+<div class="container ">
+    <div class="row">
+        <div class="img1">
+            <img src="~/Assets/images/Journalimg/J8.jpg" />
+         
+        </div>
+
+        <div class="wordLeft">
+            <span style="margin-left:500px">2019.07.26</span> <br />
+             <span>2,000 yen points for new member registration</span>
+            <br /><br /><br />
+            
+            
+            The campaign ended on August 18th.<br />
+
+            Thank you for always using the Daniela & GEMMA online store.<br />
+            To commemorate the renewal of the official online store, 2,000 yen points will be given as a new member of the online store.<br />
+        </div>
+       
+      
+    </div>
+
+</div>
