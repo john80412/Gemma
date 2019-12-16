@@ -12,13 +12,27 @@
     <div class="left-list">
         CATEGORY ——
         <ul>
-            <li class="all-underline">ALL</li>
-            <li>PUMPS</li>
-            <li>FLAT SHOES</li>
-            <li>MANNISH</li>
-            <li>SNEAKER</li>
-            <li>SANDAL</li>
-            <li>BOOTS</li>
+            <li >
+                <a class="left-list all-underline" href="@Url.Action("FindBrand","OnlineStore")">ALL</a>
+            </li>
+            <li>
+                <a class="left-list" href="@Url.Action("FindBrand","OnlineStore",new { category = "PUMPS"})">PUMPS</a>
+            </li>
+            <li>
+                <a class="left-list" href="@Url.Action("FindBrand","OnlineStore",new { category = "FLATSHOES" })">FLAT SHOES</a>
+            </li>
+            <li>
+                <a class="left-list" href="@Url.Action("FindBrand","OnlineStore",new { category = "MANNISH" })">MANNISH</a>
+            </li>
+            <li>
+                <a class="left-list" href="@Url.Action("FindBrand","OnlineStore",new { category = "SNEAKER" })">SNEAKER</a>
+            </li>
+            <li>
+                <a class="left-list" href="@Url.Action("FindBrand","OnlineStore",new { category = "SANDAL" })">SANDAL</a>
+            </li>
+            <li>
+                <a class="left-list" href="@Url.Action("FindBrand","OnlineStore",new { category = "BOOTS" })">BOOTS</a>
+            </li>
         </ul>
     </div>
 

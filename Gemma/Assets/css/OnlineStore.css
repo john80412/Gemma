@@ -27,10 +27,18 @@ body, div {
     cursor: pointer;
 }
 
+
 li {
     color: #52514f;
     list-style: none;
     font-size: 13px;
+    cursor: pointer;
+}
+
+a{
+    color: #52514f;
+    list-style: none;
+    font-size: 13px !important;
     cursor: pointer;
 }
 
