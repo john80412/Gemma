@@ -1,23 +1,10 @@
-﻿
-@model IEnumerable<Gemma.ViewModel.OnlineStoreProductVM>
+﻿@model IEnumerable<Gemma.ViewModel.OnlineStoreProductVM>
 @{
     ViewBag.Title = "FindBrand";
-    if (Session["CategoryName"] == null && Session["ColorName"] == null)
-    {
-        Session["CategoryName"] = "ALL";
-        Session["ColorName"] = "ALL";
-    }
-
     string None = Url.Action("FindBrand", "OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName = Session["ColorName"].ToString(), OrderBy = "None" });
     string LowToHigh = Url.Action("FindBrand", "OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName = Session["ColorName"].ToString(), OrderBy = "LowToHigh" });
     string HighToLow = Url.Action("FindBrand", "OnlineStore", new { CategoryName = Session["CategoryName"].ToString(), ColorName = Session["ColorName"].ToString(), OrderBy = "HighToLow" });
-
-    if (Session["PriceOrderBy"] == null)
-    {
-        Session["PriceOrderBy"] = "None";
-    }
 }
-
 @section topCSS{
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="~/Assets/css/OnlineStore.css" rel="stylesheet" />
@@ -30,7 +17,6 @@
         }
     </style>
 }
-
 <div class="container">
 
     <div class="row">

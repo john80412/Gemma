@@ -120,7 +120,8 @@
 
                 //選取照片加框
                 $(this).css("border", "solid 1px").css("border-color", "black").addClass("selected");
-
+                //更改左邊大圖顯示為以選取之圖片
+                $('#pPhoto img').attr('src', $(this).attr('src'))
                 //回傳資料庫庫存
                 $.post(
                     '/JsonDataApi/FindSizeCount',
@@ -128,27 +129,21 @@
                         ProductId: $('#mainImage').attr('title'),
                         ColorId: $('.selected').attr('id'),
                     }, function (sizeData) {
-
-
                         var sizeContent = JSON.parse(sizeData);
                         //取得資料庫每個size的數量
                         for (var i = 0; i < sizeContent.length; i++) {
                             console.log()
                             $('#' + sizeContent[i].SizeId).attr('val', sizeContent[i].Quantity);
                         }
-
                         //設定btn的disabled
                         for (var i = 35; i < 41; i++) {
                             if ($('#' + i).attr('val') <= 0 || $('#' + i).attr('val') == "") {
                                 $('#' + i).attr('disabled', true);
                             }
                         }
-
                     },
                     'json')
-
             })
-
             //選取SIZE按鈕時
             $('.size-filters button').click(function () {
                 if ($('.pImages img').hasClass("selected") != true) $('#color-warning').text("Please select color.").css("color", "red");
@@ -156,10 +151,7 @@
                 $('.size-filters button').css("border-color", "#c5c5c5").removeClass("selected");
                 $(this).css("border-color", "black").addClass("selected");
             })
-
-            var jsonData1 = {
-                selectedImg: '1'
-            }
+            var jsonData1 = {}
             app = new Vue({
                 el: '#userDetails',
                 data: { items: jsonData1 }
