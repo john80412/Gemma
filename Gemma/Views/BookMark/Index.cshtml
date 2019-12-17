@@ -62,7 +62,7 @@
 
         <div class=" offset-md-4 mt-5" id="bkbtn">
             <button id="bkclear" type="button" class="btn btn-dark mr-5">BOOKMARKのクリア</button>
-            <button id="bkcontinue" type="button" class="btn btn-dark " href="@Url.Action("OnlineStorePage","OnlineStore")">買い物を続ける</button>
+            <button id="bkcontinue" type="button" class="btn btn-dark">買い物を続ける</button>
         </div>
     </div>
 </div>
@@ -108,19 +108,13 @@
 
 @section endJS{
     <script>
-        $(() => {
-            $('.row .bk').hover(function () {
-                //$(this).attr('src', '../../Assets/images/Product/SNEAKER/Rabbit Fur Belt Sneaker/index2.jpg')
-                //$(this).parent().children('div').removeClass('test')
-            })
-            //$('.row .bk').mouseout(function () {
-            //    $(this).attr('src', '../../Assets/images/Product/SNEAKER/Rabbit Fur Belt Sneaker/index1.jpg')
-            //})
-             
+        $(() => {             
             $('#bkclear').click(function(){
                 location.href = '@Url.Action("Index","BookMark",new { isDeleteAll = true})' 
             })
-
+            $('#bkcontinue').click(function(){
+                location.href = '@Url.Action("FindBrand","OnlineStore")' 
+            })
             $('img[src$="empty.jpg"]').parent().children('div').addClass('test')
             $('.bk').not('img[src$="empty.jpg"]').parent().children('div').removeClass('test')
             $('.delete').click(function () {

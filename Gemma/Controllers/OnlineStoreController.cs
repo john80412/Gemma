@@ -18,9 +18,9 @@ namespace Gemma.Controllers
         private OnlineStoreRepository repo = new OnlineStoreRepository();
         public ActionResult FindBrand(string CategoryName, string ColorName, string OrderBy)
         {
-            CategoryName = CategoryName ?? "ALL";
-            ColorName = ColorName ?? "ALL";
-            OrderBy = OrderBy ?? "None";
+            CategoryName ??= "ALL";
+            ColorName ??= "ALL";
+            OrderBy ??= "None";
             Session["CategoryName"] = CategoryName;
             Session["ColorName"] = ColorName;
             Session["PriceOrderBy"] = OrderBy;
