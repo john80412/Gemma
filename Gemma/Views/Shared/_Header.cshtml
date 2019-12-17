@@ -10,7 +10,7 @@
             <a href="@Url.Action("DaniellaGemma","Home")"><img src="~/Assets/images/Icons/logo.png" /></a>
 
         </div>
-        <div class="header-nav row">
+        <div class="header-nav row" id="nav-sticky">
 
             <ul class="nav">
                 <li class="nav-item">
@@ -67,38 +67,3 @@
 <div class="PaddingTopCSS">
 
 </div>
-
-@section topCSS{
-    <style>
-        .fixed {
-            height: 70px !important;
-            animation-delay: 100ms;
-        }
-    </style>
-}
-
-@section endJS{
-    <script>
-        $(document).ready();
-
-        function sticky() {
-            if (window.pageYOffset > 50) {
-                document.querySelector("nav").classList.add("fixed");
-            }
-
-            if (window.pageYOffset < 50) {
-                document.querySelector("nav").classList.remove("fixed");
-            }
-        }
-
-        function sticky2() {
-            if (window.pageYOffset > 50) {
-                document.querySelector("img").classList.add("photofixed");
-            }
-
-            if (window.pageYOffset < 50) {
-                document.querySelector("img").classList.remove("photofixed");
-            }
-        }
-    </script>
-}

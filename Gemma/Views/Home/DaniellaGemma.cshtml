@@ -5,16 +5,23 @@
 
 
 @section topCSS{
+
+    
+    <link href="~/Assets/css/loadingpage.css" rel="stylesheet" />
     <link href="~/Assets/css/HomePage.css" rel="stylesheet" />
     <link href="~/Assets/css/flexslider.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <style>
-        .flexslider{
-            border:0;
+        .flexslider {
+            border: 0;
         }
     </style>
 }
 
+@*開頭動畫*@
+<div class="loading">
+    <img src="~/Assets/images/Icons/logo.png" class="loading-img" />
+</div>
 
 @* Carousel Section *@
 <div class="container">
@@ -183,6 +190,9 @@
 </div>
 
 @section endJS{
+
+    <script src="~/Assets/js/loadingpage.js"></script>
+
     <script src="~/Assets/js/HomePageForItemsAndJournal.js"></script>
     <script src="~/Assets/js/HomePageForCollection.js"></script>
     <script src="~/Assets/js/jquery.flexslider-min.js"></script>

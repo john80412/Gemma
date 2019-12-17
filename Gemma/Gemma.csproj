@@ -233,6 +233,7 @@
     <Compile Include="Controllers\BackStageHomeController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\JournallController.cs" />
+    <Compile Include="Controllers\LoadingPageController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
     <Compile Include="Controllers\BackStockController.cs" />
     <Compile Include="Controllers\OnlineStoreController.cs" />
@@ -301,7 +302,9 @@
     <Content Include="Assets\css\lightbox.css" />
     <Content Include="Assets\css\lightbox.min.css" />
     <Content Include="Assets\css\HomePage.css" />
+    <Content Include="Assets\css\loadingpage.css" />
     <Content Include="Assets\css\MemberCenter.css" />
+    <Content Include="Assets\css\NavBarAnimation.css" />
     <Content Include="Assets\css\OnlineStore.css" />
     <Content Include="Assets\css\Shop.css" />
     <Content Include="Assets\images\close.png" />
@@ -595,7 +598,9 @@
     <Content Include="Assets\js\lightbox.js" />
     <Content Include="Assets\js\lightbox.min.js" />
     <Content Include="Assets\css\main.css" />
+    <Content Include="Assets\js\loadingpage.js" />
     <Content Include="Assets\js\main.js" />
+    <Content Include="Assets\js\NavBarAnimation.js" />
     <Content Include="Assets\js\utils.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -751,6 +756,7 @@
     <Content Include="Views\OnlineStore\OnlineStore_Category_BOOTS.cshtml" />
     <Content Include="Views\OnlineStore\FindBrand.cshtml" />
     <Content Include="Views\Order\Revenu.cshtml" />
+    <Content Include="Views\LoadingPage\LoadingPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
