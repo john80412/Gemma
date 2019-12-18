@@ -58,11 +58,11 @@ namespace Gemma
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "880546906933-dpu0qtol8uqj2hfrujiq9c3o2u83u797.apps.googleusercontent.com",
+                ClientSecret = "6Y1MEcIgJJ00tcLj0ljS1_7m"
+            });
         }
     }
 }

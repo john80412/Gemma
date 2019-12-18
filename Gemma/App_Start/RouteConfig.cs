@@ -18,7 +18,7 @@ namespace Gemma
             routes.MapRoute(
                 name: "OnlineStorePage",
                 url: "shoes/{CategoryName}-{ColorName}/{OrderBy}",
-                defaults: new { controller = "OnlineStore", action = "OnlineStorePage", CategoryName = "ALL", ColorName = "ALL", OrderBy = UrlParameter.Optional }
+                defaults: new { controller = "OnlineStore", action = "FindBrand", CategoryName = "ALL", ColorName = "ALL", OrderBy = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "HomePage",
