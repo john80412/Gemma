@@ -33,7 +33,7 @@
                         @Html.RequiredLabelFor(m => m.Password, new { @class = "control-label FontSize" })
                         @* 只要您的密碼重設功能能夠進行帳戶確認，就啟用此項 *@
                         @* 忘記密碼? *@
-                        <p id="ForgetPwd">@Html.ActionLink("パスワードを忘れました", "ForgotPassword", null, new { @class = "FontSize" })</p>
+                        <label id="ForgetPwd">@Html.ActionLink("パスワードを忘れました", "ForgotPassword", null, new { @class = "FontSize" })</label>
                         <br /><br />
                         <div>
                             @Html.PasswordFor(m => m.Password, new { @class = "form-control TextBox" })
@@ -48,13 +48,17 @@
 
                         <input type="submit" value="LOGIN" id="Btn_Login" />
                     </div>
+
+
                 }
             </section>
 
             @* 外部登入 *@
-            @*<section id="socialLoginForm">
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                </section>*@
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+
+
         </div>
 
 
@@ -132,6 +136,14 @@
             background-color: black;
             color: white;
             float: right;
+        }
+
+        .ExternalLogin{
+            width: 100px;
+            height: 40px;
+            font-size: 12px;
+            background-color: black;
+            color: white;
         }
 
         /*Btn新會員註冊*/
