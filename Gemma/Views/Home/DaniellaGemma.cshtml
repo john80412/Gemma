@@ -5,6 +5,9 @@
 
 
 @section topCSS{
+
+    <link href="~/Assets/css/LoadingPage.css" rel="stylesheet" />
+
     <link href="~/Assets/css/HomePage.css" rel="stylesheet" />
     <link href="~/Assets/css/flexslider.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
@@ -14,6 +17,12 @@
         }
     </style>
 }
+
+@*Loading Page*@
+<div class="loading">
+    <img src="~/Assets/images/Icons/logo.png" />
+</div>
+
 
 
 @* Carousel Section *@
@@ -183,6 +192,9 @@
 </div>
 
 @section endJS{
+
+    <script src="~/Assets/js/LoadingPage.js"></script>
+
     <script src="~/Assets/js/HomePageForItemsAndJournal.js"></script>
     <script src="~/Assets/js/HomePageForCollection.js"></script>
     <script src="~/Assets/js/jquery.flexslider-min.js"></script>
