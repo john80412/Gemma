@@ -24,16 +24,15 @@ body.lb-disable-scrolling {
   outline: none;
 }
 
-.lightbox .lb-image {
-  display: block;
-  height: auto;
-  max-width: inherit;
-  max-height: none;
-  /*border-radius: 3px;*/
-
-  /* Image border */
-  /*border: 4px solid white;*/
-}
+    .lightbox .lb-image {
+        display: block;
+        height: auto;
+        max-width: inherit;
+        max-height: none;
+        /*border-radius: 3px;*/
+        /* Image border */
+        /*border: 4px solid white;*/
+    }
 
 .lightbox a img {
   border: none;
@@ -46,7 +45,7 @@ body.lb-disable-scrolling {
   height: 250px;
   margin: 0 auto;
   border-radius: 4px;
-
+  cursor:pointer;
   /* Background color behind image.
      This is visible during transitions. */
   background-color: white;
