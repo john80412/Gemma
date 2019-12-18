@@ -20,7 +20,7 @@
 
 @*Loading Page*@
 <div class="loading">
-    <img src="~/Assets/images/Icons/logo.png" />
+    <img src="~/Assets/images/Icons/logo.png" id="loadingimg"/>
 </div>
 
 
@@ -203,6 +203,7 @@
             $('.flexslider').flexslider({
                 slideshowSpeed: 3500
             })
+            document.getElementById("loadingimg").addEventListener('animationend', function () { document.getElementsByClassName("loading")[0].style.display='none' })
         })
     </script>
 }
