@@ -28,19 +28,6 @@ namespace Gemma.Repository
             var results = members.OrderBy(m => m.Id).ToPagedList(currentPage, 10);
             return results;
         }
-
-        //public List<MemberViewModel> GetAllMembers()
-        //{
-        //    var result = from member in db.AspNetUsers
-        //                 select new MemberViewModel
-        //                 {
-        //                     Id = member.Id,
-        //                     UserName = member.UserName,
-        //                     Email = member.Email,
-        //                     PhoneNumber = member.PhoneNumber,
-        //                 };
-        //    return result.ToList();
-        //}
         public MemberViewModel GetMemberDetail(string id)
         {
             AspNetUser member = db.AspNetUsers.Find(id);
@@ -57,29 +44,6 @@ namespace Gemma.Repository
             };
             return result;
         }
-
-        //public void CreatMember(MemberViewModel member)
-        //{
-            //var result = db.AspNetUsers.Find(member.Id, member.UserName, member.Email, member.PhoneNumber);
-            //if(result != null)
-            //{
-            //    IsSuccess = false;
-            //    return;
-            //}
-
-            //IsSuccess = true;
-        //    var data = new AspNetUser
-        //    {
-        //        Id = member.Id,
-        //        UserName = member.UserName,
-        //        Email = member.Email,
-        //        PhoneNumber = member.PhoneNumber
-        //    };
-
-        //    db.AspNetUsers.Add(data);
-        //    db.SaveChanges();
-        //}
-
         public void EditMember(MemberViewModel member)
         {
             var result = db.AspNetUsers.Find(member.Id);

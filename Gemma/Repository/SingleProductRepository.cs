@@ -26,32 +26,10 @@ namespace Gemma.Repository
                        ProductId = p.ProductID,
                        ProductName = p.ProductName,
                        UnitPrice = p.UnitPrice,
-                       //Photo = s.ImageName,
-                       //Description = p.Explain.Replace("\n", "<br>"),
-                       CategoryName = c.CategoryName,
-                       //Images = (from sImage in db.Stocks
-                       //          where sImage.ProductID == p.ProductID
-                       //          group sImage by sImage.ImageName into newGroup
-                       //          select newGroup)
+                       CategoryName = c.CategoryName
                    };
         }
-        public IEnumerable<SingleProductViewModel> GetAllProducts()
-        {
-            return Product;
-        }
-        //public SingleProductViewModel GetProductById(int? productId)
-        //{
-
-        //    var product = Product.Where(x => x.ProductId == productId).FirstOrDefault();
-
-        //    if (product == null)
-        //    {
-        //        return new SingleProductViewModel();
-        //    }
-
-        //    return product;
-        //}
-
+        public IEnumerable<SingleProductViewModel> GetAllProducts() => Product;
         public SingleProductDetailViewModel GetSingleDetails(int? productId)
         {
             var SingleProduct = db.Database.SqlQuery<SingleProductViewModel>("exec SingleProductViewModel").AsQueryable().Where(sp => sp.ProductId == productId).ToList()[0];

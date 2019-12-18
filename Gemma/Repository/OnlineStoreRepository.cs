@@ -11,16 +11,8 @@ namespace Gemma.Repository
     //改寫OnlineStoreProductVM相等之條件
     public class OnlineStoreProductVMCompare : IEqualityComparer<OnlineStoreProductVM>
     {
-        public bool Equals(OnlineStoreProductVM x, OnlineStoreProductVM y)
-        {
-            return x.ProductId == y.ProductId;
-        }
-
-        public int GetHashCode(OnlineStoreProductVM obj)
-        {
-            return obj.ProductId.GetHashCode();
-        }
-
+        public bool Equals(OnlineStoreProductVM x, OnlineStoreProductVM y) =>  x.ProductId == y.ProductId;
+        public int GetHashCode(OnlineStoreProductVM obj) => obj.ProductId.GetHashCode();
     }
     public class OnlineStoreRepository 
     {
