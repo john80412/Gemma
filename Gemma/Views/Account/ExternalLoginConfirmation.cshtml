@@ -2,35 +2,119 @@
 @{
     ViewBag.Title = "註冊";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>關聯您的 @ViewBag.LoginProvider 帳戶。</h3>
 
-@using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
+<h2><b>新規会員登録</b></h2>
+@* 關聯您的 Googel 帳戶 *@
+<h3><b>接続します @ViewBag.LoginProvider アカウント</b></h3>
 
-    <h4>關聯表單</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <p class="text-info">
-        您已成功向下列單位驗證: <strong>@ViewBag.LoginProvider</strong>。
-        請在下面輸入此網站的使用者名稱，然後按一下 [註冊] 按鈕完成
-        登入。
-    </p>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+
+
+
+        <div class="col-md-6">
+            @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @*<h4>關聯表單</h4>
+                    <hr />*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                @* 您已成功向下列單位驗證: Google。請在下面輸入此網站的使用者名稱，然後按一下 [註冊] 按鈕完成 登入。 *@
+            <p class="text-info" id="text">
+                で確認に成功しました <strong>@ViewBag.LoginProvider</strong>。
+                このサイトのユーザー名を下に入力し、「登録」ボタンをクリックして終了してください
+                LOGIN。
+            </p>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "control-label FontSize" })
+                    <div>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control TextBox" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                // Button 會員註冊
+                <div class="form-group">
+                    <div align="center">
+                        <input type="submit" id="Btn_MemberRegistration" value="会員登録" />
+                    </div>
+                </div>
+            }
+
+
         </div>
+
+
+
+        <div class="col-md-3"></div>
+
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="註冊" />
-        </div>
-    </div>
+
+</div>
+
+
+@section topCSS {
+    <style>
+        /*標題: 新會員註冊*/
+        h2 {
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            text-align: center;
+            
+            font-size: 30px;
+            margin-bottom: 50px;
+        }
+
+        #text{
+            text-align: center;
+            font-size: 20px;
+            font-weight:600;
+        }
+
+        /*字體大小*/
+        .FontSize {
+            font-size: 13px;
+        }
+
+        /*輸入框 => 長度、輸入框高度、輸入字體大小、背景顏色、邊框*/
+        .TextBox {
+            max-width: 100%;
+            height: 30px;
+            font-size: 13px;
+            background-color: #FFF5EA;
+            border: black 1px solid;
+        }
+
+            /*輸入時，背景的顏色*/
+            .TextBox:focus {
+                background-color: #FFF5EA;
+            }
+
+
+        /*Btn會員註冊*/
+        #Btn_MemberRegistration {
+            width: 100px;
+            height: 40px;
+            font-size: 12px;
+            background-color: black;
+            color: white;
+        }
+
+    </style>
 }
 
-@section Scripts {
+
+@section endJS{
+    @* 在前端時，就先驗證欄位是否符合 *@
     @Scripts.Render("~/bundles/jqueryval")
 }
+
