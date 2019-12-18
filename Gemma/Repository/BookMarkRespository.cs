@@ -9,7 +9,7 @@ namespace Gemma.Repository
 {
     public class BookMarkRespository
     {
-        internal GemmaDBContext db = new GemmaDBContext();
+        public GemmaDBContext db = new GemmaDBContext();
 
         public  List<BookMarkViewModel> GetBookMarkDetail(string Id) //viewmodel 取得類別名稱
         {

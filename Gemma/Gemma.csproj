@@ -359,6 +359,7 @@
     <Content Include="Assets\images\Icons\footer-icon-point.png" />
     <Content Include="Assets\images\Icons\footer-icon-return.png" />
     <Content Include="Assets\images\Icons\footer-icon-shipping.png" />
+    <Content Include="Assets\images\Icons\header-icon-bookmark.svg" />
     <Content Include="Assets\images\Icons\Heart_Mark.png" />
     <Content Include="Assets\images\Icons\Instagram_Mark.png" />
     <Content Include="Assets\images\Icons\Line_Mark.png" />

@@ -11,7 +11,8 @@ using System.Net;
 namespace Gemma.Controllers
 {
     public class BookMarkController : Controller
-    { 
+    {
+        SingleProductRepository productRepository = new SingleProductRepository();
         public ActionResult Index(bool isDeleteAll = false)
         {
             if (isDeleteAll)
