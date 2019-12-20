@@ -17,26 +17,8 @@ namespace Gemma.Repository
     public class OnlineStoreRepository 
     {
         internal GemmaDBContext db = new GemmaDBContext();
-        public List<OnlineStoreProductVM> GetProductsSearch(string CategoryName, string ColorName, string OrderBy)
+        public List<OnlineStoreProductVM> GetProductsSearch(string CategoryName, string ColorName, string OrderBy,IQueryable<OnlineStoreProductVM> Products)
         {
-            var StoredProcedureVM = db.Database.SqlQuery<SingleProductViewModel>("exec SingleProductViewModel");
-            var ListProducts = (from p in StoredProcedureVM
-                           select new OnlineStoreProductVM
-                           {
-                               ProductId = p.ProductId,
-                               ProductName = p.ProductName,
-                               UnitPrice = p.UnitPrice,
-                               CategoryName = p.CategoryName
-                           }).Distinct(new OnlineStoreProductVMCompare()).ToList();
-            for (int i = 0; i < ListProducts.Count();i++)
-            {
-                ListProducts[i].ColorName = new List<string>();
-                foreach (var item in StoredProcedureVM.Where(x => x.ProductId == ListProducts[i].ProductId))
-                {
-                    ListProducts[i].ColorName.Add(item.ColorName + ".jpg");
-                }
-            }
-            var Products = ListProducts.AsQueryable();
             Products = CategoryName == "ALL" ? Products : Products.Where(x => x.CategoryName == CategoryName);
             Products = ColorName == "ALL" ? Products : Products.Where(x => x.ColorName.IndexOf(ColorName + ".jpg")>-1);
             switch (OrderBy)

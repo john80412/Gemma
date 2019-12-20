@@ -2,6 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    @{
+        if (Session["CartItemCount"] == null)
+        {
+            Session["CartItemCount"] = 0;
+        }
+    }
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,7 +95,7 @@
                                 </li>
 
                                 <li class="cart nav-item">
-                                    <a href="#" class="nav-link"><img src="~/Assets/images/Icons/Cart_Mark.png" /></a>
+                                    <a href="@Url.Action("CartView", "Cart")" class="nav-link"><img src="~/Assets/images/Icons/Cart_Mark.png" /><span id="MyCart">(@Session["CartItemCount"].ToString())</span></a>
                                 </li>
 
                             </ul>
@@ -118,7 +124,7 @@
                             </li>
 
                             <li class="cart nav-item">
-                                <a href="#" class="nav-link"><img src="~/Assets/images/Icons/Cart_Mark.png" /></a>
+                                <a href="@Url.Action("CartView", "Cart")" class="nav-link"><img src="~/Assets/images/Icons/Cart_Mark.png" /><span id="MyCart">(@Session["CartItemCount"].ToString())</span></a>
                             </li>
 
                         </ul>

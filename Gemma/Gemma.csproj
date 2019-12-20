@@ -232,6 +232,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BookMarkController.cs" />
     <Compile Include="Controllers\BackStageHomeController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\JournallController.cs" />
@@ -253,9 +254,8 @@
     <Compile Include="Models\AspNetUserClaim.cs" />
     <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\BookMark.cs" />
-    <Compile Include="Models\Cart\Cart.cs" />
-    <Compile Include="Models\Cart\CartItem.cs" />
-    <Compile Include="Models\Cart\Operation.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartFromDetail.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CollectionItem.cs" />
     <Compile Include="Models\Color.cs" />
@@ -293,6 +293,7 @@
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Repository\MemberCenterRepository.cs" />
     <Compile Include="ViewModel\BookMarkViewModel.cs" />
+    <Compile Include="ViewModel\CartViewModel.cs" />
     <Compile Include="ViewModel\MemberViewModel.cs" />
     <Compile Include="ViewModel\OnlineStoreProductVM.cs" />
     <Compile Include="ViewModel\OrderDetailProduct.cs" />
@@ -313,6 +314,7 @@
     <Content Include="Assets\css\lightbox.css" />
     <Content Include="Assets\css\lightbox.min.css" />
     <Content Include="Assets\css\HomePage.css" />
+    <Content Include="Assets\css\LoadingPage.css" />
     <Content Include="Assets\css\MemberCenter.css" />
     <Content Include="Assets\css\OnlineStore.css" />
     <Content Include="Assets\css\Shop.css" />
@@ -617,6 +619,7 @@
     <Content Include="Assets\js\lightbox.js" />
     <Content Include="Assets\js\lightbox.min.js" />
     <Content Include="Assets\css\main.css" />
+    <Content Include="Assets\js\LoadingPage.js" />
     <Content Include="Assets\js\main.js" />
     <Content Include="Assets\js\utils.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -775,6 +778,8 @@
     <Content Include="Views\Details\_Layout.cshtml" />
     <Content Include="Views\Details\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_BookMarkPicturePartial.cshtml" />
+    <Content Include="Views\Cart\CartView.cshtml" />
+    <Content Include="Views\Cart\GetCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

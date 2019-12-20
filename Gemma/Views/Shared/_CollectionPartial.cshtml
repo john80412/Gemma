@@ -1,8 +1,8 @@
 ﻿@model Gemma.Models.CollectionItem
 
-<div class="col-lg-4 col-md-6 collection-item fadeInUp">
-    <a class="example-image-link" href="~/Assets/images/collection/@Model.FileName" data-lightbox="example-@Model.FileName" data-title="<br>@Html.DisplayFor(x => x.Name)<br><br>@Html.DisplayFor(x => x.Price)">
-        <img class="example-image img-fluid" src="~/Assets/images/collection/@Model.FileName" />
+<div class="col-lg-4 col-md-6 collection-item fadeInUp" >
+    <a  class="example-image-link" href="~/Assets/images/collection/@Model.FileName" data-lightbox="example-@Model.FileName" data-title="<br>@Html.DisplayFor(x => x.Name)<br><br>@Html.DisplayFor(x => x.Price)">
+        <img class="example-image img-fluid" src="~/Assets/images/collection/@Model.FileName" alt="@Html.DisplayFor(x => x.Weburl)" />
     </a>
 </div>
 
