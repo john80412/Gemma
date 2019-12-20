@@ -1,6 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
 
-
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -34,7 +33,7 @@
             </li>
 
             <li class="cart">
-                <a href="#"><img src="~/Assets/images/Icons/Cart_Mark.png" /></a>
+                <a href="@Url.Action("CartView", "Cart")"><img src="~/Assets/images/Icons/Cart_Mark.png" /><span id="MyCart">(@Session["CartItemCount"].ToString())</span></a>
             </li>
 
         </ul>
@@ -81,7 +80,7 @@ else
         </li>
 
         <li class="cart">
-            <a href="#"><img src="~/Assets/images/Icons/Cart_Mark.png" /></a>
+            <a href="@Url.Action("CartView", "Cart")"><img src="~/Assets/images/Icons/Cart_Mark.png" /><span id="MyCart">(@Session["CartItemCount"].ToString())</span></a>
         </li>
 
     </ul>

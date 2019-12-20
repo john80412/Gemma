@@ -197,6 +197,47 @@
         })
 
     </script>
+
+    <script>
+       $(document).ready(function () {
+            $('#submit').click(function () { 
+                var ProductID = $('#mainImage').attr('title');
+                var SizeID = $("button[class*='selected']").attr('id')
+                
+                var ColorID = $('.selected').attr('id');
+                var Count = $("#userCount").val();
+                var Price = $("#price").html();
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Cart/DetailToCartButton",
+                    data: { ProductID: ProductID, ColorID: ColorID,SizeID: SizeID,Count: Count, Price: Price },
+                    dataType: "text",
+                    success: function (response) {
+                        alert(response);
+                        $("#MyCart").text("(" + response + ")");
+                    }
+                });
+                $.ajax({
+                    type: "POST",
+                    url: "/Cart/GetCart",
+                    data: { ProductID: ProductID, ColorID: ColorID,SizeID: SizeID,Count: Count, Price: Price },
+                    dataType: "text",
+                    success: function (response) {
+                        
+                       
+                    }
+                });
+            });
+
+        });
+                         
+
+                
+
+
+    </script>
 }
 @section topCSS{
 
