@@ -15,6 +15,6 @@ namespace Gemma.Models
         [DisplayFormat(DataFormatString = "¥{0} + TAX", ApplyFormatInEditMode = false)]
         public int Price { get; set; }
 
-        public string Weburl { get; set; }
+        public int Weburl { get; set; }
     }
 }

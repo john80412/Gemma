@@ -15,18 +15,18 @@
         }
     );
 
-    $('img').hover(
+    $('.collection-item img').hover(
 
         function () //滑鼠移過去做的事
         {
 
-            $('img').css("opacity", "0.3");
+            $('.collection-item img').css("opacity", "0.3");
             $(this).css("opacity", "1");
         },
         function () //滑鼠移出做的事
         {
 
-            $('img').css("opacity", "1");
+            $('.collection-item img').css("opacity", "1");
         }
     );
 

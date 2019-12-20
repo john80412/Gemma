@@ -34,6 +34,10 @@
         body {
             overflow-x: hidden;
         }
+
+        .collection-item > img{
+            cursor:pointer;
+        }
     </style>
 }
 
@@ -43,6 +47,19 @@
     <script>
         lightbox.option({
             'disableScrolling': true
+        })
+        $(() => {
+
+            $('.collection-item img').on('click', function () {
+                var urlNumber = this.getAttribute('alt');
+
+                $('.lb-container').attr('alt', urlNumber);
+                $('.lb-container').click(() => {
+                    var number = $('.lb-container').attr('alt');
+                    location.href = `/Details/${number}`;
+                })
+            });
+
         })
     </script>
 }
