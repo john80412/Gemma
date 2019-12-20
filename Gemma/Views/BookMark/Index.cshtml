@@ -1,5 +1,11 @@
-﻿<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+﻿@model IEnumerable<Gemma.ViewModel.BookMarkViewModel>
 
+@section topCSS{
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+
+    <link href="~/Assets/css/BookMark.css" rel="stylesheet" />
+}
 @{
     ViewBag.Title = "心願清單";
 }
@@ -7,59 +13,11 @@
 @* 心願清單 *@
 <h2><b>B O O K M A R K</b></h2>
 <div class="container">
-    
     <div class="row">
-        <div class="col-md-3">
-            <div class="delete">
-                <i class="fas fa-times "></i>
-            </div>
-            <img class="bk" src="~/Assets/images/Product/SNEAKER/Rabbit Fur Belt Sneaker/index2.jpg" />
-        </div>
-        <div class="col-md-3">
-            <div class="delete">
-                <i class="fas fa-times "></i>
-            </div>
-            <img class="bk" src="~/Assets/images/empty.jpg" />
-        </div>
-        <div class="col-md-3">
-            <div class="delete">
-                <i class="fas fa-times "></i>
-            </div>
-            <img class="bk" src="~/Assets/images/empty.jpg" />
-        </div>
-        <div class="col-md-3">
-            <div class="delete">
-                <i class="fas fa-times "></i>
-            </div>
-            <img class="bk" src="~/Assets/images/empty.jpg" />
-        </div>
-        </div>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bkadd mt-5">
-                <span id="bkproductname"></span>
-                <span id="bkprice"></span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="bkadd mt-5">
-                <span id="bkproductname"></span>
-                <span id="bkprice"></span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="bkadd mt-5">
-                <span id="bkproductname"></span>
-                <span id="bkprice"></span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="bkadd mt-5">
-                <span id="bkproductname"></span>
-                <span id="bkprice"></span>
-            </div>
-        </div>
-
+        @for (var i = 0; i < 4; i++)
+        {
+            @Html.Partial("_BookMarkPicturePartial")}
+      
         <div class=" offset-md-4 mt-5" id="bkbtn">
             <button id="bkclear" type="button" class="btn btn-dark mr-5">BOOKMARKのクリア</button>
             <button id="bkcontinue" type="button" class="btn btn-dark">買い物を続ける</button>
@@ -67,53 +25,16 @@
     </div>
 </div>
 
-@section topCSS {
-    <style>
-        h2 {
-            text-align: center;
-            font-size: 65px;
-            margin-bottom: 40px;
-        }
 
-        .bk {
-            height: 100%;
-            width: 100%;
-        }
-
-        #bkbtn button {
-            font-size: 15px;
-            padding: 10px 30px;
-            background-color: black;
-        }
-    .delete{
-      position: absolute;
-     top:8%;
-      left:12%;
-      display: flex;
-      cursor: pointer;
-      font-size: 36px;
-      color: lightgray;
-    }
-    .delete:active{
-      transition: 0s;
-      color: grey;
-    }
-        .test {
-            display:none;
-        }
-   
-    
-    </style>
-}
 
 @section endJS{
     <script>
-        $(() => {             
+        $(() => {
             $('#bkclear').click(function(){
-                location.href = '@Url.Action("Index","BookMark",new { isDeleteAll = true})' 
+                location.href = '@Url.Action("Index","BookMark",new { isDeleteAll = true})'
             })
             $('#bkcontinue').click(function(){
-                location.href = '@Url.Action("FindBrand","OnlineStore")' 
+                location.href = '@Url.Action("FindBrand","OnlineStore")'
             })
             $('img[src$="empty.jpg"]').parent().children('div').addClass('test')
             $('.bk').not('img[src$="empty.jpg"]').parent().children('div').removeClass('test')

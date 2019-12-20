@@ -1,0 +1,35 @@
+﻿h2 {
+    text-align: center;
+    font-size: 65px;
+    margin-bottom: 40px;
+}
+
+.bk {
+    height: 100%;
+    width: 100%;
+}
+
+#bkbtn button {
+    font-size: 15px;
+    padding: 10px 30px;
+    background-color: black;
+}
+
+.delete {
+    position: absolute;
+    top: 8%;
+    left: 12%;
+    display: flex;
+    cursor: pointer;
+    font-size: 36px;
+    color: lightgray;
+}
+
+    .delete:active {
+        transition: 0s;
+        color: grey;
+    }
+
+.test {
+    display: none;
+}

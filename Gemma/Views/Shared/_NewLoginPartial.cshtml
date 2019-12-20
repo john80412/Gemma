@@ -7,39 +7,43 @@
         @Html.AntiForgeryToken()
 
 
-        <ul class="nav header-tool">
+    <ul class="nav header-tool">
 
-            <li class="account nav-item dropdown">
+        <li class="account nav-item dropdown">
 
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="~/Assets/images/Icons/User_Mark.png" />
-                </a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="~/Assets/images/Icons/User_Mark.png" />
+            </a>
 
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    @Html.ActionLink("マイページ", "MemberInfo", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
-                    @Html.ActionLink("ポイント履歴", "OrderSearch", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
-                    @if (User.Identity.Name == "Admin@gmail.com")
-                    {
-                        @Html.ActionLink("バックグラウンド管理", "Admin", "Account", null, new { @class = "dropdown-item" })
-                    }
-                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">ログアウト</a>
-                </div>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                @Html.ActionLink("マイページ", "MemberInfo", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
+                @Html.ActionLink("ポイント履歴", "OrderSearch", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
+                @if (User.Identity.Name == "Admin@gmail.com")
+                {
+                    @Html.ActionLink("バックグラウンド管理", "Admin", "Account", null, new { @class = "dropdown-item" })
+                }
+                <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">ログアウト</a>
+            </div>
 
-            </li>
+        </li>
 
 
-            <li class="bookmark">
-                <a href="@Url.Action("Index", "BookMark")">
-                    <img style="height:120%;width:120%" src="~/Assets/images/Icons/header-icon-bookmark.svg" />
-                </a>
+        <li class="bookmark">
+            <a href="@Url.Action("Index", "BookMark")">
+                <img style="height:120%;width:120%" src="~/Assets/images/Icons/header-icon-bookmark.svg" />
+            </a>
 
-            </li>
-
+        </li>
+        @if (Session["Count"] != null && (int)Session["Count"] > 0)
+        {
+    <span style="font-size:20px;margin-top:15px">(@Session["Count"])</span>
+        }
+        
             <li class="cart">
                 <a href="@Url.Action("CartView", "Cart")"><img src="~/Assets/images/Icons/Cart_Mark.png" /><span id="MyCart">(@Session["CartItemCount"].ToString())</span></a>
             </li>
 
-        </ul>
+    </ul>
 
 
 
@@ -63,31 +67,37 @@
 }
 else
 {
-    <ul class="nav header-tool">
+<ul class="nav header-tool">
 
-        <li class="account nav-item dropdown">
+    <li class="account nav-item dropdown">
 
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="~/Assets/images/Icons/User_Mark.png" />
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="~/Account/Register">新規会員登録</a>
-                <a class="dropdown-item" href="~/Account/Login">LOGIN</a>
-            </div>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="~/Assets/images/Icons/User_Mark.png" />
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="~/Account/Register">新規会員登録</a>
+            <a class="dropdown-item" href="~/Account/Login">LOGIN</a>
+        </div>
 
-        </li>
+    </li>
 
 
-        <li class="bookmark">
-            <a href="@Url.Action("Index", "BookMark")">
-<img style="height:120%;width:120%" src="~/Assets/images/Icons/header-icon-bookmark.svg" /></a>
-        </li>
+    <li class="bookmark">
+        <a href="@Url.Action("Index", "BookMark")">
+            <img style="height:120%;width:120%" src="~/Assets/images/Icons/header-icon-bookmark.svg" />
+        </a>
 
+    </li>
+    @if (Session["Count"] != null && (int)Session["Count"] > 0)
+    {
+        <span style="font-size:20px;margin-top:15px">(@Session["Count"])</span>
+    }
         <li class="cart">
             <a href="@Url.Action("CartView", "Cart")"><img src="~/Assets/images/Icons/Cart_Mark.png" /><span id="MyCart">(@Session["CartItemCount"].ToString())</span></a>
         </li>
 
-    </ul>
+
+</ul>
 
 }
 

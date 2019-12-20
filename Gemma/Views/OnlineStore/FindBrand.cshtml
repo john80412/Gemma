@@ -95,7 +95,7 @@
             <br />
             <br />
 
-            <div class="row">
+            <div class="row" id="heartlike">
                 <!--鞋子圖片-->
                 @foreach (var photo in Model)
                 {
@@ -110,20 +110,68 @@
     </div>
 
 </div>
+
+
+
+
 @section endJS{
+
     <script>
+
+        
+
         $(() => {
-            $('#orderby #@Session["PriceOrderBy"].ToString()').attr('selected', 'selected');
-            $('.hoverchange').hover(function () {
-                var path = `../../Assets/images/Product/${$(this).attr('value').replace('.jpg','')}/1.jpg`;
-                $(this).parent().parent().children('img').attr('src', path);
+
+    $('#orderby #@Session["PriceOrderBy"].ToString()').attr('selected', 'selected');
+    $('.hoverchange').hover(function () {
+    var path = `../../Assets/images/Product/${$(this).attr('value').replace('.jpg','')}/1.jpg`;
+    $(this).parent().parent().children('img').attr('src', path);
+    }
+    )
+    $('.hoverchange').mouseout(function () {
+    var path = `../../Assets/images/Product/${$(this).parent().parent().children('img').attr('value')}/index1.jpg`;
+    $(this).parent().parent().children('img').attr('src', path);
+    }
+    )
+        })
+        $('.heart').click(function () {
+            event.cancelBubble = true
+                        var productId = $(this).attr('id');
+
+            if ($(this).hasClass("far")) {
+                $(this).removeClass("far fa-heart fa-3x")
+                $(this).addClass("fas fa-heart fa-3x")
+                            $.ajax({
+                type: "POST",
+                url: "/BookMark/addwishlist",
+                data: { ProductId: productId },
+                dataType: "text",
+                //success:
+                    //function (response) {
+                //    $("#MyCart").text("購物車(" + response + ")");
+               
+            });
+
+            } else {
+                 $(this).removeClass("fas fa-heart fa-3x")
+                $(this).addClass("far fa-heart fa-3x")
+                            $.ajax({
+                type: "POST",
+                url: "/BookMark/removewishlist",
+                data: { ProductId: productId },
+                dataType: "text",
+                //success:
+                    //function (response) {
+                //    $("#MyCart").text("購物車(" + response + ")");
+               
+            });
+
             }
-            )
-            $('.hoverchange').mouseout(function () {
-                var path = `../../Assets/images/Product/${$(this).parent().parent().children('img').attr('value')}/index1.jpg`;
-                $(this).parent().parent().children('img').attr('src', path);
-            }
-            )
+
+            
+
+            
+       
         })
     </script>
 }
