@@ -1,28 +1,38 @@
 ﻿@model Gemma.ViewModel.OnlineStoreProductVM
 @using System.Globalization;
 
+   
 
-<div class="col-4 picturecol"  onclick="location.href='@Url.Action("FindProductById","Details",new { productId = Model.ProductId})'" style="cursor:pointer;">
+    <div class="col-4 picturecol" onclick="location.href='@Url.Action("FindProductById", "Details", new { productId = Model.ProductId })'" style="cursor:pointer;">
+        
+        <img src="~/Assets/images/Product/@Model.CategoryName/@Model.ProductName/index1.jpg" alt="" value="@(Model.CategoryName)/@(Model.ProductName)">
+        <div class="position-left ">
+            @if (Session["Wish"] == null || !((List<BookMarkViewModel>)Session["Wish"]).Exists(x => x.ProductId == Model.ProductId))
+            {
 
-    <img src="~/Assets/images/Product/@Model.CategoryName/@Model.ProductName/index1.jpg" alt="" value="@(Model.CategoryName)/@(Model.ProductName)">
+                <i class="far fa-heart fa-3x heart" id="@Model.ProductId"></i> @*空愛心*@
+            }
+            else
+            {
+                <i class="fas fa-heart fa-3x heart" id="@Model.ProductId"></i> @*實愛心*@
+            }
 
 
-    <div class="position-left heart">
-
-        <img src="~/Assets/images/Icons/header-icon-bookmark.svg" />
-
-    </div>
-    @for (int i = 0; i < Model.ColorName.Count; i++)
-    {
-        <div>
-            <img src="~/Assets/images/Product/colors/@Model.ColorName[i]" style="position: absolute;right: @(25+30*i)px;bottom: 20%;width:8%;height:8%;" value="@(Model.CategoryName)/@(Model.ProductName)/@(Model.ColorName[i])" class="hoverchange" />
         </div>
-    }
 
-    <br />
-    <div>
-        <div class="photo-word bottom-side">@Model.ProductName<br>@Model.UnitPrice 円  + TAX</div>
+
+
+        @for (int i = 0; i < Model.ColorName.Count; i++)
+        {
+            <div>
+                <img src="~/Assets/images/Product/colors/@Model.ColorName[i]" style="position: absolute;right: @(25+30*i)px;bottom: 20%;width:8%;height:8%;" value="@(Model.CategoryName)/@(Model.ProductName)/@(Model.ColorName[i])" class="hoverchange" />
+            </div>
+        }
+
+        <br />
+        <div>
+            <div class="photo-word bottom-side">@Model.ProductName<br>@Model.UnitPrice 円  + TAX</div>
+        </div>
     </div>
-</div>
 <br />
 <br />

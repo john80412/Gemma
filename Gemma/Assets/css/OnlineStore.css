@@ -83,11 +83,11 @@ p {
     height: 20px;
 }
 
-.heart img, .small-color {
+.heart i, .small-color {
     display: inline-block;
 }
 
-.position-left img{
+.position-left i{
     position: absolute;
     left: 10%;
     bottom: 20%;
