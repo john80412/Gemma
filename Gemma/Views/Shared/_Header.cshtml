@@ -1,7 +1,13 @@
 ﻿@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "_Header";
+
+        if (Session["CartItemCount"] == null)
+    {
+        Session["CartItemCount"] = 0;
+    }
 }
+
 
 <div class="container-fluid header">
     <br />

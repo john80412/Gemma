@@ -231,6 +231,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BookMarkController.cs" />
     <Compile Include="Controllers\BackStageHomeController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\JournallController.cs" />
@@ -252,9 +253,8 @@
     <Compile Include="Models\AspNetUserClaim.cs" />
     <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\BookMark.cs" />
-    <Compile Include="Models\Cart\Cart.cs" />
-    <Compile Include="Models\Cart\CartItem.cs" />
-    <Compile Include="Models\Cart\Operation.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartFromDetail.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CollectionItem.cs" />
     <Compile Include="Models\Color.cs" />
@@ -292,6 +292,7 @@
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Repository\MemberCenterRepository.cs" />
     <Compile Include="ViewModel\BookMarkViewModel.cs" />
+    <Compile Include="ViewModel\CartViewModel.cs" />
     <Compile Include="ViewModel\MemberViewModel.cs" />
     <Compile Include="ViewModel\OnlineStoreProductVM.cs" />
     <Compile Include="ViewModel\OrderDetailProduct.cs" />
@@ -774,6 +775,8 @@
     <Content Include="Views\Shared\_ProductDetailsPartial.cshtml" />
     <Content Include="Views\Details\_Layout.cshtml" />
     <Content Include="Views\Details\_ViewStart.cshtml" />
+    <Content Include="Views\Cart\CartView.cshtml" />
+    <Content Include="Views\Cart\GetCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

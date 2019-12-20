@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "CartView";
+}
+
+<div class="container">
+    @{
+        if (Session["Cart"] == null)
+        {
+            <div class="cart-section">
+                <div class="cart-no-items">
+                    <p>カートは空です</p>
+                </div>
+            </div>
+
+        }
+        else
+        {
+            @Html.Partial("GetCart", Session["CartView"])
+
+        }
+
+
+    }
+
+</div>
+@section topCSS{
+    <style>
+        .cart-with-items img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .cart-no-items{
+    text-align:center;
+    background-color:white;
+    height:300px;
+}
+    .cart-no-items p {
+        padding-top: 115px;
+        font-size: 45px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    </style>
+}
+@*@section endJS{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+                el: ".cart-with-items",
+                data: {
+                    count: 0,
+                    price:0
+                },
+                computed: {
+                    result: function () {
+                        total = this.count * this.price;
+                        return total;
+                    }
+                },
+            })
+    </script>
+    }*@
