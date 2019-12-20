@@ -27,21 +27,23 @@ namespace Gemma.Controllers
 
             return View();
         }
-        public void  Addwishlist(int? ProductId)
+        public int  Addwishlist(int? ProductId)
         {
             var test = (List<BookMarkViewModel>)Session["Wish"];
             test ??= new List<BookMarkViewModel>();
             test.Add(new BookMarkViewModel { ProductId = ProductId});
             Session["Wish"]= test;
             Session["Count"]= test.Count;
+            return test.Count;
         }
-        public void removewishlist(int? ProductId)
+        public int removewishlist(int? ProductId)
         {
             var test = (List<BookMarkViewModel>)Session["Wish"];
             test ??= new List<BookMarkViewModel>();
             test.Remove(test.Where(x => x.ProductId == ProductId).ToList()[0]);
             Session["Wish"]= test;
             Session["Count"]= test.Count;
+            return test.Count;
         }
     }
 }
