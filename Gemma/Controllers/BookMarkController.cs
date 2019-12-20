@@ -39,7 +39,7 @@ namespace Gemma.Controllers
         {
             var test = (List<BookMarkViewModel>)Session["Wish"];
             test ??= new List<BookMarkViewModel>();
-            test.Remove((BookMarkViewModel)test.Where(x => x.ProductId == ProductId));
+            test.Remove(test.Where(x => x.ProductId == ProductId).ToList()[0]);
             Session["Wish"]= test;
             Session["Count"]= test.Count;
         }

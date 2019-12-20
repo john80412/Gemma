@@ -358,11 +358,13 @@
     <Content Include="Assets\images\HomePage\Journal02.jpg" />
     <Content Include="Assets\images\HomePage\Journal03.jpeg" />
     <Content Include="Assets\images\Icons\Cart_Mark.png" />
+    <Content Include="Assets\images\Icons\emptyheart.svg" />
     <Content Include="Assets\images\Icons\Facebook_Mark.png" />
     <Content Include="Assets\images\Icons\footer-icon-maintenance.png" />
     <Content Include="Assets\images\Icons\footer-icon-point.png" />
     <Content Include="Assets\images\Icons\footer-icon-return.png" />
     <Content Include="Assets\images\Icons\footer-icon-shipping.png" />
+    <Content Include="Assets\images\Icons\fullheart.svg" />
     <Content Include="Assets\images\Icons\header-icon-bookmark.svg" />
     <Content Include="Assets\images\Icons\Heart_Mark.png" />
     <Content Include="Assets\images\Icons\Instagram_Mark.png" />

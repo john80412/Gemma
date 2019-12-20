@@ -9,12 +9,11 @@
         <div class="position-left ">
             @if (Session["Wish"] == null || !((List<BookMarkViewModel>)Session["Wish"]).Exists(x => x.ProductId == Model.ProductId))
             {
-
-                <i class="far fa-heart fa-3x heart" id="@Model.ProductId"></i> @*空愛心*@
+                <img class="far heart" src="~/Assets/images/Icons/emptyheart.svg" id="@Model.ProductId"/>@*空愛心*@
             }
             else
             {
-                <i class="fas fa-heart fa-3x heart" id="@Model.ProductId"></i> @*實愛心*@
+                <img class="fas heart" src="~/Assets/images/Icons/fullheart.svg" id="@Model.ProductId" />@*實愛心*@
             }
 
 

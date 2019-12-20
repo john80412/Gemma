@@ -73,24 +73,21 @@ p {
     text-align: right;
 }
 
-.heart img{
-    width: 25px !important;
-    height: 25px ;
-}
-
 .small-color {
     width: 20px !important;
     height: 20px;
 }
 
-.heart i, .small-color {
+.heart img, .small-color {
     display: inline-block;
 }
 
-.position-left i{
+.position-left img {
     position: absolute;
     left: 10%;
     bottom: 20%;
+    width: 30px !important;
+    height: 30px;
 }
 
 /*.position-right-1 img{

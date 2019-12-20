@@ -118,7 +118,7 @@
 
     <script>
 
-        
+
 
         $(() => {
 
@@ -136,42 +136,27 @@
         })
         $('.heart').click(function () {
             event.cancelBubble = true
-                        var productId = $(this).attr('id');
+            var productId = $(this).attr('id');
 
             if ($(this).hasClass("far")) {
-                $(this).removeClass("far fa-heart fa-3x")
-                $(this).addClass("fas fa-heart fa-3x")
-                            $.ajax({
+                $(this).removeClass("far").addClass("fas").attr('src','../../Assets/images/Icons/fullheart.svg')
+                $.ajax({
                 type: "POST",
                 url: "/BookMark/addwishlist",
                 data: { ProductId: productId },
-                dataType: "text",
-                //success:
-                    //function (response) {
-                //    $("#MyCart").text("購物車(" + response + ")");
-               
-            });
-
-            } else {
-                 $(this).removeClass("fas fa-heart fa-3x")
-                $(this).addClass("far fa-heart fa-3x")
-                            $.ajax({
-                type: "POST",
-                url: "/BookMark/removewishlist",
-                data: { ProductId: productId },
-                dataType: "text",
-                //success:
-                    //function (response) {
-                //    $("#MyCart").text("購物車(" + response + ")");
-               
+                dataType: "text"
             });
 
             }
-
-            
-
-            
-       
+            else {
+                $(this).removeClass("fas").addClass("far").attr('src','../../Assets/images/Icons/emptyheart.svg')
+                $.ajax({
+                type: "POST",
+                url: "/BookMark/removewishlist",
+                data: { ProductId: productId },
+                dataType: "text"
+            });
+            }
         })
     </script>
 }
