@@ -21,21 +21,27 @@
             var bkwish = (List<BookMarkViewModel>)Session["Wish"];
             foreach (var item in bkwish)
             {
-                <div class="col-md-3">
+        <div class="col-md-3">
 
-                    <i class="fas fa-times delete" id="@item.ProductId"></i>
+            <i class="fas fa-times delete" id="@item.ProductId"></i>
 
-                    <div onclick="location.href='@Url.Action("FindProductById", "Details", new { productId = item.ProductId })'" style="cursor:pointer">
-                        <img class="bk" src="~/Assets/images/Product/@item.CategoryName/@item.ProductName/index1.jpg" alt="" value="@(item.CategoryName)/@(item.ProductName)" />
-                    </div>
-                    <br />
-
-
-                    <div>
-                        <div class="photo-word bottom-side">@item.ProductName<br>@item.UnitPrice 円  + TAX</div>
-                    </div>
-                    <br /><br />
+            <div onclick="location.href='@Url.Action("FindProductById", "Details", new { productId = item.ProductId })'" style="cursor:pointer">
+                <img class="bk" src="~/Assets/images/Product/@item.CategoryName/@item.ProductName/index1.jpg" alt="" value="@(item.CategoryName)/@(item.ProductName)" />
+            </div>
+            @for (int i = 0; i < Model.ColorName.Count; i++)
+            {
+                <div>
+                    <img src="~/Assets/images/Product/colors/@Model.ColorName[i]" style="position: absolute;right: @(25+30*i)px;bottom: 20%;width:8%;height:8%;" value="@(Model.CategoryName)/@(Model.ProductName)/@(Model.ColorName[i])" class="hoverchange" />
                 </div>
+            }
+            <br />
+
+
+            <div>
+                <div class="photo-word bottom-side">@item.ProductName<br>@item.UnitPrice 円  + TAX</div>
+            </div>
+            <br /><br />
+        </div>
 
             }
 

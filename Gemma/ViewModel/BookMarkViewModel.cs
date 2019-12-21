@@ -11,5 +11,6 @@ namespace Gemma.ViewModel
         public string ProductName { get; set; }
         public decimal? UnitPrice { get; set; }
         public string CategoryName { get; set; }
+        public List<string> ColorName { get; set; }
     }
 }

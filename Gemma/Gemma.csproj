@@ -611,6 +611,7 @@
     <Content Include="Assets\images\Product\SANDAL\Square Tour Rabbit Fur Slipper Mule\white\1.jpg" />
     <Content Include="Assets\images\Product\SANDAL\Square Tour Rabbit Fur Slipper Mule\white\2.jpg" />
     <Content Include="Assets\js\CollectionJS.js" />
+    <Content Include="Assets\js\fbsdk.js" />
     <Content Include="Assets\js\FixedMenuForIG.js" />
     <Content Include="Assets\js\HomePageForCollection.js" />
     <Content Include="Assets\js\HomePageForItemsAndJournal.js" />
