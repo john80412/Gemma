@@ -24,6 +24,7 @@ namespace Gemma.Controllers
             if (isDeleteAll)
             {
                 Session["Wish"] = null;
+                Session["Count"] = 0;
             }
             //List<BookMarkViewModel> bk =(List<BookMarkViewModel>) Session["Wish"]; //value 轉型成key
             var test = (List<BookMarkViewModel>)Session["Wish"];

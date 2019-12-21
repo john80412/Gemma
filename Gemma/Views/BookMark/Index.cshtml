@@ -28,12 +28,12 @@
             <div onclick="location.href='@Url.Action("FindProductById", "Details", new { productId = item.ProductId })'" style="cursor:pointer">
                 <img class="bk" src="~/Assets/images/Product/@item.CategoryName/@item.ProductName/index1.jpg" alt="" value="@(item.CategoryName)/@(item.ProductName)" />
             </div>
-            @for (int i = 0; i < Model.ColorName.Count; i++)
+            @*@for (int i = 0; i < Model.ColorName.Count; i++)
             {
                 <div>
                     <img src="~/Assets/images/Product/colors/@Model.ColorName[i]" style="position: absolute;right: @(25+30*i)px;bottom: 20%;width:8%;height:8%;" value="@(Model.CategoryName)/@(Model.ProductName)/@(Model.ColorName[i])" class="hoverchange" />
                 </div>
-            }
+            }*@
             <br />
 
 
