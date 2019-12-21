@@ -623,6 +623,7 @@
     <Content Include="Assets\css\main.css" />
     <Content Include="Assets\js\LoadingPage.js" />
     <Content Include="Assets\js\main.js" />
+    <Content Include="Assets\js\navbaranimation.js" />
     <Content Include="Assets\js\utils.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
