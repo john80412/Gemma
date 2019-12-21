@@ -144,7 +144,8 @@
                 type: "POST",
                 url: "/BookMark/addwishlist",
                 data: { ProductId: productId },
-                dataType: "text"
+                    dataType: "text",
+                    success: function (response) { $("#MyWish").text("(" + response + ")"); }
             });
 
             }
@@ -154,7 +155,8 @@
                 type: "POST",
                 url: "/BookMark/removewishlist",
                 data: { ProductId: productId },
-                dataType: "text"
+                    dataType: "text",
+                success: function (response) { $("#MyWish").text("(" + response + ")"); }
             });
             }
         })

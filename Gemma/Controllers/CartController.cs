@@ -41,6 +41,7 @@ namespace Gemma.Controllers
                 cartItems.Add(cart);
 
                 Session["Cart"] = cartItems;
+                Session["CartItemCount"] = cart.RecordID;
             }
             else
             {

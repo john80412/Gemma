@@ -1,7 +1,17 @@
 ﻿
 <!DOCTYPE html>
 <html>
-<head >
+<head>
+    @{
+        if (Session["CartItemCount"] == null)
+        {
+            Session["CartItemCount"] = 0;
+        }
+        if (Session["Count"] == null)
+        {
+            Session["Count"] = 0;
+        }
+    }
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +20,7 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Assets/css/FixedMenu.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
 
     @RenderSection("topCSS", required: false)

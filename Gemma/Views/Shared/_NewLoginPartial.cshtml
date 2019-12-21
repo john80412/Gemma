@@ -30,15 +30,13 @@
 
             <li class="bookmark">
                 <a href="@Url.Action("Index", "BookMark")">
-                    <img style="height:120%;width:120%" src="~/Assets/images/Icons/header-icon-bookmark.svg" />
+                    <img  style="height:120%;width:120%" src="~/Assets/images/Icons/header-icon-bookmark.svg" />
                 </a>
 
             </li>
-            @if (Session["Count"] != null && (int)Session["Count"] > 0)
-            {
-                <span style="font-size:20px;margin-top:15px">(@Session["Count"])</span>
-            }
-
+          
+                <span id="MyWish" style="font-size:20px;margin-top:15px">(@Session["Count"].ToString())</span>
+            
             <li class="cart">
                 <a href="@Url.Action("CartView", "Cart")"><img src="~/Assets/images/Icons/Cart_Mark.png" /></a>
             </li>
@@ -89,10 +87,9 @@ else
             </a>
 
         </li>
-        @if (Session["Count"] != null && (int)Session["Count"] > 0)
-        {
-            <span style="font-size:20px;margin-top:15px">(@Session["Count"])</span>
-        }
+       
+            <span id="MyWish" style="font-size:20px;margin-top:15px">(@Session["Count"].ToString())</span>
+        
         <li class="cart">
             <a href="@Url.Action("CartView", "Cart")"><img src="~/Assets/images/Icons/Cart_Mark.png" /></a>
         </li>

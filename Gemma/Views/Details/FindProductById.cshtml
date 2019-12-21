@@ -95,7 +95,7 @@
                         <p>小計 {{items.total}} 円</p>
                     </div>
                     <div class="row">
-                        <button type="button" class="btn btn-dark" data-dismiss="modal">カートを見る</button>
+                        <button type="button" class="btn btn-dark mr-5" data-dismiss="modal">カートを見る</button>
                     </div>
                 </div>
             </div>
@@ -156,18 +156,33 @@
                 el: '#userDetails',
                 data: { items: jsonData1 }
             })
-
             //按下訂購按鈕時
             $('#submit').click(function () {
+                var ProductID = $('#mainImage').attr('title');
+                var SizeID = $("button[class*='selected']").attr('id')
+                var ColorID = $('.selected').attr('id');
+                var Count = $("#userCount").val();
+                var Price = $("#price").html();
+                $.ajax({
+                    type: "POST",
+                    url: "/Cart/DetailToCartButton",
+                    data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Count: Count, Price: Price },
+                    dataType: "text",
+                    success: function (response) {
+                        $("#MyCart").text("(" + response + ")");
+                    }
+                });
+                $.ajax({
+                    type: "POST",
+                    url: "/Cart/GetCart",
+                    data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Count: Count, Price: Price },
+                    dataType: "text"
+                });
                 if ($('.pImages img').hasClass("selected") != true || $('.size-filters button').hasClass("selected") != true) {
                     $('#color-warning').text("Please select color.").css("color", "red");
                     $('#size-warning').text("Please select size.").css("color", "red");
                 }
-
                 else {
-
-
-
                     var orderPrice = $('#userCount').val() * $('#price').html().replace(' 円 + TAX', '');
 
                     var jsonData = {
@@ -177,58 +192,11 @@
                         selectedSize: $('.selected').has('button').prevObject[1].innerHTML,
                         total: orderPrice
                     }
-
-                    //app = new Vue({
-                    //    el: '#userDetails',
-                    //    data: { items: jsonData }
-                    //})
                     app.$data.items = jsonData
                     $('#showCart').modal('show');
                 }
             })
         })
-
-    </script>
-
-    <script>
-       $(document).ready(function () {
-            $('#submit').click(function () { 
-                var ProductID = $('#mainImage').attr('title');
-                var SizeID = $("button[class*='selected']").attr('id')
-                
-                var ColorID = $('.selected').attr('id');
-                var Count = $("#userCount").val();
-                var Price = $("#price").html();
-
-
-                $.ajax({
-                    type: "POST",
-                    url: "/Cart/DetailToCartButton",
-                    data: { ProductID: ProductID, ColorID: ColorID,SizeID: SizeID,Count: Count, Price: Price },
-                    dataType: "text",
-                    success: function (response) {
-                        alert(response);
-                        $("#MyCart").text("(" + response + ")");
-                    }
-                });
-                $.ajax({
-                    type: "POST",
-                    url: "/Cart/GetCart",
-                    data: { ProductID: ProductID, ColorID: ColorID,SizeID: SizeID,Count: Count, Price: Price },
-                    dataType: "text",
-                    success: function (response) {
-                        
-                       
-                    }
-                });
-            });
-
-        });
-                         
-
-                
-
-
     </script>
 }
 @section topCSS{
