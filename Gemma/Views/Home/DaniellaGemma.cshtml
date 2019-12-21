@@ -202,7 +202,8 @@
             $('.flexslider').flexslider({
                 slideshowSpeed: 3500
             })
-            document.getElementById("loadingimg").addEventListener('animationend', function () { document.getElementsByClassName("loading")[0].style.display='none' })
+            document.getElementById("loadingimg").addEventListener('animationend', function () { document.getElementsByClassName("loading")[0].style.display = 'none' })
+            setTimeout(function () { document.getElementsByClassName("loading")[0].style.display = 'none'},5000)
         })
     </script>
 }
