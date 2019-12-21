@@ -5,7 +5,7 @@
 }
 
 .bk {
-    height: 100%;
+    height: 95%;
     width: 100%;
 }
 
@@ -13,11 +13,12 @@
     font-size: 15px;
     padding: 10px 30px;
     background-color: black;
+    /*display: flex;*/
 }
 
 .delete {
     position: absolute;
-    top: 8%;
+    margin-top: 5%;
     left: 12%;
     display: flex;
     cursor: pointer;
@@ -32,4 +33,8 @@
 
 .test {
     display: none;
+}
+.photo-word {
+    margin: 0 auto;
+    font-size: 13px !important;
 }

@@ -1,5 +1,6 @@
-﻿@model IEnumerable<Gemma.ViewModel.BookMarkViewModel>
+﻿@model Gemma.ViewModel.BookMarkViewModel
 
+@using System.Globalization;
 @section topCSS{
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
@@ -14,10 +15,44 @@
 <h2><b>B O O K M A R K</b></h2>
 <div class="container">
     <div class="row">
-        @for (var i = 0; i < 4; i++)
+
+        @if (((List<BookMarkViewModel>)Session["Wish"]).Count > 0)
         {
-            @Html.Partial("_BookMarkPicturePartial")}
-      
+            var bkwish = (List<BookMarkViewModel>)Session["Wish"];
+            foreach (var item in bkwish)
+            {
+                <div class="col-md-3">
+
+                    <i class="fas fa-times delete" id="@item.ProductId"></i>
+
+                    <div onclick="location.href='@Url.Action("FindProductById", "Details", new { productId = item.ProductId })'" style="cursor:pointer">
+                        <img class="bk" src="~/Assets/images/Product/@item.CategoryName/@item.ProductName/index1.jpg" alt="" value="@(item.CategoryName)/@(item.ProductName)" />
+                    </div>
+                    <br />
+
+
+                    <div>
+                        <div class="photo-word bottom-side">@item.ProductName<br>@item.UnitPrice 円  + TAX</div>
+                    </div>
+                    <br /><br />
+                </div>
+
+            }
+
+        }
+        else
+        {
+            for (var i = 0; i < 4; i++)
+            {
+                @Html.Partial("_BookMarkPicturePartial")
+            }
+        }
+
+
+
+    </div>
+    <br>
+    <div class="row">
         <div class=" offset-md-4 mt-5" id="bkbtn">
             <button id="bkclear" type="button" class="btn btn-dark mr-5">BOOKMARKのクリア</button>
             <button id="bkcontinue" type="button" class="btn btn-dark">買い物を続ける</button>
@@ -39,8 +74,20 @@
             $('img[src$="empty.jpg"]').parent().children('div').addClass('test')
             $('.bk').not('img[src$="empty.jpg"]').parent().children('div').removeClass('test')
             $('.delete').click(function () {
+                var productId = $(this).attr("id");
                 $(this).parent().children('img').attr('src',"../../Assets/images/empty.jpg")
                 $(this).addClass('test')
+                $.ajax({
+                type: "POST",
+                url: "/BookMark/removewishlist",
+                data: { ProductId: productId  },//view頁面的productid值
+                dataType: "text",
+                    success: function () {
+
+                                location.href = '@Url.Action("Index","BookMark")'
+    }
+            });
+
             })
         })
     </script>
