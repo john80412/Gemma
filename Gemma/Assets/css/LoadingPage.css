@@ -15,7 +15,7 @@
 }
 
     .loading > img {
-        width: 350px;
+        width: 450px;
         height: 250px;
         animation-name: fadeout;
         animation-duration: 2s;
