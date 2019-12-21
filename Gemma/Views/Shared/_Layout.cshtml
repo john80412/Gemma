@@ -1,7 +1,7 @@
 ﻿
 <!DOCTYPE html>
 <html>
-<head>
+<head >
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
     @RenderSection("topCSS", required: false)
     @RenderSection("topJS", required: false)
 </head>
-<body>
+<body onscroll="sticky()">
     <div>
         @Html.Partial("IndexPartial")
         @RenderBody()
@@ -27,7 +27,7 @@
     @Scripts.Render("~/bundles/chartjs")
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Assets/js/FixedMenuForIG.js"></script>
-
+    <script src="~/Assets/js/navbaranimation.js"></script>
     @RenderSection("scripts", required: false)
     @RenderSection("endCSS", required: false)
     @RenderSection("endJS", required: false)
