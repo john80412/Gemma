@@ -18,28 +18,7 @@ namespace Gemma.Controllers
         private OnlineStoreRepository repo = new OnlineStoreRepository();
         public ActionResult FindBrand(string CategoryName = "ALL", string ColorName = "ALL", string OrderBy = "None")
         {
-            if (Session["ListProducts"] == null)
-            {
-
-                var StoredProcedureVM = repo.db.Database.SqlQuery<SingleProductViewModel>("exec SingleProductViewModel").AsQueryable();
-                var ListProducts = (from p in StoredProcedureVM
-                                    select new OnlineStoreProductVM
-                                    {
-                                        ProductId = p.ProductId,
-                                        ProductName = p.ProductName,
-                                        UnitPrice = p.UnitPrice,
-                                        CategoryName = p.CategoryName
-                                    }).Distinct(new OnlineStoreProductVMCompare()).ToList();
-                foreach (var item in ListProducts)
-                {
-                    item.ColorName = new List<string>();
-                    foreach (var color in StoredProcedureVM.Where(x => x.ProductId == item.ProductId))
-                    {
-                        item.ColorName.Add(color.ColorName + ".jpg");
-                    }
-                }
-                Session["ListProducts"] = ListProducts;
-            }
+            Session["ListProducts"] ??= repo.GetProducts();
             Session["CategoryName"] = CategoryName;
             Session["ColorName"] = ColorName;
             Session["PriceOrderBy"] = OrderBy;

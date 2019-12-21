@@ -9,16 +9,16 @@
 }
 
 
-<div class="container-fluid header">
+<div class="container-fluid header navblock">
     <br />
-    <div class="row">
-        <div class="logo">
-            <a href="@Url.Action("DaniellaGemma","Home")"><img src="~/Assets/images/Icons/logo.png" /></a>
+    <div class="row ">
+        <div class="logo row">
+            <a class="picture" href="@Url.Action("DaniellaGemma","Home")"><img src="~/Assets/images/Icons/logo.png" /></a>
 
         </div>
         <div class="header-nav row">
 
-            <ul class="nav">
+            <ul class="nav ul-1">
                 <li class="nav-item">
                     <a class="nav-link active" href="@Url.Action("FindBrand","OnlineStore")">ONLINE STORE</a>
                 </li>
@@ -31,6 +31,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Shop","SHOP")">SHOP</a>
                 </li>
+                
+            </ul>
+
+            <ul class="nav ul-2">
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li>
@@ -73,38 +77,3 @@
 <div class="PaddingTopCSS">
 
 </div>
-
-@section topCSS{
-    <style>
-        .fixed {
-            height: 70px !important;
-            animation-delay: 100ms;
-        }
-    </style>
-}
-
-@section endJS{
-    <script>
-        $(document).ready();
-
-        function sticky() {
-            if (window.pageYOffset > 50) {
-                document.querySelector("nav").classList.add("fixed");
-            }
-
-            if (window.pageYOffset < 50) {
-                document.querySelector("nav").classList.remove("fixed");
-            }
-        }
-
-        function sticky2() {
-            if (window.pageYOffset > 50) {
-                document.querySelector("img").classList.add("photofixed");
-            }
-
-            if (window.pageYOffset < 50) {
-                document.querySelector("img").classList.remove("photofixed");
-            }
-        }
-    </script>
-}
