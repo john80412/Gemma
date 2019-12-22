@@ -8,50 +8,51 @@
         <div class="card-body">
 
             <h3 class="card-title ml-3">刪除庫存資料</h3>
-                <div>
-                    <dl class="dl-horizontal ml-3">
-                        <dt>
-                            @Html.DisplayNameFor(model => model.ProductName)
-                        </dt>
+            <hr />
+            <div>
+                <dl class="dl-horizontal ml-3">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProductName)
+                    </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.ProductName)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.ColorName)
-                        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ColorName)
+                    </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.ColorName)
-                        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.ColorName)
+                    </dd>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.SizeID)
-                        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SizeID)
+                    </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.SizeID)
-                        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.SizeID)
+                    </dd>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Quantity)
-                        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.Quantity)
-                        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Quantity)
+                    </dd>
 
-                    </dl>
+                </dl>
 
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-                        <div class="form-actions no-color">
-                            <input type="submit" value="刪除" class="btn btn-danger ml-3" /><br />
-                            @Html.ActionLink("返回庫存管理頁面", "Index", null, new { @class = "btn btn-link mb-2 mr-2" })
-                        </div>
-                    }
-                </div>
+                    <div class="form-actions no-color">
+                        <input type="submit" value="刪除" class="btn btn-danger ml-3" /><br />
+                        @Html.ActionLink("返回庫存管理頁面", "Index", null, new { @class = "btn btn-link mb-2 mr-2" })
+                    </div>
+                }
             </div>
+        </div>
         </div>

@@ -11,6 +11,7 @@
 
 
         <h3 class="card-title ml-3">刪除會員</h3>
+        <hr />
         <dl class="dl-horizontal ml-3">
             <dt>
                 @Html.DisplayNameFor(model => model.UserName)
@@ -35,7 +36,13 @@
             <dd>
                 @Html.DisplayFor(model => model.PhoneNumber)
             </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
 
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
         </dl>
 
         @using (Html.BeginForm())
@@ -48,5 +55,5 @@
             </div>
         }
 
-        </div>
+    </div>
     </div>

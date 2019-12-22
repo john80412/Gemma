@@ -12,14 +12,15 @@
     <div class="card-body">
 
         <h3 class="card-title ml-3">會員明細</h3>
+        <hr />
         <dl class="dl-horizontal ml-3">
-            <dt>
-                @Html.DisplayNameFor(model => model.Id)
-            </dt>
+            @*<dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Id)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>*@
 
             <dt>
                 @Html.DisplayNameFor(model => model.UserName)
@@ -43,6 +44,13 @@
 
             <dd>
                 @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
             </dd>
 
         </dl>

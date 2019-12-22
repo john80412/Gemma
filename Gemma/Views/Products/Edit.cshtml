@@ -12,7 +12,7 @@
 
             @Html.AntiForgeryToken()
             <h3 class="card-title ml-3">修改產品資料</h3>
-
+            <hr />
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.ProductID)
@@ -57,7 +57,7 @@
                                 <div class="col-md-10">
                                     @*@Html.EditorFor(model => model.Explain, new { htmlAttributes = new { @class = "form-control" } })*@
 
-                                    @Html.TextAreaFor(model => model.Explain, new { rows = 5, columns = 12, @class="form-control" })<br />
+                                    @Html.TextAreaFor(model => model.Explain, new { rows = 5, columns = 12, @class = "form-control" })<br />
                                     @Html.ValidationMessageFor(model => model.Explain, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -66,9 +66,9 @@
                         <div class="col-5 text-center mt-3 ">
                             <div class="form-group">
                                 @*@Html.LabelFor(model => model.PictureUrl, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                
-                                    <img style="width:300px;height:300px;border-radius:150px" src="~/Assets/images/Product/@Model.PictureUrl" />
-                               
+
+                                <img style="width:300px;height:300px;border-radius:150px" src="~/Assets/images/Product/@Model.PictureUrl" />
+
                             </div>
                         </div>
                     </div>

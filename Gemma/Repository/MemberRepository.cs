@@ -22,7 +22,8 @@ namespace Gemma.Repository
                               Id = m.Id,
                               UserName = m.UserName,
                               PhoneNumber = m.PhoneNumber,
-                              Email = m.Email
+                              Email = m.Email,
+                              Address = m.Address
                           };
             members = !string.IsNullOrEmpty(Id) ? members.Where((m) => m.Id == Id) : members;
             var results = members.OrderBy(m => m.Id).ToPagedList(currentPage, 10);
@@ -40,7 +41,8 @@ namespace Gemma.Repository
                 Id = member.Id,
                 UserName = member.UserName,
                 Email = member.Email,
-                PhoneNumber = member.PhoneNumber
+                PhoneNumber = member.PhoneNumber,
+                Address = member.Address
             };
             return result;
         }
@@ -48,6 +50,7 @@ namespace Gemma.Repository
         {
             var result = db.AspNetUsers.Find(member.Id);
             result.PhoneNumber = member.PhoneNumber;
+            result.Address = member.Address;
             db.Entry(result).State = EntityState.Modified;
             db.SaveChanges();
         }

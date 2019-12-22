@@ -16,17 +16,17 @@
     <div class="form-inline">
         <div class="form-group">
             <label class="font-weight-bold ml-2 mr-1">產品</label>
-            @Html.TextBox("productName", null, new { @class = "form-control ml-1 h-50" })
+            @Html.TextBox("productName", null, new {placeholder="請輸入產品名稱" , @class = "form-control ml-1 h-50" })
         </div>
 
         <div class="form-group">
             <label class="font-weight-bold ml-2 mr-1">顏色</label>
-            @Html.TextBox("colorName", null, new { @class = "form-control ml-1 h-50" })
+            @Html.TextBox("colorName", null, new {placeholder="請輸入顏色名稱" , @class = "form-control ml-1 h-50" })
         </div>
 
         <div class="form-group">
             <label class="font-weight-bold ml-2 mr-1">尺寸</label>
-            @Html.TextBox("size", null, new { @class = "form-control ml-1 h-50" })
+            @Html.TextBox("size", null, new {placeholder="請輸入尺寸" , @class = "form-control ml-1 h-50" })
         </div>
         <div class="form-group" style="display:none">
             @Html.TextBox("search", "true")
