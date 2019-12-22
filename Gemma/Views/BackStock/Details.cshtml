@@ -8,6 +8,7 @@
     <div class="card-body">
 
         <h3 class="card-title ml-3">庫存明細</h3>
+        <hr />
         <dl class="dl-horizontal ml-3">
             <dt>
                 @Html.DisplayNameFor(model => model.ProductName)
@@ -43,7 +44,7 @@
         </dl>
         <div class="col-md-offset-2 col-md-10">
             @Html.ActionLink("編輯", "Edit", new RouteValueDictionary { { "productID", Model.ProductID }, { "colorID", Model.ColorID }, { "sizeID", Model.SizeID } }, new Dictionary<string, object> { { "class", "btn btn-primary" } })
-</div>
+        </div>
         <div>
             @Html.ActionLink("返回會員管理頁面", "Index", null, new { @class = "mb-2 mr-2 btn btn-link" })
         </div>

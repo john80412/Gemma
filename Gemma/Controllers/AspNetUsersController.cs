@@ -87,6 +87,7 @@ namespace Gemma.Models
             ViewBag.UserName = new SelectList(rep.db.AspNetUsers, "UserName", "UserName", member.UserName);
             ViewBag.Email = new SelectList(rep.db.AspNetUsers, "Email", "Email", member.Email);
             ViewBag.PhoneNumber = new SelectList(rep.db.AspNetUsers, "PhoneNumber", "PhoneNumber", member.PhoneNumber);
+            ViewBag.Address = new SelectList(rep.db.AspNetUsers, "Address", "Address", member.Address);
 
             return View(member);
         }
@@ -107,6 +108,7 @@ namespace Gemma.Models
             ViewBag.UserName = new SelectList(rep.db.AspNetUsers, "UserName", "UserName", member.UserName);
             ViewBag.Email = new SelectList(rep.db.AspNetUsers, "Email", "Email", member.Email);
             ViewBag.PhoneNumber = new SelectList(rep.db.AspNetUsers, "PhoneNumber", "PhoneNumber", member.PhoneNumber);
+            ViewBag.Address = new SelectList(rep.db.AspNetUsers, "Address", "Address", member.Address);
 
             return View(member);
         }

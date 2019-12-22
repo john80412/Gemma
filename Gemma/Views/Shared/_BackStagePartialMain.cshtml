@@ -5,6 +5,7 @@
 <link href="~/Assets/css/main.css" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
 <script type="text/javascript" src="~/Assets/js/main.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="app-sidebar sidebar-shadow">
     <div class="app-header__logo">
@@ -40,8 +41,32 @@
     <div class="scrollbar-sidebar">
         <div class="app-sidebar__inner">
             <ul class="vertical-nav-menu">
-                <li class="app-sidebar__heading" onclick="location.href='@Url.Action("Index","BackStageHome")'">後台管理</li>
+                <li class="app-sidebar__heading" style="cursor:pointer" onclick="location.href='@Url.Action("Index","BackStageHome")'">後台管理</li>
                 <li>
+                    <a href="/AspNetUsers/Index">
+                        <i class="far fa-address-card"></i>
+                        會員管理
+                    </a>
+                </li>
+                <li>
+                    <a href="/BackStock/Index">
+                        <i class="fas fa-archive"></i>
+                        庫存管理
+                    </a>
+                </li>
+                <li>
+                    <a href="/Products/Index">
+                        <i class="fas fa-gift"></i>
+                        產品管理
+                    </a>
+                </li>
+                <li>
+                    <a href="/Order/Index">
+                        <i class="fas fa-receipt"></i>
+                        訂單管理
+                    </a>
+                </li>
+                @*<li>
                     @Html.ActionLink("會員管理", "Index", "AspNetUsers", null, new { @class = "mm-active" })
                 </li>
                 <li>
@@ -52,7 +77,7 @@
                 </li>
                 <li>
                     @Html.ActionLink("訂單管理", "Index", "Order", null, new { @class = "mm-active" })
-                </li>
+                </li>*@
             </ul>
         </div>
     </div>
