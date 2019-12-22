@@ -156,7 +156,7 @@
                 url: "/BookMark/removewishlist",
                 data: { ProductId: productId  },
                     dataType: "text",
-                success: function () { $("#MyWish").text("(" + response + ")"); }
+                success: function (response) { $("#MyWish").text("(" + response + ")"); }
             });
             }
         })
