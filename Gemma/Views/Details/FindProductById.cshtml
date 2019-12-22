@@ -148,8 +148,13 @@
             $('.size-filters button').click(function () {
                 if ($('.pImages img').hasClass("selected") != true) $('#color-warning').text("Please select color.").css("color", "red");
 
-                $('.size-filters button').removeClass("btn-dark");
+               $('.size-filters button').removeClass("btn-dark");
                 $(this).addClass("btn-dark");
+
+                var selectedSizeMaxCount = $("button[class*='selected']").attr('val');
+                //alert(selectedSizeMaxCount);
+                $('#userCount').removeAttr('max');
+                $('#userCount').attr('max',selectedSizeMaxCount);               
             })
             var jsonData1 = {}
             app = new Vue({
