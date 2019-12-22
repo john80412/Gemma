@@ -150,6 +150,11 @@
 
                 $('.size-filters button').css("border-color", "#c5c5c5").removeClass("selected");
                 $(this).css("border-color", "black").addClass("selected");
+
+                var selectedSizeMaxCount = $("button[class*='selected']").attr('val');
+                //alert(selectedSizeMaxCount);
+                $('#userCount').removeAttr('max');
+                $('#userCount').attr('max',selectedSizeMaxCount);
             })
             var jsonData1 = {}
             app = new Vue({
