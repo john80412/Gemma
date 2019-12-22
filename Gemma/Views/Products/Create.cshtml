@@ -4,8 +4,8 @@
     ViewBag.Title = "Create";
 }
 
-@using (Html.BeginForm())
-{
+<form action="@Url.Action("Create")" method="post" enctype="multipart/form-data">
+
     @Html.AntiForgeryToken()
     <h2>新增產品</h2>
     <hr>
@@ -50,16 +50,19 @@
                 @Html.ValidationMessageFor(model => model.Explain, "", new { @class = "text-danger" })
             </div>
         </div>
-
-
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="file" name="file" type="file" accept=".jpg" />
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="新增" class="btn btn-primary" />
             </div>
         </div>
     </div>
-}
 
+</form>
 <div>
     @Html.ActionLink("返回產品管理頁面", "Index", null, new { @class = "btn btn-success" })
 </div>

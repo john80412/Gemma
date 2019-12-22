@@ -53,11 +53,11 @@ namespace Gemma.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductName,UnitPrice,Discount,CategoryID,Explain")] ProductViewModel product)
+        public ActionResult Create([Bind(Include = "ProductName,UnitPrice,Discount,CategoryID,Explain")] ProductViewModel product , HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                rep.CreateProduct(product);
+                rep.CreateProduct(product,file);
                 TempData["message"] = rep.IsSuccess;
                 return RedirectToAction("Index");
             }

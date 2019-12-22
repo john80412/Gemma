@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.IO;
 
 namespace Gemma.Repository
 {
@@ -53,7 +54,7 @@ namespace Gemma.Repository
             };
             return result;
         }
-        public void CreateProduct(ProductViewModel product)
+        public void CreateProduct(ProductViewModel product, HttpPostedFileBase file)
         {
             var result = db.Products.Find(product.ProductID);
             if (result != null)
@@ -62,6 +63,17 @@ namespace Gemma.Repository
                 return;
             }
             IsSuccess = true;
+            if (file != null)
+            {
+                var catagory = db.Categories.Find(product.CategoryID).CategoryName;
+                var path = $"{AppDomain.CurrentDomain.BaseDirectory}Assets/images/Product/{catagory}/{product.ProductName}";
+                var di = new DirectoryInfo(@path);
+                if (!di.Exists)
+                {
+                    di.Create();
+                }
+                file.SaveAs($"{path}/index1.jpg");
+            }
             var data = new Product
             {
                 ProductID = product.ProductID,
@@ -87,6 +99,10 @@ namespace Gemma.Repository
         }
         public void DeleteProduct(int? id)
         {
+            var catagory = db.Categories.Find(db.Products.Find(id).CategoryID).CategoryName;
+            var path = $"{AppDomain.CurrentDomain.BaseDirectory}Assets/images/Product/{catagory}/{db.Products.Find(id).ProductName}";
+            var di = new DirectoryInfo(@path);
+            di.Delete(true);
             var result = db.Products.Find(id);
             db.Products.Remove(result);
             db.SaveChanges();

@@ -16,6 +16,7 @@ namespace Gemma.Controllers
     public class BackStockController : Controller
     {
         private StockRepository rep = new StockRepository();
+        private OnlineStoreRepository repo = new OnlineStoreRepository();
 
         // GET: Stock
         public ActionResult Index(string productName, string colorName, string size,int page = 1,string search = "false")
@@ -60,6 +61,7 @@ namespace Gemma.Controllers
             if (ModelState.IsValid)
             {
                 rep.CreateStock(stock, files);
+                Session["ListProducts"] = repo.GetProducts();
                 return RedirectToAction("Index");
             }
 
@@ -120,6 +122,7 @@ namespace Gemma.Controllers
         public ActionResult DeleteConfirmed(int productID, int colorID, int sizeID)
         {
             rep.DeleteStock(productID, colorID, sizeID);
+            Session["ListProducts"] = repo.GetProducts();
             return RedirectToAction("Index");
         }
 
