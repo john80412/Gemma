@@ -146,10 +146,10 @@
             })
             //選取SIZE按鈕時
             $('.size-filters button').click(function () {
-                if ($('.pImages img').hasClass("selected") != true) $('#color-warning').text("Please select color.").css("color", "red");
+                if ($('.pImages img').hasClass("btn-dark") != true) $('#color-warning').text("Please select color.").css("color", "red");
 
-                $('.size-filters button').css("border-color", "#c5c5c5").removeClass("selected");
-                $(this).css("border-color", "white").addClass("selected");
+                $('.size-filters button').removeClass("btn-dark");
+                $(this).addClass("btn-dark");
             })
             var jsonData1 = {}
             app = new Vue({
