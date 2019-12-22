@@ -11,21 +11,20 @@ hr {
     border: 0;
     height: 1px;
     background: #000000;
+}
+
+.shoplist-page hr {
     width: 90%;
     margin-left: 0;
 }
-
 /*section {
     border: black 1px solid;
     margin-bottom: 100px;
     background: black;
 }*/
-
 /*footer {
     margin-top: -100px;
 }*/
-
-
 /*.fixed {
     height: 70px !important;
     animation-delay: 100ms;
@@ -35,16 +34,13 @@ hr {
     height: 150px !important;
     width: 200px !important;
 }*/
-
 /*img {
     height: 100px;
     width: 150px;
 }*/
-
 /*.navtop {
     height: 100px;
 }*/
-
 .allcontexter {
     width: 1180px;
     margin: 0 auto;
