@@ -95,7 +95,7 @@
                         <p>小計 {{items.total}} 円</p>
                     </div>
                     <div class="row">
-                        <button type="button" class="btn btn-dark mr-5" data-dismiss="modal">カートを見る</button>
+                        <button type="button" class="btn btn-dark mr-5" data-dismiss="modal" onclick="location.href='@Url.Action("CartView","Cart")'">カートを見る</button>
                     </div>
                 </div>
             </div>
@@ -151,7 +151,7 @@
                $('.size-filters button').removeClass("btn-dark");
                 $(this).addClass("btn-dark");
 
-                var selectedSizeMaxCount = $("button[class*='selected']").attr('val');
+                var selectedSizeMaxCount = $("button[class*='btn-dark']").attr('val');
                 //alert(selectedSizeMaxCount);
                 $('#userCount').removeAttr('max');
                 $('#userCount').attr('max',selectedSizeMaxCount);               
@@ -164,7 +164,7 @@
             //按下訂購按鈕時
             $('#submit').click(function () {
                 var ProductID = $('#mainImage').attr('title');
-                var SizeID = $("button[class*='selected']").attr('id')
+                var SizeID = $(".size-filters button[class*='btn-dark']").attr('id')
                 var ColorID = $('.selected').attr('id');
                 var Count = $("#userCount").val();
                 var Price = $("#price").html();
@@ -183,7 +183,7 @@
                     data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Count: Count, Price: Price },
                     dataType: "text"
                 });
-                if ($('.pImages img').hasClass("selected") != true || $('.size-filters button').hasClass("selected") != true) {
+                if ($('.pImages img').hasClass("selected") != true || $('.size-filters button').hasClass("btn-dark") != true) {
                     $('#color-warning').text("Please select color.").css("color", "red");
                     $('#size-warning').text("Please select size.").css("color", "red");
                 }
@@ -194,7 +194,7 @@
                         selectedImg: $('.selected').has('img').prevObject[0].outerHTML,
                         count: $('#userCount').val(),
                         selectedColor: $('.selected').has('img').prevObject[0].title,
-                        selectedSize: $('.selected').has('button').prevObject[1].innerHTML,
+                        selectedSize: $('.size-filters button').has('btn-dark').prevObject[0].innerHTML,
                         total: orderPrice
                     }
                     app.$data.items = jsonData
