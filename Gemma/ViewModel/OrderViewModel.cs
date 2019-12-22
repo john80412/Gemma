@@ -9,7 +9,7 @@ namespace Gemma.ViewModel
     public class OrderViewModel
     {
         [Key]
-        [Display(Name ="訂單編號")]
+        [Display(Name ="#")]
         public int OrderID { get; set; }
         [Display(Name = "客戶名稱")]
         public string CustomerName { get; set; }

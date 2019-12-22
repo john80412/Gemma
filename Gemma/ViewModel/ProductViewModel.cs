@@ -10,7 +10,7 @@ namespace Gemma.ViewModel
     {
         [Key]
         public int ProductID { get; set; }
-        [Display (Name ="產品名稱")]
+        [Display (Name ="產品")]
         public string ProductName { get; set; }
         [Display(Name = "單價")]
         public int UnitPrice { get; set; }
@@ -19,7 +19,7 @@ namespace Gemma.ViewModel
         public int CategoryID { get; set; }
         [Display(Name = "說明")]
         public string Explain { get; set; }
-        [Display(Name = "類別名稱")]
+        [Display(Name = "類別")]
         public string CategoryName { get; set; }
         [Display(Name = "圖片")]
         public string PictureUrl { get; set; }
