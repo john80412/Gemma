@@ -17,11 +17,11 @@ namespace Gemma.Models
         private MemberRepository rep = new MemberRepository();
 
         // GET: AspNetUsers
-        public ActionResult Index(string id, int page = 1, string search = "false")
+        public ActionResult Index(string userName, int page = 1, string search = "false")
         {
-            ViewBag.searchMemberId = id;
+            ViewBag.searchUserName = userName;
             page = search == "true" ? 1 : page;
-            return View(rep.GetSearchMember(id, page));
+            return View(rep.GetSearchMember(userName, page));
         }
 
         // GET: AspNetUsers/Details/5
