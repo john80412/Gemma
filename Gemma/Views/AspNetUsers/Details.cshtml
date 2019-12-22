@@ -7,43 +7,51 @@
 @*@section topCSS{
         <link href="~/Assets/css/sb-admin-2.min.css" rel="stylesheet">
     }*@
-<h2>會員明細</h2>
-<hr>
-<dl class="dl-horizontal">
-    <dt>
-        @Html.DisplayNameFor(model => model.Id)
-    </dt>
 
-    <dd>
-        @Html.DisplayFor(model => model.Id)
-    </dd>
+<div class="main-card mb-3 card">
+    <div class="card-body">
 
-    <dt>
-        @Html.DisplayNameFor(model => model.UserName)
-    </dt>
+        <h3 class="card-title ml-3">會員明細</h3>
+        <dl class="dl-horizontal ml-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
 
-    <dd>
-        @Html.DisplayFor(model => model.UserName)
-    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.Email)
-    </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
 
-    <dd>
-        @Html.DisplayFor(model => model.Email)
-    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.PhoneNumber)
-    </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-    <dd>
-        @Html.DisplayFor(model => model.PhoneNumber)
-    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-</dl>
-<p>
-    @Html.ActionLink("編輯", "Edit", new { id = Model.Id },new { @class="btn btn-info"}) 
-    @Html.ActionLink("返回會員管理頁面", "Index",null,new { @class="btn btn-success"})
-</p>
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+        </dl>
+
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("編輯", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+        </div>
+        <div>
+            @Html.ActionLink("返回會員管理頁面", "Index", null, new { @class = "mb-2 mr-2 btn btn-link" })
+        </div>
+    </div>
+</div>

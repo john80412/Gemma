@@ -3,60 +3,74 @@
 @{
     ViewBag.Title = "Details";
 }
+    <div class="main-card mb-3 card">
+        <div class="card-body">
 
-<h2>訂單明細</h2>
-<hr>
-<div>
-    <dl class="dl-horizontal">
-        <div>
-            <dt>
-                @Html.DisplayNameFor(model => model.OrderID)
-            </dt>
-        </div>
-        <div>
-            <dd>
-                @Html.DisplayFor(model => model.OrderID)
-            </dd>
-        </div>
-        <div>
-            <dt>
-                @Html.DisplayNameFor(model => model.CustomerName)
-            </dt>
-        </div>
-        <div>
-            <dd>
-                @Html.DisplayFor(model => model.CustomerName)
-            </dd>
-        </div>
-        <hr>
-        @for (int i = 0; i < Model.ProductNames.Count; i++)
-        {
-            ViewData["Count"] = i + 1;
-            @Html.Partial("_OrderDetailPartial", Model.ProductNames[i])
-        }
-        <hr>
-        <div>
-            <dt>
-                @Html.DisplayNameFor(model => model.TotalPrice)
-            </dt>
-        </div>
-        <div>
-            <dd>
-                @Html.DisplayFor(model => model.TotalPrice)
-            </dd>
-        </div>
-        <div>
-            <dt>
-                @Html.DisplayNameFor(model => model.OrderDate)
-            </dt>
-        </div>
-        <div>
-            <dd>
-                @Html.DisplayFor(model => model.OrderDate)
-            </dd>
-        </div>
-    </dl>
+            <h3 class="card-title ml-3">訂單明細</h3>
+            <hr>
+            <div class="container ml-3">
+                <div class="row">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.OrderID)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.OrderID)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CustomerName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.CustomerName)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="row">
+                    <table  class="table table-hover table-sm">
+                        <thead  class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>產品名稱</th>
+                                <th>顏色</th>
+                                <th>尺寸</th>
+                                <th>單價</th>
+                                <th>折扣</th>
+                                <th>數量</th>
+                                <th>小計</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.ProductNames.Count; i++)
+                            {
+                                ViewData["Count"] = i + 1;
+                                @Html.Partial("_OrderDetailPartial", Model.ProductNames[i])
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                  
+                <div class="row">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TotalPrice)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TotalPrice)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.OrderDate)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.OrderDate)
+                        </dd>
+                        </dl>
+                </div>
+            </div>
+            <div>
+                @Html.ActionLink("返回訂單管理", "Index", null, new { @class = "btn btn-link" })
+            </div>
+
 </div>
-<p>
-    @Html.ActionLink("返回訂單管理", "Index", null, new { @class = "btn btn-success" })
-</p>
+</div>

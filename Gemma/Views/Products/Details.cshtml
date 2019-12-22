@@ -4,61 +4,80 @@
     ViewBag.Title = "Details";
 }
 
-<h2>產品明細</h2>
-<hr>
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
+    <div class="main-card mb-3 card">
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </dt>
+        <div class="card-body">
 
-        <dd>
-            @Html.DisplayFor(model => model.UnitPrice)
-        </dd>
+            <h2 class="card-title ml-3">產品明細</h2>
+            <div class="container">
+                <div class="row">
+                    <div class=" col-4">
+                        <dl class="dl-horizontal ml-3">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductName)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Discount)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductName)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Discount)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.UnitPrice)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.UnitPrice)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CategoryName)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Discount)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Explain)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Discount)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Explain)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.CategoryName)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PictureUrl)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.CategoryName)
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-8 text-center">
+                        <img style="width:200px;height:200px;border-radius:100px" src="~/Assets/images/Product/@Model.PictureUrl" style="width:100%;height:100%;" />
+                        @*<dl class="dl-horizontal ml-3">*@
 
-        <dd style="width:10%;height:100px;">
-            <img src="~/Assets/images/Product/@Model.PictureUrl" style="width:100%;height:100%;" />
-        </dd>
+                        @*<dt>
+                        @Html.DisplayNameFor(model => model.PictureUrl)
+                    </dt>*@
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("編輯", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-info" })
-    @Html.ActionLink("返回產品管理頁面", "Index", null, new { @class = "btn btn-success" })
-</p>
+                        @*<dd style="width:300px;height:300px;">
+
+                        </dd>
+                    </dl>*@
+                    </div>
+                </div>
+                <div class="row">
+                    <dl class="dl-horizontal ml-4">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Explain)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Explain)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("編輯", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-primary" })
+            </div>
+            <div>
+                @Html.ActionLink("返回會員管理頁面", "Index", null, new { @class = "mb-2 mr-2 btn btn-link" })
+            </div>
+        </div>
+    </div>

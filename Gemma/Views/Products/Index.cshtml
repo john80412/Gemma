@@ -5,7 +5,7 @@
 }
 
 <p>
-    @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-primary ml-3" })
+    @Html.ActionLink("新增產品", "Create", null, new { @class = "btn btn-primary ml-2" })
 </p>
 @using (Html.BeginForm())
 {
@@ -13,13 +13,13 @@
 
     <div class="form-inline">
         <div class="form-group">
-            <label class = "btn btn-info ml-3">產品</label>
-            @Html.TextBox("productName",null, new { @class = "form-control ml-3" })
+            <label class="font-weight-bold ml-2 mr-1">產品</label>
+            @Html.TextBox("productName",null, new { @class = "form-control ml-1 h-50" })
         </div>
 
         <div class="form-group">
-            <label class = "btn btn-info ml-3">類別</label>
-            @Html.TextBox("categoryName",null, new { @class = "form-control ml-3" })
+            <label class="font-weight-bold ml-2 mr-1">類別</label>
+            @Html.TextBox("categoryName",null, new { @class = "form-control ml-1 h-50" })
         </div>
 
         <div class="form-group" style="display:none">
@@ -28,56 +28,59 @@
 
         <div class="form-group">
             <div>
-                <input type="submit" value="查詢" class="btn btn-success ml-3" />
+                <input type="submit" value="查詢" class="border-0 btn-transition btn btn-outline-success ml-3" />
             </div>
         </div>
     </div>
 }
 <br>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().UnitPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Discount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().PictureUrl)
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr style="height:100px;">
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td style="width:10%;height:100px;">
-                <img src="~/Assets/images/Product/@item.PictureUrl" style="width:100%;height:100%;"/>
-            </td>
-            <td>
-                @Html.ActionLink("編輯", "Edit", new { id = item.ProductID }, new { @class = "btn btn-success" })
-                @Html.ActionLink("詳細資料", "Details", new { id = item.ProductID }, new { @class = "btn btn-info" })
-                @Html.ActionLink("刪除", "Delete", new { id = item.ProductID }, new { @class = "btn btn-danger" })
-            </td>
+<table class="table table-hover table-sm">
+    <thead>
+        <tr class="thead-dark">
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().CategoryName)
+            </th>
+            <th  class="text-center">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().PictureUrl)
+            </th>
+            <th></th>
         </tr>
-    }
-
+        </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="height:100px;">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td style="width:10%;height:100px;">
+                    <img src="~/Assets/images/Product/@item.PictureUrl" style="width:100%;height:100%;" />
+                </td>
+                <td class="text-center">
+                    @Html.ActionLink("編輯", "Edit", new { id = item.ProductID }, new { @class = "mb-2 mr-2 border-0 btn-transition btn btn-outline-focus" })
+                    @Html.ActionLink("詳細資料", "Details", new { id = item.ProductID }, new { @class = "mb-2 mr-2 border-0 btn-transition btn btn-outline-focus" })
+                    @Html.ActionLink("刪除", "Delete", new { id = item.ProductID }, new { @class = "mb-2 mr-2 border-0 btn-transition btn btn-outline-focus" })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 @Html.PagedListPager(Model, page => Url.Action("Index", new RouteValueDictionary { { "productName", (string)ViewBag.searchProductName }, { "categoryName", (string)ViewBag.searchCategoryName }, { "page", page } }))
