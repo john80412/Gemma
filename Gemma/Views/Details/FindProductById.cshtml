@@ -146,7 +146,7 @@
             })
             //選取SIZE按鈕時
             $('.size-filters button').click(function () {
-                if ($('.pImages img').hasClass("btn-dark") != true) $('#color-warning').text("Please select color.").css("color", "red");
+                if ($('.pImages img').hasClass("selected") != true) $('#color-warning').text("Please select color.").css("color", "red");
 
                 $('.size-filters button').removeClass("btn-dark");
                 $(this).addClass("btn-dark");
