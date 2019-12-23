@@ -24,6 +24,46 @@
     }
 
 </div>
+@section endJS{
+    <script>
+        $(() => {
+            $('#checkCart').click(function () {
+                var ProductID = [];
+                $('.productID').each(function () {
+                    ProductID.push($(this).attr('title'));
+                    console.log("ProductID", $(this).attr('title'));
+                });
+                var SizeID = [];
+                $('.sizeID').each(function () {
+                    SizeID.push($(this).attr('title'));
+                });
+                var ColorID = [];
+                $('.colorID').each(function () {
+                    ColorID.push($(this).attr('title'));
+                });
+                var Quantity = [];
+                $('.QuantityCart').each(function () {
+                    Quantity.push($(this).html());
+                });
+                var Price = [];
+                $('.priceForCart').each(function () {
+                    Price.push($(this).html());
+                });
+                
+                $.ajax({
+                    type: "POST",
+                    url: "/Checkout/GetUncheckOrder",
+                    data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Quantity: Quantity, Price: Price },
+                    dataType: "text",
+                    success: function (response) {
+                        console.log(response);
+                    }
+                });
+            });
+        })
+    </script>
+}
+
 @section topCSS{
     <style>
         .cart-with-items img {
@@ -31,17 +71,17 @@
             height: 100px;
         }
 
-        .cart-no-items{
-    text-align:center;
-    background-color:white;
-    height:300px;
-}
-    .cart-no-items p {
-        padding-top: 115px;
-        font-size: 45px;
-        font-family: 'Roboto', sans-serif;
-    }
+        .cart-no-items {
+            text-align: center;
+            background-color: white;
+            height: 300px;
+        }
 
+            .cart-no-items p {
+                padding-top: 115px;
+                font-size: 45px;
+                font-family: 'Roboto', sans-serif;
+            }
     </style>
 }
 @*@section endJS{

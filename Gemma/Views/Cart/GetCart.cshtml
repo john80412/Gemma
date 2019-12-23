@@ -1,4 +1,5 @@
 ﻿@model  IEnumerable<Gemma.ViewModel.CartViewModel>
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "GetCart";
 }
@@ -23,49 +24,23 @@
                     <img src="~/Assets/images/Product/@item.CategoryName/@item.ProductName/@item.ColorImg/1.jpg">
                 </td>
                 <td class="cook">
-                    <span id="productID" title="@item.ProductID">@item.ProductName</span>
+                    <span class="productID" title="@item.ProductID">@item.ProductName</span>
                     <br />
                     <span> @item.CartID</span>
                     <br />
-                    <span id="colorID" title="@item.ColorID">@item.ColorName</span>
+                    <span class="colorID" title="@item.ColorID">@item.ColorName</span>
                     <br />
-                    <span id="sizeID" title="@item.SizeID">@item.Size</span>
+                    <span class="sizeID" title="@item.SizeID">@item.Size</span>
                     <br />
                 </td>
-                <td v-model="price" id="priceForCart">@item.Price</td>
-                <td id="QuantityCart">@*<input v-model="count" value="@item.Quantity">*@@item.Quantity</td>
+                <td v-model="price" class="priceForCart">@item.Price</td>
+                <td class="QuantityCart">@*<input v-model="count" value="@item.Quantity">*@@item.Quantity</td>
                 <td>@item.Amount</td>
             </tr>
         }
 
     </tbody>
 </table>
-<a href="#" id="checkCart">注文手続きへ</a>
+@*<a href="#" id="checkCart">注文手続きへ</a>*@
+@Html.ActionLink("注文手続きへ", "CheckInfo", "Checkout", new { id = User.Identity.GetUserId() }, new { id = "checkCart" })
 
-@section endJS{
-    @*<script>
-    $(document).ready(function () {
-            $('#checkCart').click(function () {
-                var ProductID = $('#productID').attr('title');
-                var SizeID = $("#sizeID").attr('title')
-
-                var ColorID = $('#colorID').attr('title');
-                var Quantity = $("#QuantityCart").html();
-                var Price = $("#priceForCart").html();
-
-
-                $.ajax({
-                    type: "POST",
-                    url: "/YourController/YourAction",
-                    data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Quantity: Quantity, Price: Price },
-                    dataType: "text",
-                    success: function (response) {
-                        alert("ok")
-                    }
-                });
-
-
-    </script>*@
-
-
-}
