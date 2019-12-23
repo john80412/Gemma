@@ -68,43 +68,5 @@
 </div>
 
 @section topCSS{
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="~/Assets/css/Shop.css" rel="stylesheet" />
-    <link href="~/Assets/css/HomePage.css" rel="stylesheet" />
-    <style>
-        .shoplist-page hr {
-            width: 90%;
-            margin-left: 0;
-        }
-
-        .social-icons {
-            margin-right: 0;
-        }
-    </style>
-}
-@section endJS{
-    <script src="https://kit.fontawesome.com/f5fcf886aa.js" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready();
-
-        function sticky() {
-            if (window.pageYOffset > 50) {
-                document.querySelector("nav").classList.add("fixed");
-            }
-
-            if (window.pageYOffset < 50) {
-                document.querySelector("nav").classList.remove("fixed");
-            }
-        }
-
-        function sticky2() {
-            if (window.pageYOffset > 50) {
-                document.querySelector("img").classList.add("photofixed");
-            }
-
-            if (window.pageYOffset < 50) {
-                document.querySelector("img").classList.remove("photofixed");
-            }
-        }
-    </script>
 }
