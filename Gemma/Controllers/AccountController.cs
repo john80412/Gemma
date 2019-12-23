@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Gemma.Models;
+using Gemma.Repository;
+using System.Collections.Generic;
 
 namespace Gemma.Controllers
 {
@@ -431,6 +433,8 @@ namespace Gemma.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            var rep = new CheckoutRepository();
+            rep.AddCartBeforeLogoff(User.Identity.GetUserId());
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }

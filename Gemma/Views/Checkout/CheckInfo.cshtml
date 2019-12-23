@@ -1,0 +1,136 @@
+﻿@model Gemma.ViewModel.CheckMemberInfoViewModel
+@using Gemma.Helper
+
+@{
+    ViewBag.Title = "注文手続き - Daniella & GEMMA（ダニエラ＆ジェマ）オンラインストア";
+    var unorderCart = (List<CartViewModel>)Session["unorderCart"];
+    decimal amount = 0;
+    var totalgoods = 0;
+}
+
+<div class="container">
+    <br />
+    <h2 class="TopTitle">ORDER</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h4 style="background-color:#292929; color:whitesmoke;border-radius:3px;" class="smallTitle col-md-12">&nbsp; 1️⃣注文者・配送先情報</h4>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <h4 class="smallTitle col-md-12">注文者住所</h4>
+                    <div class="form-group">
+                        @Html.RequiredLabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.RequiredLabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.RequiredLabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.RequiredLabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.RequiredLabelFor(model => model.PostalCode, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.RequiredLabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="次へ" class="btn btn-default btnDonC" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <div class="menber_content ">
+                <h4 style="padding-bottom : 0" class="smallTitle">注文の概要</h4>
+                <hr />
+                @foreach (var goods in unorderCart)
+                    {
+                        amount += goods.Amount;
+                        totalgoods += 1;
+                    }
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-7">@totalgoods 個</div>
+                        <div class="col-5">@amount 円</div>
+                    </div>
+                </div>
+                <h4 class="smallTitle">カート内の商品</h4>
+                <hr />
+                @foreach (var goods in unorderCart)
+                {
+                    <ul>
+                        <li>@goods.ProductName</li>
+                        <li>@goods.Quantity x @goods.Quantity</li>
+                        <li>COLOR: @goods.ColorName</li>
+                        <li>SIZE: @goods.SizeID (@goods.Size.ToString()cm)</li>
+                    </ul>
+                    <br />
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <link href="~/Assets/CSS/FixedMenu.css" rel="stylesheet" />
+    <link href="~/Assets/CSS/MemberCenter.css" rel="stylesheet" />
+
+    @section topCSS{
+        <style>
+            .menber_content * {
+                margin-bottom: 15px;
+                font-size: 15px;
+            }
+
+            hr {
+                height: 8px;
+                border: 0;
+                box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+            }
+        </style>
+    }
+
+    @section endJS{
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+    <script src="~/Assets/js/FixedMenuForIG.js"></script>

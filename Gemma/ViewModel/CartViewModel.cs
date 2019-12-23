@@ -17,6 +17,7 @@ namespace Gemma.ViewModel
         public string ColorImg { get; set; }
         public int SizeID { get; set;}
         public decimal Size { get; set; }
+        public decimal Discount { get; set; }
         //商品購買數量
         public int Quantity { get; set; }
 

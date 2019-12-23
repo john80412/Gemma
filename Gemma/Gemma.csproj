@@ -233,6 +233,7 @@
     <Compile Include="Controllers\BookMarkController.cs" />
     <Compile Include="Controllers\BackStageHomeController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\JournallController.cs" />
@@ -282,6 +283,7 @@
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Size.cs" />
     <Compile Include="Repository\BookMarkRespository.cs" />
+    <Compile Include="Repository\CheckoutRepository.cs" />
     <Compile Include="Repository\MemberRepository.cs" />
     <Compile Include="Repository\OnlineStoreRepository.cs" />
     <Compile Include="Repository\OrderRepository.cs" />
@@ -294,6 +296,9 @@
     <Compile Include="Repository\MemberCenterRepository.cs" />
     <Compile Include="ViewModel\BookMarkViewModel.cs" />
     <Compile Include="ViewModel\CartViewModel.cs" />
+    <Compile Include="ViewModel\CheckMemberInfoViewModel.cs" />
+    <Compile Include="ViewModel\ConvertCartArray.cs" />
+    <Compile Include="ViewModel\CreditcardViewModel.cs" />
     <Compile Include="ViewModel\MemberViewModel.cs" />
     <Compile Include="ViewModel\OnlineStoreProductVM.cs" />
     <Compile Include="ViewModel\OrderDetailProduct.cs" />
@@ -782,6 +787,8 @@
     <Content Include="Views\Shared\_BookMarkPicturePartial.cshtml" />
     <Content Include="Views\Cart\CartView.cshtml" />
     <Content Include="Views\Cart\GetCart.cshtml" />
+    <Content Include="Views\Checkout\CheckInfo.cshtml" />
+    <Content Include="Views\Checkout\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
