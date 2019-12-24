@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
 using System.Data.Entity;
 using Gemma.ViewModel;
 
@@ -21,16 +20,12 @@ namespace Gemma.Repository
         {
             Products = CategoryName == "ALL" ? Products : Products.Where(x => x.CategoryName == CategoryName);
             Products = ColorName == "ALL" ? Products : Products.Where(x => x.ColorName.IndexOf(ColorName + ".jpg")>-1);
-            switch (OrderBy)
+            return OrderBy switch
             {
-                case "LowToHigh":
-                    Products = Products.OrderBy(x => x.UnitPrice);
-                    break;
-                case "HighToLow":
-                    Products = Products.OrderByDescending(x => x.UnitPrice);
-                    break;
-            }
-            return Products.ToList();
+                "LowToHigh" => Products.OrderBy(x => x.UnitPrice).ToList(),
+                "HighToLow" => Products.OrderByDescending(x => x.UnitPrice).ToList(),
+                _ => Products.ToList()
+            };
         }
         public List<OnlineStoreProductVM> GetProducts()
         {

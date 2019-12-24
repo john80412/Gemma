@@ -8,10 +8,7 @@ namespace Gemma.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
+        public ActionResult Index() => View();
 
         public ActionResult About()
         {
@@ -26,15 +23,9 @@ namespace Gemma.Controllers
 
             return View();
         }
-        public ActionResult BackStageIndex()
-        {
-            return View();
-        }
+        public ActionResult BackStageIndex() => View();
 
-        public ActionResult DaniellaGemma()
-        {
-            return View();
-        }
+        public ActionResult DaniellaGemma() => View();
 
     }
 }

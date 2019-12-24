@@ -11,12 +11,10 @@ namespace Gemma.Repository
     public class MemberRepository
     {
         public GemmaDBContext db = new GemmaDBContext();
-        public bool IsSuccess;
-
         public IPagedList<MemberViewModel> GetSearchMember(string userName, int page)
         {
-            var currentPage = page < 1 ? 1 : page;
-            var members = from m in db.AspNetUsers.Include(m => m.Id)
+            var currentPage = page;
+            var members = from m in db.AspNetUsers
                           select new MemberViewModel
                           {
                               Id = m.Id,
@@ -25,7 +23,7 @@ namespace Gemma.Repository
                               Email = m.Email,
                               Address = m.Address
                           };
-            members = !string.IsNullOrEmpty(userName) ? members.Where((m) => m.UserName.Contains(userName)) : members;
+            members = !string.IsNullOrEmpty(userName) ? members.Where((m) => m.UserName.ToUpper().Contains(userName.ToUpper())) : members;
             var results = members.OrderBy(m => m.Id).ToPagedList(currentPage, 10);
             return results;
         }

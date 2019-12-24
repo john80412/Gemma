@@ -15,8 +15,8 @@ namespace Gemma.Controllers
     [Authorize (Users ="Admin@gmail.com")]
     public class BackStockController : Controller
     {
-        private StockRepository rep = new StockRepository();
-        private OnlineStoreRepository repo = new OnlineStoreRepository();
+        private readonly StockRepository rep = new StockRepository();
+        private readonly OnlineStoreRepository repo = new OnlineStoreRepository();
 
         // GET: Stock
         public ActionResult Index(string productName, string colorName, string size,int page = 1,string search = "false")

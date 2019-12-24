@@ -11,7 +11,7 @@ namespace Gemma.Controllers
     [Authorize(Users = "Admin@gmail.com")]
     public class OrderController : Controller
     {
-        private OrderRepository rep = new OrderRepository();
+        private readonly OrderRepository rep = new OrderRepository();
         // GET: Order
         public ActionResult Index(string customerName, string productNames, int page = 1, string search = "false")
         {

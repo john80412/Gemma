@@ -14,19 +14,14 @@ namespace Gemma.Controllers
 {
     public class BookMarkController : Controller
     {
-        BookMarkRespository rep = new BookMarkRespository();
+        private readonly BookMarkRespository rep = new BookMarkRespository();
         public ActionResult Index(bool isDeleteAll = false)
         {
-            //Session["BookMark"] = new List<BookMark> { 
-            //    new BookMark{ProductID = 1 ,CustomerID = "1"},
-            //    new BookMark{ProductID = 2 ,CustomerID = "1" }
-            //};
             if (isDeleteAll)
             {
                 Session["Wish"] = null;
                 Session["Count"] = 0;
             }
-            //List<BookMarkViewModel> bk =(List<BookMarkViewModel>) Session["Wish"]; //value 轉型成key
             var test = (List<BookMarkViewModel>)Session["Wish"];
             test ??= new List<BookMarkViewModel>();
             foreach (var item in test)
@@ -46,7 +41,7 @@ namespace Gemma.Controllers
             Session["Count"] = test.Count;
             return test.Count;
         }
-        public int removewishlist(int? ProductId)
+        public int Removewishlist(int? ProductId)
         {
             var test = (List<BookMarkViewModel>)Session["Wish"];
             test ??= new List<BookMarkViewModel>();
