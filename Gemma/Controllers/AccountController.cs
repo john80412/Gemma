@@ -30,26 +30,14 @@ namespace Gemma.Controllers
 
         public ApplicationSignInManager SignInManager
         {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set 
-            { 
-                _signInManager = value; 
-            }
+            get => _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            private set => _signInManager = value;
         }
 
         public ApplicationUserManager UserManager
         {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
+            get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            private set => _userManager = value;
         }
 
         // ==============================================================================================================
@@ -57,10 +45,7 @@ namespace Gemma.Controllers
 
         // ---------------------------------------- 後台 ----------------------------------------
         [Authorize(Users = "Admin@gmail.com")]
-        public ActionResult Admin()
-        {
-            return RedirectToAction("Index", "BackStageHome");
-        }
+        public ActionResult Admin() => RedirectToAction("Index", "BackStageHome");
 
 
         // ---------------------------------------- 登入 ----------------------------------------
@@ -154,11 +139,7 @@ namespace Gemma.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
-        {
-            return View();
-        }
-
+        public ActionResult Register() => View();
 
         //
         // POST: /Account/Register
@@ -215,10 +196,7 @@ namespace Gemma.Controllers
         //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
-        public ActionResult ForgotPassword()
-        {
-            return View();
-        }
+        public ActionResult ForgotPassword() => View();
 
         //
         // POST: /Account/ForgotPassword
@@ -253,20 +231,14 @@ namespace Gemma.Controllers
         //
         // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
-        public ActionResult ForgotPasswordConfirmation()
-        {
-            return View();
-        }
+        public ActionResult ForgotPasswordConfirmation() => View();
 
 
         // ---------------------------------------- (信件點擊後)重設密碼 ----------------------------------------
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
-        public ActionResult ResetPassword(string code)
-        {
-            return code == null ? View("Error") : View();
-        }
+        public ActionResult ResetPassword(string code) => code == null ? View("Error") : View();
 
         //
         // POST: /Account/ResetPassword
@@ -299,24 +271,17 @@ namespace Gemma.Controllers
         //
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
-        public ActionResult ResetPasswordConfirmation()
-        {
-            return View();
-        }
+        public ActionResult ResetPasswordConfirmation() => View();
 
 
         // ---------------------------------------- 外部登錄 ----------------------------------------
         //
         // POST: /Account/ExternalLogin
+        // 要求重新導向至外部登入提供者
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult ExternalLogin(string provider, string returnUrl)
-        {
-            // 要求重新導向至外部登入提供者
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
-        }
-
+        public ActionResult ExternalLogin(string provider, string returnUrl) => new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
 
         // ==============================================================================================================
         
@@ -438,10 +403,7 @@ namespace Gemma.Controllers
         //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
-        public ActionResult ExternalLoginFailure()
-        {
-            return View();
-        }
+        public ActionResult ExternalLoginFailure() => View();
 
         protected override void Dispose(bool disposing)
         {
@@ -469,10 +431,7 @@ namespace Gemma.Controllers
 
         private IAuthenticationManager AuthenticationManager
         {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
+            get => HttpContext.GetOwinContext().Authentication;
         }
 
         private void AddErrors(IdentityResult result)

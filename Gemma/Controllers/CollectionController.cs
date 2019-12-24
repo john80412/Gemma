@@ -10,10 +10,7 @@ namespace Gemma.Controllers
     public class CollectionController : Controller
     {
         // GET: Collection
-        public ActionResult Index()
-        {
-            return View();
-        }
+        public ActionResult Index() => View();
 
         public ActionResult CollectionPhotos()
         {

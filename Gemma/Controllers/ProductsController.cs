@@ -15,7 +15,7 @@ namespace Gemma.Controllers
     [Authorize(Users = "Admin@gmail.com")]
     public class ProductsController : Controller
     {
-        private ProductRepository rep = new ProductRepository();
+        private readonly ProductRepository rep = new ProductRepository();
 
         // GET: Products
         public ActionResult Index(string productName, string categoryName, int page = 1, string search = "false")

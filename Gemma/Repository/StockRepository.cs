@@ -13,7 +13,6 @@ namespace Gemma.Repository
     public class StockRepository
     {
         public GemmaDBContext db = new GemmaDBContext();
-        public bool IsSuccess { get; set; }
         public IPagedList<StockViewModel> GetSearchStock(string productName, string colorName, string size, int page)
         {
             var stocks = from s in db.Stocks.Include(s => s.Color).Include(s => s.Product)

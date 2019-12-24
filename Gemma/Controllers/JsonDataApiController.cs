@@ -14,10 +14,7 @@ namespace Gemma.Controllers
         SingleProductRepository productRepository = new SingleProductRepository();
 
         // GET: JsonDataApi
-        public ActionResult Index()
-        {
-            return View();
-        }
+        public ActionResult Index() => View();
 
         public JsonResult FindSizeCount(int? productId, int? colorId)
         {

@@ -101,10 +101,7 @@ namespace Gemma.Controllers
 
         //
         // GET: /Manage/AddPhoneNumber
-        public ActionResult AddPhoneNumber()
-        {
-            return View();
-        }
+        public ActionResult AddPhoneNumber() => View();
 
         //
         // POST: /Manage/AddPhoneNumber
@@ -215,10 +212,7 @@ namespace Gemma.Controllers
 
         //
         // GET: /Manage/ChangePassword
-        public ActionResult ChangePassword()
-        {
-            return View();
-        }
+        public ActionResult ChangePassword() => View();
 
         //
         // POST: /Manage/ChangePassword
@@ -246,10 +240,7 @@ namespace Gemma.Controllers
 
         //
         // GET: /Manage/SetPassword
-        public ActionResult SetPassword()
-        {
-            return View();
-        }
+        public ActionResult SetPassword() => View();
 
         //
         // POST: /Manage/SetPassword
@@ -301,13 +292,10 @@ namespace Gemma.Controllers
 
         //
         // POST: /Manage/LinkLogin
+        // 要求重新導向至外部登入提供者，以連結目前使用者的登入
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LinkLogin(string provider)
-        {
-            // 要求重新導向至外部登入提供者，以連結目前使用者的登入
-            return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
-        }
+        public ActionResult LinkLogin(string provider) => new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
 
         //
         // GET: /Manage/LinkLoginCallback
@@ -339,10 +327,7 @@ namespace Gemma.Controllers
 
         private IAuthenticationManager AuthenticationManager
         {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
+            get => HttpContext.GetOwinContext().Authentication;
         }
 
         private void AddErrors(IdentityResult result)

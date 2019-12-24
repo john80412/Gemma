@@ -15,7 +15,7 @@ namespace Gemma.Controllers
 {
     public class OnlineStoreController : Controller
     {
-        private OnlineStoreRepository repo = new OnlineStoreRepository();
+        private readonly OnlineStoreRepository repo = new OnlineStoreRepository();
         public ActionResult FindBrand(string CategoryName = "ALL", string ColorName = "ALL", string OrderBy = "None")
         {
             Session["ListProducts"] ??= repo.GetProducts();

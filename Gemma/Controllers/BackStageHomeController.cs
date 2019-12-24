@@ -10,9 +10,6 @@ namespace Gemma.Controllers
     public class BackStageHomeController : Controller
     {
         // GET: BackStageHome
-        public ActionResult Index()
-        {
-            return View();
-        }
+        public ActionResult Index() => View();
     }
 }
