@@ -21,7 +21,8 @@
                 <span id="price">@Html.DisplayFor(model => model.Price) 円 + TAX</span>
             </div>
 
-            <label class="mr-2">SELECT COLOR</label><label id="color-warning"></label>
+            <label class="mr-2">SELECT COLOR</label>
+            <label id="color-warning"></label>
             <div class="row form-group">
                 @foreach (var item in @Model.ColorDetails)
                 {
@@ -36,7 +37,8 @@
             </div>
 
 
-            <label class="mr-2">SELECT SIZE</label><label id="size-warning"></label>
+            <label class="mr-2">SELECT SIZE</label>
+            <label id="size-warning"></label>
             <div class="row size-filters ml-1 form-group">
                 <button class="btn btn-default" id="35" val="">35(22.5cm)</button>
                 <button class="btn btn-default" id="36" val="">36(23.0cm)</button>
@@ -79,7 +81,8 @@
                         </div>
                         <div class="col-7">
                             <h5>@Html.DisplayFor(model => model.ProductName)</h5>
-                            <label class="font-weight-bold">オプション:</label><br />
+                            <label class="font-weight-bold">オプション:</label>
+                            <br />
                             <p>Color:   {{items.selectedColor}}</p>
                             <p>SIZE: {{items.selectedSize}}</p>
                         </div>
@@ -148,13 +151,13 @@
             $('.size-filters button').click(function () {
                 if ($('.pImages img').hasClass("selected") != true) $('#color-warning').text("Please select color.").css("color", "red");
 
-               $('.size-filters button').removeClass("btn-dark");
+                $('.size-filters button').removeClass("btn-dark");
                 $(this).addClass("btn-dark");
 
                 var selectedSizeMaxCount = $("button[class*='btn-dark']").attr('val');
                 //alert(selectedSizeMaxCount);
                 $('#userCount').removeAttr('max');
-                $('#userCount').attr('max',selectedSizeMaxCount);               
+                $('#userCount').attr('max', selectedSizeMaxCount);
             })
             var jsonData1 = {}
             app = new Vue({
@@ -168,21 +171,10 @@
                 var ColorID = $('.selected').attr('id');
                 var Count = $("#userCount").val();
                 var Price = $("#price").html();
-                $.ajax({
-                    type: "POST",
-                    url: "/Cart/DetailToCartButton",
-                    data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Count: Count, Price: Price },
-                    dataType: "text",
-                    success: function (response) {
-                        $("#MyCart").text("(" + response + ")");
-                    }
-                });
-                $.ajax({
-                    type: "POST",
-                    url: "/Cart/GetCart",
-                    data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Count: Count, Price: Price },
-                    dataType: "text"
-                });
+
+
+
+
                 if ($('.pImages img').hasClass("selected") != true || $('.size-filters button').hasClass("btn-dark") != true) {
                     $('#color-warning').text("Please select color.").css("color", "red");
                     $('#size-warning').text("Please select size.").css("color", "red");
@@ -199,6 +191,22 @@
                     }
                     app.$data.items = jsonData
                     $('#showCart').modal('show');
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/Cart/DetailToCartButton",
+                        data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Count: Count, Price: Price },
+                        dataType: "text",
+                        success: function (response) {
+                            $("#MyCart").text("(" + response + ")");
+                        }
+                    });
+                    $.ajax({
+                        type: "POST",
+                        url: "/Cart/GetCart",
+                        data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Count: Count, Price: Price },
+                        dataType: "text"
+                    });
                 }
             })
         })
