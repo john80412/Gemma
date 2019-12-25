@@ -14,7 +14,7 @@ namespace Gemma.Controllers
 {
     public class BookMarkController : Controller
     {
-        private readonly BookMarkRespository rep = new BookMarkRespository();
+        private GemmaDBContext db = new GemmaDBContext();
         public ActionResult Index(bool isDeleteAll = false)
         {
             if (isDeleteAll)
@@ -26,7 +26,7 @@ namespace Gemma.Controllers
             test ??= new List<BookMarkViewModel>();
             foreach (var item in test)
             {
-                var x = rep.db.Products.Include(x => x.Category).Where(x => x.ProductID == item.ProductId).ToList()[0]; /*tolist中第一個，ID是唯一*/
+                var x = db.Products.Include(x => x.Category).Where(x => x.ProductID == item.ProductId).ToList()[0]; /*tolist中第一個，ID是唯一*/
                 (item.ProductName, item.UnitPrice, item.CategoryName) = (x.ProductName, x.UnitPrice, x.Category.CategoryName);
             }
             Session["Wish"] = test; /*更新session值*/
