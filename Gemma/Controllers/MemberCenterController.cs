@@ -1,5 +1,6 @@
 ﻿using Gemma.Models;
 using Gemma.Repository;
+using Gemma.ViewModel;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -74,5 +75,11 @@ namespace Gemma.Controllers
         /// </summary>
         /// <returns></returns>
         public ActionResult OrderSearch() => View(rep.GetSearchStock(User.Identity.Name));
+
+        [HttpPost]
+        public string ResponseDetails(string orderID)
+        {
+            return rep.RespondOD(orderID);
+        }
     }
 }

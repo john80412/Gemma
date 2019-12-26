@@ -11,8 +11,8 @@ namespace Gemma.ViewModel
         //[CreditCard]
         [Display(Name = "カード番号")]
         [Required(ErrorMessage = "Required")]
-        [RegularExpression(@"\d{16}", ErrorMessage = "Error type")]
-        public decimal DigitName { get; set; }
+        [RegularExpression(@"^[0-9]{16}", ErrorMessage = "Error type")]
+        public string DigitName { get; set; }
 
         [Required(ErrorMessage = "Required")]
         [Display(Name = "有効期限 (mm/yy)")]
@@ -21,11 +21,11 @@ namespace Gemma.ViewModel
 
         [Required(ErrorMessage = "Required")]
         [RegularExpression(@"\d{2}", ErrorMessage = "Error type")]
-        public decimal Year { get; set; }
+        public string Year { get; set; }
 
         [Display(Name = "セキュリティコード")]
         [Required(ErrorMessage = "Required")]
         [RegularExpression(@"\d{3}", ErrorMessage = "Error type")]
-        public decimal BackNum { get; set; } 
+        public string BackNum { get; set; } 
     }
 }

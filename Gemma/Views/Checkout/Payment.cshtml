@@ -4,6 +4,7 @@
     ViewBag.Title = "Payment";
     var unorderCart = (List<CartViewModel>)Session["unorderCart"];
     decimal amount = 0;
+    decimal withTax = 0;
     var totalgoods = 0;
 }
 
@@ -69,12 +70,17 @@
                 @foreach (var goods in unorderCart)
                 {
                     amount += goods.Amount;
+                    withTax = goods.AmountwithTax;
                     totalgoods += 1;
                 }
                 <div class="col-12">
                     <div class="row">
                         <div class="col-7">@totalgoods 個</div>
                         <div class="col-5">@amount 円</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">運費 : 500 円</div>
+                        <div class="col-5">小計 : @withTax 円</div>
                     </div>
                 </div>
                 <h4 class="smallTitle">カート内の商品</h4>
