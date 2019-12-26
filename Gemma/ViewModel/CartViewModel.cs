@@ -30,5 +30,12 @@ namespace Gemma.ViewModel
                 return this.Price * this.Quantity;
             }
         }
+        public decimal AmountwithTax
+        {
+            get
+            {
+                return this.Price * this.Quantity * (decimal)1.05;
+            }
+        }
     }
 }

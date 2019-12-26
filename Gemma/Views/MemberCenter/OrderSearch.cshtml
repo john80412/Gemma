@@ -1,12 +1,13 @@
 ﻿@model List<Gemma.ViewModel.OrderViewModel>
 @using Microsoft.AspNet.Identity
+@using System.Globalization;
 
 @{
     ViewBag.Title = "注文 - 注文履歴";
 }
 
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center align-items-center">
         <br />
         <div class="col-md-offset-4 topButton">
             <input type="button" value="会員情報の編集" class="btn btn-default" id="memberInformation" />
@@ -32,7 +33,7 @@
 
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="thatOrder" style="cursor: pointer" data-target="#showDetails" id="@item.OrderID">
                 <td>
                     @Html.DisplayFor(modelItem => item.OrderID)
                 </td>
@@ -43,7 +44,7 @@
                     @Html.DisplayFor(modelItem => item.OrderDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                    @Html.DisplayFor(modelItem => item.TotalPrice) 円
                 </td>
             </tr>
         }
@@ -51,14 +52,113 @@
     </table>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="showDetails" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document" style="margin-top:15%;">
+        <div class="modal-content" id="userDetails">
+            <div class="modal-header">
+                <h5 class="modal-title">Details</h5>
+            </div>
+            <div v-for="item in items">
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-1">
+                            </div>
+                            <div class="col-6">
+                                <label class="font-weight-bold">{{item.ProductName}}</label><br />
+                                <p>Color: {{item.ColorName}}</p>
+                                <p>SIZE: {{item.Size}}</p>
+                            </div>
+                            <div class="col-3 mt-4">
+                                <p>数量 : {{item.Quantity}} 個</p>
+                                <p>Discount : {{item.Discount}}</p>
+                                <p>価格 : {{item.Price}} 円</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="float-right">
+                    <div class="col-8">
+                        <p style="white-space:nowrap;">小計 : {{total-500}} 円</p>
+                    </div>
+                    <div class="col-8">
+                        <p style="white-space:nowrap;">小計(含運) : {{total}} 円</p>
+                    </div>
+                    <div class="row">
+                        <button type="button" class="btn btn-dark mr-5" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <link href="~/Assets/CSS/MemberCenter.css" rel="stylesheet" />
 @section endJS{
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
     <script>
+        var app
         $("#orderSearch").click(function () {
             location.href = "/MemberCenter/OrderSearch/@Html.Raw(User.Identity.GetUserId())"
         });
         $("#memberInformation").click(function () {
             location.href = "/MemberCenter/MemberInfo/@Html.Raw(User.Identity.GetUserId())"
         });
+        var details = {};
+         function binding() {
+            app = new Vue({
+                el: "#showDetails",
+                data: { items: details },
+                computed: {
+                    total: function () {
+                        var number = 0;
+                        for (let i = 0; i < this.$data.items.length; i++) {
+                            number += this.$data.items[i].AmountwithTax;
+                        }
+                        return number+500;
+                    }
+                },
+            });
+         }
+         binding();
+         $('.thatOrder').click(function () {
+
+            //清空所有的修改
+            $('.thatOrder').css("border", "#FF9900").removeClass("selected");
+            details = {};
+            //選取的訂單加框
+            $(this).css("border", "solid 1px black").addClass("selected");
+            var type = {
+                OrderID: $('.selected').attr('id'),
+            };
+            //console.log(type);
+            $.ajax({
+                url: '/MemberCenter/ResponseDetails',
+                data: type,
+                type: "POST",
+                datatype: "json",
+                async : false,
+                success: function (data) {
+                    //console.log('aaaaaaaaaaaaaa',data);
+                    var d_data = JSON.parse(data);
+                    //console.log('aaaaaaa',d_data);
+                    details = d_data;
+                    app.$data.items = details
+                    //this.$data.items = details
+                    //console.log(details);
+                    $('#showDetails').modal('show');
+
+                },
+                error: function (msg) {
+                    console.log('bbbbbbbbb',msg);
+                }
+            })
+
+        })
+
+
     </script>
 }
