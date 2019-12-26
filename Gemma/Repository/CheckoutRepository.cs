@@ -10,23 +10,25 @@ namespace Gemma.Repository
 {
     public class CheckoutRepository
     {
-        private GemmaDBContext db = new GemmaDBContext();
+        private readonly GemmaDBContext db = new GemmaDBContext();
 
         public List<CartViewModel> ConvertList(ConvertCartArray uncheckData)
         {
             List<CartViewModel> goodsInCart = new List<CartViewModel>();
             for (int i = 0; i < uncheckData.ColorID.Count; i++)
             {
-                CartViewModel dataConvert = new CartViewModel();
-                dataConvert.ProductID = uncheckData.ProductID[i];
-                dataConvert.ProductName = db.Products.Find(uncheckData.ProductID[i]).ProductName;
-                dataConvert.SizeID = uncheckData.SizeID[i];
-                dataConvert.Size = db.Sizes.Find(uncheckData.SizeID[i]).Length;
-                dataConvert.ColorID = uncheckData.ColorID[i];
-                dataConvert.ColorName = db.Colors.Find(uncheckData.ColorID[i]).ColorName;
-                dataConvert.Quantity = uncheckData.Quantity[i];
-                dataConvert.Price = uncheckData.Price[i];
-                dataConvert.Discount = 0;
+                CartViewModel dataConvert = new CartViewModel
+                {
+                    ProductID = uncheckData.ProductID[i],
+                    ProductName = db.Products.Find(uncheckData.ProductID[i]).ProductName,
+                    SizeID = uncheckData.SizeID[i],
+                    Size = db.Sizes.Find(uncheckData.SizeID[i]).Length,
+                    ColorID = uncheckData.ColorID[i],
+                    ColorName = db.Colors.Find(uncheckData.ColorID[i]).ColorName,
+                    Quantity = uncheckData.Quantity[i],
+                    Price = uncheckData.Price[i],
+                    Discount = 0
+                };
                 goodsInCart.Add(dataConvert);
             }
             return goodsInCart;
@@ -97,7 +99,6 @@ namespace Gemma.Repository
                 };
                 db.OrderDetails.Add(orderDetailModel);
             }
-            var x = db.OrderDetails.ToList();
             // 清除購物車
             var cart = db.ShoppingCarts.Where((x) => x.CustomerID == userId);
             if (cart != null)

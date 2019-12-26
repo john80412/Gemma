@@ -13,7 +13,7 @@ namespace Gemma.Repository
 {
     public class OrderRepository
     {
-        private GemmaDBContext db = new GemmaDBContext();
+        private readonly GemmaDBContext db = new GemmaDBContext();
         public IPagedList<OrderViewModel> GetSearchStock(string customerName,string productNames, int page)
         {
             var orders = db.Database.SqlQuery<OrderViewModel>("exec OrderViewModel").AsQueryable();

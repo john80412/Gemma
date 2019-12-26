@@ -9,13 +9,7 @@ namespace Gemma.Controllers
     public class ShopController : Controller
     {
         // GET: Shop
-        public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult Shop()
-        {
-            return View();
-        }
+        public ActionResult Index() => View();
+        public ActionResult Shop() => View();
     }
 }

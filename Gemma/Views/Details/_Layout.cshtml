@@ -19,13 +19,9 @@
     @Styles.Render("~/Contentback/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Assets/css/FixedMenu.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <style>
-        .fixed {
-            height: 70px !important;
-            animation-delay: 100ms;
-        }
-
         .social-icons {
             margin-right: 0;
         }
@@ -34,18 +30,18 @@
     @RenderSection("topCSS", required: false)
     @RenderSection("topJS", required: false)
 </head>
-<body>
+<body onscroll="sticky()">
     <div>
-        <div class="container-fluid header">
+        <div class="container-fluid header navblock">
             <br />
             <div class="row">
-                <div class="logo">
-                    <a href="@Url.Action("DaniellaGemma","Home")"><img src="~/Assets/images/Icons/logo.png" /></a>
+                <div class="logo row">
+                    <a class="picture" href="@Url.Action("DaniellaGemma","Home")"><img src="~/Assets/images/Icons/logo.png" /></a>
 
                 </div>
                 <div class="header-nav row">
 
-                    <ul class="nav">
+                    <ul class="nav ul-1">
                         <li class="nav-item">
                             <a class="nav-link active" href="@Url.Action("FindBrand","OnlineStore")">ONLINE STORE</a>
                         </li>
@@ -58,6 +54,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("Shop","SHOP")">SHOP</a>
                         </li>
+                    </ul>
+                    <ul class="nav ul-2">
+
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li>
@@ -73,70 +72,70 @@
                             @Html.AntiForgeryToken()
 
 
-                <ul class="nav header-tool">
+                            <ul class="nav header-tool ul-2">
 
-                    <li class="account nav-item dropdown">
+                                <li class="account nav-item dropdown">
 
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="~/Assets/images/Icons/User_Mark.png" />
-                        </a>
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="~/Assets/images/Icons/User_Mark.png" />
+                                    </a>
 
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            @Html.ActionLink("マイページ", "MemberInfo", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
-                            @Html.ActionLink("ポイント履歴", "OrderSearch", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
-                            @if (User.Identity.Name == "Admin@gmail.com")
-                            {
-                                @Html.ActionLink("バックグラウンド管理", "Admin", "Account", null, new { @class = "dropdown-item" })
-                            }
-                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">ログアウト</a>
-                        </div>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        @Html.ActionLink("マイページ", "MemberInfo", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("ポイント履歴", "OrderSearch", "MemberCenter", new { id = User.Identity.GetUserId() }, new { @class = "dropdown-item" })
+                                        @if (User.Identity.Name == "Admin@gmail.com")
+                                        {
+                                            @Html.ActionLink("バックグラウンド管理", "Admin", "Account", null, new { @class = "dropdown-item" })
+                                        }
+                                        <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">ログアウト</a>
+                                    </div>
 
-                    </li>
+                                </li>
 
 
-                    <li class="bookmark nav-item">
-                        <a href="@Url.Action("Index", "BookMark")" class="nav-link">
-                            <img style="height:120%;width:120%" src="~/Assets/images/Icons/header-icon-bookmark.svg" />
-                        </a>
-                    </li>
-                    <span id="MyWish" style="font-size:20px;margin-top:15px">(@Session["Count"].ToString())</span>
-                    <li class="cart nav-item">
-                        <a href="@Url.Action("CartView", "Cart")" class="nav-link"><img src="~/Assets/images/Icons/Cart_Mark.png" /></a>
-                    </li>
-                    <span id="MyCart" style="font-size:20px;margin-top:15px">(@Session["CartItemCount"].ToString())</span>
-                </ul>
+                                <li class="bookmark nav-item">
+                                    <a href="@Url.Action("Index", "BookMark")" class="nav-link">
+                                        <img style="height:120%;width:120%" src="~/Assets/images/Icons/header-icon-bookmark.svg" />
+                                    </a>
+                                </li>
+                                <span id="MyWish" style="font-size:20px;margin-top:15px">(@Session["Count"].ToString())</span>
+                                <li class="cart nav-item">
+                                    <a href="@Url.Action("CartView", "Cart")" class="nav-link"><img src="~/Assets/images/Icons/Cart_Mark.png" /></a>
+                                </li>
+                                <span id="MyCart" style="font-size:20px;margin-top:15px">(@Session["CartItemCount"].ToString())</span>
+                            </ul>
 
                         }
                     }
                     else
                     {
-                <ul class="nav header-tool">
+                        <ul class="nav header-tool ul-2">
 
-                    <li class="account nav-item dropdown">
+                            <li class="account nav-item dropdown">
 
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="~/Assets/images/Icons/User_Mark.png" />
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="~/Account/Register">新規会員登録</a>
-                            <a class="dropdown-item" href="~/Account/Login">LOGIN</a>
-                        </div>
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/Assets/images/Icons/User_Mark.png" />
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="~/Account/Register">新規会員登録</a>
+                                    <a class="dropdown-item" href="~/Account/Login">LOGIN</a>
+                                </div>
 
-                    </li>
+                            </li>
 
 
-                    <li class="bookmark nav-item">
-                        <a href="@Url.Action("Index", "BookMark")" class="nav-link">
-                            <img style="height:120%;width:120%" src="~/Assets/images/Icons/header-icon-bookmark.svg" />
-                        </a>
-                    </li>
-                    <span id="MyWish" style="font-size:20px;margin-top:15px">(@Session["Count"].ToString())</span>
-                    <li class="cart nav-item">
-                        <a href="@Url.Action("CartView", "Cart")" class="nav-link"><img src="~/Assets/images/Icons/Cart_Mark.png" /></a>
-                    </li>
-                    <span id="MyCart" style="font-size:20px;margin-top:15px">(@Session["CartItemCount"].ToString())</span>
+                            <li class="bookmark nav-item">
+                                <a href="@Url.Action("Index", "BookMark")" class="nav-link">
+                                    <img style="height:120%;width:120%" src="~/Assets/images/Icons/header-icon-bookmark.svg" />
+                                </a>
+                            </li>
+                            <span id="MyWish" style="font-size:20px;margin-top:15px">(@Session["Count"].ToString())</span>
+                            <li class="cart nav-item">
+                                <a href="@Url.Action("CartView", "Cart")" class="nav-link"><img src="~/Assets/images/Icons/Cart_Mark.png" /></a>
+                            </li>
+                            <span id="MyCart" style="font-size:20px;margin-top:15px">(@Session["CartItemCount"].ToString())</span>
 
-                </ul>
+                        </ul>
 
                     }
                 </div>
@@ -277,36 +276,39 @@
             <br />
         </div>
     </div>
-
+    <div id="fb-root"></div>
+    <!-- Your customer chat code -->
+    <div class="fb-customerchat"
+         attribution=setup_tool
+         page_id="368171660627475"
+         theme_color="#e68585"
+         logged_in_greeting="您好，歡迎光臨Gemme Shop，有關於Gemma鞋子問題，可撥打客服電話0800-022-334!"
+         logged_out_greeting="您好，歡迎光臨Gemme Shop，有關於Gemma鞋子問題，可撥打客服電話0800-022-334!">
+    </div>
     @Scripts.Render("~/bundles/jquery")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>    @Scripts.Render("~/bundles/chartjs")
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Assets/js/FixedMenuForIG.js"></script>
+    <script src="~/Assets/js/navbaranimation.js"></script>
+    <!-- Load Facebook SDK for JavaScript -->
     <script>
-        $(document).ready();
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v5.0'
+            });
+        };
 
-        function sticky() {
-            if (window.pageYOffset > 50) {
-                document.querySelector("nav").classList.add("fixed");
-            }
-
-            if (window.pageYOffset < 50) {
-                document.querySelector("nav").classList.remove("fixed");
-            }
-        }
-
-        function sticky2() {
-            if (window.pageYOffset > 50) {
-                document.querySelector("img").classList.add("photofixed");
-            }
-
-            if (window.pageYOffset < 50) {
-                document.querySelector("img").classList.remove("photofixed");
-            }
-        }
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/zh_TW/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     </script>
-
+    <script src="~/Assets/js/fbsdk.js"></script>
 
     @RenderSection("scripts", required: false)
     @RenderSection("endCSS", required: false)

@@ -15,17 +15,13 @@ namespace Gemma.Controllers
     [Authorize]
     public class MemberCenterController : Controller
     {
-        private MemberCenterRepository rep = new MemberCenterRepository();
+        private readonly MemberCenterRepository rep = new MemberCenterRepository();
         // GET: MemberCenterHome
         /// <summary>
         /// 只有註冊完當下可以看到，從右上角會員中心點不到該頁面。
         /// </summary>
         /// <returns></returns>
-        public ActionResult Home()
-        {
-            return View(rep.GetInitialHomeView());
-        }
-
+        public ActionResult Home() => View(rep.GetInitialHomeView());
         /// <summary>
         /// Edit ~ 会員情報
         /// 要怎麼抓到登入狀態下的ID(未綁定)
@@ -78,12 +74,7 @@ namespace Gemma.Controllers
         /// 訂單查詢，要連資料庫
         /// </summary>
         /// <returns></returns>
-        public ActionResult OrderSearch()
-        {
-            //var order = rep.GetOrder(Id);
-            //return View(order);
-            return View(rep.GetSearchStock(User.Identity.Name));
-        }
+        public ActionResult OrderSearch() => View(rep.GetSearchStock(User.Identity.Name));
 
         [HttpPost]
         public string ResponseDetails(string orderID)

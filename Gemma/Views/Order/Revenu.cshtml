@@ -2,13 +2,18 @@
 @{
     ViewBag.Title = "Revenu";
 }
+    <div class="main-card mb-3 card">
+        <div class="card-body">
 
-<canvas id="revenu"></canvas>
-<p>
-    @Html.ActionLink("返回訂單管理", "Index",null,new { @class="btn btn-success"})
-</p>
-@section endJS{
-    <script>
+            <canvas id="revenu"></canvas>
+            <p>
+                @Html.ActionLink("返回訂單管理", "Index", null, new { @class = "btn btn-link" })
+            </p>
+
+        </div>
+    </div>
+        @section endJS{
+            <script>
         var revenu = @ViewData["Revenu"];
         var ctx = document.getElementById("revenu");
         var chart = new Chart(ctx, {
@@ -46,5 +51,5 @@
                 }
             }
         });
-    </script>
-}
+            </script>
+        }

@@ -12,23 +12,18 @@ namespace Gemma.Controllers
 {
     public class DetailsController : Controller
     {
-        SingleProductRepository productRepository = new SingleProductRepository();
+        private readonly SingleProductRepository productRepository = new SingleProductRepository();
 
         // GET: Details
-        public ActionResult Index()
-        {
-            return View();
-        }
+        public ActionResult Index() => View();
 
         public ActionResult FindProductById(int? productId)
         {
-            SingleProductDetailViewModel product = productRepository.GetSingleDetails(productId);
-
             if (productId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
+            SingleProductDetailViewModel product = productRepository.GetSingleDetails(productId);
             if (product == null)
             {
                 return HttpNotFound();

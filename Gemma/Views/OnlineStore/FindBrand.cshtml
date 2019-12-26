@@ -143,7 +143,7 @@
                 $.ajax({
                 type: "POST",
                 url: "/BookMark/addwishlist",
-                data: { ProductId: productId },
+                data: { ProductId: productId},
                     dataType: "text",
                     success: function (response) { $("#MyWish").text("(" + response + ")"); }
             });
@@ -154,7 +154,7 @@
                 $.ajax({
                 type: "POST",
                 url: "/BookMark/removewishlist",
-                data: { ProductId: productId },
+                data: { ProductId: productId  },
                     dataType: "text",
                 success: function (response) { $("#MyWish").text("(" + response + ")"); }
             });

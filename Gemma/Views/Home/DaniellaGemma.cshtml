@@ -10,7 +10,6 @@
 
     <link href="~/Assets/css/HomePage.css" rel="stylesheet" />
     <link href="~/Assets/css/flexslider.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <style>
         .flexslider{
             border:0;
@@ -203,7 +202,8 @@
             $('.flexslider').flexslider({
                 slideshowSpeed: 3500
             })
-            document.getElementById("loadingimg").addEventListener('animationend', function () { document.getElementsByClassName("loading")[0].style.display='none' })
+            document.getElementById("loadingimg").addEventListener('animationend', function () { document.getElementsByClassName("loading")[0].style.display = 'none' })
+            setTimeout(function () { document.getElementsByClassName("loading")[0].style.display = 'none'},5000)
         })
     </script>
 }

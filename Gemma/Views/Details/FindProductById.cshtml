@@ -21,7 +21,8 @@
                 <span id="price">@Html.DisplayFor(model => model.Price) 円 + TAX</span>
             </div>
 
-            <label class="mr-2">SELECT COLOR</label><label id="color-warning"></label>
+            <label class="mr-2">SELECT COLOR</label>
+            <label id="color-warning"></label>
             <div class="row form-group">
                 @foreach (var item in @Model.ColorDetails)
                 {
@@ -36,7 +37,8 @@
             </div>
 
 
-            <label class="mr-2">SELECT SIZE</label><label id="size-warning"></label>
+            <label class="mr-2">SELECT SIZE</label>
+            <label id="size-warning"></label>
             <div class="row size-filters ml-1 form-group">
                 <button class="btn btn-default" id="35" val="">35(22.5cm)</button>
                 <button class="btn btn-default" id="36" val="">36(23.0cm)</button>
@@ -79,7 +81,8 @@
                         </div>
                         <div class="col-7">
                             <h5>@Html.DisplayFor(model => model.ProductName)</h5>
-                            <label class="font-weight-bold">オプション:</label><br />
+                            <label class="font-weight-bold">オプション:</label>
+                            <br />
                             <p>Color:   {{items.selectedColor}}</p>
                             <p>SIZE: {{items.selectedSize}}</p>
                         </div>
@@ -95,7 +98,7 @@
                         <p>小計 {{items.total}} 円</p>
                     </div>
                     <div class="row">
-                        <button type="button" class="btn btn-dark mr-5" data-dismiss="modal">カートを見る</button>
+                        <button type="button" class="btn btn-dark mr-5" data-dismiss="modal" onclick="location.href='@Url.Action("CartView","Cart")'">カートを見る</button>
                     </div>
                 </div>
             </div>
@@ -148,8 +151,13 @@
             $('.size-filters button').click(function () {
                 if ($('.pImages img').hasClass("selected") != true) $('#color-warning').text("Please select color.").css("color", "red");
 
-                $('.size-filters button').css("border-color", "#c5c5c5").removeClass("selected");
-                $(this).css("border-color", "black").addClass("selected");
+                $('.size-filters button').removeClass("btn-dark");
+                $(this).addClass("btn-dark");
+
+                var selectedSizeMaxCount = $("button[class*='btn-dark']").attr('val');
+                //alert(selectedSizeMaxCount);
+                $('#userCount').removeAttr('max');
+                $('#userCount').attr('max', selectedSizeMaxCount);
             })
             var jsonData1 = {}
             app = new Vue({
@@ -159,26 +167,15 @@
             //按下訂購按鈕時
             $('#submit').click(function () {
                 var ProductID = $('#mainImage').attr('title');
-                var SizeID = $("button[class*='selected']").attr('id')
+                var SizeID = $(".size-filters button[class*='btn-dark']").attr('id')
                 var ColorID = $('.selected').attr('id');
                 var Count = $("#userCount").val();
                 var Price = $("#price").html();
-                $.ajax({
-                    type: "POST",
-                    url: "/Cart/DetailToCartButton",
-                    data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Count: Count, Price: Price },
-                    dataType: "text",
-                    success: function (response) {
-                        $("#MyCart").text("(" + response + ")");
-                    }
-                });
-                $.ajax({
-                    type: "POST",
-                    url: "/Cart/GetCart",
-                    data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Count: Count, Price: Price },
-                    dataType: "text"
-                });
-                if ($('.pImages img').hasClass("selected") != true || $('.size-filters button').hasClass("selected") != true) {
+
+
+
+
+                if ($('.pImages img').hasClass("selected") != true || $('.size-filters button').hasClass("btn-dark") != true) {
                     $('#color-warning').text("Please select color.").css("color", "red");
                     $('#size-warning').text("Please select size.").css("color", "red");
                 }
@@ -189,11 +186,27 @@
                         selectedImg: $('.selected').has('img').prevObject[0].outerHTML,
                         count: $('#userCount').val(),
                         selectedColor: $('.selected').has('img').prevObject[0].title,
-                        selectedSize: $('.selected').has('button').prevObject[1].innerHTML,
+                        selectedSize: $('.size-filters button').has('btn-dark').prevObject[0].innerHTML,
                         total: orderPrice
                     }
                     app.$data.items = jsonData
                     $('#showCart').modal('show');
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/Cart/DetailToCartButton",
+                        data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Count: Count, Price: Price },
+                        dataType: "text",
+                        success: function (response) {
+                            $("#MyCart").text("(" + response + ")");
+                        }
+                    });
+                    $.ajax({
+                        type: "POST",
+                        url: "/Cart/GetCart",
+                        data: { ProductID: ProductID, ColorID: ColorID, SizeID: SizeID, Count: Count, Price: Price },
+                        dataType: "text"
+                    });
                 }
             })
         })

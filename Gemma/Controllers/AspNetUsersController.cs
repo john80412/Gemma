@@ -14,14 +14,14 @@ namespace Gemma.Models
     [Authorize(Users = "Admin@gmail.com")]
     public class AspNetUsersController : Controller
     {
-        private MemberRepository rep = new MemberRepository();
+        private readonly MemberRepository rep = new MemberRepository();
 
         // GET: AspNetUsers
-        public ActionResult Index(string id, int page = 1, string search = "false")
+        public ActionResult Index(string userName, int page = 1, string search = "false")
         {
-            ViewBag.searchMemberId = id;
+            ViewBag.searchUserName = userName;
             page = search == "true" ? 1 : page;
-            return View(rep.GetSearchMember(id, page));
+            return View(rep.GetSearchMember(userName, page));
         }
 
         // GET: AspNetUsers/Details/5
@@ -39,38 +39,6 @@ namespace Gemma.Models
             return View(result);
         }
 
-        // GET: AspNetUsers/Create
-        //public ActionResult Create()
-        //{
-        //    ViewBag.Id = new SelectList(rep.db.AspNetUsers, "Id", "Id");
-        //    ViewBag.UserName = new SelectList(rep.db.AspNetUsers, "UserName", "UserName");
-        //    ViewBag.Email = new SelectList(rep.db.AspNetUsers, "Email", "Email");
-        //    ViewBag.PhoneNumber = new SelectList(rep.db.AspNetUsers, "PhoneNumber", "PhoneNumber");
-        //    return View();
-        //}
-
-        // POST: AspNetUsers/Create
-        // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,UserName,Email,PhoneNumber")] MemberViewModel member)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        rep.CreatMember(member);
-        //        TempData["message"] = rep.IsSuccess;
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    ViewBag.Id = new SelectList(rep.db.AspNetUsers, "Id", "Id");
-        //    ViewBag.UserName = new SelectList(rep.db.AspNetUsers, "UserName", "UserName", member.UserName);
-        //    ViewBag.Email = new SelectList(rep.db.AspNetUsers, "Email", "Email", member.Email);
-        //    ViewBag.PhoneNumber = new SelectList(rep.db.AspNetUsers, "PhoneNumber", "PhoneNumber", member.PhoneNumber);
-
-        //    return View(member);
-        //}
-
         // GET: AspNetUsers/Edit/5
         public ActionResult Edit(string id)
         {
@@ -87,6 +55,7 @@ namespace Gemma.Models
             ViewBag.UserName = new SelectList(rep.db.AspNetUsers, "UserName", "UserName", member.UserName);
             ViewBag.Email = new SelectList(rep.db.AspNetUsers, "Email", "Email", member.Email);
             ViewBag.PhoneNumber = new SelectList(rep.db.AspNetUsers, "PhoneNumber", "PhoneNumber", member.PhoneNumber);
+            ViewBag.Address = new SelectList(rep.db.AspNetUsers, "Address", "Address", member.Address);
 
             return View(member);
         }
@@ -107,6 +76,7 @@ namespace Gemma.Models
             ViewBag.UserName = new SelectList(rep.db.AspNetUsers, "UserName", "UserName", member.UserName);
             ViewBag.Email = new SelectList(rep.db.AspNetUsers, "Email", "Email", member.Email);
             ViewBag.PhoneNumber = new SelectList(rep.db.AspNetUsers, "PhoneNumber", "PhoneNumber", member.PhoneNumber);
+            ViewBag.Address = new SelectList(rep.db.AspNetUsers, "Address", "Address", member.Address);
 
             return View(member);
         }

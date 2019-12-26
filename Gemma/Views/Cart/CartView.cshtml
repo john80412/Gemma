@@ -3,9 +3,9 @@
     ViewBag.Title = "CartView";
 }
 
-<div class="container">
+<div class="container" style="padding-top:50px">
     @{
-        if (Session["Cart"] == null)
+        if (Session["CartView"] == null)
         {
             <div class="cart-section">
                 <div class="cart-no-items">
@@ -25,8 +25,102 @@
 
 </div>
 @section endJS{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script>
+        //function BindingOneItem() {
+        //    new Vue({
+        //        el: "#ddd",
+        //        data: {
+        //            count: 1,
+        //            price: 1
+        //        },
+        //        computed: {
+        //            oneItemTotal: function () {
+        //                var total = this.$data.count * this.$data.price;
+        //                return total;
+        //            }
+        //        },
+        //    })
+        //}
+        
+        function CartTotal() {
+            var income = 0;
+            income = parseInt($('#itemPrice').html()) + 500 + parseInt($('#itemPriceTax').html());
+        $('#cartitemTotal').html(income);
+        }
+        function ItemToTax() {
+        $('#itemPriceTax').html($('#itemPrice').html() * 0.05);
+        }
+        function ItemToPrice(ans) {
+            	
+        $('#itemPrice').html(ans);
+        }
+        function AmountCartSub() {
+            input = 0;
+                        $(".AmountCart").toArray().forEach(function (item, index) {
+                input += parseInt(item.innerText);
+                console.log( parseInt(item.innerText))
+            })
+        }
+        //function ControllButtonData(aa) {
+        //    var aa;
+        //    if (aa <= 1) {
+        //        $(this).parent().children('button').attr('disable', true)
+        //    }
+        //    else {
+        //        $(this).parent().children('button').attr('disable', false)
+        //    }
+        //}
+            var input = 0;
         $(() => {
+            AmountCartSub();
+
+            $(".QuantityReducing").click(function () {
+                var x = $(this).parent().children('input').val()                
+                $(this).parent().children('input').val(x - 1)
+                var y = $(this).parent().parent().children(".priceForCart").children('span').html();
+                $(this).parent().parent().children('.AmountCart').children('span').html((x - 1) * y);
+                AmountCartSub();
+                ItemToPrice(input);
+                ItemToTax();
+                CartTotal();
+            });
+            $(".QuantityAdding").click(function () {
+                
+                var x = $(this).parent().children('input').val();
+                $(this).parent().children('input').val(x - (-1))
+                var y = $(this).parent().parent().children('.priceForCart').children('span').html();
+                $(this).parent().parent().children('.AmountCart').children('span').html((x - (-1)) * y);
+                AmountCartSub();
+                ItemToPrice(input);
+                ItemToTax();
+                CartTotal();
+            });
+            
+         //   $(".AmountCart").toArray().each(function () {
+ 
+         //       input += parseInt($(this).innerText);
+         //       console.log( parseInt($(this).innerText))
+ 
+	        //});
+            @*BindingOneItem();*@
+            ItemToPrice(input);
+            ItemToTax();
+            CartTotal();
+
+            $('.deleteData').click(function () {
+                var CartID = $(this).parent().children('.cartID').html();
+                console.log(CartID);
+                $.ajax({
+                    type: "POST",
+                    url: "/Cart/DeleteCartData",
+                    data: { CartID: CartID },
+                    dataType: "text",
+                    success: function (response) {
+                        location.href='@Url.Action("CartView","Cart")'
+                    }
+                });
+            });
             $('#checkCart').click(function () {
                 var ProductID = [];
                 $('.productID').each(function () {
@@ -43,13 +137,13 @@
                 });
                 var Quantity = [];
                 $('.QuantityCart').each(function () {
-                    Quantity.push($(this).html());
+                    Quantity.push($(this).val());
                 });
                 var Price = [];
-                $('.priceForCart').each(function () {
+                $('.priceForCart span').each(function () {
                     Price.push($(this).html());
                 });
-                
+
                 $.ajax({
                     type: "POST",
                     url: "/Checkout/GetUncheckOrder",
@@ -82,23 +176,19 @@
                 font-size: 45px;
                 font-family: 'Roboto', sans-serif;
             }
+
+        #checkCart {
+            margin-left:70%;
+            background-color: black;
+            color: white;
+        }
+
+        .cartSubtotal ul li{
+
+            font-size:20px;
+            font-family: 'Roboto', sans-serif;
+            line-height: 50px;
+        }
+
     </style>
 }
-@*@section endJS{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
-    <script>
-        var vm = new Vue({
-                el: ".cart-with-items",
-                data: {
-                    count: 0,
-                    price:0
-                },
-                computed: {
-                    result: function () {
-                        total = this.count * this.price;
-                        return total;
-                    }
-                },
-            })
-    </script>
-    }*@

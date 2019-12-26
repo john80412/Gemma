@@ -15,7 +15,7 @@ namespace Gemma.Controllers
     [Authorize(Users = "Admin@gmail.com")]
     public class ProductsController : Controller
     {
-        private ProductRepository rep = new ProductRepository();
+        private readonly ProductRepository rep = new ProductRepository();
 
         // GET: Products
         public ActionResult Index(string productName, string categoryName, int page = 1, string search = "false")
@@ -53,11 +53,11 @@ namespace Gemma.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductName,UnitPrice,Discount,CategoryID,Explain")] ProductViewModel product)
+        public ActionResult Create([Bind(Include = "ProductName,UnitPrice,Discount,CategoryID,Explain")] ProductViewModel product , HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                rep.CreateProduct(product);
+                rep.CreateProduct(product,file);
                 TempData["message"] = rep.IsSuccess;
                 return RedirectToAction("Index");
             }

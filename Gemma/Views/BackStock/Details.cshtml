@@ -3,42 +3,50 @@
 @{
     ViewBag.Title = "Details";
 }
-<h2>庫存明細</h2>
-<hr>
-<dl class="dl-horizontal">
-    <dt>
-        @Html.DisplayNameFor(model => model.ProductName)
-    </dt>
 
-    <dd>
-        @Html.DisplayFor(model => model.ProductName)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.ColorName)
-    </dt>
+<div class="main-card mb-3 card">
+    <div class="card-body">
 
-    <dd>
-        @Html.DisplayFor(model => model.ColorName)
-    </dd>
+        <h3 class="card-title ml-3">庫存明細</h3>
+        <hr />
+        <dl class="dl-horizontal ml-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.SizeID)
-    </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ColorName)
+            </dt>
 
-    <dd>
-        @Html.DisplayFor(model => model.SizeID)
-    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ColorName)
+            </dd>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.Quantity)
-    </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.SizeID)
+            </dt>
 
-    <dd>
-        @Html.DisplayFor(model => model.Quantity)
-    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.SizeID)
+            </dd>
 
-</dl>
-<p>
-    @Html.ActionLink("編輯", "Edit", new RouteValueDictionary { { "productID", Model.ProductID }, { "colorID", Model.ColorID }, { "sizeID", Model.SizeID } }, new Dictionary<string, object> { { "class", "btn btn-info" } }) 
-    @Html.ActionLink("返回庫存管理頁面", "Index", null, new { @class = "btn btn-success" })
-</p>
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+
+        </dl>
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("編輯", "Edit", new RouteValueDictionary { { "productID", Model.ProductID }, { "colorID", Model.ColorID }, { "sizeID", Model.SizeID } }, new Dictionary<string, object> { { "class", "btn btn-primary" } })
+        </div>
+        <div>
+            @Html.ActionLink("返回會員管理頁面", "Index", null, new { @class = "mb-2 mr-2 btn btn-link" })
+        </div>
+    </div>
+</div>
