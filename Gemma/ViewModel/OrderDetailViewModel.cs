@@ -16,6 +16,7 @@ namespace Gemma.ViewModel
         [Display(Name = "總計")]
         public decimal TotalPrice { get; set; }
         [Display(Name = "訂單日期")]
+        [DataType(DataType.Date)]
         public DateTime OrderDate { get; set; }
 
     }
