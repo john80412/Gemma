@@ -19,6 +19,7 @@ namespace Gemma.ViewModel
         public decimal TotalPrice { get; set; }
         [Display(Name = "訂單日期")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime OrderDate { get; set; }
     }
 }
