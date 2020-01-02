@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "お支払い完了";
+}
+
+<div class="container">
+    <br />
+    <h2 class="TopTitle">Payment Finish</h2>
+    <br />
+    <h4 class="smallTitle col-md-12">
+        お支払い完了，画面が5秒以内にジャンプしない場合は、注文履歴をクリックして注文が完了したかどうかを確認してください
+    </h4>
+    <div class="row">
+        <div class="col-md-6">
+            <br />
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="注文履歴" class="btn btn-default" id="orderSearch" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<link href="~/Assets/CSS/FixedMenu.css" rel="stylesheet" />
+<link href="~/Assets/CSS/MemberCenter.css" rel="stylesheet" />
+
+@section endJS{
+    <script>
+        
+        function confirm() {
+            $.ajax({
+                url: '/Checkout/FinishThenSave',
+                type: "POST",
+                datatype: "json",
+                async : false,
+                success: function (data) {
+                    location.href = data;
+                },
+                error: function (msg) {
+                    console.log('error',msg);
+                }
+            })
+        }
+        $(() => {
+            confirm();
+        });
+
+        $("#orderSearch").click(function () {
+            confirm();
+        });
+    </script>
+}
+

@@ -5,7 +5,7 @@
     ViewBag.Title = "注文手続き - Daniella & GEMMA（ダニエラ＆ジェマ）オンラインストア";
     var unorderCart = (List<CartViewModel>)Session["unorderCart"];
     decimal amount = 0;
-    decimal withTax = 0;
+    decimal withTax = 500;
     var totalgoods = 0;
 
 }
@@ -87,17 +87,17 @@
                 @foreach (var goods in unorderCart)
                 {
                     amount += goods.Amount;
-                    withTax = goods.AmountwithTax;
+                    withTax += goods.AmountwithTax;
                     totalgoods += 1;
                 }
                 <div class="col-12">
                     <div class="row">
                         <div class="col-7">@totalgoods 個</div>
-                        <div class="col-5">@amount 円</div>
+                        <div class="col-5">@amount.ToString("#,###") 円</div>
                     </div>
                     <div class="row">
                         <div class="col-7">運費 : 500 円</div>
-                        <div class="col-5">小計 : @withTax 円</div>
+                        <div class="col-5">小計 : @withTax.ToString("#,###") 円</div>
                     </div>
                 </div>
                 <h4 class="smallTitle">カート内の商品</h4>
@@ -106,7 +106,7 @@
                 {
                     <ul>
                         <li>@goods.ProductName</li>
-                        <li>@goods.Quantity x @goods.Quantity</li>
+                        <li>@goods.Quantity x @goods.Price</li>
                         <li>COLOR: @goods.ColorName</li>
                         <li>SIZE: @goods.SizeID (@goods.Size.ToString()cm)</li>
                     </ul>
