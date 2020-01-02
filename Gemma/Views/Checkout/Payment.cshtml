@@ -4,7 +4,7 @@
     ViewBag.Title = "Payment";
     var unorderCart = (List<CartViewModel>)Session["unorderCart"];
     decimal amount = 0;
-    decimal withTax = 0;
+    decimal withTax = 500;
     var totalgoods = 0;
 }
 
@@ -12,55 +12,70 @@
     <br />
     <h2 class="TopTitle">ORDER</h2>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6" id="PayOption">
             <h4 style="background-color:#292929; color:whitesmoke;border-radius:3px;" class="smallTitle col-md-12">&nbsp; 2️⃣支払方法</h4>
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
 
-                <div class="form">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <h4 class="smallTitle col-md-12">クレジットカード</h4>
-                    <div class="form-group">
-                        @Html.RequiredLabelFor(model => model.DigitName, htmlAttributes: new { @class = "control-label col-md-12" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.DigitName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.DigitName, "", new { @class = "text-danger" })
+            <div class="col-md-12">
+                <label class="col-md-12 row">
+                    <input type="radio" name="pay" value="t" v-on:click="changeMethod" checked>
+                    <h4 class="smallTitle">クレジットカード</h4>
+                </label>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form" v-if="CreditCard">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.RequiredLabelFor(model => model.DigitName, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DigitName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DigitName, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        @Html.RequiredLabelFor(model => model.Month, htmlAttributes: new { @class = "control-label col-md-12" })
-                        <div class="col-md-10">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    @Html.EditorFor(model => model.Month, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Month, "", new { @class = "text-danger" })
-                                </div>
-                                /
-                                <div class="col-md-3">
-                                    @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.RequiredLabelFor(model => model.Month, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Month, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Month, "", new { @class = "text-danger" })
+                                    </div>
+                                    /
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        @Html.RequiredLabelFor(model => model.BackNum, htmlAttributes: new { @class = "control-label col-md-12" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.BackNum, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.BackNum, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.RequiredLabelFor(model => model.BackNum, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.BackNum, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BackNum, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="注文を確定する" class="btn btn-default btnDonC"  />
+                            </div>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="注文を確定する" class="btn btn-default btnDonC" />
-                        </div>
-                    </div>
+                }
+            </div>
+            <div class="col-md-12">
+                <label class="col-md-12 row">
+                    <input type="radio" name="pay" value="" v-on:click="changeMethod">
+                    <h4 class="smallTitle">Line Pay</h4>
+                </label>
+                <div class="col-md-offset-2 col-md-10" v-if="!CreditCard">
+                    <input type="button" value="注文を確定する" class="btn btn-default btnDonC" v-on:click="goLinePay" />
                 </div>
-            }
+            </div>
+
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-5">
@@ -70,17 +85,17 @@
                 @foreach (var goods in unorderCart)
                 {
                     amount += goods.Amount;
-                    withTax = goods.AmountwithTax;
+                    withTax += goods.AmountwithTax;
                     totalgoods += 1;
                 }
                 <div class="col-12">
                     <div class="row">
                         <div class="col-7">@totalgoods 個</div>
-                        <div class="col-5">@amount 円</div>
+                        <div class="col-5">@amount.ToString("#,###") 円</div>
                     </div>
                     <div class="row">
                         <div class="col-7">運費 : 500 円</div>
-                        <div class="col-5">小計 : @withTax 円</div>
+                        <div class="col-5">小計 : @withTax.ToString("#,###") 円</div>
                     </div>
                 </div>
                 <h4 class="smallTitle">カート内の商品</h4>
@@ -88,8 +103,8 @@
                 @foreach (var goods in unorderCart)
                 {
                     <ul>
-                        <li>@goods.ProductName</li>
-                        <li>@goods.Quantity x @goods.Quantity</li>
+                        <li class="productName" title="@goods.ProductName">@goods.ProductName</li>
+                        <li>@goods.Quantity x @goods.Price</li>
                         <li>COLOR: @goods.ColorName</li>
                         <li>SIZE: @goods.SizeID (@goods.Size.ToString()cm)</li>
                     </ul>
@@ -120,6 +135,70 @@
 
 @section endJS{
     @Scripts.Render("~/bundles/jqueryval")
-}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+        var option = { "CreditCard": true }
+        var price = @withTax;
 
-<script src="~/Assets/js/FixedMenuForIG.js"></script>
+        new Vue({
+            el: "#PayOption",
+            data: option,
+            methods: {
+                changeMethod: function () {
+                    if ($('input[name=pay]:checked').val() == "t") {
+                        this.$data.CreditCard = true;
+                    }
+                    else {
+                        this.$data.CreditCard = false;
+                    }
+                },
+                goLinePay: function () {
+                    var orderId = new Date().YYYYMMDDHHMMSS();
+                    var orderCartItems = "";
+                    $('.productName').each(function () {
+                        orderCartItems = $(this).attr('title') + ", " + orderCartItems
+                    });
+                    orderCartItems = orderCartItems.slice(0, -2);
+                    
+                    $.ajax({
+                        url: "/Checkout/CallLine",
+                        data: {
+                            "productName": orderCartItems,
+                            "amount": price,
+                            "currency": "TWD",
+                            "confirmUrl": "https://localhost:44333/Checkout/Finished",
+                            "orderId": orderId
+                        },
+                        type: "POST",
+                        datatype: "json",
+                        success: function (data) {
+                            var object = JSON.parse(data);
+                            location.href = object.info.paymentUrl.web;
+                        },
+                        error: function (msg) {
+                            console.log('error', msg);
+                        }
+                    })
+                }
+
+            }
+        });
+        
+        Object.defineProperty(Date.prototype, 'YYYYMMDDHHMMSS', {
+            value: function() {
+                function pad2(n) {  // always returns a string
+                    return (n < 10 ? '0' : '') + n;
+                }
+
+                return this.getFullYear() +
+                       pad2(this.getMonth() + 1) +
+                       pad2(this.getDate()) +
+                       pad2(this.getHours()) +
+                       pad2(this.getMinutes()) +
+                       pad2(this.getSeconds());
+            }
+        });
+
+
+    </script>
+}

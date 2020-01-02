@@ -5,6 +5,8 @@ using Gemma.Models;
 using System.Web;
 using Gemma.ViewModel;
 using System.Data.Entity;
+using RestSharp;
+using Newtonsoft.Json;
 
 namespace Gemma.Repository
 {
@@ -133,6 +135,44 @@ namespace Gemma.Repository
                 }
                 db.SaveChanges();
             }
+        }
+        public string CallLinePay(Line data)
+        {
+            var client = new RestClient("https://sandbox-api-pay.line.me/v2/payments/request");
+            client.Timeout = -1;
+            var request = RestPostMethod(data);
+            IRestResponse response = client.Execute(request);
+            LineConfirm confirm = new LineConfirm
+            {
+                amount = data.amount,
+                currency = data.currency
+            };
+            HttpContext.Current.Session["confirm"] = confirm;
+            var result = JsonConvert.DeserializeObject<LineRootObject>(response.Content);
+            var transactionId = result.info.transactionId;
+            HttpContext.Current.Session["transactionId"] = transactionId;
+            return response.Content;
+        }
+        public void FinishLinePay()
+        {
+            var transactionId = HttpContext.Current.Session["transactionId"].ToString();
+            var confirm = (LineConfirm)HttpContext.Current.Session["confirm"];
+            var client = new RestClient("https://sandbox-api-pay.line.me/v2/payments/" + transactionId + "/confirm");
+            client.Timeout = -1;
+            var request = RestPostMethod(confirm);
+            IRestResponse response = client.Execute(request);
+            HttpContext.Current.Session["confirm"] = null;
+            HttpContext.Current.Session["transactionId"] = null;
+            //return response.Content;
+        }
+        private RestRequest RestPostMethod(object data)
+        {
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("X-LINE-ChannelId", "1653703837");
+            request.AddHeader("X-LINE-ChannelSecret", "6b3f7b69fe77cf38872dd80d7b9a8512");
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+            return request;
         }
     }
 }

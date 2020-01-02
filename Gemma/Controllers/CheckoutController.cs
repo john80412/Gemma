@@ -74,5 +74,31 @@ namespace Gemma.Controllers
             }
             return RedirectToAction("OrderSearch", "MemberCenter");
         }
+
+        public ActionResult Finished()
+        {
+            if (Session["confirm"] == null)
+            {
+                RedirectToAction("CartView", "Cart");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public string CallLine(Line data)
+        {
+            var backData = rep.CallLinePay(data);
+            return backData;
+        }
+
+
+        [HttpPost]
+        public string FinishThenSave()
+        {
+            rep.FinishLinePay();
+            rep.SaveOrder((List<CartViewModel>)Session["unorderCart"], User.Identity.GetUserId());
+            var url = "/MemberCenter/OrderSearch/" + User.Identity.GetUserId().ToString();
+            return url;
+        }
     }
 }
